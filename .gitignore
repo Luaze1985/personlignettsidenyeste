@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Playwright
+test-results/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Netlify local
+.netlify/
+
+# Agent workspaces (internal tooling, not site content)
+.agents/
+.claude/
+
+# Link checker output
+link-checker-report.json

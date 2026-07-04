@@ -1,0 +1,79 @@
+# Netlify-konfigurasjon for en ren statisk side.
+# Ingen bygging – serverer index.html fra repo-roten direkte.
+
+[build]
+  publish = "."
+  command = ""
+
+# Blokker interne prosjektdokumenter fra offentlig visning.
+# (De ligger i repoet for arbeidsflyt, men skal ikke serveres paa nett.)
+[[redirects]]
+  from = "/README.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/SPEC.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/ISSUES.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/AUDIT_REPORT.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/DARK_MODE.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/PROJECT.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/TEST_INFRA.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/security_audit.md"
+  to = "/"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+
+
