@@ -7,10 +7,10 @@ Denne filen beskriver koden, designet og hvordan du jobber videre – bl.a. med 
 
 ## 1. Hva koden er
 
-- **Én fil:** `index.html` – all HTML, CSS (i `<style>`) og litt JavaScript i samme fil.
-- **Ett bilde:** `images/Profil.jpg` (profilbilde). Placeholder for `images/om-meg.jpg` (valgfritt portrett).
-- **Ingen rammeverk, ingen avhengigheter.** Åpnes direkte i nettleser. Kan hostes hvor som helst (GitHub Pages, Netlify, Cloudflare Pages).
-- **JavaScript:** ~15 linjer – markerer aktiv seksjon i menyen ved scroll (IntersectionObserver). Alt annet er ren HTML/CSS.
+- **Struktur:** `index.html` (HTML), `css/style.css` (CSS) og `js/navigation.js` (JavaScript for navigasjon).
+- **Profilbilde:** `images/Profil.jpg` (WebP optimalisert, med JPG fallback).
+- **Lettvekt og portabelt:** Kan hostes hvor som helst (GitHub Pages, Netlify, Cloudflare Pages) uten behov for Node-byggesystem i produksjon.
+- **JavaScript:** ~15 linjer i `js/navigation.js` for å markere aktiv seksjon (IntersectionObserver) og animere reveal-elementer. Pluss et lite inline-skript i `<head>` for fade-in og CSS-deteksjon.
 
 ---
 

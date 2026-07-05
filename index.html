@@ -3,17 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
     <title>Lars Erik Brekne Johnsen | KI, effektivitet og kvalitet</title>
+    <meta name="description" content="Lars Erik Brekne Johnsen tilbyr kurs, rådgivning og foredrag om praktisk KI – effektivitet og kvalitet for enhver virksomhet. Trygg bruk, GDPR og EU AI Act.">
+    <link rel="canonical" href="https://larserikbjohnsen.no/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Lars Erik Brekne Johnsen | KI, effektivitet og kvalitet">
+    <meta property="og:description" content="Kurs, rådgivning og foredrag om praktisk KI – rett på det som gir verdi.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://larserikbjohnsen.no/">
+    <meta property="og:image" content="https://larserikbjohnsen.no/images/Profil.jpg">
+    <meta property="og:locale" content="nb_NO">
+
     <!-- Sett js-klasse foer first paint, slik at fade-in ikke blinker synlig → skjult. -->
-    <script src="js/theme.js"></script>
+    <script>document.documentElement.classList.add("js");</script>
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Selv-hostet display-font: preload de to viktigste snittene (navn + sitat). -->
     <link rel="preload" href="fonts/newsreader-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/newsreader-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Lars Erik Brekne Johnsen",
+      "jobTitle": "KI-rådgiver og foredragsholder",
+      "url": "https://larserikbjohnsen.no/",
+      "email": "larserik.bn@gmail.com",
+      "telephone": "+4791119692",
+      "sameAs": ["https://www.linkedin.com/in/lars-erik-brekne-johnsen/"],
+      "knowsAbout": ["Kunstig intelligens", "KI i arbeidslivet", "GDPR", "EU AI Act", "Endringsledelse"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Kristiansand kommune"
+      }
+    }
+    </script>
 </head>
 <body>
 
@@ -23,13 +56,13 @@
     <div class="container">
         <div class="header-content">
             <div class="profile-group">
-                <img class="profile-pic" src="images/Profil.jpg" alt="Lars Erik Brekne Johnsen">
+                <img class="profile-pic" src="images/Profil.jpg" alt="Lars Erik Brekne Johnsen" width="64" height="64">
                 <div class="profile-text">
                     <h1>Lars Erik Brekne Johnsen</h1>
                     <p>KI, effektivitet og kvalitet · for enhver virksomhet</p>
                 </div>
             </div>
-            <nav>
+            <nav aria-label="Hovedmeny">
                 <a href="#om">Om meg</a>
                 <a href="#tjenester">Tjenester</a>
                 <a href="#tilnaerming">Tilnærming</a>
@@ -106,7 +139,7 @@
         <h2>Foredrag og erfaring</h2>
         <p class="section-intro">Utvalgte foredrag, innlegg og fagscener:</p>
         <ul class="simple-list">
-            <li><a class="link ext" href="https://agderinthe.cloud/2025/06/16/copilot-and-ai-use-in-the-real-world/" target="_blank" rel="noopener">Agder in the Cloud – Copilot and AI use in the real world<span class="sr-only"> (åpner i ny fane)</span></a> <span class="year">(2025)</span></li>
+            <li lang="en"><a class="link ext" href="https://agderinthe.cloud/2025/06/16/copilot-and-ai-use-in-the-real-world/" target="_blank" rel="noopener">Agder in the Cloud – Copilot and AI use in the real world<span class="sr-only"> (åpner i ny fane)</span></a> <span class="year">(2025)</span></li>
             <li>HR Norge – Hvordan kan KI effektivisere HR- og HMS-arbeidet? <span class="year">(2025)</span></li>
             <li><a class="link ext" href="https://digin.no/events/tech-talks-agder-ai-i-arbeidshverdagen-fra-ide-til-kode" target="_blank" rel="noopener">Tech Talks Agder – AI i arbeidshverdagen<span class="sr-only"> (åpner i ny fane)</span></a> <span class="year">(2025)</span></li>
             <li>DigiViken, Digi Agder og Digg – kurs og foredrag om praktisk KI-innføring <span class="year">(2024–2025)</span></li>
@@ -188,11 +221,8 @@
         </details>
     </section>
 
-</main>
-
-<footer class="reveal">
-    <div class="container">
-        <h2 id="kontakt">Kontakt</h2>
+    <section id="kontakt" class="reveal">
+        <h2>Kontakt</h2>
         <p>Vil du booke et foredrag, diskutere arbeidsflyter for din organisasjon, eller bare slå av en prat om KI? Ta kontakt.</p>
         <div class="contact-links">
             <a href="mailto:larserik.bn@gmail.com">larserik.bn@gmail.com</a>
@@ -200,6 +230,13 @@
             <a href="https://www.linkedin.com/in/lars-erik-brekne-johnsen/" target="_blank" rel="noopener">LinkedIn-profil<span class="sr-only"> (åpner i ny fane)</span></a>
             <a href="https://www.linkedin.com/groups/11818031/" target="_blank" rel="noopener">KI Geriljaen<span class="sr-only"> (åpner i ny fane)</span></a>
         </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p class="copyright">© 2026 Lars Erik Brekne Johnsen</p>
     </div>
 </footer>
 

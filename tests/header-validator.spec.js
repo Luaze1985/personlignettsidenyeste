@@ -304,12 +304,17 @@ test.describe('Security Headers & E2E Validation', () => {
       const trimmed = line.trim();
       if (trimmed.startsWith('#') || !trimmed) continue;
       
+      if (trimmed === '[[headers]]') {
+        seenKeys.clear();
+        continue;
+      }
+      
       if (trimmed === '[headers.values]') {
         inHeadersValues = true;
         continue;
       }
       
-      if (trimmed.startsWith('[') && trimmed !== '[headers.values]') {
+      if (trimmed.startsWith('[') && trimmed !== '[headers.values]' && trimmed !== '[[headers]]') {
         inHeadersValues = false;
         continue;
       }

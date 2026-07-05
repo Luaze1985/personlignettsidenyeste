@@ -2,13 +2,16 @@
 
 ## Prosjekt
 
-Én statisk HTML-fil (`index.html`) med inline CSS og minimal vanilla-JS (aktiv-meny + subtil fade-in, ingen rammeverk). Selv-hostet skrift i `fonts/` (Newsreader, OFL). Ingen byggverktøy. Klar til å åpnes direkte i en nettleser eller deployes via Netlify / GitHub Pages / hva som helst.
+Strukturen består av `index.html` (HTML), `css/style.css` (CSS) og `js/navigation.js` (JavaScript for navigasjon). Det er også et lite inline-skript i `<head>` for fade-in og CSS-deteksjon. Selv-hostet skrift i `fonts/` (Newsreader, OFL). Ingen unødvendige rammeverk eller avhengigheter i produksjon. Klar til å deployes på Netlify, GitHub Pages, etc.
 
 ## Filer som betyr noe
 
-- `index.html` – hele nettsiden (innhold + stil + litt JS)
-- `images/Profil.jpg` – profilbilde (sort-hvitt, rundt)
+- `index.html` – nettsidens HTML-struktur og innhold
+- `css/style.css` – alle stiler og layoutregler (inkl. mørkemodus, responsive knekker, utskrift)
+- `js/navigation.js` – navigasjonslogikk og scroll-effekter
+- `images/Profil.jpg` – profilbilde (WebP med JPG-fallback)
 - `fonts/*.woff2` – selv-hostet Newsreader (display/navn). OFL-lisens i `fonts/OFL.txt`.
+- `netlify.toml` – Netlify-oppsett for redirects, 404 og sikkerhetsheadere (CSP, HSTS)
 
 Alt annet kan ignoreres.
 
@@ -60,15 +63,16 @@ Se `SPEC.md` for full doktrine + roadmap (inkl. fremtidige sider: kalender, ress
 
 ## Slik oppdaterer du
 
-Alt innhold og stil er i `index.html`. Vanlige oppgaver:
+Innholdet ligger i `index.html`, stiler i `css/style.css`, og navigasjonsoppførsel i `js/navigation.js`. Vanlige oppgaver:
 
-**Legg til foredrag:** Ny `<li>` i `<ul class="simple-list">` under `#foredrag`.
-**Legg til medieomtale:** Ny `<li>` i artikkel-listen under `#innsikt`.
-**Legg til NRK/video-klipp:** Ny klikkbar `<a>` med `<div class="video-placeholder">` i video-grid under `#innsikt`.
-**Endre Om meg:** Rediger `<p>`-tagger i `#om`.
-**Ny tjeneste:** Ny `<div class="box">` i `.grid-3` under `#tjenester`.
+**Legg til foredrag:** Ny `<li>` i `<ul class="simple-list">` under `#foredrag` i `index.html`.
+**Legg til medieomtale:** Ny `<li>` i artikkel-listen under `#innsikt` i `index.html`.
+**Legg til NRK/video-klipp:** Ny klikkbar `<a>` med `<div class="video-placeholder">` i video-grid under `#innsikt` i `index.html`.
+**Endre Om meg:** Rediger `<p>`-tagger i `#om` i `index.html`.
+**Ny tjeneste:** Ny `<div class="box">` i `.grid-3` under `#tjenester` i `index.html`.
+**Endre stiler:** Oppdater farger, marginer eller skrifttyper i `css/style.css`.
 
-Etter endring: commit og push. Hvis GitHub Pages er aktivert, oppdateres siden automatisk innen ~1 minutt.
+Etter endring: commit og push. Siden oppdateres automatisk via Netlify på ~1 minutt.
 
 ## Slash-kommandoer (research-agenter)
 

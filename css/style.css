@@ -37,18 +37,6 @@
     --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-display: "Newsreader", Georgia, "Times New Roman", serif;
 }
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color: #121212;
-        --text-color: #e5e5e5;
-        --muted: #a0a0a0;
-        --accent-color: #8da4be;
-        --border-color: #2e2e2e;
-    }
-    img {
-        filter: brightness(.85) contrast(1.05);
-    }
-}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -149,12 +137,7 @@ h2 {
     border-bottom: 1px solid var(--border-color); display: inline-block; padding-bottom: 0.15rem;
 }
 p { margin-bottom: 0.9rem; max-width: 66ch; }
-p:last-child { margin-bottom: 0; }
-.section-intro { margin-bottom: 1rem; font-size: 0.9rem; color: var(--muted); }
-.subheading {
-    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em;
-    color: var(--accent-color); margin-bottom: 0.8rem; font-weight: 600;
-}
+section > p:last-child { margin-bottom: 0; }
 .booking-note { margin-top: 1.25rem; font-size: 0.95rem; }
 .booking-note a { color: var(--accent-color); }
 
@@ -214,21 +197,7 @@ summary:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 
 details > ul { padding-top: 0.5rem; padding-bottom: 1.1rem; }
 .qa-answer { padding: 0.3rem 0 1.1rem; }
 
-/* Spesifikk styling for lenker i booking-notater som mangler hover/fokus */
-.booking-note a {
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.2s, color 0.2s;
-}
-.booking-note a:hover, .booking-note a:focus-visible {
-    text-decoration-color: var(--accent-color);
-    color: var(--accent-color);
-}
-.booking-note a:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-}
+
 
 /* ---------- MEDIA-BOKSER (NRK TV / radio, med graatonet glyf + ordmerke) ---------- */
 .grid-video { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
@@ -247,7 +216,8 @@ details > ul { padding-top: 0.5rem; padding-bottom: 1.1rem; }
 .video-caption { font-size: 0.85rem; color: var(--text-color); }
 
 /* ---------- FOOTER (full bredde) ---------- */
-footer { padding-top: 2rem; border-top: 1px solid var(--border-color); }
+footer { padding-top: 1.5rem; border-top: 1px solid var(--border-color); padding-bottom: 1.5rem; }
+.copyright { font-size: 0.8rem; color: var(--muted); }
 .contact-links { margin-top: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .contact-links a {
     color: var(--text-color); text-decoration: underline;
@@ -270,4 +240,15 @@ footer { padding-top: 2rem; border-top: 1px solid var(--border-color); }
     .grid-3, .grid-video { grid-template-columns: 1fr; }
     .intro { flex-direction: column; align-items: flex-start; }
     .contact-links { flex-direction: column; gap: 0.7rem; }
+}
+
+/* ---------- PRINT ---------- */
+@media print {
+    header { position: static; border-bottom: none; }
+    nav, .skip-link, .intro-actions { display: none; }
+    .reveal, html.js .reveal { opacity: 1; transform: none; }
+    body { padding-bottom: 0; font-size: 12pt; }
+    .container { max-width: none; padding: 0; }
+    a[href]::after { content: none; }
+    footer { border-top: 1px solid #ccc; }
 }
