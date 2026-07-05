@@ -1,5 +1,11 @@
 # Spesifikasjon: Automatisk Mørk Modus (Dark Mode)
 
+> ⚠️ **OBSOLET (2026-07-04):** Mørk modus er **fjernet** fra siden. All
+> `@media (prefers-color-scheme: dark)`-CSS er slettet fra `css/style.css`, og
+> `<meta name="color-scheme" content="light">` står i `index.html`/`404.html`.
+> Dette dokumentet beholdes kun som historikk – ikke implementer på nytt uten ny
+> beslutning. Kan slettes av Lars.
+
 Dette dokumentet beskriver implementasjonen av automatisk Mørk Modus for Lars Erik Brekne Johnsens personlige nettside, i tråd med designprinsippene i `SPEC.md` og valg gjort under designintervjuet.
 
 ---

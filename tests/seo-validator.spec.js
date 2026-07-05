@@ -60,7 +60,7 @@ test.describe('SEO & Metadata Verification', () => {
     expect(ogType).toBe('website');
 
     const ogUrl = await page.locator('meta[property="og:url"]').getAttribute('content');
-    expect(ogUrl).toBe('https://larserikbjohnsen.no/');
+    expect(ogUrl).toBe('https://breknejohnsen.no/');
 
     const ogImage = await page.locator('meta[property="og:image"]').getAttribute('content');
     expect(ogImage).toContain('Profil.jpg');
@@ -74,7 +74,7 @@ test.describe('SEO & Metadata Verification', () => {
     const canonicalLink = await page.locator('link[rel="canonical"]');
     await expect(canonicalLink).toBeAttached();
     const href = await canonicalLink.getAttribute('href');
-    expect(href).toBe('https://larserikbjohnsen.no/');
+    expect(href).toBe('https://breknejohnsen.no/');
   });
 
   test('TC-5.4: JSON-LD Structured Data (Person Schema)', async ({ page }) => {
@@ -88,7 +88,7 @@ test.describe('SEO & Metadata Verification', () => {
     expect(data['@context']).toBe('https://schema.org');
     expect(data['@type']).toBe('Person');
     expect(data['name']).toBe('Lars Erik Brekne Johnsen');
-    expect(data['url']).toBe('https://larserikbjohnsen.no/');
+    expect(data['url']).toBe('https://breknejohnsen.no/');
   });
 
   test('TC-5.5: robots.txt Accessibility', async ({ request }) => {
@@ -104,6 +104,6 @@ test.describe('SEO & Metadata Verification', () => {
     expect(res.status()).toBe(200);
     const text = await res.text();
     expect(text).toContain('<urlset');
-    expect(text).toContain('https://larserikbjohnsen.no/');
+    expect(text).toContain('https://breknejohnsen.no/');
   });
 });

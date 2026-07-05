@@ -20,6 +20,8 @@ Beviser multi-side-arkitekturen. Uten den dupliseres stil på hver ny side.
 - [ ] Font-preload beholdt i `<head>`.
 - [ ] Fungerer lokalt og på Netlify (relative stier).
 
+**Status 2026-07-05 (verifisert i kode):** CSS ligger allerede eksternt i `css/style.css` (`:root`, `@font-face`, komponent-CSS). `index.html` har ingen `<style>`-blokk, lenker stilarket (linje 30) og beholder font-preload i `<head>` (linje 27–28). F-1 fremstår **oppfylt** – gjenstår kun en formell før/etter visuell diff for å hake av «pixel-identisk». Blokkerer i praksis ikke lenger F-2/F-3/F-4.
+
 ---
 
 ### F-5 — Beslutnings-spike: mekanisme for «opplasting av materiell»
@@ -103,4 +105,4 @@ De ~15 eksterne `.ext`-lenkene har fått programmatisk «ny fane»-melding for s
 - [x] Deployet «Løft håndverket»-versjonen til produksjon på Netlify-siten `larserik` (site-id `1fdc5c75-4698-4e5c-9f93-37c392133afb`) via CLI. Live: `https://larserik.netlify.app`. Docs blokkert (404 på `*.md`).
 - [x] Lagt `breknejohnsen.no` + `www.breknejohnsen.no` til som egendomene på siten (via `netlify api updateSite`).
 - [ ] **Gjenstår (kun Lars):** DNS hos Domeneshop → A `@` = `75.2.60.5`, CNAME `www` = `larserik.netlify.app`. Deretter auto-SSL.
-- [ ] *Senere:* koble lokal mappe til git-repo (`Luaze1985/larserik-nettside`) for push-basert deploy i stedet for manuell CLI. (Mappa er ikke et git-repo lokalt ennå.)
+- [ ] *Senere:* koble lokalt git-repo til Netlify (`Luaze1985/larserik-nettside`) for push-basert deploy i stedet for manuell CLI. (Mappa er nå et lokalt git-repo, men ikke koblet til Netlify-utløst deploy ennå.)

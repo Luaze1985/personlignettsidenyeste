@@ -98,7 +98,7 @@ test('Check all links in index.html', async ({ page, context }) => {
       }
 
       console.log(`Checking external URL: ${href}`);
-      const isCrawlerBlockedDomain = href.includes('linkedin.com') || href.includes('nrk.no') || href.includes('tv.nrk.no') || href.includes('radio.nrk.no') || href.includes('larserikbjohnsen.no');
+      const isCrawlerBlockedDomain = href.includes('linkedin.com') || href.includes('nrk.no') || href.includes('tv.nrk.no') || href.includes('radio.nrk.no') || href.includes('breknejohnsen.no');
 
       try {
         let response = null;

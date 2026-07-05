@@ -7,7 +7,7 @@ Strukturen består av `index.html` (HTML), `css/style.css` (CSS) og `js/navigati
 ## Filer som betyr noe
 
 - `index.html` – nettsidens HTML-struktur og innhold
-- `css/style.css` – alle stiler og layoutregler (inkl. mørkemodus, responsive knekker, utskrift)
+- `css/style.css` – alle stiler og layoutregler (responsive knekker, utskrift; mørkemodus fjernet 2026-07-04)
 - `js/navigation.js` – navigasjonslogikk og scroll-effekter
 - `images/Profil.jpg` – profilbilde (WebP med JPG-fallback)
 - `fonts/*.woff2` – selv-hostet Newsreader (display/navn). OFL-lisens i `fonts/OFL.txt`.

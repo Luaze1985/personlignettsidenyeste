@@ -116,6 +116,13 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 .btn:hover, .btn:focus-visible { border-color: var(--accent-color); color: var(--accent-color); }
 .btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 .btn.primary { border-color: var(--accent-color); color: var(--accent-color); }
+.intro-mail { flex-basis: 100%; font-size: 0.9rem; margin: 0; }
+.intro-mail a {
+    color: var(--accent-color); text-decoration: underline;
+    text-underline-offset: 4px; transition: color 0.2s;
+}
+.intro-mail a:hover, .intro-mail a:focus-visible { color: var(--text-color); }
+.intro-mail a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
 /* ---------- TROVERDIGHETS-STRIPE ---------- */
 .cred-strip {
@@ -129,8 +136,9 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 }
 .cred-names { font-size: 0.9rem; color: var(--muted); }
 
-/* ---------- SECTIONS ---------- */
-section { margin-bottom: 3.5rem; }
+/* ---------- SECTIONS ----------
+   Haarstrek over hver seksjon: tydelig deling paa nett og mobil. */
+section { margin-bottom: 3.5rem; border-top: 1px solid var(--border-color); padding-top: 2.25rem; }
 h2 {
     font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;
     color: var(--accent-color); margin-bottom: 1.25rem; font-weight: 600;
@@ -154,6 +162,17 @@ figure.pull-quote figcaption { font-size: 0.78rem; color: var(--muted); margin-t
 @media (max-width: 768px) {
     figure.pull-quote { float: none; width: 100%; max-width: 340px; margin: 0 0 1.5rem 0; }
 }
+
+/* ---------- REFERANSESITAT (full bredde, brukes i #referanser) ---------- */
+figure.ref-quote {
+    border-left: 2px solid var(--accent-color); padding: 0.15rem 0 0.15rem 1.1rem;
+    margin: 0 0 1.25rem 0; max-width: 60ch;
+}
+figure.ref-quote blockquote {
+    font-family: var(--font-display); font-weight: 400; font-size: 1.25rem;
+    line-height: 1.35; color: var(--text-color); margin: 0;
+}
+figure.ref-quote figcaption { font-size: 0.78rem; color: var(--muted); margin-top: 0.65rem; letter-spacing: 0.03em; }
 
 /* ---------- GRID / BOKSER (klikkbare) ---------- */
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
