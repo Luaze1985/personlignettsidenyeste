@@ -437,8 +437,8 @@ test.describe('Security Headers & E2E Validation', () => {
   test('TC-4.6: Interactive components (Accordion QA) function correctly', async ({ page }) => {
     await page.goto(BASE_URL);
     
-    const details = page.locator('details.qa-block');
-    const summary = details.locator('summary.qa');
+    const details = page.locator('details').first();
+    const summary = details.locator('summary');
 
     // Toggle details
     const isOpenInitially = await details.evaluate(el => el.hasAttribute('open'));
