@@ -255,8 +255,8 @@ details > ul { padding-top: 0.5rem; padding-bottom: 1.1rem; }
 
 
 /* ---------- MEDIA-BOKSER (NRK TV / radio, med graatonet glyf + ordmerke) ---------- */
-.grid-video { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
-.media-link { text-decoration: none; color: inherit; display: block; }
+.grid-video { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 240px)); gap: 1.25rem; margin-bottom: 2rem; }
+.media-link { text-decoration: none; color: inherit; display: block; max-width: 240px; }
 .media-box {
     aspect-ratio: 16/9; background-color: var(--surface-color); border: 1px solid var(--border-color);
     display: flex; align-items: center; justify-content: center; gap: 0.95rem;
