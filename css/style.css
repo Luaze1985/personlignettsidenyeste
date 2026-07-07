@@ -28,11 +28,13 @@
    (Kan loeftes rett ut til delt style.css den dagen side nr. 2 finnes.)
    ============================================================ */
 :root {
-    --bg-color: #ffffff;
+    --bg-color: #fbfbfa;
+    --panel-color: #ffffff;
+    --surface-color: #f2f2ef;
     --text-color: #1a1a1a;
-    --muted: #555555;
+    --muted: #555b60;
     --accent-color: #5a6b7c;      /* eneste aksent – dempet blaa-graa */
-    --border-color: #e2e2e2;
+    --border-color: #d8d8d2;
     --spacing: 2rem;
     --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-display: "Newsreader", Georgia, "Times New Roman", serif;
@@ -82,7 +84,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 /* ---------- HEADER (sticky paa desktop, full bredde) ---------- */
 header {
     position: sticky; top: 0; z-index: 20;
-    background: var(--bg-color);
+    background: var(--panel-color);
     padding: 1.1rem 0;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 2.5rem;
@@ -102,20 +104,34 @@ nav a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3p
 nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 
 /* ---------- INNGANGSLINJE ---------- */
-.intro { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; justify-content: space-between; margin-bottom: 1.5rem; }
-.intro p {
-    font-family: var(--font-display); font-weight: 400; font-size: 1.35rem;
-    line-height: 1.35; max-width: 30ch; margin: 0; color: var(--text-color);
+.intro {
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1rem 1.5rem;
+    justify-content: space-between; margin-bottom: 1rem; padding: 1.5rem;
+    background: var(--surface-color); border: 1px solid var(--border-color);
 }
-.intro-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.intro-copy { max-width: 58ch; }
+.intro-kicker {
+    font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.09em;
+    color: var(--accent-color); font-weight: 700; margin: 0 0 0.35rem 0;
+}
+.intro-lede {
+    font-family: var(--font-display); font-weight: 600; font-size: 3.35rem;
+    line-height: 1.02; max-width: 13ch; margin: 0; color: var(--text-color);
+}
+.intro-support {
+    font-size: 1rem; line-height: 1.6; max-width: 48ch; margin: 1rem 0 0 0; color: var(--muted);
+}
+.intro-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
 .btn {
     display: inline-block; text-decoration: none; font-size: 0.88rem;
-    border: 1px solid var(--border-color); padding: 0.5rem 1rem; color: var(--text-color);
-    transition: border-color 0.2s, color 0.2s;
+    border: 1px solid var(--border-color); padding: 0.55rem 1rem;
+    color: var(--text-color); background: var(--panel-color);
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 }
-.btn:hover, .btn:focus-visible { border-color: var(--accent-color); color: var(--accent-color); }
+.btn:hover, .btn:focus-visible { border-color: var(--accent-color); color: var(--accent-color); background: var(--bg-color); }
 .btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
-.btn.primary { border-color: var(--accent-color); color: var(--accent-color); }
+.btn.primary { border-color: var(--accent-color); color: var(--panel-color); background: var(--accent-color); }
+.btn.primary:hover, .btn.primary:focus-visible { color: var(--accent-color); background: var(--panel-color); }
 .intro-mail { flex-basis: 100%; font-size: 0.9rem; margin: 0; }
 .intro-mail a {
     color: var(--accent-color); text-decoration: underline;
@@ -127,8 +143,8 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 /* ---------- TROVERDIGHETS-STRIPE ---------- */
 .cred-strip {
     display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 0.9rem; margin-bottom: 3rem;
+    border: 1px solid var(--border-color); background: var(--panel-color);
+    padding: 0.85rem 1rem; margin-bottom: 2.75rem;
 }
 .cred-label {
     font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em;
@@ -149,18 +165,25 @@ section > p:last-child { margin-bottom: 0; }
 .booking-note { margin-top: 1.25rem; font-size: 0.95rem; }
 .booking-note a { color: var(--accent-color); }
 
-/* ---------- SITAT-BLOKK I OM MEG (erstatter portrett) ---------- */
-figure.pull-quote {
-    float: right; width: 230px; margin: 0.2rem 0 1.25rem 1.75rem;
-    border-left: 2px solid var(--accent-color); padding: 0.15rem 0 0.15rem 1.1rem;
+/* ---------- INNSIKT / MEDIA ---------- */
+.proof-feature {
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem;
+    padding: 1.35rem; margin-bottom: 1.6rem;
+    background: var(--surface-color); border: 1px solid var(--border-color);
 }
-figure.pull-quote blockquote {
-    font-family: var(--font-display); font-weight: 400; font-size: 1.5rem;
-    line-height: 1.28; color: var(--text-color); margin: 0;
+.eyebrow {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em;
+    color: var(--accent-color); font-weight: 700; margin: 0 0 0.35rem 0;
 }
-figure.pull-quote figcaption { font-size: 0.78rem; color: var(--muted); margin-top: 0.65rem; letter-spacing: 0.03em; }
-@media (max-width: 768px) {
-    figure.pull-quote { float: none; width: 100%; max-width: 340px; margin: 0 0 1.5rem 0; }
+.proof-headline {
+    font-family: var(--font-display); font-size: 2rem; line-height: 1.08;
+    font-weight: 600; max-width: 12ch; margin: 0 0 0.85rem 0;
+}
+.proof-feature p:not(.eyebrow):not(.proof-headline) { max-width: 48ch; margin-bottom: 0; color: var(--muted); }
+.proof-link { flex: none; font-size: 0.95rem; }
+.subheading {
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent-color); margin: 0 0 0.85rem 0;
 }
 
 /* ---------- REFERANSESITAT (full bredde, brukes i #referanser) ---------- */
@@ -178,7 +201,7 @@ figure.ref-quote figcaption { font-size: 0.78rem; color: var(--muted); margin-to
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
 .box {
     display: block; border: 1px solid var(--border-color); padding: 1.25rem;
-    color: inherit;
+    color: inherit; background: var(--panel-color);
 }
 .box h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin-bottom: 0.6rem; transition: color 0.2s; }
 .box p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0; max-width: none; }
@@ -222,7 +245,7 @@ details > ul { padding-top: 0.5rem; padding-bottom: 1.1rem; }
 .grid-video { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
 .media-link { text-decoration: none; color: inherit; display: block; }
 .media-box {
-    aspect-ratio: 16/9; background-color: var(--bg-color); border: 1px solid var(--border-color);
+    aspect-ratio: 16/9; background-color: var(--surface-color); border: 1px solid var(--border-color);
     display: flex; align-items: center; justify-content: center; gap: 0.95rem;
     margin-bottom: 0.5rem; transition: border-color 0.2s;
 }
@@ -258,6 +281,9 @@ footer { padding-top: 1.5rem; border-top: 1px solid var(--border-color); padding
     nav a { padding: 0.25rem 0; }
     .grid-3, .grid-video { grid-template-columns: 1fr; }
     .intro { flex-direction: column; align-items: flex-start; }
+    .intro-lede { font-size: 2.35rem; max-width: 12ch; }
+    .proof-feature { flex-direction: column; align-items: flex-start; }
+    .proof-headline { font-size: 1.65rem; max-width: 14ch; }
     .contact-links { flex-direction: column; gap: 0.7rem; }
 }
 
