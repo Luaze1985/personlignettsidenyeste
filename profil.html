@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lars Erik Brekne Johnsen — Profil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', 'Segoe UI', sans-serif; background: #f4f5f7; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 20px; }
+    .card { background: #ffffff; width: 100%; max-width: 780px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.10); }
+    .header { background: #1a2744; padding: 36px 40px 28px; position: relative; }
+    .header::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #e06028; }
+    .tag { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #e06028; margin-bottom: 10px; }
+    .name { font-size: 28px; font-weight: 700; color: #ffffff; line-height: 1.2; margin-bottom: 8px; }
+    .title-line { font-size: 13px; color: #8fa4c8; line-height: 1.6; }
+    .ceo-bio { padding: 22px 40px; font-size: 15px; color: #1a2744; line-height: 1.75; border-bottom: 1px solid #edf0f5; }
+    .photo-wrap { padding: 24px 40px 0; }
+    .photo-placeholder { width: 100%; aspect-ratio: 16/7; background: #fdf6f2; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 2px dashed #e06028; }
+    .photo-placeholder svg { opacity: 0.35; }
+    .photo-caption { font-size: 11px; color: #8fa4c8; letter-spacing: 0.5px; margin-top: 10px; text-align: center; }
+    .body { padding: 28px 40px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .section { margin-bottom: 22px; }
+    .section:last-child { margin-bottom: 0; }
+    .section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; color: #e06028; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #edf0f5; }
+    ul.items { list-style: none; padding: 0; }
+    ul.items li { font-size: 13px; color: #2d3748; line-height: 1.55; padding: 4px 0 4px 14px; position: relative; }
+    ul.items li::before { content: '·'; color: #e06028; font-weight: 700; position: absolute; left: 0; font-size: 16px; line-height: 1.3; }
+    .kron-item { font-size: 13px; color: #2d3748; padding: 6px 0; border-bottom: 1px solid #f0f2f6; line-height: 1.5; }
+    .kron-item:last-child { border-bottom: none; }
+    .kron-label { font-size: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #8fa4c8; display: block; margin-bottom: 2px; }
+    .footer { background: #f8f9fc; border-top: 1px solid #edf0f5; padding: 14px 40px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .footer-item { font-size: 11.5px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    .footer-dot { width: 4px; height: 4px; border-radius: 50%; background: #e06028; flex-shrink: 0; }
+    @media (max-width: 600px) {
+      body { padding: 16px 12px; }
+      .header, .body, .footer { padding-left: 20px; padding-right: 20px; }
+      .ceo-bio, .photo-wrap { padding-left: 20px; padding-right: 20px; }
+      .body { grid-template-columns: 1fr; gap: 0; }
+      .section { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #edf0f5; }
+      .section:last-child { border-bottom: none; padding-bottom: 0; }
+      .footer { gap: 12px; padding: 14px 20px; }
+    }
+    @media print { body { background: white; padding: 0; } .card { box-shadow: none; border-radius: 0; max-width: 100%; } }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div class="tag">Kompetanseprofil · Juli 2026</div>
+    <div class="name">Lars Erik Brekne Johnsen</div>
+    <div class="title-line">AI-rådgiver  ·  Underviser  ·  HMS-spesialist  ·  ENK</div>
+  </div>
+  <!-- AGENT: ceo-profil -->
+  <div class="ceo-bio">
+    Lars Erik er AI-rådgiver og underviser med bakgrunn fra HMS og kommunal sektor. Han kombinerer faglig tyngde med praktisk gjennomføringsevne — og oversetter ny teknologi til faktisk bruk i norske virksomheter. Han holder foredrag, bygger systemer og underviser hundrevis av fagpersoner hvert år.
+  </div>
+  <div class="photo-wrap">
+    <div class="photo-placeholder">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+    </div>
+    <div class="photo-caption">Foredrag — NRK KI-nettverk, 2025  ·  Legg til bilde her</div>
+  </div>
+  <div class="body">
+    <div>
+      <!-- AGENT: foredrag-liste -->
+      <div class="section">
+        <div class="section-title">Foredrag og undervisning</div>
+        <ul class="items">
+          <li>NRK KI-nettverk — foredrag om praktisk KI i arbeidslivet</li>
+          <li>Tirna Fagskole — KI i drift (fagskoleprogram)</li>
+          <li>NITO — kurs i KI og personlig produktivitet</li>
+          <li>Kristiansand kommune — over 100 ansatte</li>
+        </ul>
+      </div>
+      <!-- AGENT: prosjekter -->
+      <div class="section">
+        <div class="section-title">Tilnærming</div>
+        <ul class="items">
+          <li>Praksisnær — ikke teori for teoriens skyld</li>
+          <li>Kobler fagkunnskap med teknologi som faktisk virker</li>
+          <li>Lav terskel, høy effekt</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <!-- AGENT: kronikker -->
+      <div class="section">
+        <div class="section-title">Kronikker og meningsytringer</div>
+        <div class="kron-item">
+          <span class="kron-label">Fædrelandsvennen</span>
+          Kronikk 1 — erstatt med faktisk tittel
+        </div>
+        <div class="kron-item">
+          <span class="kron-label">Fædrelandsvennen</span>
+          Kronikk 2 — erstatt med faktisk tittel
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Nettverk og engasjement</div>
+        <ul class="items">
+          <li>Leder KG-nettverket — praktisk KI i offentlig og privat sektor</li>
+          <li>Arendalsuka — deltaker og bidragsyter</li>
+          <li>Agder og nasjonalt nettverk innen likestilling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-item"><div class="footer-dot"></div>larserik.bn@gmail.com</div>
+    <div class="footer-item"><div class="footer-dot"></div>linkedin.com/in/larseriknj</div>
+    <div class="footer-item"><div class="footer-dot"></div>tirna.no  ·  nito.no</div>
+  </div>
+</div>
+</body>
+</html>
