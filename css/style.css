@@ -28,13 +28,13 @@
    (Kan loeftes rett ut til delt style.css den dagen side nr. 2 finnes.)
    ============================================================ */
 :root {
-    --bg-color: #fbfbfa;
+    --bg-color: #f8f7f3;
     --panel-color: #ffffff;
-    --surface-color: #f2f2ef;
-    --text-color: #1a1a1a;
-    --muted: #555b60;
+    --surface-color: #efeee8;
+    --text-color: #161616;
+    --muted: #50575c;
     --accent-color: #5a6b7c;      /* eneste aksent – dempet blaa-graa */
-    --border-color: #d8d8d2;
+    --border-color: #d2d0c8;
     --spacing: 2rem;
     --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-display: "Newsreader", Georgia, "Times New Roman", serif;
@@ -84,7 +84,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 /* ---------- HEADER (sticky paa desktop, full bredde) ---------- */
 header {
     position: sticky; top: 0; z-index: 20;
-    background: var(--panel-color);
+    background: var(--bg-color);
     padding: 1.1rem 0;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 2.5rem;
@@ -106,8 +106,8 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 /* ---------- INNGANGSLINJE ---------- */
 .intro {
     display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1rem 1.5rem;
-    justify-content: space-between; margin-bottom: 1rem; padding: 1.5rem;
-    background: var(--surface-color); border: 1px solid var(--border-color);
+    justify-content: space-between; margin-bottom: 0.5rem; padding: 0 0 2rem 0;
+    border-bottom: 1px solid var(--border-color);
 }
 .intro-copy { max-width: 58ch; }
 .intro-kicker {
@@ -119,16 +119,16 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
     line-height: 1.02; max-width: 13ch; margin: 0; color: var(--text-color);
 }
 .intro-support {
-    font-size: 1rem; line-height: 1.6; max-width: 48ch; margin: 1rem 0 0 0; color: var(--muted);
+    font-size: 1.02rem; line-height: 1.7; max-width: 50ch; margin: 1rem 0 0 0; color: var(--muted);
 }
 .intro-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
 .btn {
     display: inline-block; text-decoration: none; font-size: 0.88rem;
     border: 1px solid var(--border-color); padding: 0.55rem 1rem;
-    color: var(--text-color); background: var(--panel-color);
+    color: var(--text-color); background: transparent;
     transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 }
-.btn:hover, .btn:focus-visible { border-color: var(--accent-color); color: var(--accent-color); background: var(--bg-color); }
+.btn:hover, .btn:focus-visible { border-color: var(--accent-color); color: var(--accent-color); background: var(--surface-color); }
 .btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 .btn.primary { border-color: var(--accent-color); color: var(--panel-color); background: var(--accent-color); }
 .btn.primary:hover, .btn.primary:focus-visible { color: var(--accent-color); background: var(--panel-color); }
@@ -144,7 +144,7 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 .cred-strip {
     display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem;
     border: 1px solid var(--border-color); background: var(--panel-color);
-    padding: 0.85rem 1rem; margin-bottom: 2.75rem;
+    padding: 0.85rem 1rem; margin-bottom: 1.4rem;
 }
 .cred-label {
     font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em;
@@ -154,22 +154,61 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 
 /* ---------- SECTIONS ----------
    Haarstrek over hver seksjon: tydelig deling paa nett og mobil. */
-section { margin-bottom: 3.5rem; border-top: 1px solid var(--border-color); padding-top: 2.25rem; }
+section { margin-bottom: 4rem; border-top: 1px solid var(--border-color); padding-top: 2.4rem; }
+.proof-section { border-top: 0; padding-top: 2rem; }
 h2 {
     font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--accent-color); margin-bottom: 1.25rem; font-weight: 600;
-    border-bottom: 1px solid var(--border-color); display: inline-block; padding-bottom: 0.15rem;
+    color: var(--accent-color); margin-bottom: 0.9rem; font-weight: 600;
+}
+.section-intro {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 56ch;
+    margin-bottom: 1.5rem;
 }
 p { margin-bottom: 0.9rem; max-width: 66ch; }
 section > p:last-child { margin-bottom: 0; }
 .booking-note { margin-top: 1.25rem; font-size: 0.95rem; }
 .booking-note a { color: var(--accent-color); }
+.speaking-image {
+    margin: -0.5rem 0 4rem;
+}
+.speaking-image img {
+    display: block;
+    width: 100%;
+    height: clamp(420px, 48vw, 620px);
+    max-height: 620px;
+    object-fit: cover;
+    object-position: 48% 42%;
+    filter: grayscale(1);
+}
+.speaking-image figcaption {
+    margin-top: 0.7rem;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+/* ---------- OM MEG ---------- */
+.about-layout {
+    display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 1.45rem;
+    align-items: start;
+}
+.about-image {
+    width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+    border: 1px solid var(--border-color); filter: grayscale(1);
+}
+.about-layout p { font-size: 0.94rem; line-height: 1.62; max-width: 60ch; }
 
 /* ---------- INNSIKT / MEDIA ---------- */
 .proof-feature {
     display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem;
-    padding: 1.35rem; margin-bottom: 1.6rem;
-    background: var(--surface-color); border: 1px solid var(--border-color);
+    padding: 1.1rem 0 0 0; margin-bottom: 1.6rem;
+    border-top: 1px solid var(--border-color);
+}
+.proof-feature-secondary {
+    display: block;
 }
 .eyebrow {
     font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em;
@@ -181,13 +220,15 @@ section > p:last-child { margin-bottom: 0; }
 }
 .proof-feature p:not(.eyebrow):not(.proof-headline) { max-width: 48ch; margin-bottom: 0; color: var(--muted); }
 .proof-link { flex: none; font-size: 0.95rem; }
+.proof-feature-secondary .proof-headline { font-size: 1.35rem; max-width: none; }
+.proof-feature-secondary p:not(.eyebrow):not(.proof-headline) { font-size: 0.9rem; max-width: 60ch; }
 
 /* Sitatblokk inni proof-feature */
 .proof-quote {
-    border-left: 2px solid var(--accent-color); padding-left: 1.1rem; margin: 1.25rem 0 0 0;
+    border-left: 2px solid var(--accent-color); padding-left: 1rem; margin: 0.9rem 0 0 0;
 }
 .proof-quote blockquote {
-    font-family: var(--font-display); font-size: 1.35rem; line-height: 1.3;
+    font-family: var(--font-display); font-size: 1.05rem; line-height: 1.35;
     color: var(--text-color); margin: 0 0 0.5rem 0; font-style: italic; max-width: none;
 }
 .proof-quote cite {
@@ -196,7 +237,7 @@ section > p:last-child { margin-bottom: 0; }
 
 .subheading {
     font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--accent-color); margin: 0 0 0.85rem 0;
+    color: var(--accent-color); margin: 1.75rem 0 0.85rem 0;
 }
 
 /* ---------- REFERANSESITAT (full bredde, brukes i #referanser) ---------- */
@@ -211,24 +252,41 @@ figure.ref-quote blockquote {
 figure.ref-quote figcaption { font-size: 0.78rem; color: var(--muted); margin-top: 0.65rem; letter-spacing: 0.03em; }
 
 /* ---------- GRID / BOKSER (klikkbare) ---------- */
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+#tjenester .grid-3 { max-width: none; }
 .box {
-    display: block; border: 1px solid var(--border-color); padding: 1.25rem;
+    display: block; border: 1px solid var(--border-color); padding: 0.95rem;
     color: inherit; background: var(--panel-color);
 }
-.box h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin-bottom: 0.6rem; transition: color 0.2s; }
-.box p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0; max-width: none; }
+.box h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin-bottom: 0.42rem; transition: color 0.2s; }
+.box p { font-size: 0.88rem; line-height: 1.58; color: var(--muted); margin-bottom: 0; max-width: none; }
+.compact-grid .box {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    padding: 0.95rem 0 0 0;
+    background: transparent;
+}
+.compact-grid .box h3 { font-size: 1.08rem; margin-bottom: 0.5rem; }
+.compact-grid .box p { font-size: 0.94rem; line-height: 1.65; }
+.service-grid .box p { max-width: 30ch; }
 
 /* ---------- LISTER ---------- */
 ul.simple-list { list-style: none; border-left: 1px solid var(--border-color); padding-left: 1.25rem; }
 ul.simple-list li { margin-bottom: 0.6rem; font-size: 0.95rem; }
 ul.simple-list li:last-child { margin-bottom: 0; }
 ul.simple-list li span.year { color: var(--accent-color); font-size: 0.82rem; margin-left: 0.4rem; }
+#foredrag .simple-list { border-left: none; padding-left: 0; max-width: 760px; }
+#foredrag .simple-list li { font-size: 0.9rem; margin-bottom: 0.45rem; }
+#foredrag .section-intro { font-size: 0.9rem; margin-bottom: 0.65rem; }
 a.link {
-    color: var(--text-color); text-decoration: none;
-    border-bottom: 1px solid var(--border-color); transition: border-color 0.2s, color 0.2s;
+    color: var(--accent-color);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: currentColor;
+    transition: color 0.2s, text-decoration-color 0.2s;
 }
-a.link:hover, a.link:focus-visible { border-bottom-color: var(--accent-color); color: var(--accent-color); }
+a.link:hover, a.link:focus-visible { color: var(--text-color); text-decoration-color: var(--accent-color); }
 a.link:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 a.ext::after { content: " \2197"; font-size: 0.75em; color: var(--accent-color); }
 .note { font-size: 0.9rem; color: var(--muted); margin-top: 0.9rem; }
@@ -256,7 +314,7 @@ details > ul { padding-top: 0.5rem; padding-bottom: 1.1rem; }
 
 /* ---------- MEDIA-BOKSER (NRK TV / radio, med graatonet glyf + ordmerke) ---------- */
 .grid-video { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 240px)); gap: 1.25rem; margin-bottom: 2rem; }
-.media-link { text-decoration: none; color: inherit; display: block; max-width: 240px; }
+.media-link { text-decoration: none; color: inherit; display: block; max-width: none; }
 .media-box {
     aspect-ratio: 16/9; background-color: var(--surface-color); border: 1px solid var(--border-color);
     display: flex; align-items: center; justify-content: center; gap: 0.95rem;
@@ -268,24 +326,40 @@ details > ul { padding-top: 0.5rem; padding-bottom: 1.1rem; }
 .media-meta { display: flex; flex-direction: column; line-height: 1.1; }
 .media-brand { font-weight: 700; letter-spacing: 0.09em; font-size: 1.15rem; color: var(--text-color); }
 .media-kind { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.11em; color: var(--muted); margin-top: 0.15rem; }
-.video-caption { font-size: 0.85rem; color: var(--text-color); }
+.video-caption {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+}
+
+.supporting-links {
+    margin-top: 2rem;
+    padding-top: 0.25rem;
+}
 
 /* ---------- FOOTER (full bredde) ---------- */
 footer { padding-top: 1.5rem; border-top: 1px solid var(--border-color); padding-bottom: 1.5rem; }
 .copyright { font-size: 0.8rem; color: var(--muted); }
 .contact-links { margin-top: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .contact-links a {
-    color: var(--text-color); text-decoration: underline;
-    text-decoration-color: var(--accent-color); text-underline-offset: 4px; font-size: 0.95rem;
+    color: var(--accent-color); text-decoration: underline;
+    text-decoration-color: currentColor; text-underline-offset: 4px; font-size: 0.95rem;
     transition: text-decoration-color 0.2s, color 0.2s;
 }
 .contact-links a:hover {
-    color: var(--accent-color);
+    color: var(--text-color);
     text-decoration-color: var(--accent-color);
 }
 .contact-links a:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
 /* ---------- MOBIL ---------- */
+@media (max-width: 980px) {
+    .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #tjenester .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 @media (max-width: 768px) {
     .container { padding: 0 1.25rem; }
     header { position: static; }
@@ -293,8 +367,12 @@ footer { padding-top: 1.5rem; border-top: 1px solid var(--border-color); padding
     nav { gap: 0.6rem 1rem; width: 100%; border-top: 1px solid var(--border-color); padding-top: 0.9rem; font-size: 0.85rem; }
     nav a { padding: 0.25rem 0; }
     .grid-3, .grid-video { grid-template-columns: 1fr; }
+    #tjenester .grid-3 { grid-template-columns: 1fr; max-width: none; }
     .intro { flex-direction: column; align-items: flex-start; }
     .intro-lede { font-size: 2.35rem; max-width: 12ch; }
+    .about-layout { grid-template-columns: 1fr; gap: 1.1rem; }
+    .about-image { width: 132px; height: 132px; }
+    .speaking-image img { height: auto; max-height: none; }
     .proof-feature { flex-direction: column; align-items: flex-start; }
     .proof-headline { font-size: 1.65rem; max-width: 14ch; }
     .contact-links { flex-direction: column; gap: 0.7rem; }

@@ -12,6 +12,7 @@ Personlig nettside for **Lars Erik Brekne Johnsen** – KI-rådgiver, foredragsh
 |-----|---------|
 | `index.html` | Hele nettsiden (innhold + stil) |
 | `images/Profil.jpg` | Profilbilde |
+| `images/foredrag-vartagder-snitt-bw.jpg` | Gråtonebilde fra foredrag, plassert før Foredrag-seksjonen |
 | `CLAUDE.md` | Prosjektkontekst + slash-kommandoer for Claude Code |
 | `SPEC.md` | Designspec og handoff (inkl. Google Stitch-prompt) |
 | `HANDOFF.md` | Kortversjon |

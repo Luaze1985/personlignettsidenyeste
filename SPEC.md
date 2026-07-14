@@ -8,7 +8,8 @@ Denne filen beskriver koden, designet og hvordan du jobber videre – bl.a. med 
 ## 1. Hva koden er
 
 - **Struktur:** `index.html` (HTML), `css/style.css` (CSS) og `js/navigation.js` (JavaScript for navigasjon).
-- **Profilbilde:** `images/Profil.jpg` (WebP optimalisert, med JPG fallback).
+- **Profilbilde:** `images/Profil.jpg`.
+- **Foredragsbilde:** `images/foredrag-vartagder-snitt-bw.jpg`, et ekte gråtoneutsnitt plassert mellom Tilnærming og Foredrag.
 - **Lettvekt og portabelt:** Kan hostes hvor som helst (GitHub Pages, Netlify, Cloudflare Pages) uten behov for Node-byggesystem i produksjon.
 - **JavaScript:** ~15 linjer i `js/navigation.js` for å markere aktiv seksjon (IntersectionObserver) og animere reveal-elementer. Pluss et lite inline-skript i `<head>` for fade-in og CSS-deteksjon.
 
@@ -43,7 +44,7 @@ Denne filen beskriver koden, designet og hvordan du jobber videre – bl.a. med 
 - Sammenleggbare bolker (`<details>`) i Innsikt og én i Tilnærming.
 - Lenker med ekstern-markør (↗).
 - **Troverdighets-stripe** (tekstnavn) høyt på siden – media/scener dekket i innholdet.
-- **Sitat-blokk** (attribuert) i «Om meg» i stedet for portrett.
+- **Profilbilde** i «Om meg».
 - **NRK-glyfer** (inline SVG, gråtone) på TV- og radio-boksene – kun der.
 
 **Løft håndverket – doktrine (2026)**
@@ -59,13 +60,15 @@ Alt annet «imponerende» avvises med mindre det passer *begge* listene.
 ## 3. Sidestruktur (seksjoner)
 
 1. **Header** – profilbilde, navn, undertittel, meny (sticky)
-2. **Inngangslinje** – kort verdiløfte + CTA-knapper
-3. **Om meg** (`#om`) – 4 avsnitt + foto-placeholder
-4. **Tjenester** (`#tjenester`) – 4 klikkbare kort: Rådgivning, Kurs og foredrag, Kunnskapsarbeid og KI-agenter, Coaching
-5. **Tilnærming** (`#tilnaerming`) – kunnskapsbasert KI + klikk-boks «Blir man ikke bare dummere av KI?»
-6. **Foredrag og erfaring** (`#foredrag`) – liste med årstall, referanser, booking
-7. **Innsikt og media** (`#innsikt`) – video/radio + sammenleggbare: Medieomtale (8), Kronikker (2), Arrangementer (4)
-8. **Kontakt** (`#kontakt`) – e-post, telefon, LinkedIn
+2. **Inngangslinje** – kort verdiløfte + to CTA-knapper
+3. **Media** (`#media`) – NRK TV/radio, møte med Karianne Tung og utvalgt omtale
+4. **Tjenester** (`#tjenester`) – tre kompakte tilbud
+5. **Innsikt** (`#innsikt`) – tre korte perspektiver med utvalgte lenker
+6. **Om meg** (`#om`) – to korte avsnitt og profilbilde
+7. **Tilnærming** (`#tilnaerming`) – tre korte prinsipper
+8. **Foredragsbilde** – gråtonebilde fra Vårtagder før foredragstemaene
+9. **Foredrag** (`#foredrag`) – tre hovedtemaer og sammenleggbar liste med utvalgte eksempler og omtale
+10. **Kontakt** (`#kontakt`) – e-post og LinkedIn, uten telefonnummer
 
 ---
 
@@ -90,7 +93,7 @@ Google Stitch (stitch.withgoogle.com) lager UI-design fra **tekst-prompt** eller
 
 > Lag en minimalistisk, rolig personlig nettside for en norsk KI-rådgiver og foredragsholder.
 > Stil: nesten nakent, sort-hvitt med én dempet blå-grå aksent (#5a6b7c). Tynne 1px hairline-rammer, ingen skygger, ingen gradienter, ingen animasjoner, ingen ikoner fra ikon-bibliotek. «Arkitektens skisseblokk», ikke tech-startup. Systemfont, liten skriftstørrelse, mye luft.
-> Struktur (én lang side): sticky header med lite rundt profilbilde til venstre + navn + horisontal meny; kort verdiløfte-linje med to tynne knapper; «Om meg» med portrett til høyre; «Tjenester» som 4 klikkbare kort i rutenett; «Tilnærming» med en kort tekst og et sammenleggbart spørsmål; «Foredrag» som enkel liste med årstall; «Innsikt og media» med to video-lenkebokser og sammenleggbare lister; «Kontakt» nederst med e-post, telefon og LinkedIn.
+> Struktur (én lang side): sticky header med lite rundt profilbilde til venstre + navn + horisontal meny; kort verdiløfte-linje med to tynne knapper; «Media» med NRK TV/radio øverst og omtale av møte med Karianne Tung; «Tjenester» som tre kompakte tilbud; «Innsikt» med tre korte perspektiver; «Om meg» med portrett; «Tilnærming» med tre prinsipper; et ekte gråtonebilde fra foredrag før «Foredrag»; «Foredrag» med tre hovedtemaer og sammenleggbare utvalgte lenker; «Kontakt» nederst med e-post og LinkedIn.
 > Responsivt: bokser stables på mobil. Norsk bokmål. Rolig, ærlig tone – ingen salgsfraser.
 
 ---
@@ -101,7 +104,7 @@ I en Claude Code-sesjon på dette repoet finnes ferdige kommandoer (se `CLAUDE.m
 `/media`, `/foredrag`, `/kronikk`, `/profil`, `/referanse`, `/innlegg`, `/legg-til`.
 De søker web, verifiserer fakta og oppdaterer riktig seksjon.
 
-**Bilde i Om meg:** last opp `images/om-meg.jpg` på GitHub, så vises det automatisk i placeholderen.
+**Foredragsbilde:** `images/foredrag-vartagder-snitt-bw.jpg` er et ekte, gråtonebehandlet bilde med utsnitt av Lars under foredrag. Det ligger visuelt mellom Tilnærming og Foredrag.
 
 ---
 

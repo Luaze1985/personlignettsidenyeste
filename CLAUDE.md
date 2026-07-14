@@ -9,7 +9,8 @@ Strukturen består av `index.html` (HTML), `css/style.css` (CSS) og `js/navigati
 - `index.html` – nettsidens HTML-struktur og innhold
 - `css/style.css` – alle stiler og layoutregler (responsive knekker, utskrift; mørkemodus fjernet 2026-07-04)
 - `js/navigation.js` – navigasjonslogikk og scroll-effekter
-- `images/Profil.jpg` – profilbilde (WebP med JPG-fallback)
+- `images/Profil.jpg` – profilbilde
+- `images/foredrag-vartagder-snitt-bw.jpg` – gråtonebilde fra foredrag, plassert før `#foredrag`
 - `fonts/*.woff2` – selv-hostet Newsreader (display/navn). OFL-lisens i `fonts/OFL.txt`.
 - `netlify.toml` – Netlify-oppsett for redirects, 404 og sikkerhetsheadere (CSP, HSTS)
 
@@ -29,12 +30,14 @@ KI Geriljaen (LinkedIn-gruppe): https://www.linkedin.com/groups/11818031/
 |---------|-----|---------|
 | Header | – | Profilbilde, navn, undertittel, navigasjon (sticky) |
 | Inngangslinje | – | Verdiløfte + to knapper + troverdighets-stripe |
-| Om meg | `#om` | 4 avsnitt + attribuert sitat-blokk (KI-geriljaen, VIBS) |
-| Tjenester | `#tjenester` | 4 klikkbare kort (rådgivning, kurs/foredrag, KI-agenter, coaching) |
-| Tilnærming | `#tilnaerming` | Kunnskapsbasert KI + sammenleggbart Q&A |
-| Foredrag og erfaring | `#foredrag` | Liste med årstall, referanser, booking |
-| Innsikt og media | `#innsikt` | NRK TV/radio (glyfer), medieomtale (8), kronikker (2), arrangementer (4) |
-| Kontakt | `#kontakt` | E-post, telefon, LinkedIn, KI-geriljaen |
+| Media | `#media` | NRK TV/radio, møte med Karianne Tung og utvalgt omtale |
+| Tjenester | `#tjenester` | 3 kompakte tilbud: kurs/foredrag, arbeidsflyt/kvalitet og KI-agenter |
+| Innsikt | `#innsikt` | 3 korte perspektiver med utvalgte lenker |
+| Om meg | `#om` | 2 korte avsnitt + profilbilde |
+| Tilnærming | `#tilnaerming` | 3 prinsipper: praktisk nytte, faglig dømmekraft og trygg innføring |
+| Foredragsbilde | – | Gråtonebilde fra Vårtagder før foredragstemaene |
+| Foredrag | `#foredrag` | 3 hovedtemaer og sammenleggbar liste med utvalgte eksempler og omtale |
+| Kontakt | `#kontakt` | E-post og LinkedIn, uten telefonnummer |
 
 ## Designregler – «Løft håndverket» (2026)
 
@@ -66,8 +69,8 @@ Se `SPEC.md` for full doktrine + roadmap (inkl. fremtidige sider: kalender, ress
 Innholdet ligger i `index.html`, stiler i `css/style.css`, og navigasjonsoppførsel i `js/navigation.js`. Vanlige oppgaver:
 
 **Legg til foredrag:** Ny `<li>` i `<ul class="simple-list">` under `#foredrag` i `index.html`.
-**Legg til medieomtale:** Ny `<li>` i artikkel-listen under `#innsikt` i `index.html`.
-**Legg til NRK/video-klipp:** Ny klikkbar `<a>` med `<div class="video-placeholder">` i video-grid under `#innsikt` i `index.html`.
+**Legg til medieomtale:** Ny `<li>` i den sammenleggbare omtale-listen under `#foredrag` i `index.html`.
+**Legg til NRK/video-klipp:** Ny klikkbar `<a>` med `.media-box` i video-grid under `#media` i `index.html`.
 **Endre Om meg:** Rediger `<p>`-tagger i `#om` i `index.html`.
 **Ny tjeneste:** Ny `<div class="box">` i `.grid-3` under `#tjenester` i `index.html`.
 **Endre stiler:** Oppdater farger, marginer eller skrifttyper i `css/style.css`.
