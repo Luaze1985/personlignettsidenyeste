@@ -177,10 +177,9 @@ section > p:last-child { margin-bottom: 0; }
 .speaking-image img {
     display: block;
     width: 100%;
-    height: clamp(420px, 48vw, 620px);
-    max-height: 620px;
-    object-fit: cover;
-    object-position: 48% 42%;
+    max-width: 680px;
+    height: auto;
+    margin-inline: auto;
     filter: grayscale(1);
 }
 .speaking-image figcaption {
@@ -196,7 +195,7 @@ section > p:last-child { margin-bottom: 0; }
     align-items: start;
 }
 .about-image {
-    width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+    width: 150px; height: auto; border-radius: 0; object-fit: contain;
     border: 1px solid var(--border-color); filter: grayscale(1);
 }
 .about-layout p { font-size: 0.94rem; line-height: 1.62; max-width: 60ch; }
@@ -371,8 +370,8 @@ footer { padding-top: 1.5rem; border-top: 1px solid var(--border-color); padding
     .intro { flex-direction: column; align-items: flex-start; }
     .intro-lede { font-size: 2.35rem; max-width: 12ch; }
     .about-layout { grid-template-columns: 1fr; gap: 1.1rem; }
-    .about-image { width: 132px; height: 132px; }
-    .speaking-image img { height: auto; max-height: none; }
+    .about-image { width: 132px; }
+    .speaking-image img { max-width: none; }
     .proof-feature { flex-direction: column; align-items: flex-start; }
     .proof-headline { font-size: 1.65rem; max-width: 14ch; }
     .contact-links { flex-direction: column; gap: 0.7rem; }
