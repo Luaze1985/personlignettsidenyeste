@@ -26,6 +26,8 @@ test.describe('Image formatting', () => {
       };
     });
 
+    const stylesheet = await page.locator('link[rel="stylesheet"]').getAttribute('href');
+    expect(stylesheet).toContain('?v=');
     expect(images.profile.renderedRatio).toBeCloseTo(images.profile.naturalRatio, 1);
     expect(images.profile.objectFit).toBe('contain');
     expect(images.speaking.renderedRatio).toBeCloseTo(16 / 9, 1);
