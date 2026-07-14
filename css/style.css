@@ -177,9 +177,9 @@ section > p:last-child { margin-bottom: 0; }
 .speaking-image img {
     display: block;
     width: 100%;
-    max-width: 680px;
+    max-width: 620px;
     height: auto;
-    margin-inline: auto;
+    margin-inline: 0;
     filter: grayscale(1);
 }
 .speaking-image figcaption {
@@ -195,7 +195,7 @@ section > p:last-child { margin-bottom: 0; }
     align-items: start;
 }
 .about-image {
-    width: 150px; height: auto; border-radius: 0; object-fit: contain;
+    width: 150px; height: 150px; border-radius: 0.4rem; object-fit: cover;
     border: 1px solid var(--border-color); filter: grayscale(1);
 }
 .about-layout p { font-size: 0.94rem; line-height: 1.62; max-width: 60ch; }
@@ -370,7 +370,7 @@ footer { padding-top: 1.5rem; border-top: 1px solid var(--border-color); padding
     .intro { flex-direction: column; align-items: flex-start; }
     .intro-lede { font-size: 2.35rem; max-width: 12ch; }
     .about-layout { grid-template-columns: 1fr; gap: 1.1rem; }
-    .about-image { width: 132px; }
+    .about-image { width: 132px; height: 132px; }
     .speaking-image img { max-width: none; }
     .proof-feature { flex-direction: column; align-items: flex-start; }
     .proof-headline { font-size: 1.65rem; max-width: 14ch; }
