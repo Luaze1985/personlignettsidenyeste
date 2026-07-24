@@ -17,3 +17,11 @@ Thumbs.db
 
 # Link checker output
 link-checker-report.json
+
+# Cloud sync exclusions
+.env*
+.scratch/
+output/
+*.pdf
+*.docx
+*.zip
