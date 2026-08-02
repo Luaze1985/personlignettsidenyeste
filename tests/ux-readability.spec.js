@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const path = require('path');
 
-const indexUrl = `file://${path.resolve(__dirname, '../index.html')}`;
+const indexUrl = `file://${path.resolve(__dirname, '../dist/index.html')}`;
 
 function contrastRatio(foreground, background) {
   const luminance = (rgb) => {

@@ -1,9 +1,9 @@
 # Netlify-konfigurasjon for en ren statisk side.
-# Ingen bygging – serverer index.html fra repo-roten direkte.
+# Bygger en eksplisitt allowlist til dist/; ingen runtime i produksjon.
 
 [build]
-  publish = "."
-  command = ""
+  publish = "dist"
+  command = "npm run build"
 
 # Blokker interne prosjektdokumenter fra offentlig visning.
 # (De ligger i repoet for arbeidsflyt, men skal ikke serveres paa nett.)

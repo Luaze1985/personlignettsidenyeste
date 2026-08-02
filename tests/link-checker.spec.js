@@ -9,7 +9,7 @@ test('Check all links in index.html', async ({ page, context }) => {
     'Accept-Language': 'nb-NO,nb;q=0.9,no;q=0.8,nn;q=0.7,en-US;q=0.6,en;q=0.5'
   });
 
-  const indexPath = path.resolve(__dirname, '../index.html');
+  const indexPath = path.resolve(__dirname, '../dist/index.html');
   const indexUrl = `file://${indexPath}`;
   
   console.log(`Opening page: ${indexUrl}`);

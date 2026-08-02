@@ -84,9 +84,9 @@ test.describe('Security Headers & E2E Validation', () => {
       // Clean query parameters or hashes
       const cleanUrl = decodedUrl.split(/[?#]/)[0];
       
-      // Map to files in the repository
+      // Map to files in the production artifact
       let relativePath = cleanUrl === '/' ? 'index.html' : cleanUrl.substring(1);
-      const filePath = path.resolve(__dirname, '../', relativePath);
+      const filePath = path.resolve(__dirname, '../dist', relativePath);
 
       if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
         // Inject security headers from netlify.toml

@@ -15,7 +15,7 @@ test.describe('SEO & Metadata Verification', () => {
       const decodedUrl = decodeURIComponent(req.url);
       const cleanUrl = decodedUrl.split(/[?#]/)[0];
       const relativePath = cleanUrl === '/' ? 'index.html' : cleanUrl.substring(1);
-      const filePath = path.resolve(__dirname, '../', relativePath);
+      const filePath = path.resolve(__dirname, '../dist', relativePath);
 
       if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
         let contentType = 'text/plain';
@@ -63,7 +63,7 @@ test.describe('SEO & Metadata Verification', () => {
     expect(ogUrl).toBe('https://breknejohnsen.no/');
 
     const ogImage = await page.locator('meta[property="og:image"]').getAttribute('content');
-    expect(ogImage).toContain('Profil.jpg');
+    expect(ogImage).toContain('profil-480.jpg');
 
     const ogLocale = await page.locator('meta[property="og:locale"]').getAttribute('content');
     expect(ogLocale).toBe('nb_NO');

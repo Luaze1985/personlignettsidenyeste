@@ -3,7 +3,7 @@ const path = require('path');
 
 test.describe('Image formatting', () => {
   test('preserves the profile format and uses a deliberate stage crop', async ({ page }) => {
-    const indexPath = path.resolve(__dirname, '../index.html');
+    const indexPath = path.resolve(__dirname, '../dist/index.html');
     await page.goto(`file://${indexPath}`);
 
     const images = await page.evaluate(() => {
@@ -36,7 +36,7 @@ test.describe('Image formatting', () => {
 
   test('keeps both image treatments stable on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    const indexPath = path.resolve(__dirname, '../index.html');
+    const indexPath = path.resolve(__dirname, '../dist/index.html');
     await page.goto(`file://${indexPath}`);
 
     const ratios = await page.evaluate(() => {

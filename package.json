@@ -4,7 +4,8 @@
   "description": "Personlig nettside for **Lars Erik Brekne Johnsen** – KI-rådgiver, foredragsholder og coach.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/build-site.js",
+    "test": "npm run build && playwright test"
   },
   "keywords": [],
   "author": "",
