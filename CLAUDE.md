@@ -9,8 +9,8 @@ Strukturen består av `index.html` (HTML), `css/style.css` (CSS) og `js/navigati
 - `index.html` – nettsidens HTML-struktur og innhold
 - `css/style.css` – alle stiler og layoutregler (responsive knekker, utskrift; mørkemodus fjernet 2026-07-04)
 - `js/navigation.js` – navigasjonslogikk og scroll-effekter
-- `images/Profil.jpg` – profilbilde
-- `images/foredrag-vartagder-snitt-bw.jpg` – gråtonebilde fra foredrag, plassert før `#foredrag`
+- `images/profil-480.jpg` – optimalisert profilbilde i produksjon; `images/Profil.jpg` beholdes som kildefil
+- `images/foredrag-vartagder-1240.jpg` – optimalisert foredragsbilde i produksjon; originalutsnittet beholdes som kildefil
 - `fonts/*.woff2` – selv-hostet Newsreader (display/navn). OFL-lisens i `fonts/OFL.txt`.
 - `netlify.toml` – Netlify-oppsett for redirects, 404 og sikkerhetsheadere (CSP, HSTS)
 
@@ -32,9 +32,8 @@ KI Geriljaen (LinkedIn-gruppe): https://www.linkedin.com/groups/11818031/
 | Inngangslinje | – | Verdiløfte + to knapper + troverdighets-stripe |
 | Media | `#media` | NRK TV/radio, møte med Karianne Tung og utvalgt omtale |
 | Tjenester | `#tjenester` | 3 kompakte tilbud: kurs/foredrag, arbeidsflyt/kvalitet og KI-agenter |
-| Innsikt | `#innsikt` | 3 korte perspektiver med utvalgte lenker |
+| Innsikt | `#innsikt` | 3 perspektiver som også dekker praktisk nytte, læring og faglig dømmekraft |
 | Om meg | `#om` | 2 korte avsnitt + profilbilde |
-| Tilnærming | `#tilnaerming` | 3 prinsipper: praktisk nytte, faglig dømmekraft og trygg innføring |
 | Foredragsbilde | – | Gråtonebilde fra Vårtagder før foredragstemaene |
 | Foredrag | `#foredrag` | 3 hovedtemaer og sammenleggbar liste med utvalgte eksempler og omtale |
 | Kontakt | `#kontakt` | E-post og LinkedIn, uten telefonnummer |

@@ -9,7 +9,8 @@ Strukturen består av `index.html` (HTML), `css/style.css` (CSS) og `js/navigati
 - `index.html` – nettsidens HTML-struktur og innhold
 - `css/style.css` – alle stiler og layoutregler (responsive knekker, utskrift; mørkemodus fjernet 2026-07-04)
 - `js/navigation.js` – navigasjonslogikk og scroll-effekter
-- `images/Profil.jpg` – profilbilde (WebP med JPG-fallback)
+- `images/profil-480.jpg` – optimalisert profilbilde i produksjon; `images/Profil.jpg` beholdes som kildefil
+- `images/foredrag-vartagder-1240.jpg` – optimalisert foredragsbilde i produksjon; originalutsnittet beholdes som kildefil
 - `fonts/*.woff2` – selv-hostet Newsreader (display/navn). OFL-lisens i `fonts/OFL.txt`.
 - `netlify.toml` – Netlify-oppsett for redirects, 404 og sikkerhetsheadere (CSP, HSTS)
 
@@ -29,12 +30,12 @@ KI Geriljaen (LinkedIn-gruppe): https://www.linkedin.com/groups/11818031/
 |---------|-----|---------|
 | Header | – | Profilbilde, navn, undertittel, navigasjon (sticky) |
 | Inngangslinje | – | Verdiløfte + to knapper + troverdighets-stripe |
-| Om meg | `#om` | 4 avsnitt + attribuert sitat-blokk (KI-geriljaen, VIBS) |
-| Tjenester | `#tjenester` | 4 klikkbare kort (rådgivning, kurs/foredrag, KI-agenter, coaching) |
-| Tilnærming | `#tilnaerming` | Kunnskapsbasert KI + sammenleggbart Q&A |
-| Foredrag og erfaring | `#foredrag` | Liste med årstall, referanser, booking |
-| Innsikt og media | `#innsikt` | NRK TV/radio (glyfer), medieomtale (8), kronikker (2), arrangementer (4) |
-| Kontakt | `#kontakt` | E-post, telefon, LinkedIn, KI-geriljaen |
+| Media | `#media` | NRK TV/radio og møte med Karianne Tung |
+| Tjenester | `#tjenester` | 3 kompakte tilbud |
+| Innsikt | `#innsikt` | 3 perspektiver som også dekker praktisk nytte, læring og faglig dømmekraft |
+| Om meg | `#om` | 2 korte avsnitt + profilbilde |
+| Foredrag | `#foredrag` | 3 hovedtemaer og sammenleggbare lister |
+| Kontakt | `#kontakt` | E-post, LinkedIn og KI-geriljaen |
 
 ## Designregler – «Løft håndverket» (2026)
 

@@ -4,15 +4,16 @@ Personlig nettside for **Lars Erik Brekne Johnsen** – KI-rådgiver, foredragsh
 
 ## Hva dette er
 
-Én statisk HTML-fil (`index.html`) med inline CSS og litt JavaScript. Ingen byggverktøy, ingen avhengigheter. Åpnes direkte i nettleser eller hostes hvor som helst.
+En statisk HTML-side (`index.html`) med delt CSS og litt JavaScript. Ingen byggverktøy eller produksjonsavhengigheter. Åpnes direkte i nettleser eller hostes hvor som helst.
 
 ## Filer
 
 | Fil | Innhold |
 |-----|---------|
-| `index.html` | Hele nettsiden (innhold + stil) |
-| `images/Profil.jpg` | Profilbilde |
-| `images/foredrag-vartagder-snitt-bw.jpg` | Gråtonebilde fra foredrag, plassert før Foredrag-seksjonen |
+| `index.html` | Nettsidens struktur og innhold |
+| `css/style.css` | Designsystem, layout og 404-stiler |
+| `images/profil-480.jpg` | Optimalisert profilbilde i produksjon |
+| `images/foredrag-vartagder-1240.jpg` | Optimalisert gråtonebilde fra foredrag |
 | `CLAUDE.md` | Prosjektkontekst + slash-kommandoer for Claude Code |
 | `SPEC.md` | Designspec og handoff (inkl. Google Stitch-prompt) |
 | `HANDOFF.md` | Kortversjon |

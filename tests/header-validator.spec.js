@@ -409,7 +409,7 @@ test.describe('Security Headers & E2E Validation', () => {
     await expect(profileImg).toBeVisible();
     
     const src = await profileImg.getAttribute('src');
-    expect(src).toBe('images/Profil.jpg');
+    expect(src).toBe('images/profil-480.jpg');
     
     // Fetch image directly to verify 200 response
     const imgUrl = `${BASE_URL}/${src}`;
@@ -473,5 +473,22 @@ test.describe('Security Headers & E2E Validation', () => {
     
     const header = page.locator('header');
     await expect(header).toBeVisible();
+  });
+
+  test('TC-4.9: 404 page renders from the shared stylesheet without CSP violations', async ({ page }) => {
+    const cspViolations = [];
+    page.on('console', (message) => {
+      if (message.text().toLowerCase().includes('content security policy')) {
+        cspViolations.push(message.text());
+      }
+    });
+
+    const response = await page.goto(`${BASE_URL}/404.html`);
+    expect(response.status()).toBe(200);
+
+    await expect(page.locator('head style')).toHaveCount(0);
+    await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute('href', /style\.css\?v=/);
+    await expect(page.locator('.error-page')).toHaveCSS('display', 'flex');
+    expect(cspViolations).toEqual([]);
   });
 });

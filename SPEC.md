@@ -8,8 +8,8 @@ Denne filen beskriver koden, designet og hvordan du jobber videre – bl.a. med 
 ## 1. Hva koden er
 
 - **Struktur:** `index.html` (HTML), `css/style.css` (CSS) og `js/navigation.js` (JavaScript for navigasjon).
-- **Profilbilde:** `images/Profil.jpg`.
-- **Foredragsbilde:** `images/foredrag-vartagder-snitt-bw.jpg`, et ekte gråtoneutsnitt plassert mellom Tilnærming og Foredrag.
+- **Profilbilde:** `images/profil-480.jpg` i produksjon; `images/Profil.jpg` beholdes som kildefil.
+- **Foredragsbilde:** `images/foredrag-vartagder-1240.jpg` i produksjon; originalutsnittet beholdes som kildefil.
 - **Lettvekt og portabelt:** Kan hostes hvor som helst (GitHub Pages, Netlify, Cloudflare Pages) uten behov for Node-byggesystem i produksjon.
 - **JavaScript:** ~15 linjer i `js/navigation.js` for å markere aktiv seksjon (IntersectionObserver) og animere reveal-elementer. Pluss et lite inline-skript i `<head>` for fade-in og CSS-deteksjon.
 
@@ -28,7 +28,7 @@ Denne filen beskriver koden, designet og hvordan du jobber videre – bl.a. med 
 
 **Typografi**
 - **Display/navn:** selv-hostet **Newsreader** (rolig editorial serif, OFL-lisens), `fonts/*.woff2`. Kun til navn, seksjonstitler og sitat. Systemfont-stack som fallback i `font-family`.
-- **Brødtekst:** systemfont-stack (`-apple-system, Segoe UI, Roboto, …`). 16px, vekt 400, linjehøyde 1.6, maks 66 tegn bred.
+- **Brødtekst:** systemfont-stack (`-apple-system, Segoe UI, Roboto, …`). Baseline 16px, vekt 400, linjehøyde 1.6, maks 66 tegn bred. Kompakte kort og «Om meg» bruker bevisste varianter på 0.95–0.98rem med minst 1.6 linjehøyde.
 - Overskrifter: `h2` er små, uppercase, aksentfarget, med tynn underlinje (systemfont – bevisst kontrast til serif-navnet).
 
 **Prinsipper**
@@ -41,7 +41,7 @@ Denne filen beskriver koden, designet og hvordan du jobber videre – bl.a. med 
 - Sticky header (profilbilde + navn + meny). Statisk på mobil.
 - Inngangslinje med to knapper ([Se tjenester] [Ta kontakt]).
 - Klikkbare tjeneste-kort (rutenett).
-- Sammenleggbare bolker (`<details>`) i Innsikt og én i Tilnærming.
+- Sammenleggbare bolker (`<details>`) under Foredrag og omtale.
 - Lenker med ekstern-markør (↗).
 - **Troverdighets-stripe** (tekstnavn) høyt på siden – media/scener dekket i innholdet.
 - **Profilbilde** i «Om meg».
@@ -63,12 +63,11 @@ Alt annet «imponerende» avvises med mindre det passer *begge* listene.
 2. **Inngangslinje** – kort verdiløfte + to CTA-knapper
 3. **Media** (`#media`) – NRK TV/radio, møte med Karianne Tung og utvalgt omtale
 4. **Tjenester** (`#tjenester`) – tre kompakte tilbud
-5. **Innsikt** (`#innsikt`) – tre korte perspektiver med utvalgte lenker
+5. **Innsikt** (`#innsikt`) – tre perspektiver som også dekker praktisk nytte, læring og faglig dømmekraft
 6. **Om meg** (`#om`) – to korte avsnitt og profilbilde
-7. **Tilnærming** (`#tilnaerming`) – tre korte prinsipper
-8. **Foredragsbilde** – gråtonebilde fra Vårtagder før foredragstemaene
-9. **Foredrag** (`#foredrag`) – tre hovedtemaer og sammenleggbar liste med utvalgte eksempler og omtale
-10. **Kontakt** (`#kontakt`) – e-post og LinkedIn, uten telefonnummer
+7. **Foredragsbilde** – gråtonebilde fra Vårtagder før foredragstemaene
+8. **Foredrag** (`#foredrag`) – tre hovedtemaer og sammenleggbar liste med utvalgte eksempler og omtale
+9. **Kontakt** (`#kontakt`) – e-post og LinkedIn, uten telefonnummer
 
 ---
 
@@ -93,7 +92,7 @@ Google Stitch (stitch.withgoogle.com) lager UI-design fra **tekst-prompt** eller
 
 > Lag en minimalistisk, rolig personlig nettside for en norsk KI-rådgiver og foredragsholder.
 > Stil: nesten nakent, sort-hvitt med én dempet blå-grå aksent (#5a6b7c). Tynne 1px hairline-rammer, ingen skygger, ingen gradienter, ingen animasjoner, ingen ikoner fra ikon-bibliotek. «Arkitektens skisseblokk», ikke tech-startup. Systemfont, liten skriftstørrelse, mye luft.
-> Struktur (én lang side): sticky header med lite rundt profilbilde til venstre + navn + horisontal meny; kort verdiløfte-linje med to tynne knapper; «Media» med NRK TV/radio øverst og omtale av møte med Karianne Tung; «Tjenester» som tre kompakte tilbud; «Innsikt» med tre korte perspektiver; «Om meg» med portrett; «Tilnærming» med tre prinsipper; et ekte gråtonebilde fra foredrag før «Foredrag»; «Foredrag» med tre hovedtemaer og sammenleggbare utvalgte lenker; «Kontakt» nederst med e-post og LinkedIn.
+> Struktur (én lang side): sticky header med lite rundt profilbilde til venstre + navn + horisontal meny; kort verdiløfte-linje med to tynne knapper; «Media» med NRK TV/radio øverst og omtale av møte med Karianne Tung; «Tjenester» som tre kompakte tilbud; «Innsikt» med tre korte perspektiver om praktisk nytte, læring og faglig dømmekraft; «Om meg» med portrett; et ekte gråtonebilde fra foredrag før «Foredrag»; «Foredrag» med tre hovedtemaer og sammenleggbare utvalgte lenker; «Kontakt» nederst med e-post og LinkedIn.
 > Responsivt: bokser stables på mobil. Norsk bokmål. Rolig, ærlig tone – ingen salgsfraser.
 
 ---
@@ -104,7 +103,7 @@ I en Claude Code-sesjon på dette repoet finnes ferdige kommandoer (se `CLAUDE.m
 `/media`, `/foredrag`, `/kronikk`, `/profil`, `/referanse`, `/innlegg`, `/legg-til`.
 De søker web, verifiserer fakta og oppdaterer riktig seksjon.
 
-**Foredragsbilde:** `images/foredrag-vartagder-snitt-bw.jpg` er et ekte, gråtonebehandlet bilde med utsnitt av Lars under foredrag. Det ligger visuelt mellom Tilnærming og Foredrag.
+**Foredragsbilde:** `images/foredrag-vartagder-1240.jpg` er den optimaliserte produksjonsfilen. Den ligger visuelt mellom Om meg og Foredrag.
 
 ---
 
