@@ -32,4 +32,31 @@
         // Ingen IntersectionObserver eller reduced-motion: vis alt umiddelbart.
         reveals.forEach(function (s) { s.classList.add('is-visible'); });
     }
+
+    // --- Hamburgermeny (kun aktiv paa mobil via CSS) ---
+    var toggle = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('main-nav');
+    if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+            var isOpen = nav.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', isOpen);
+            toggle.textContent = isOpen ? '\u2715' : '\u2630';
+        });
+        // Lukk meny naar bruker klikker en lenke
+        nav.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+                nav.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = '\u2630';
+            }
+        });
+        // Lukk meny ved klikk utenfor header
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('header')) {
+                nav.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = '\u2630';
+            }
+        });
+    }
 })();
