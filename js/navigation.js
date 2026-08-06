@@ -71,7 +71,7 @@
             });
         }
         emailBtn.addEventListener('click', function () {
-            var addr = rot13('ynefrexw.oa') + '@' + rot13('tznvy.pbz');
+            var addr = rot13('ynefrevx.oa') + '@' + rot13('tznvy.pbz');
             var link = document.createElement('a');
             link.href = 'mailto:' + addr;
             link.textContent = addr;
