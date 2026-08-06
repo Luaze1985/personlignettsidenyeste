@@ -106,8 +106,8 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 
 /* ---------- INNGANGSLINJE ---------- */
 .intro {
-    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1rem 1.5rem;
-    justify-content: space-between; margin-bottom: 0.5rem; padding: 0 0 2rem 0;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem;
+    margin-bottom: 0.5rem; padding: 0 0 2rem 0;
     border-bottom: 1px solid var(--border-color);
 }
 .intro-copy { max-width: 58ch; }
@@ -124,9 +124,9 @@ nav a.nav-cta { color: var(--accent-color); font-weight: 600; }
 }
 .intro-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
 .btn {
-    display: inline-block; text-decoration: none; font-size: 0.88rem;
+    display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-size: 0.88rem;
     border: 1px solid var(--accent-color); padding: 0.55rem 1rem;
-    color: var(--text-color); background: transparent;
+    color: var(--text-color); background: var(--surface-color);
     transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 }
 .btn:hover, .btn:focus-visible { border-color: var(--accent-color); color: var(--accent-color); background: var(--surface-color); }
@@ -255,6 +255,7 @@ figure.ref-quote figcaption { font-size: 0.78rem; color: var(--muted); margin-to
 /* ---------- GRID / BOKSER (klikkbare) ---------- */
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 #tjenester .grid-3 { max-width: none; }
+#tjenester .grid-3 h3, #foredrag .grid-3 h3 { min-height: 3.4rem; }
 .box {
     display: block; border: 1px solid var(--border-color); padding: 0.95rem;
     color: inherit; background: var(--panel-color);
@@ -295,6 +296,7 @@ a.ext::after { content: " \2197"; font-size: 0.75em; color: var(--accent-color);
 /* ---------- ACCORDION (Foredrag og omtale) ---------- */
 details { border-top: 1px solid var(--border-color); }
 details:last-of-type { border-bottom: 1px solid var(--border-color); }
+details + details, .supporting-links details { border-top: none; }
 details.qa-block { margin-top: 1.5rem; }
 summary {
     cursor: pointer; list-style: none; padding: 0.9rem 0;
@@ -420,7 +422,10 @@ footer { padding-top: 1.5rem; border-top: 1px solid var(--border-color); padding
 
 @media (max-width: 768px) {
     .container { padding: 0 1.25rem; }
-    header { position: sticky; }
+    header { position: sticky; padding: 0.7rem 0; }
+    .profile-pic { width: 40px; height: 40px; }
+    .site-name { font-size: 1.02rem; white-space: nowrap; }
+    .profile-text p:not(.site-name) { display: none; }
     .header-content { flex-wrap: nowrap; align-items: center; }
     .nav-toggle {
         display: flex; align-items: center; justify-content: center;
