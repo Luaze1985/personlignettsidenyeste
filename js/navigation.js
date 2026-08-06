@@ -59,4 +59,27 @@
             }
         });
     }
+        // --- Skjul e-post mot roboter (settes saman på klikk) ---
+    var emailBtn = document.getElementById('reveal-email');
+    if (emailBtn) {
+        // ROT13-kodet: "larserik.bn" → "ynefrexw.oa", "gmail.com" → "tznvy.pbz"
+        function rot13(s) {
+            return s.replace(/[a-zA-Z]/g, function(c) {
+                return String.fromCharCode(
+                    (c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26
+                );
+            });
+        }
+        emailBtn.addEventListener('click', function () {
+            var addr = rot13('ynefrexw.oa') + '@' + rot13('tznvy.pbz');
+            var link = document.createElement('a');
+            link.href = 'mailto:' + addr;
+            link.textContent = addr;
+            link.style.color = 'var(--accent-color)';
+            link.style.textDecoration = 'underline';
+            link.style.textUnderlineOffset = '4px';
+            link.style.fontSize = '0.95rem';
+            emailBtn.parentNode.replaceChild(link, emailBtn);
+        });
+    }
 })();
