@@ -1,127 +1,47 @@
-# Design-spec og handoff – larserik-nettside
+# Design-spec — ryddig Arbeidsbenk-forside
 
-Personlig nettside for **Lars Erik Brekne Johnsen** – KI-rådgiver, foredragsholder og coach.
-Denne filen beskriver koden, designet og hvordan du jobber videre – bl.a. med Google Stitch.
+Personlig nettside for **Lars Erik Brekne Johnsen**. Siden skal gjøre to ting uten å virke som to forskjellige merkevarer:
 
----
+1. Håndverksbedrifter skal forstå én konkret, trygg arbeidsflyt med KI.
+2. Større virksomheter og referansesjekkere skal raskt finne erfaring, faglig tyngde og dokumenterte lenker.
 
-## 1. Hva koden er
+## Produksjonsstruktur
 
-- **Struktur:** `index.html` (HTML), `css/style.css` (CSS) og `js/navigation.js` (JavaScript for navigasjon).
-- **Profilbilde:** `images/profil-480.jpg` i produksjon; `images/Profil.jpg` beholdes som kildefil.
-- **Foredragsbilde:** `images/foredrag-vartagder-1240.jpg` i produksjon; originalutsnittet beholdes som kildefil.
-- **Lettvekt og portabelt:** Kan hostes hvor som helst (GitHub Pages, Netlify, Cloudflare Pages) uten behov for Node-byggesystem i produksjon.
-- **JavaScript:** ~15 linjer i `js/navigation.js` for å markere aktiv seksjon (IntersectionObserver) og animere reveal-elementer. Pluss et lite inline-skript i `<head>` for fade-in og CSS-deteksjon.
+- `index.html` — innhold og semantisk sidestruktur
+- `css/style.css` — Arbeidsbenken-designsystemet fra `DESIGN.md`
+- `js/navigation.js` — aktiv seksjon, mobilmeny og skjult e-post
 
----
+## Sidehistorie
 
-## 2. Designsystem
+1. **Header** — profilbilde, navn og fire navigasjonsmål: Arbeidsflyt, Erfaring, Om, Kontakt.
+2. **Inngang** — «Mennesker først. Teknologi som virker.», én primærhandling og to målgruppeinnganger.
+3. **Arbeidsbenken** — startpakken forklart som avklare → prøve → kontrollere → velge, med passer/passer ikke og én CTA.
+4. **Erfaring og referanser** — fire prioriterte bevis på mørk flate; øvrig dokumentasjon i én detaljvisning.
+5. **Om, foredrag og kontakt** — profil, foredragstemaer, foredragsbilde og kontakt som én rolig avslutning.
 
-**Farger**
-| Rolle | Verdi |
-|-------|-------|
-| Bakgrunn | `#ffffff` |
-| Tekst | `#1a1a1a` |
-| Dempet tekst | `#555555` |
-| Aksent (dempet blå-grå) | `#5a6b7c` |
-| Hairline / rammer | `#e2e2e2` |
+Det skal ikke finnes egne, likeverdige seksjoner for media, tjenester, innsikt og foredrag. Innholdet er bevart, men samlet der det gir mest mening.
 
-**Typografi**
-- **Display/navn:** selv-hostet **Newsreader** (rolig editorial serif, OFL-lisens), `fonts/*.woff2`. Kun til navn, seksjonstitler og sitat. Systemfont-stack som fallback i `font-family`.
-- **Brødtekst:** systemfont-stack (`-apple-system, Segoe UI, Roboto, …`). Baseline 16px, vekt 400, linjehøyde 1.6, maks 66 tegn bred. Kompakte kort og «Om meg» bruker bevisste varianter på 0.95–0.98rem med minst 1.6 linjehøyde.
-- Overskrifter: `h2` er små, uppercase, aksentfarget, med tynn underlinje (systemfont – bevisst kontrast til serif-navnet).
+## Innhold og tone
 
-**Prinsipper**
-- Minimalistisk, «arkitektens skisseblokk». Mye luft.
-- Tynne 1px-linjer. INGEN skygger, INGEN gradienter, INGEN «tech-startup»-preg. Bevegelse er tillatt som **subtil fade-in ved scroll** – men kun som forsterkning (innhold synlig uten JS) og alltid med respekt for `prefers-reduced-motion`.
-- Bokser: tynn ramme, ingen bakgrunnsfarge.
-- Responsivt: stablede bokser på mobil.
+- Norsk bokmål. Kort, ærlig og konkret.
+- Bruk «KI», ikke «AI», med unntak for engelske titler.
+- KI lager struktur og utkast; fagpersonen vurderer, godkjenner og har ansvar.
+- Ikke bruk buzzord, garanterte resultater eller oppdiktede referanser.
+- Dokumenterte lenker bevares selv om de flyttes til detaljvisning.
 
-**Komponenter**
-- Sticky header (profilbilde + navn + meny). Statisk på mobil.
-- Inngangslinje med to knapper ([Se tjenester] [Ta kontakt]).
-- Klikkbare tjeneste-kort (rutenett).
-- Sammenleggbare bolker (`<details>`) under Foredrag og omtale.
-- Lenker med ekstern-markør (↗).
-- **Troverdighets-stripe** (tekstnavn) høyt på siden – media/scener dekket i innholdet.
-- **Profilbilde** i «Om meg».
-- **NRK-glyfer** (inline SVG, gråtone) på TV- og radio-boksene – kun der.
+## Design og tilgjengelighet
 
-**Løft håndverket – doktrine (2026)**
+- `DESIGN.md` er autoritativt for farger, typografi og komponenter.
+- Newsreader brukes for faglige overskrifter, systemfont for hovedbudskap og monospace for etiketter.
+- Ingen skygger, gradienter, verktøyikoner, tretekstur eller startup-estetikk.
+- Må fungere uten horisontal scrolling ved 360 px og ved simulert 200 % zoom.
+- Alle interaktive elementer skal ha synlig tastaturfokus.
+- Behold profilbildet og foredragsbildet når de gir tillit.
 
-*Behold sjelen (hardt – aldri bryt):* kun gråtone + `#5a6b7c`; ingen skygger/gradienter; hårstrek-linjer; mye luft; rolig; aldri «tech-startup»/mal-preg; norsk bokmål; «KI» ikke «AI».
+## Kvalitetsporter
 
-*Tillat løftet (kun dette):* én selv-hostet overskriftsfont (Newsreader); subtil fade-in ved scroll (reduced-motion- og no-JS-trygg); gråtonede NRK-glyfer; sitat-blokk; tekst-troverdighetsstripe.
-
-Alt annet «imponerende» avvises med mindre det passer *begge* listene.
-
----
-
-## 3. Sidestruktur (seksjoner)
-
-1. **Header** – profilbilde, navn, undertittel, meny (sticky)
-2. **Inngangslinje** – kort verdiløfte + to CTA-knapper
-3. **Media** (`#media`) – NRK TV/radio, møte med Karianne Tung og utvalgt omtale
-4. **Tjenester** (`#tjenester`) – tre kompakte tilbud
-5. **Innsikt** (`#innsikt`) – tre perspektiver som også dekker praktisk nytte, læring og faglig dømmekraft
-6. **Om meg** (`#om`) – to korte avsnitt og profilbilde
-7. **Foredragsbilde** – gråtonebilde fra Vårtagder før foredragstemaene
-8. **Foredrag** (`#foredrag`) – tre hovedtemaer og sammenleggbar liste med utvalgte eksempler og omtale
-9. **Kontakt** (`#kontakt`) – e-post og LinkedIn, uten telefonnummer
-
----
-
-## 4. Tone i tekst
-- Norsk bokmål. Kort, ærlig, «rett på hva som gir verdi».
-- Bruk «KI» ikke «AI» (unntatt engelske titler).
-- Aldri buzzwords: «banebrytende», «revolusjonerende», «sømløs», «helhetlig løsning» osv.
-
----
-
-## 5. Jobbe videre med Google Stitch
-
-Google Stitch (stitch.withgoogle.com) lager UI-design fra **tekst-prompt** eller **bilde** – ikke fra rå HTML. Du bruker den til å utforske nye layouter/varianter, og eksporterer så til Figma eller kode.
-
-**Slik gjør du:**
-1. Ta et skjermbilde av dagens side (eller bruk en Claude Code lager til deg).
-2. Gå til Stitch → nytt prosjekt → last opp skjermbildet som referanse, ELLER lim inn prompten under.
-3. Iterer i Stitch. Eksporter til kode/Figma når du er fornøyd.
-4. Ta det tilbake hit: lim inn Stitch-outputen i en Claude Code-sesjon på dette repoet, så fletter jeg det inn i `index.html` og beholder innhold/lenker.
-
-**Ferdig prompt å lime inn i Google Stitch:**
-
-> Lag en minimalistisk, rolig personlig nettside for en norsk KI-rådgiver og foredragsholder.
-> Stil: nesten nakent, sort-hvitt med én dempet blå-grå aksent (#5a6b7c). Tynne 1px hairline-rammer, ingen skygger, ingen gradienter, ingen animasjoner, ingen ikoner fra ikon-bibliotek. «Arkitektens skisseblokk», ikke tech-startup. Systemfont, liten skriftstørrelse, mye luft.
-> Struktur (én lang side): sticky header med lite rundt profilbilde til venstre + navn + horisontal meny; kort verdiløfte-linje med to tynne knapper; «Media» med NRK TV/radio øverst og omtale av møte med Karianne Tung; «Tjenester» som tre kompakte tilbud; «Innsikt» med tre korte perspektiver om praktisk nytte, læring og faglig dømmekraft; «Om meg» med portrett; et ekte gråtonebilde fra foredrag før «Foredrag»; «Foredrag» med tre hovedtemaer og sammenleggbare utvalgte lenker; «Kontakt» nederst med e-post og LinkedIn.
-> Responsivt: bokser stables på mobil. Norsk bokmål. Rolig, ærlig tone – ingen salgsfraser.
-
----
-
-## 6. Jobbe videre uten Stitch (anbefalt for innhold)
-
-I en Claude Code-sesjon på dette repoet finnes ferdige kommandoer (se `CLAUDE.md`):
-`/media`, `/foredrag`, `/kronikk`, `/profil`, `/referanse`, `/innlegg`, `/legg-til`.
-De søker web, verifiserer fakta og oppdaterer riktig seksjon.
-
-**Foredragsbilde:** `images/foredrag-vartagder-1240.jpg` er den optimaliserte produksjonsfilen. Den ligger visuelt mellom Om meg og Foredrag.
-
----
-
-## 7. Repo og hosting
-- **Repo:** github.com/Luaze1985/larserik-nettside
-- **Arbeidsbranch:** `claude/build-lars-website-gPnRO`
-- **Hosting:** `netlify.toml` finnes (statisk, ingen build). Netlify dekker hele behovet: gratis, koblet til repoet, auto-deploy ved push, og lar deg legge til flere sider senere. Ikke bygg dette om på nytt uten grunn. (Endelig hosting-oppsett bekreftes av Lars.)
-
----
-
-## 8. Fremtid / roadmap (ikke nå)
-
-Bygges **ikke** nå – dokumentert her så enkeltside-arkitekturen ikke maler oss inn i et hjørne. Prioritet nummer én er lavt vedlikehold: å endre lenker/info skal ta sekunder.
-
-| Fremtid | Hvordan (når det blir aktuelt) |
-|---------|-------------------------------|
-| **Kalender** – vis kommende foredrag (evt. booking/ledige datoer senere) | Egen enkel side, arver designsystemet |
-| **Ressurs-/undervisningsside** – materiell andre kan bruke som referanse | Egen side, samme stil |
-| **Opplasting av materiell** | Vurder CMS/Netlify-funksjon *først når behovet er reelt* |
-
-Prinsipp: nye features legges som **egne, enkle sider med arvet designsystem** (`:root`-variablene løftes til delt `style.css` den dagen side nr. 2 finnes) – ikke som et rammeverk vi drar inn nå.
+1. Kjør `design.md lint DESIGN.md`.
+2. Kjør hele testpakken med `npm test`.
+3. Kontroller desktop og mobil visuelt.
+4. Kontroller fokus, reduced motion og lenker.
+5. Ikke commit, push eller deploy uten separat godkjenning.

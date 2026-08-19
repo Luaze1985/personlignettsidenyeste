@@ -24,25 +24,22 @@ test.describe('UX, UI and readability', () => {
     await page.goto(indexUrl);
   });
 
-  test('navigation follows the page flow and approach is consolidated into insight', async ({ page }) => {
+  test('navigation follows the simplified Arbeidsbenken page flow', async ({ page }) => {
     const navigationTargets = await page.locator('nav a').evaluateAll((links) =>
       links.map((link) => link.getAttribute('href')),
     );
 
     expect(navigationTargets).toEqual([
-      '#media',
-      '#tjenester',
-      '#innsikt',
+      '#arbeidsbenken',
+      '#erfaring',
       '#om',
-      '#foredrag',
       '#kontakt',
     ]);
 
-    await expect(page.locator('#tilnaerming')).toHaveCount(0);
-    await expect(page.locator('#innsikt .box')).toHaveCount(3);
-    await expect(page.locator('#innsikt')).toContainText('arbeid faktisk tar tid');
-    await expect(page.locator('#innsikt')).toContainText('KI skal støtte faget');
-    await expect(page.locator('#innsikt')).toContainText('små steg');
+    await expect(page.locator('#media, #tjenester, #innsikt, #foredrag')).toHaveCount(0);
+    await expect(page.locator('.steps li')).toHaveCount(4);
+    await expect(page.locator('#arbeidsbenken')).toContainText('KI lager struktur og utkast');
+    await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
   });
 
   test('loads the optimized profile and speaking images', async ({ page }) => {
@@ -67,7 +64,7 @@ test.describe('UX, UI and readability', () => {
       const body = read('body');
       const intro = read('.section-intro');
       const about = read('.about-layout p');
-      const card = read('.service-grid .box p');
+      const step = read('.steps li > p:last-child');
       const navLink = read('nav a');
       const heading = read('h2');
 
@@ -76,22 +73,22 @@ test.describe('UX, UI and readability', () => {
         backgroundColor: body.backgroundColor,
         introColor: intro.color,
         aboutFontSize: Number.parseFloat(about.fontSize),
-        cardFontSize: Number.parseFloat(card.fontSize),
+        stepFontSize: Number.parseFloat(step.fontSize),
         navPaddingTop: Number.parseFloat(navLink.paddingTop),
-        headingLetterSpacing: Number.parseFloat(heading.letterSpacing),
+        headingFontFamily: heading.fontFamily,
       };
     });
 
     expect(styles.introColor).toBe(styles.bodyColor);
     expect(contrastRatio(styles.introColor, styles.backgroundColor)).toBeGreaterThanOrEqual(4.5);
     expect(styles.aboutFontSize).toBeGreaterThanOrEqual(15.6);
-    expect(styles.cardFontSize).toBeGreaterThanOrEqual(15.2);
+    expect(styles.stepFontSize).toBeGreaterThanOrEqual(15.2);
     expect(styles.navPaddingTop).toBeGreaterThanOrEqual(5.6);
-    expect(styles.headingLetterSpacing).toBeGreaterThanOrEqual(1.1);
+    expect(styles.headingFontFamily).toContain('Newsreader');
   });
 
-  test('avoids horizontal overflow and keeps media cards full width on mobile', async ({ page }) => {
-    for (const width of [360, 768, 1440]) {
+  test('avoids horizontal overflow and keeps the work steps readable on narrow screens', async ({ page }) => {
+    for (const width of [180, 360, 768, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.goto(indexUrl);
 
@@ -108,8 +105,8 @@ test.describe('UX, UI and readability', () => {
         })(),
         textFitsContainers: [...document.querySelectorAll('main p')]
           .every((paragraph) => paragraph.scrollWidth <= paragraph.clientWidth + 1),
-        cardLineHeightRatio: (() => {
-          const styles = getComputedStyle(document.querySelector('.service-grid .box p'));
+        stepLineHeightRatio: (() => {
+          const styles = getComputedStyle(document.querySelector('.steps li > p:last-child'));
           return Number.parseFloat(styles.lineHeight) / Number.parseFloat(styles.fontSize);
         })(),
       }));
@@ -117,22 +114,22 @@ test.describe('UX, UI and readability', () => {
       expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
       expect(layout.navLinksContained).toBe(true);
       expect(layout.textFitsContainers).toBe(true);
-      expect(layout.cardLineHeightRatio).toBeGreaterThanOrEqual(1.6);
+      expect(layout.stepLineHeightRatio).toBeGreaterThanOrEqual(1.6);
     }
 
     await page.setViewportSize({ width: 360, height: 1000 });
     await page.goto(indexUrl);
 
     const widths = await page.evaluate(() => {
-      const grid = document.querySelector('.grid-video').getBoundingClientRect();
-      const cards = [...document.querySelectorAll('.grid-video > div')]
-        .map((card) => card.getBoundingClientRect().width);
-      return { grid: grid.width, cards };
+      const grid = document.querySelector('.steps').getBoundingClientRect();
+      const steps = [...document.querySelectorAll('.steps li')]
+        .map((step) => step.getBoundingClientRect().width);
+      return { grid: grid.width, steps };
     });
 
-    expect(widths.cards).toHaveLength(2);
-    for (const cardWidth of widths.cards) {
-      expect(cardWidth).toBeCloseTo(widths.grid, 0);
+    expect(widths.steps).toHaveLength(4);
+    for (const stepWidth of widths.steps) {
+      expect(stepWidth).toBeCloseTo(widths.grid - 2, 0);
     }
   });
 });

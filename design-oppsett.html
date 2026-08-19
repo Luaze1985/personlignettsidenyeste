@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test: Google DESIGN.md + Tailwind</title>
+    
+    <!-- Laster Newsreader for riktig visning -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Dette er direkte output fra: `npx designmd export --format tailwind DESIGN.md`
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "base": {
+                            "50": "#f8fafc",
+                            "100": "#f1f5f9",
+                            "200": "#e2e8f0",
+                            "300": "#cbd5e1",
+                            "400": "#94a3b8",
+                            "500": "#64748b",
+                            "600": "#475569",
+                            "700": "#334155",
+                            "800": "#1e293b",
+                            "900": "#0f172a",
+                            "950": "#020617"
+                        },
+                        "brand": {
+                            "50": "#f4f6f8",
+                            "100": "#e3e9ef",
+                            "200": "#c7d3df",
+                            "300": "#a9bccd",
+                            "400": "#8ca5bc",
+                            "500": "#6e8eab",
+                            "600": "#5a7a97",
+                            "700": "#4a637b",
+                            "800": "#3d5265",
+                            "900": "#334453",
+                            "950": "#222e39"
+                        },
+                        "primary": "#222e39",
+                        "on-primary": "#ffffff",
+                        "neutral": "#f8fafc",
+                        "surface": "#ffffff",
+                        "surface-dim": "#f1f5f9",
+                        "on-surface": "#020617",
+                        "on-surface-variant": "#475569",
+                        "outline": "#e2e8f0",
+                        "link": "#4a637b"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Newsreader"],
+                        "display-md": ["Newsreader"],
+                        "display-sm": ["Newsreader"],
+                        "headline-md": ["Newsreader"],
+                        "headline-sm": ["Newsreader"],
+                        "body-md": ["system-ui"],
+                        "body-sm": ["system-ui"],
+                        "label-lg": ["system-ui"],
+                        "label-sm": ["system-ui"],
+                        "quote-md": ["Newsreader"]
+                    },
+                    fontSize: {
+                        "display-lg": ["3.35rem", { "fontWeight": "600" }],
+                        "display-md": ["2rem", { "fontWeight": "600" }],
+                        "display-sm": ["1.35rem", { "fontWeight": "600" }],
+                        "headline-md": ["1.4rem", { "fontWeight": "600" }],
+                        "headline-sm": ["1rem", { "fontWeight": "600" }],
+                        "body-md": ["1rem", { "fontWeight": "400" }],
+                        "body-sm": ["0.95rem", { "fontWeight": "400" }],
+                        "label-lg": ["0.95rem", { "letterSpacing": "0.075em", "fontWeight": "600" }],
+                        "label-sm": ["0.72rem", { "letterSpacing": "0.09em", "fontWeight": "700" }],
+                        "quote-md": ["1.05rem", { "fontWeight": "400" }]
+                    },
+                    borderRadius: {
+                        "none": "0px",
+                        "sm": "0.4rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "xs": "0.5rem",
+                        "sm": "1rem",
+                        "md": "2rem",
+                        "lg": "4rem"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral text-on-surface font-body-md min-h-screen p-lg">
+
+    <div class="max-w-4xl mx-auto space-y-lg">
+        
+        <header class="border-b border-outline pb-sm">
+            <p class="font-label-lg text-primary uppercase">Magi fra DESIGN.md</p>
+            <h1 class="font-display-lg text-primary mt-xs">Utvidet palett (Stitch)</h1>
+            <p class="font-body-md text-on-surface-variant max-w-2xl mt-sm">
+                Nå har vi lagt til hele skalaen fra 50 til 950 i <code>DESIGN.md</code>. Resultatet er at Tailwind-oppsettet ditt
+                har fått alle fargenyansene, mens de semantiske rollene (som <code>bg-primary</code>) fortsatt peker på riktig nyanse.
+                Slik bevarer du det stramme "skisseblokk"-uttrykket (sort og nokså grått), men med alle byggeklosser tilgjengelig.
+            </p>
+        </header>
+
+        <!-- FARGEPALETT: Semantisk -->
+        <section>
+            <h2 class="font-headline-md text-primary mb-md">1. Semantiske tokens (alias)</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+                <div class="bg-primary text-on-primary p-sm border border-outline rounded-none">
+                    <p class="font-label-sm">bg-primary</p>
+                    <p class="font-body-sm mt-xs">#222e39 (brand 950)</p>
+                </div>
+                
+                <div class="bg-surface text-on-surface p-sm border border-outline rounded-none">
+                    <p class="font-label-sm">bg-surface</p>
+                    <p class="font-body-sm mt-xs">#ffffff</p>
+                </div>
+
+                <div class="bg-surface-dim text-on-surface p-sm border border-outline rounded-none">
+                    <p class="font-label-sm">bg-surface-dim</p>
+                    <p class="font-body-sm mt-xs">#f1f5f9 (base 100)</p>
+                </div>
+
+                <div class="bg-neutral text-on-surface p-sm border border-outline rounded-none">
+                    <p class="font-label-sm text-link">text-link</p>
+                    <p class="font-body-sm mt-xs text-link underline">#4a637b (brand 700)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FARGEPALETT: Full skala -->
+        <section>
+            <h2 class="font-headline-md text-primary mb-md">2. Fulle skalaer (50 - 950)</h2>
+            
+            <p class="font-label-lg mb-xs">Base (kjølig grå)</p>
+            <div class="flex h-12 mb-sm rounded-sm overflow-hidden">
+                <div class="flex-1 bg-base-50"></div>
+                <div class="flex-1 bg-base-100"></div>
+                <div class="flex-1 bg-base-200"></div>
+                <div class="flex-1 bg-base-300"></div>
+                <div class="flex-1 bg-base-400"></div>
+                <div class="flex-1 bg-base-500"></div>
+                <div class="flex-1 bg-base-600"></div>
+                <div class="flex-1 bg-base-700"></div>
+                <div class="flex-1 bg-base-800"></div>
+                <div class="flex-1 bg-base-900"></div>
+                <div class="flex-1 bg-base-950"></div>
+            </div>
+
+            <p class="font-label-lg mb-xs">Brand (dempet gråblå)</p>
+            <div class="flex h-12 mb-sm rounded-sm overflow-hidden">
+                <div class="flex-1 bg-brand-50"></div>
+                <div class="flex-1 bg-brand-100"></div>
+                <div class="flex-1 bg-brand-200"></div>
+                <div class="flex-1 bg-brand-300"></div>
+                <div class="flex-1 bg-brand-400"></div>
+                <div class="flex-1 bg-brand-500"></div>
+                <div class="flex-1 bg-brand-600"></div>
+                <div class="flex-1 bg-brand-700"></div>
+                <div class="flex-1 bg-brand-800"></div>
+                <div class="flex-1 bg-brand-900"></div>
+                <div class="flex-1 bg-brand-950"></div>
+            </div>
+        </section>
+
+        <!-- TYPOGRAFI & KOMPONENTER -->
+        <section>
+            <h2 class="font-headline-md text-primary mb-md">3. Typografi og spacing</h2>
+            <div class="bg-surface border border-outline p-md space-y-md rounded-none">
+                
+                <div>
+                    <p class="font-label-sm text-outline mb-xs">font-display-md (Newsreader)</p>
+                    <h3 class="font-display-md text-primary">Skisseblokk med skalaer</h3>
+                </div>
+
+                <div>
+                    <p class="font-body-md text-on-surface max-w-2xl">
+                        Nå har vi det beste fra to verdener. Det visuelle uttrykket forblir <span class="bg-brand-100 px-1 rounded-sm text-brand-900">stramt og profesjonelt</span> 
+                        i tråd med skisseblokk-doktrinen (sort, grått, gråblått). Samtidig har du en <a href="#" class="text-link underline hover:text-brand-900 transition-colors">komplett skala</a> å leke med hvis du trenger subtile nyanser i MD-dokumenter eller rapporter.
+                    </p>
+                </div>
+
+                <div class="flex gap-sm items-center">
+                    <button class="bg-primary text-on-primary font-label-md px-sm py-xs border border-primary hover:bg-brand-800 transition-colors">
+                        Primærknapp
+                    </button>
+                    <button class="bg-surface-dim text-on-surface font-label-md px-sm py-xs border border-outline hover:border-brand-400 transition-colors">
+                        Sekundærknapp
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

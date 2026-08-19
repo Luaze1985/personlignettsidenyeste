@@ -12,6 +12,7 @@ Strukturen består av `index.html` (HTML), `css/style.css` (CSS) og `js/navigati
 - `images/profil-480.jpg` – optimalisert profilbilde i produksjon; `images/Profil.jpg` beholdes som kildefil
 - `images/foredrag-vartagder-1240.jpg` – optimalisert foredragsbilde i produksjon; originalutsnittet beholdes som kildefil
 - `fonts/*.woff2` – selv-hostet Newsreader (display/navn). OFL-lisens i `fonts/OFL.txt`.
+- `DESIGN.md` – autoritativ designsystem-fil (@google/design.md-format). Alle tokens, komponentstiler og do's/don'ts.
 - `netlify.toml` – Netlify-oppsett for redirects, 404 og sikkerhetsheadere (CSP, HSTS)
 
 Alt annet kan ignoreres.
@@ -37,23 +38,19 @@ KI Geriljaen (LinkedIn-gruppe): https://www.linkedin.com/groups/11818031/
 | Foredrag | `#foredrag` | 3 hovedtemaer og sammenleggbare lister |
 | Kontakt | `#kontakt` | E-post, LinkedIn og KI-geriljaen |
 
-## Designregler – «Løft håndverket» (2026)
+## Designsystem
 
-**Behold sjelen (hardt – aldri bryt):**
-- Minimalistisk, nesten nakent. Mye luft. Rolig.
-- Kun gråtone + én aksentfarge: `#5a6b7c` (dempet blå-grå). Aldri klar blå, aldri andre farger.
-- Hårstrek-linjer (1px), ingen skygger, ingen gradienter.
-- Bokser: tynn ramme, ingen bakgrunnsfarge.
-- Ingen hero-banner, ingen store fargeflater. «Arkitektens skisseblokk» – ikke «tech startup».
-- Responsivt: stablede bokser på mobil.
+Alle designtokens (farger, typografi, spacing, komponenter) og do's/don'ts er samlet i [`DESIGN.md`](DESIGN.md). Det er den autoritative kilden. Ikke overstyr verdier fra `DESIGN.md` med egne antagelser.
 
-**Tillat løftet (kun dette – ikke finn på mer):**
-- Selv-hostet Newsreader (serif) til navn/seksjonstitler/sitat. Systemfont på brødtekst.
-- Subtil fade-in ved scroll – kun forsterkning: innhold synlig uten JS, respekterer `prefers-reduced-motion`.
-- Gråtonede NRK-glyfer (inline SVG) – kun på TV-/radio-boksene.
-- Sitat-blokk (attribuert) og tekst-troverdighetsstripe.
+**Arbeidsflyt ved redesign:**
+1. Oppdater tokens og prose i `DESIGN.md` til ny retning.
+2. Kjør `npx designmd lint DESIGN.md` – fiks feil og advarsler.
+3. Oppdater `css/style.css` til å implementere de nye tokens.
+4. Oppdater HTML til å bruke nye klasser/struktur.
 
-Se `SPEC.md` for full doktrine + roadmap (inkl. fremtidige sider: kalender, ressursside).
+**Ved ekstern referanse (Stitch, importert HTML, etc.):**
+Ekstraher farger, typografi og komponent-mønstre → oppdater `DESIGN.md` → lint → bygg.
+Ikke kopier ekstern HTML rett inn uten å oppdatere `DESIGN.md` først.
 
 ## Tone i all tekst
 

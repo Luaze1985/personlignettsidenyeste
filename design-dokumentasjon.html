@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design-Dokumentasjon: Skisseblokken</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "base": {
+                            "50": "#f8fafc", "100": "#f1f5f9", "200": "#e2e8f0", "300": "#cbd5e1",
+                            "400": "#94a3b8", "500": "#64748b", "600": "#475569", "700": "#334155",
+                            "800": "#1e293b", "900": "#0f172a", "950": "#020617"
+                        },
+                        "brand": {
+                            "50": "#f4f6f8", "100": "#e3e9ef", "200": "#c7d3df", "300": "#a9bccd",
+                            "400": "#8ca5bc", "500": "#6e8eab", "600": "#5a7a97", "700": "#4a637b",
+                            "800": "#3d5265", "900": "#334453", "950": "#222e39"
+                        },
+                        "primary": "#222e39",
+                        "on-primary": "#ffffff",
+                        "neutral": "#f8fafc",
+                        "surface": "#ffffff",
+                        "surface-dim": "#f1f5f9",
+                        "on-surface": "#020617",
+                        "on-surface-variant": "#475569",
+                        "outline": "#e2e8f0",
+                        "link": "#4a637b"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Newsreader", "serif"], "display-md": ["Newsreader", "serif"], "display-sm": ["Newsreader", "serif"],
+                        "headline-md": ["Newsreader", "serif"], "headline-sm": ["Newsreader", "serif"],
+                        "body-md": ["system-ui", "sans-serif"], "body-sm": ["system-ui", "sans-serif"],
+                        "label-lg": ["system-ui", "sans-serif"], "label-sm": ["system-ui", "sans-serif"], "quote-md": ["Newsreader", "serif"]
+                    },
+                    fontSize: {
+                        "display-lg": ["3.35rem", { "fontWeight": "600" }],
+                        "display-md": ["2rem", { "fontWeight": "600" }],
+                        "display-sm": ["1.35rem", { "fontWeight": "600" }],
+                        "headline-md": ["1.4rem", { "fontWeight": "600" }],
+                        "headline-sm": ["1rem", { "fontWeight": "600" }],
+                        "body-md": ["1rem", { "fontWeight": "400" }],
+                        "body-sm": ["0.95rem", { "fontWeight": "400" }],
+                        "label-lg": ["0.95rem", { "letterSpacing": "0.075em", "fontWeight": "600" }],
+                        "label-sm": ["0.72rem", { "letterSpacing": "0.09em", "fontWeight": "700" }],
+                        "quote-md": ["1.05rem", { "fontWeight": "400", "fontStyle": "italic" }]
+                    },
+                    borderRadius: { "none": "0px", "sm": "0.4rem", "full": "9999px" },
+                    spacing: { "xs": "0.5rem", "sm": "1rem", "md": "2rem", "lg": "4rem", "xl": "6rem" }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral text-on-surface font-body-md min-h-screen">
+
+    <div class="max-w-5xl mx-auto px-md py-lg space-y-xl">
+        
+        <!-- HEADER -->
+        <header class="border-b border-outline pb-md">
+            <p class="font-label-lg text-primary uppercase">Designsystem</p>
+            <h1 class="font-display-lg text-primary mt-xs">Skisseblokken</h1>
+            <p class="font-body-md text-on-surface-variant max-w-3xl mt-sm leading-relaxed">
+                En levende guide til designsystemet for breknejohnsen.no. Bygget på prinsipper fra 
+                <strong>Google Material Design</strong> og <strong>GitHub Primer</strong>. 
+                Her lærer du både <em class="text-on-surface">hvorfor</em> designet er som det er, og 
+                <em class="text-on-surface">hvordan</em> du omsetter reglene til fungerende kode i HTML.
+            </p>
+        </header>
+
+        <!-- 1. FILOSOFI -->
+        <section class="space-y-sm">
+            <h2 class="font-headline-md text-primary">1. Filosofien bak systemet</h2>
+            <div class="space-y-sm text-on-surface-variant max-w-3xl">
+                <p>
+                    <strong>Det usynlige designet:</strong> Godt design for en teksttung profilside bør i stor grad være usynlig. Hvis leseren 
+                    legger merke til typografien i stedet for budskapet, har vi feilet. Uttrykket skal føles som en redaksjonell skisseblokk – nedstrippet, rolig og fokusert.
+                </p>
+                <p>
+                    <strong>Tokens fremfor verdier:</strong> Systemet vårt er bygget opp av <em>design tokens</em>. Som utvikler skal du aldri 
+                    gjette deg frem til en pikselverdi eller skrive inn en hex-fargekode (som <code>#1e293b</code>). I stedet bruker du funksjonelle 
+                    navn som <code>primary</code> eller <code>spacing-md</code>. Dette garanterer at designet er konsekvent og skalerbart.
+                </p>
+                <p>
+                    <strong>Tillit gjennom ro:</strong> Målgruppen her er ledere, HR-fagfolk og offentlig sektor. Tonen er klok og reflektert, ikke selgende. 
+                    Vi skaper tillit ved å unngå glorete effekter. Ingen skygger, ingen gradienter. Vi lener oss på 1px-rammer (hårstreker) og generøs bruk av luft.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. ORDBOK: OVERSETTELSER -->
+        <section class="space-y-sm">
+            <h2 class="font-headline-md text-primary">2. Ordbok: Fra designkonsept til kode</h2>
+            <p class="text-on-surface-variant max-w-3xl mb-md">
+                Dokumentet <code>DESIGN.md</code> fungerer som en fasit for maskiner, mens denne ordboken fungerer som 
+                en fasit for mennesker. Nedenfor ser du hvordan de konseptuelle designvalgene oversettes til Tailwind-klasser 
+                du faktisk skriver i koden din.
+            </p>
+            <div class="bg-surface border border-outline rounded-none overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-surface-dim border-b border-outline">
+                            <th class="p-sm font-label-lg text-on-surface">Tailwind-klasse</th>
+                            <th class="p-sm font-label-lg text-on-surface">Konsept / Variabel</th>
+                            <th class="p-sm font-label-lg text-on-surface">Bruk og hensikt</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline">
+                        <tr>
+                            <td class="p-sm font-mono text-sm text-primary bg-neutral">bg-surface-dim</td>
+                            <td class="p-sm font-body-sm text-on-surface-variant"><code>colors.surface-dim</code></td>
+                            <td class="p-sm font-body-sm text-on-surface">En dempet, kjølig gråtone. Brukes for å markere kort eller innhold (f.eks. knapper og media) som skal skille seg svakt fra bakgrunnen uten å rope.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-sm font-mono text-sm text-primary bg-neutral">text-primary</td>
+                            <td class="p-sm font-body-sm text-on-surface-variant"><code>colors.primary</code></td>
+                            <td class="p-sm font-body-sm text-on-surface">Den mørkeste gråblå fargen. Setter autoritet. Reservert for hovedoverskrifter, knapper og interaktive elementer.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-sm font-mono text-sm text-primary bg-neutral">text-link</td>
+                            <td class="p-sm font-body-sm text-on-surface-variant"><code>colors.link</code></td>
+                            <td class="p-sm font-body-sm text-on-surface">Mørk stålblå. Sørger for at lenker skiller seg fra brødteksten. Kombineres alltid med understrek (<code>underline</code>) av hensyn til tilgjengelighet.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-sm font-mono text-sm text-primary bg-neutral">border-outline</td>
+                            <td class="p-sm font-body-sm text-on-surface-variant"><code>colors.outline</code></td>
+                            <td class="p-sm font-body-sm text-on-surface">Kjølig, lys gråtone som utgjør alle våre "hårstrek-linjer". Skiller seksjoner i stedet for skygger.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. TYPOGRAFI OG LESBARHET -->
+        <section class="space-y-sm">
+            <h2 class="font-headline-md text-primary">3. Typografi og Kognitiv Belastning</h2>
+            <p class="text-on-surface-variant max-w-3xl mb-md">
+                Vi lærer av Google Material Design: typografi eksisterer for å formidle et budskap tydelig. 
+                Vi bruker en streng inndeling mellom vår "Display"-font (Newsreader) og vår brødtekst-font (System UI). 
+                Dette gjør det uanstrengt for øyet å skille mellom en overskrift og informativ tekst.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                <div class="border border-outline p-md bg-surface space-y-sm">
+                    <div>
+                        <p class="font-label-sm text-primary uppercase mb-xs">For overskrifter & sitat</p>
+                        <h3 class="font-display-md text-primary leading-tight">Newsreader</h3>
+                    </div>
+                    <p class="font-body-sm text-on-surface-variant">
+                        En klassisk, redaksjonell serif-font. Gir umiddelbart tyngde og særpreg.
+                        Skal <strong>aldri</strong> brukes til store avsnitt med tekst da det skaper støy for øyet.
+                    </p>
+                    <div class="pt-sm border-t border-outline">
+                        <code class="font-mono text-xs text-primary bg-neutral px-2 py-1">font-display-lg</code>
+                        <code class="font-mono text-xs text-primary bg-neutral px-2 py-1">font-headline-md</code>
+                    </div>
+                </div>
+
+                <div class="border border-outline p-md bg-surface space-y-sm">
+                    <div>
+                        <p class="font-label-sm text-primary uppercase mb-xs">For informasjon & brødtekst</p>
+                        <p class="font-body-md text-on-surface mb-2"><strong>System Font Stack</strong> (Arial, Segoe UI, San Francisco)</p>
+                    </div>
+                    <p class="font-body-sm text-on-surface-variant">
+                        Ved å bruke brukerens innebygde systemfont, maksimerer vi lesbarheten. Systemfontene er 
+                        laget av OS-utviklerne for å være de mest lesbare bokstavene på skjermen. Vi begrenser 
+                        også linjelengden og sørger for romslig linjehøyde (1.6).
+                    </p>
+                    <div class="pt-sm border-t border-outline">
+                        <code class="font-mono text-xs text-primary bg-neutral px-2 py-1">font-body-md</code>
+                        <code class="font-mono text-xs text-primary bg-neutral px-2 py-1">font-label-sm</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SPACING -->
+        <section class="space-y-sm">
+            <h2 class="font-headline-md text-primary">4. Matematiske Avstander (Rytme)</h2>
+            <p class="text-on-surface-variant max-w-3xl mb-md">
+                I likhet med GitHub Primer, fjerner vi all gjetning fra layout. Vi bruker kun fem faste avstander 
+                (<code>xs</code> til <code>xl</code>). Denne matematiske tilnærmingen bygger en vertikal rytme i siden. 
+                Når marginer er konsekvente, slipper hjernen å bruke energi på å "forstå" layouten.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                
+                <div class="border border-outline p-sm bg-surface">
+                    <div class="flex items-center gap-xs">
+                        <div class="bg-primary text-on-primary font-mono text-xs p-xs w-24 text-center">xs (0.5rem)</div>
+                        <div class="w-4 h-4 bg-brand-300"></div>
+                    </div>
+                    <p class="font-body-sm mt-xs text-on-surface-variant">Mikro-luft. Inne i knapper, mellom ikon og tekst, eller rett under en overskrift.</p>
+                </div>
+                
+                <div class="border border-outline p-sm bg-surface">
+                    <div class="flex items-center gap-sm">
+                        <div class="bg-primary text-on-primary font-mono text-xs p-xs w-24 text-center">sm (1rem)</div>
+                        <div class="w-8 h-4 bg-brand-300"></div>
+                    </div>
+                    <p class="font-body-sm mt-xs text-on-surface-variant">Standard padding. Inni infokort, eller avstand mellom tekst-avsnitt.</p>
+                </div>
+
+                <div class="border border-outline p-sm bg-surface">
+                    <div class="flex items-center gap-md">
+                        <div class="bg-primary text-on-primary font-mono text-xs p-xs w-24 text-center">md (2rem)</div>
+                        <div class="w-16 h-4 bg-brand-300"></div>
+                    </div>
+                    <p class="font-body-sm mt-xs text-on-surface-variant">Blokk-avstand. Mellomrom i et grid, eller luft rundt større innholdselementer.</p>
+                </div>
+
+                <div class="border border-outline p-sm bg-surface">
+                    <div class="flex items-center gap-lg">
+                        <div class="bg-primary text-on-primary font-mono text-xs p-xs w-24 text-center">lg (4rem)</div>
+                        <div class="w-32 h-4 bg-brand-300"></div>
+                    </div>
+                    <p class="font-body-sm mt-xs text-on-surface-variant">Seksjonsavstand. Skaper tydelig pusterom mellom helt nye temaer på siden.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. KOMPONENTER: KNAPPER -->
+        <section class="space-y-sm">
+            <h2 class="font-headline-md text-primary">5. Komponenter og Docs-as-Code</h2>
+            <p class="text-on-surface-variant max-w-3xl mb-md">
+                Vi bygger komponenter med <em>utility-klasser</em> fremfor ad-hoc CSS. Nedenfor ser du hvordan 
+                kodestrukturen direkte kobles til komponentens funksjon. Kopier denne koden direkte for å bevare konvensjonen.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                <!-- Primary Button -->
+                <div>
+                    <h3 class="font-label-lg text-primary mb-xs">Primærknapp (Hovedhandling)</h3>
+                    <div class="bg-surface border border-outline p-md flex items-center justify-center mb-sm">
+                        <button class="bg-primary text-on-primary font-label-md px-sm py-xs border border-primary hover:bg-brand-800 transition-colors">
+                            Kontakt meg
+                        </button>
+                    </div>
+                    <div class="bg-neutral border border-outline p-sm font-mono text-sm text-brand-700 overflow-x-auto">
+                        &lt;button class="bg-primary text-on-primary<br>
+                        font-label-md px-sm py-xs<br>
+                        border border-primary hover:bg-brand-800"&gt;<br>
+                        &nbsp;&nbsp;Kontakt meg<br>
+                        &lt;/button&gt;
+                    </div>
+                </div>
+
+                <!-- Secondary Button -->
+                <div>
+                    <h3 class="font-label-lg text-primary mb-xs">Sekundærknapp (Alternativ)</h3>
+                    <div class="bg-surface border border-outline p-md flex items-center justify-center mb-sm">
+                        <button class="bg-surface-dim text-on-surface font-label-md px-sm py-xs border border-outline hover:border-brand-400 transition-colors">
+                            Les mer
+                        </button>
+                    </div>
+                    <div class="bg-neutral border border-outline p-sm font-mono text-sm text-brand-700 overflow-x-auto">
+                        &lt;button class="bg-surface-dim text-on-surface<br>
+                        font-label-md px-sm py-xs<br>
+                        border border-outline hover:border-brand-400"&gt;<br>
+                        &nbsp;&nbsp;Les mer<br>
+                        &lt;/button&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. DO'S AND DON'TS -->
+        <section class="space-y-sm">
+            <h2 class="font-headline-md text-primary">6. Absolutte Regler (Do's & Don'ts)</h2>
+            <p class="text-on-surface-variant max-w-3xl mb-md">
+                De visuelle rammene våre er strenge for å hindre at systemet sporer av over tid. Bruk alltid disse 
+                sammenligningene for å verifisere at du holder deg innenfor konvensjonene.
+            </p>
+            
+            <!-- Regel 1: Dybde -->
+            <div class="mb-lg">
+                <h3 class="font-label-lg text-primary mb-sm border-b border-outline pb-xs">Regel 1: Dybde og Elevation</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-outline">
+                    
+                    <!-- DO -->
+                    <div class="p-md bg-surface border-r border-outline relative">
+                        <div class="absolute top-0 left-0 bg-green-100 text-green-800 font-label-sm px-2 py-1">✓ DO</div>
+                        <div class="mt-md p-md border border-outline bg-neutral flex flex-col items-center justify-center h-24">
+                            <p class="font-label-lg">Seksjonskort</p>
+                        </div>
+                        <p class="font-body-sm mt-md text-on-surface-variant">
+                            <strong>Bruk kun hårstrek-linjer.</strong> All separasjon oppnås med fargekontrast (mellom <code>surface</code> og <code>neutral</code>) og en 1px <code>border-outline</code>.
+                        </p>
+                    </div>
+                    
+                    <!-- DON'T -->
+                    <div class="p-md bg-surface relative">
+                        <div class="absolute top-0 left-0 bg-red-100 text-red-800 font-label-sm px-2 py-1">✕ DON'T</div>
+                        <div class="mt-md p-md bg-white shadow-xl rounded-xl border-transparent flex flex-col items-center justify-center h-24">
+                            <p class="font-label-lg text-blue-600">Seksjonskort</p>
+                        </div>
+                        <p class="font-body-sm mt-md text-on-surface-variant">
+                            <strong>Unngå skygger og avrunding.</strong> Vi bruker aldri <code>shadow-md</code>, myke hjørner eller nye ukjente farger. Dette bryter skisse-følelsen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regel 2: Lenker -->
+            <div class="mb-lg">
+                <h3 class="font-label-lg text-primary mb-sm border-b border-outline pb-xs">Regel 2: Identifisering av Lenker</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-outline">
+                    
+                    <!-- DO -->
+                    <div class="p-md bg-surface border-r border-outline relative">
+                        <div class="absolute top-0 left-0 bg-green-100 text-green-800 font-label-sm px-2 py-1">✓ DO</div>
+                        <div class="mt-md flex items-center h-16">
+                            <p class="font-body-md text-on-surface">
+                                Les mer om vår <a href="#" class="text-link underline hover:text-primary">tilnærming til KI her</a>.
+                            </p>
+                        </div>
+                        <p class="font-body-sm mt-md text-on-surface-variant">
+                            <strong>Alltid understrek i løpende tekst.</strong> For at nettsiden skal være universelt utformet, 
+                            må lenker bruke <code>text-link underline</code>.
+                        </p>
+                    </div>
+                    
+                    <!-- DON'T -->
+                    <div class="p-md bg-surface relative">
+                        <div class="absolute top-0 left-0 bg-red-100 text-red-800 font-label-sm px-2 py-1">✕ DON'T</div>
+                        <div class="mt-md flex items-center h-16">
+                            <p class="font-body-md text-on-surface">
+                                Les mer om vår <a href="#" class="text-link">tilnærming til KI her</a>.
+                            </p>
+                        </div>
+                        <p class="font-body-sm mt-md text-on-surface-variant">
+                            <strong>Farge er ikke nok.</strong> Å fjerne understreken gjør at fargeblinde ikke kan skille lenken fra vanlig tekst.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regel 3: Semantisk typografi -->
+            <div class="mb-lg">
+                <h3 class="font-label-lg text-primary mb-sm border-b border-outline pb-xs">Regel 3: Semantisk Typografi</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-outline">
+                    
+                    <!-- DO -->
+                    <div class="p-md bg-surface border-r border-outline relative">
+                        <div class="absolute top-0 left-0 bg-green-100 text-green-800 font-label-sm px-2 py-1">✓ DO</div>
+                        <div class="mt-md space-y-xs h-24">
+                            <h2 class="font-headline-md text-primary">Seksjonstittel</h2>
+                            <p class="font-body-sm text-on-surface-variant">Beskrivelse lagt til med body-sm for riktig hierarki.</p>
+                        </div>
+                        <p class="font-body-sm mt-xs text-on-surface-variant">
+                            <strong>Semantisk kode.</strong> Bruk <code>&lt;h2&gt;</code> og <code>&lt;p&gt;</code> med riktige tokens (<code>font-headline-md</code> og <code>font-body-sm</code>) som er dokumentert i systemet.
+                        </p>
+                    </div>
+                    
+                    <!-- DON'T -->
+                    <div class="p-md bg-surface relative">
+                        <div class="absolute top-0 left-0 bg-red-100 text-red-800 font-label-sm px-2 py-1">✕ DON'T</div>
+                        <div class="mt-md space-y-xs h-24">
+                            <div class="text-[24px] text-gray-800 font-serif">Seksjonstittel</div>
+                            <div class="text-[14px] text-gray-400">Beskrivelse lagt til med body-sm for riktig hierarki.</div>
+                        </div>
+                        <p class="font-body-sm mt-xs text-on-surface-variant">
+                            <strong>Aldri bruk hardkodede verdier.</strong> Ikke dikter visuelle detaljer med <code>text-[24px]</code> eller skipp HTML-tags (som å bruke div-er for overskrifter).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</body>
+</html>

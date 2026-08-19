@@ -423,14 +423,14 @@ test.describe('Security Headers & E2E Validation', () => {
     // Wait for scroll highlights to initialize
     await page.waitForTimeout(500);
 
-    // Click "Tjenester" and check scroll and active class
-    const tjenesterLink = page.locator('nav a[href="#tjenester"]');
-    await tjenesterLink.click();
+    // Click "Arbeidsflyt" and check scroll and active class
+    const arbeidsflytLink = page.locator('nav a[href="#arbeidsbenken"]');
+    await arbeidsflytLink.click();
     
     // Wait for scroll behavior
     await page.waitForTimeout(1000);
     
-    const hasActiveClass = await tjenesterLink.evaluate(el => el.classList.contains('active'));
+    const hasActiveClass = await arbeidsflytLink.evaluate(el => el.classList.contains('active'));
     expect(hasActiveClass).toBe(true);
   });
 
