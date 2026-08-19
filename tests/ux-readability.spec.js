@@ -42,6 +42,38 @@ test.describe('UX, UI and readability', () => {
     await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
   });
 
+  test('reveals a working mailto link with the readable contact style on click', async ({ page }) => {
+    const button = page.locator('#reveal-email');
+    await expect(button).toBeVisible();
+    await button.click();
+
+    const link = page.locator('.contact-links a[href^="mailto:"]');
+    await expect(link).toHaveCount(1);
+    await expect(link).toHaveAttribute('href', 'mailto:larserik.bn@gmail.com');
+    await expect(link).toHaveText('larserik.bn@gmail.com');
+
+    // "Samme lesbare kontaktstil": understreket, 0.95rem, samme farge som de
+    // andre kontaktlenkene (hvit på mørkt panel — aksentfargen rendres aldri
+    // fordi --accent-color ikke er definert; se code-review-notat).
+    const style = await link.evaluate((el) => {
+      const cs = getComputedStyle(el);
+      return {
+        color: cs.color,
+        textDecorationLine: cs.textDecorationLine,
+        fontSize: cs.fontSize,
+        offset: cs.textUnderlineOffset,
+      };
+    });
+    const siblingColor = await page
+      .locator('.contact-links a[href*="linkedin.com/in"]')
+      .evaluate((el) => getComputedStyle(el).color);
+
+    expect(style.textDecorationLine).toContain('underline');
+    expect(style.fontSize).toBe('15.2px');
+    expect(style.offset).toBe('4px');
+    expect(style.color).toBe(siblingColor);
+  });
+
   test('loads the optimized profile and speaking images', async ({ page }) => {
     const imageSources = await page.locator('img').evaluateAll((images) =>
       images.map((image) => ({

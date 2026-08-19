@@ -75,10 +75,7 @@
             var link = document.createElement('a');
             link.href = 'mailto:' + addr;
             link.textContent = addr;
-            link.style.color = 'var(--accent-color)';
-            link.style.textDecoration = 'underline';
-            link.style.textUnderlineOffset = '4px';
-            link.style.fontSize = '0.95rem';
+            link.className = 'contact-email-link';
             emailBtn.parentNode.replaceChild(link, emailBtn);
         });
     }
