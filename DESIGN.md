@@ -145,10 +145,10 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 
 - **Container:** Maks 1180 px, sentrert.
 - **Hero:** Bred arbeidsflate med stor overskrift og en kort forklaring av verdiløftet. Målgruppefeltene følger direkte etter heroen og er de eneste konkrete inngangene videre.
-- **Sidestruktur:** Fire deler etter headeren: inngang, Arbeidsbenken, erfaring/referanser og om/foredrag/kontakt. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
+- **Sidestruktur:** Fem deler etter headeren: inngang, Arbeidsbenken, om/foredrag med bilde, erfaring/referanser og kontakt. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
 - **Arbeidsbenken:** Én leseretning: avklare → prøve → kontrollere → velge. Etter arbeidsstegene kommer «passer når / passer ikke når» og én CTA.
-- **Erfaring:** Fire synlige bevis på mørk flate. Dokumenterte lenker som ikke er primærbevis ligger i én `<details>`-liste.
-- **Om og foredrag:** På desktop står introduksjonen og foredragsbildet side om side, med bildet øverst i seksjonen. På mobil stables introduksjonen før bildet. Foredragsbildet bruker et 4:3-utsnitt med motivet vektet mot øvre del av rammen.
+- **Om og foredrag:** Kommer rett etter Arbeidsbenken. På desktop står introduksjonen og foredragsbildet side om side; på mobil kommer bildet før introduksjonen. Foredragsbildet bruker det stramme svart-hvitt-utsnittet fra Arendalsuka i 4:3-format.
+- **Erfaring:** Fire synlige bevis på mørk flate etter om/foredrag. Dokumenterte lenker som ikke er primærbevis ligger i én `<details>`-liste.
 - **To arbeidsspor:** To felt etter hero; «Dette hjelper jeg med» peker mot praktisk arbeidsflyt, og «Dette bygger det på» peker mot erfaring og foredrag.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
 

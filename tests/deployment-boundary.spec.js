@@ -16,6 +16,7 @@ const expectedFiles = [
   'fonts/newsreader-latin-ext-400-normal.woff2',
   'fonts/newsreader-latin-ext-600-normal.woff2',
   'images/foredrag-vartagder-1240.jpg',
+  'images/foredrag-vartagder-snitt-bw.jpg',
   'images/profil-480.jpg',
   'index.html',
   'js/navigation.js',
@@ -66,7 +67,6 @@ test.describe('Production deployment boundary', () => {
       'package.json',
       'tests/header-validator.spec.js',
       'images/Profil.jpg',
-      'images/foredrag-vartagder-snitt-bw.jpg',
     ];
 
     for (const relativePath of forbiddenFiles) {

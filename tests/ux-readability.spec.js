@@ -31,8 +31,8 @@ test.describe('UX, UI and readability', () => {
 
     expect(navigationTargets).toEqual([
       '#arbeidsbenken',
-      '#erfaring',
       '#om',
+      '#erfaring',
       '#kontakt',
     ]);
 
@@ -91,7 +91,7 @@ test.describe('UX, UI and readability', () => {
 
     expect(imageSources).toEqual(expect.arrayContaining([
       expect.objectContaining({ className: 'profile-pic', src: 'images/profil-480.jpg', naturalWidth: 480 }),
-      expect.objectContaining({ src: 'images/foredrag-vartagder-1240.jpg', naturalWidth: 1240 }),
+      expect.objectContaining({ src: 'images/foredrag-vartagder-snitt-bw.jpg' }),
     ]));
   });
 

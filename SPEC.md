@@ -13,11 +13,12 @@ Personlig nettside for **Lars Erik Brekne Johnsen**. Siden skal vise to sider av
 
 ## Sidehistorie
 
-1. **Header** — profilbilde, navn og fire navigasjonsmål: Arbeidsflyt, Erfaring, Om, Kontakt.
+1. **Header** — profilbilde, navn og fire navigasjonsmål: Arbeidsflyt, Om, Erfaring, Kontakt.
 2. **Inngang** — «Mennesker først. Teknologi som virker.» etterfulgt direkte av to arbeidsspor. Verdiløftet forklarer retningen; «Dette hjelper jeg med» og «Dette bygger det på» er de konkrete valgene videre.
 3. **Arbeidsbenken** — startpakken forklart som avklare → prøve → kontrollere → velge, med passer/passer ikke og én CTA.
-4. **Erfaring og referanser** — fire prioriterte bevis på mørk flate; øvrig dokumentasjon i én detaljvisning.
-5. **Om, foredrag og kontakt** — introduksjon og foredragsbilde står side om side på desktop, og stables på mobil. Foredragstemaer og kontakt følger som én rolig avslutning.
+4. **Om og foredrag** — introduksjon og foredragsbilde står side om side på desktop. På mobil kommer bildet før introduksjonen. Foredragstemaene følger under.
+5. **Erfaring og referanser** — fire prioriterte bevis på mørk flate; øvrig dokumentasjon i én detaljvisning.
+6. **Kontakt** — en rolig og tydelig måte å starte en samtale om en konkret arbeidsoppgave.
 
 Det skal ikke finnes egne, likeverdige seksjoner for media, tjenester, innsikt og foredrag. Innholdet er bevart, men samlet der det gir mest mening.
 
