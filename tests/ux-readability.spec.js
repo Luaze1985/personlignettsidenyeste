@@ -37,6 +37,11 @@ test.describe('UX, UI and readability', () => {
     ]);
 
     await expect(page.locator('#media, #tjenester, #innsikt, #foredrag')).toHaveCount(0);
+    await expect(page.locator('.hero-action')).toHaveCount(0);
+    await expect(page.locator('.audience-gate')).toContainText('Dette hjelper jeg med');
+    await expect(page.locator('.audience-gate')).toContainText('Dette bygger det på');
+    await expect(page.locator('.audience-gate')).not.toContainText('håndverksbedrifter');
+    await expect(page.locator('.audience-gate')).not.toContainText('større virksomheter');
     await expect(page.locator('.steps li')).toHaveCount(4);
     await expect(page.locator('#arbeidsbenken')).toContainText('KI lager struktur og utkast');
     await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
@@ -51,6 +56,7 @@ test.describe('UX, UI and readability', () => {
     await expect(link).toHaveCount(1);
     await expect(link).toHaveAttribute('href', 'mailto:larserik.bn@gmail.com');
     await expect(link).toHaveText('larserik.bn@gmail.com');
+    await expect(link).toBeFocused();
 
     // "Samme lesbare kontaktstil": understreket, 0.95rem, samme farge som de
     // andre kontaktlenkene (hvit på mørkt panel — aksentfargen rendres aldri
@@ -85,7 +91,6 @@ test.describe('UX, UI and readability', () => {
 
     expect(imageSources).toEqual(expect.arrayContaining([
       expect.objectContaining({ className: 'profile-pic', src: 'images/profil-480.jpg', naturalWidth: 480 }),
-      expect.objectContaining({ className: 'about-image', src: 'images/profil-480.jpg', naturalWidth: 480 }),
       expect.objectContaining({ src: 'images/foredrag-vartagder-1240.jpg', naturalWidth: 1240 }),
     ]));
   });

@@ -1,9 +1,9 @@
 # Design-spec — ryddig Arbeidsbenk-forside
 
-Personlig nettside for **Lars Erik Brekne Johnsen**. Siden skal gjøre to ting uten å virke som to forskjellige merkevarer:
+Personlig nettside for **Lars Erik Brekne Johnsen**. Siden skal vise to sider av samme arbeid uten å virke som to forskjellige merkevarer:
 
-1. Håndverksbedrifter skal forstå én konkret, trygg arbeidsflyt med KI.
-2. Større virksomheter og referansesjekkere skal raskt finne erfaring, faglig tyngde og dokumenterte lenker.
+1. Besøkende skal forstå én konkret, trygg arbeidsflyt med KI.
+2. Besøkende skal raskt finne erfaring, faglig tyngde og dokumenterte lenker.
 
 ## Produksjonsstruktur
 
@@ -14,10 +14,10 @@ Personlig nettside for **Lars Erik Brekne Johnsen**. Siden skal gjøre to ting u
 ## Sidehistorie
 
 1. **Header** — profilbilde, navn og fire navigasjonsmål: Arbeidsflyt, Erfaring, Om, Kontakt.
-2. **Inngang** — «Mennesker først. Teknologi som virker.», én primærhandling og to målgruppeinnganger.
+2. **Inngang** — «Mennesker først. Teknologi som virker.» etterfulgt direkte av to arbeidsspor. Verdiløftet forklarer retningen; «Dette hjelper jeg med» og «Dette bygger det på» er de konkrete valgene videre.
 3. **Arbeidsbenken** — startpakken forklart som avklare → prøve → kontrollere → velge, med passer/passer ikke og én CTA.
 4. **Erfaring og referanser** — fire prioriterte bevis på mørk flate; øvrig dokumentasjon i én detaljvisning.
-5. **Om, foredrag og kontakt** — profil, foredragstemaer, foredragsbilde og kontakt som én rolig avslutning.
+5. **Om, foredrag og kontakt** — introduksjon og foredragsbilde står side om side på desktop, og stables på mobil. Foredragstemaer og kontakt følger som én rolig avslutning.
 
 Det skal ikke finnes egne, likeverdige seksjoner for media, tjenester, innsikt og foredrag. Innholdet er bevart, men samlet der det gir mest mening.
 

@@ -108,12 +108,16 @@ Designsystem for [breknejohnsen.no](https://breknejohnsen.no/). Retningen bygger
 
 **En moderne arbeidsbok.** Uttrykket er konkret, robust og presist, med synlige arbeidssteg og få, tydelige overleveringer mellom innhold. Det skal føles som et sted der arbeid blir sortert og forstått – ikke som en teknologiplattform, konsulentmal eller byggeplass.
 
-Siden betjener to besøksbehov uten å splitte identiteten:
+Siden viser to sider av samme arbeid uten å splitte identiteten:
 
-1. Håndverksbedrifter skal raskt kjenne igjen praktisk arbeidsflythjelp og faglig kontroll.
-2. Referansesjekkere og større virksomheter skal raskt finne media, erfaring, foredrag og faglig bredde.
+1. Praktisk arbeidsflyt: konkret hjelp til å gjøre én oppgave lettere, med fagpersonen i kontroll.
+2. Erfaring og foredrag: media, fagscener og bakgrunn som viser hvordan arbeidet er forankret.
 
 Eksisterende innhold, lenker og «Mennesker først» er stabile, men skal samles i færre, mer lesbare deler. Visuelt hierarki, luft og komposisjon gjør forskjellen.
+
+## Prototypeport før produksjonskode
+
+Ved hver brukerbestilte kodeendring skal det først lages en tydelig merket, midlertidig prototype med `prototype`-skillen. For synlige endringer i innhold, layout, bilder eller interaksjon skal prototypen vises i visningsverktøyet på minst desktop (1440 px) og mobil (390 px), og brukeren velger retning før produksjonsfilene endres. For rene logikk- eller funksjonsendringer skal prototypen vise relevant tilstand og oppførsel. Prototypen slettes etter at beslutningen er tatt; beslutningen beholdes i ticket eller spesifikasjon.
 
 ## Colors
 
@@ -140,11 +144,12 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 ## Layout
 
 - **Container:** Maks 1180 px, sentrert.
-- **Hero:** Bred arbeidsflate med stor overskrift, én primærhandling og separat handlingskolonne.
+- **Hero:** Bred arbeidsflate med stor overskrift og en kort forklaring av verdiløftet. Målgruppefeltene følger direkte etter heroen og er de eneste konkrete inngangene videre.
 - **Sidestruktur:** Fire deler etter headeren: inngang, Arbeidsbenken, erfaring/referanser og om/foredrag/kontakt. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
 - **Arbeidsbenken:** Én leseretning: avklare → prøve → kontrollere → velge. Etter arbeidsstegene kommer «passer når / passer ikke når» og én CTA.
 - **Erfaring:** Fire synlige bevis på mørk flate. Dokumenterte lenker som ikke er primærbevis ligger i én `<details>`-liste.
-- **Målgruppeinngang:** To felt etter hero; håndverksbedrifter er den primære inngangen, større virksomheter peker mot erfaring og foredrag.
+- **Om og foredrag:** På desktop står introduksjonen og foredragsbildet side om side, med bildet øverst i seksjonen. På mobil stables introduksjonen før bildet. Foredragsbildet bruker et 4:3-utsnitt med motivet vektet mot øvre del av rammen.
+- **To arbeidsspor:** To felt etter hero; «Dette hjelper jeg med» peker mot praktisk arbeidsflyt, og «Dette bygger det på» peker mot erfaring og foredrag.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
 
 Breakpoints: 980 px og 768 px.
@@ -167,9 +172,9 @@ Minstehøyde 44 px. Primærknappen er oksidrød med hvit tekst og blir kullsort 
 
 Fire trinn har lys papirflate, 1 px ramme og 1.5 rem padding. De nummereres med monospace-etikett. Ikke bruk flere kortrekker for tjenester og innsikt ved siden av denne flyten.
 
-### Målgruppefelt
+### Arbeidsspor
 
-To felt med samme konstruksjon og tydelig lenke. De skal vise to innganger til samme personlige profil, ikke to separate merkevarer.
+To felt med samme konstruksjon og tydelig lenke. De skal vise praktisk hjelp og faglig bakgrunn i samme personlige profil, ikke to separate målgrupper eller merkevarer.
 
 ### Troverdighetsflate
 
@@ -183,7 +188,7 @@ Media, statsrådbesøk, utvalgte referanser og oppdrag samles på én mørk flat
 
 - **Do** behold eksisterende innhold, lenker og «Mennesker først».
 - **Do** bruk få rutenett, nummerering og synlige arbeidssteg.
-- **Do** la håndverksbedrifter og større virksomheter finne hver sin tydelige inngang.
+- **Do** la praktisk arbeidsflyt og faglig bakgrunn ha hver sin tydelige inngang.
 - **Do** bruk Newsreader som kontrast, ikke som eneste uttrykk.
 - **Do** skriv «KI» i norsk tekst.
 - **Don't** gjør Lars til en ren håndverkskonsulent.
