@@ -2,6 +2,7 @@ const { test, expect } = require('@playwright/test');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 let server;
 const PORT = 3009;
@@ -269,6 +270,24 @@ test.describe('Security Headers & E2E Validation', () => {
     for (const api of requiredRestrictedAPIs) {
       // Check that they are restricted, i.e. api=()
       expect(policy).toContain(`${api}=()`);
+    }
+  });
+
+  test('TC-2.9: Inline script SHA-256 hash matches netlify.toml CSP directive', async () => {
+    const htmlPath = path.resolve(__dirname, '../index.html');
+    const tomlPath = path.resolve(__dirname, '../netlify.toml');
+    const html = fs.readFileSync(htmlPath, 'utf8');
+    const toml = fs.readFileSync(tomlPath, 'utf8');
+
+    const scriptMatches = [...html.matchAll(/<script(?![^>]*(?:type=["']application\/ld\+json["']|src=))[^>]*>([\s\S]*?)<\/script>/gi)];
+    expect(scriptMatches.length).toBeGreaterThan(0);
+
+    for (const match of scriptMatches) {
+      const scriptContent = match[1];
+      if (!scriptContent.trim()) continue;
+      const hash = crypto.createHash('sha256').update(scriptContent, 'utf8').digest('base64');
+      const expectedCspToken = `'sha256-${hash}'`;
+      expect(toml).toContain(expectedCspToken);
     }
   });
 
