@@ -77,6 +77,7 @@
             link.textContent = addr;
             link.className = 'contact-email-link';
             emailBtn.parentNode.replaceChild(link, emailBtn);
+            link.focus();
         });
     }
 })();

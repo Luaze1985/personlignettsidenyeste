@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skisser for Fase 2 – Tre designretninger (2026)</title>
+  <style>
+    @font-face {
+      font-family: "Newsreader";
+      src: url("../fonts/newsreader-latin-400-normal.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Newsreader";
+      src: url("../fonts/newsreader-latin-600-normal.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #1d211f;
+      --paper: #f4f0e8;
+      --surface: #fbfaf7;
+      --muted: #575e5a;
+      --line: #c4bcb0;
+      --line-subtle: #ded8cb;
+      --accent: #8a3f2b;
+      --accent-soft: #f7ede8;
+      --link: #713322;
+      --accent-on-dark: #dfa692;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: "Newsreader", Georgia, serif;
+      --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: #e3ded5; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* PROTOTYPE CONTROLS */
+    .proto-banner {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #151817;
+      color: #fff;
+      border-bottom: 2px solid var(--accent);
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+    .proto-banner-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+    }
+    .proto-tag {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.68rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .proto-tabs {
+      display: flex;
+      gap: 0.4rem;
+      background: #252b28;
+      padding: 0.25rem;
+      border-radius: 4px;
+    }
+    .proto-tab-btn {
+      background: transparent;
+      border: 0;
+      color: #d1cbc2;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .proto-tab-btn:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+    .proto-tab-btn.active {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .proto-shell {
+      max-width: 1180px;
+      margin: 1.5rem auto 5rem;
+      background: var(--paper);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+      min-height: 100vh;
+      border: 1px solid var(--line);
+    }
+
+    .concept-view {
+      display: none;
+    }
+    .concept-view.active {
+      display: block;
+    }
+
+    .concept-explainer {
+      background: #fbfaf7;
+      border-bottom: 1px solid var(--line);
+      padding: 1.5rem 2.5rem;
+    }
+    .concept-explainer h2 {
+      margin: 0 0 0.4rem;
+      font: 600 1.35rem/1.2 var(--serif);
+      color: var(--accent);
+    }
+    .concept-explainer p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 78ch;
+    }
+
+    /* COMMON PAGE ELEMENTS */
+    .c-container {
+      width: calc(100% - 4rem);
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+    @media (max-width: 760px) {
+      .c-container { width: calc(100% - 2rem); }
+      .concept-explainer { padding: 1.25rem 1rem; }
+    }
+
+    /* BUTTONS */
+    .c-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 44px;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid var(--ink);
+    }
+    .c-btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .c-btn-primary:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+    .c-btn-secondary {
+      background: var(--surface);
+      color: var(--ink);
+    }
+    .c-btn-secondary:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    /* ========================================================= */
+    /* RETNING A: FORSIKTIG FINPUSS                             */
+    /* ========================================================= */
+    #retning-a .a-header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(244, 240, 232, 0.98);
+      position: sticky;
+      top: 50px;
+      z-index: 10;
+    }
+    #retning-a .a-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 1.5rem;
+    }
+    #retning-a .a-profile-link {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    #retning-a .a-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+    #retning-a .a-name {
+      font: 600 1.2rem/1.1 var(--serif);
+      color: var(--ink);
+      display: block;
+    }
+    #retning-a .a-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.15rem;
+    }
+    #retning-a .a-nav {
+      display: flex;
+      gap: 1.6rem;
+    }
+    #retning-a .a-nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.3rem 0;
+    }
+    #retning-a .a-nav a:hover {
+      color: var(--accent);
+    }
+
+    #retning-a .a-hero {
+      padding: 4.5rem 0 3.5rem;
+    }
+    #retning-a .a-eyebrow {
+      font: 600 0.75rem/1.2 var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+    #retning-a .a-hero h1 {
+      font: 600 clamp(2.8rem, 5vw, 4.4rem)/1.04 var(--serif);
+      letter-spacing: -0.025em;
+      margin: 0 0 1.2rem;
+      max-width: 14ch;
+      color: var(--ink);
+    }
+    #retning-a .a-hero-lead {
+      font-size: 1.18rem;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 48ch;
+      margin: 0 0 2rem;
+    }
+
+    #retning-a .a-dual-track {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      margin-bottom: 4rem;
+    }
+    #retning-a .a-track-card {
+      padding: 2.2rem;
+      text-decoration: none;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+    }
+    #retning-a .a-track-card:first-child {
+      border-right: 1px solid var(--line);
+      background: #fff;
+    }
+    #retning-a .a-track-card h2 {
+      font: 600 1.6rem/1.15 var(--serif);
+      margin: 0.6rem 0 0.8rem;
+    }
+    #retning-a .a-track-card p {
+      margin: 0 0 1.4rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+    #retning-a .a-track-link {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    #retning-a .a-section {
+      padding: 4rem 0;
+      border-top: 1px solid var(--line);
+    }
+    #retning-a .a-section-head {
+      margin-bottom: 2.5rem;
+      max-width: 60ch;
+    }
+    #retning-a .a-section-head h2 {
+      font: 600 clamp(1.9rem, 3.2vw, 2.7rem)/1.1 var(--serif);
+      margin: 0.5rem 0 0.8rem;
+    }
+
+    #retning-a .a-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      margin-bottom: 2.5rem;
+    }
+    #retning-a .a-step-col {
+      padding: 1.6rem 1.4rem;
+      border-right: 1px solid var(--line);
+    }
+    #retning-a .a-step-col:last-child {
+      border-right: 0;
+    }
+    #retning-a .a-step-num {
+      font: 700 0.72rem/1 var(--mono);
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+    #retning-a .a-step-col h3 {
+      font: 600 1.25rem/1.2 var(--serif);
+      margin: 0.8rem 0 0.5rem;
+    }
+    #retning-a .a-step-col p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    #retning-a .a-about-block {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    #retning-a .a-photo-wrap {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 0.5rem;
+      border-radius: 2px;
+    }
+    #retning-a .a-photo-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+    #retning-a .a-photo-wrap figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ========================================================= */
+    /* RETNING B: STERKERE GRAFISK IDENTITET                    */
+    /* ========================================================= */
+    #retning-b {
+      --b-grid-line: #cfc7ba;
+    }
+    #retning-b .b-header {
+      border-bottom: 2px solid var(--ink);
+      background: var(--paper);
+      position: sticky;
+      top: 50px;
+      z-index: 10;
+    }
+    #retning-b .b-header-inner {
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      align-items: stretch;
+      min-height: 70px;
+    }
+    #retning-b .b-brand-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.8rem 1.2rem;
+      border-right: 1px solid var(--b-grid-line);
+      text-decoration: none;
+      color: var(--ink);
+    }
+    #retning-b .b-logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--ink);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 700 0.85rem/1 var(--mono);
+      letter-spacing: 0.05em;
+    }
+    #retning-b .b-nav-cell {
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      gap: 2rem;
+    }
+    #retning-b .b-nav-cell a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+    }
+    #retning-b .b-nav-cell a:hover {
+      color: var(--accent);
+    }
+    #retning-b .b-action-cell {
+      display: flex;
+      align-items: center;
+      padding: 0 1.2rem;
+      border-left: 1px solid var(--b-grid-line);
+    }
+
+    #retning-b .b-hero-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      border-bottom: 2px solid var(--ink);
+    }
+    #retning-b .b-col-meta {
+      border-right: 1px solid var(--b-grid-line);
+      padding: 3rem 1.5rem;
+      background: rgba(0,0,0,0.015);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    #retning-b .b-col-meta strong {
+      color: var(--ink);
+      display: block;
+      margin-top: 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    #retning-b .b-col-meta strong:first-child {
+      margin-top: 0;
+    }
+    #retning-b .b-col-main {
+      padding: 3.5rem 3rem 4rem;
+    }
+    #retning-b .b-col-main h1 {
+      font: 600 clamp(2.9rem, 5.2vw, 4.6rem)/1.02 var(--serif);
+      margin: 0 0 1.25rem;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    #retning-b .b-col-main p.lead {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0 0 2.2rem;
+    }
+    #retning-b .b-cross-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding-top: 1.8rem;
+      border-top: 1px dashed var(--b-grid-line);
+    }
+
+    #retning-b .b-split-section {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      border-bottom: 1px solid var(--b-grid-line);
+    }
+    #retning-b .b-section-label {
+      border-right: 1px solid var(--b-grid-line);
+      padding: 3rem 1.5rem;
+      background: rgba(0,0,0,0.01);
+    }
+    #retning-b .b-section-tag {
+      font: 700 0.72rem/1 var(--mono);
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    #retning-b .b-section-body {
+      padding: 3rem;
+    }
+    #retning-b .b-section-body h2 {
+      font: 600 2.2rem/1.15 var(--serif);
+      margin: 0 0 1.5rem;
+    }
+
+    #retning-b .b-matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--b-grid-line);
+      border: 1px solid var(--b-grid-line);
+      margin-top: 1.5rem;
+    }
+    #retning-b .b-matrix-cell {
+      background: var(--surface);
+      padding: 1.8rem;
+      position: relative;
+    }
+    #retning-b .b-matrix-cell::after {
+      content: "+";
+      position: absolute;
+      bottom: -7px;
+      right: -5px;
+      font: 700 12px/1 var(--mono);
+      color: var(--accent);
+      z-index: 2;
+    }
+    #retning-b .b-matrix-cell h3 {
+      font: 600 1.3rem/1.2 var(--serif);
+      margin: 0.5rem 0 0.5rem;
+    }
+    #retning-b .b-matrix-cell p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    /* ========================================================= */
+    /* RETNING C: MER PERSONLIG OG KOMMERSIELL                  */
+    /* ========================================================= */
+    #retning-c .c-header {
+      background: #fff;
+      border-bottom: 1px solid var(--line-subtle);
+      position: sticky;
+      top: 50px;
+      z-index: 10;
+    }
+    #retning-c .c-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+    }
+    #retning-c .c-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    #retning-c .c-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 0 2px var(--accent-soft), 0 0 0 3px var(--accent);
+    }
+    #retning-c .c-brand-title {
+      font: 600 1.25rem/1.1 var(--serif);
+    }
+    #retning-c .c-brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      font-weight: 500;
+    }
+    #retning-c .c-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+    #retning-c .c-nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.92rem;
+    }
+    #retning-c .c-nav a:hover {
+      color: var(--accent);
+    }
+
+    /* HERO C: Two Columns with Portrait & Fast Credibility */
+    #retning-c .c-hero {
+      padding: 3.8rem 0 3.2rem;
+      background: linear-gradient(180deg, #fff 0%, var(--paper) 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    #retning-c .c-hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    #retning-c .c-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+    #retning-c .c-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    #retning-c .c-hero-left h1 {
+      font: 600 clamp(2.6rem, 4.2vw, 3.8rem)/1.06 var(--serif);
+      margin: 0 0 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    #retning-c .c-hero-left p.lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 2rem;
+      max-width: 48ch;
+    }
+    #retning-c .c-hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    #retning-c .c-trust-strip {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line-subtle);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    #retning-c .c-trust-strip strong {
+      color: var(--ink);
+    }
+
+    /* Hero Right: Portrait + Profile Card */
+    #retning-c .c-profile-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    #retning-c .c-card-img-wrap {
+      position: relative;
+      background: #e9e5dc;
+    }
+    #retning-c .c-card-img-wrap img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+    }
+    #retning-c .c-card-badge {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background: rgba(29, 33, 31, 0.9);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    #retning-c .c-card-content {
+      padding: 1.4rem;
+    }
+    #retning-c .c-card-quote {
+      font: italic 1.05rem/1.4 var(--serif);
+      margin: 0 0 1rem;
+      color: var(--ink);
+      border-left: 3px solid var(--accent);
+      padding-left: 0.85rem;
+    }
+    #retning-c .c-card-bullets {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line-subtle);
+      padding-top: 0.8rem;
+    }
+    #retning-c .c-card-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    #retning-c .c-card-bullets li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* THREE CLEAR COMMERCIAL PACKAGES */
+    #retning-c .c-packages-section {
+      padding: 4.5rem 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+    #retning-c .c-section-header {
+      text-align: center;
+      max-width: 62ch;
+      margin: 0 auto 3rem;
+    }
+    #retning-c .c-section-header p.eyebrow {
+      font: 700 0.74rem/1 var(--mono);
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    #retning-c .c-section-header h2 {
+      font: 600 clamp(2rem, 3.5vw, 2.8rem)/1.15 var(--serif);
+      margin: 0 0 0.8rem;
+    }
+    #retning-c .c-section-header p.sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    #retning-c .c-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    #retning-c .c-package-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    #retning-c .c-package-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+    #retning-c .c-package-card.highlight {
+      border: 2px solid var(--accent);
+    }
+    #retning-c .c-ribbon {
+      position: absolute;
+      top: -12px;
+      left: 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #retning-c .c-package-top .c-pkg-type {
+      font: 700 0.72rem/1 var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    #retning-c .c-package-top h3 {
+      font: 600 1.55rem/1.2 var(--serif);
+      margin: 0 0 0.8rem;
+    }
+    #retning-c .c-package-top p.desc {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.55;
+      margin: 0 0 1.5rem;
+    }
+    #retning-c .c-package-features {
+      margin: 0 0 2rem;
+      padding: 1.2rem 0 0;
+      border-top: 1px solid var(--line-subtle);
+      list-style: none;
+      font-size: 0.88rem;
+    }
+    #retning-c .c-package-features li {
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      color: var(--ink);
+    }
+    #retning-c .c-package-features li span.bullet {
+      color: var(--accent);
+      font-weight: bold;
+    }
+    #retning-c .c-package-bottom .c-meta-line {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* DIRECT CONTACT BLOCK C */
+    #retning-c .c-contact-section {
+      padding: 4.5rem 0;
+      background: var(--ink);
+      color: #fff;
+    }
+    #retning-c .c-contact-box {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    #retning-c .c-contact-box h2 {
+      font: 600 clamp(2rem, 3.5vw, 2.8rem)/1.1 var(--serif);
+      margin: 0.5rem 0 1rem;
+    }
+    #retning-c .c-contact-box p.lead {
+      color: #e7e3dc;
+      font-size: 1.1rem;
+      margin: 0 0 1.8rem;
+      max-width: 48ch;
+    }
+    #retning-c .c-contact-channels {
+      background: #252b28;
+      padding: 2rem;
+      border-radius: 6px;
+      border: 1px solid #3c4440;
+    }
+    #retning-c .c-channel-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.2rem;
+    }
+    #retning-c .c-channel-item:last-child {
+      margin-bottom: 0;
+    }
+    #retning-c .c-channel-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-on-dark);
+      margin-bottom: 0.25rem;
+    }
+    #retning-c .c-channel-value {
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    #retning-c .c-channel-value:hover {
+      color: var(--accent-on-dark);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px) {
+      #retning-a .a-dual-track { grid-template-columns: 1fr; }
+      #retning-a .a-track-card:first-child { border-right: 0; border-bottom: 1px solid var(--line); }
+      #retning-a .a-steps { grid-template-columns: 1fr 1fr; }
+      #retning-a .a-step-col:nth-child(2) { border-right: 0; }
+      #retning-a .a-about-block { grid-template-columns: 1fr; }
+
+      #retning-b .b-hero-grid,
+      #retning-b .b-split-section { grid-template-columns: 1fr; }
+      #retning-b .b-col-meta,
+      #retning-b .b-section-label { border-right: 0; border-bottom: 1px solid var(--b-grid-line); padding: 1.5rem; }
+      #retning-b .b-col-main,
+      #retning-b .b-section-body { padding: 2rem 1.5rem; }
+
+      #retning-c .c-hero-grid { grid-template-columns: 1fr; }
+      #retning-c .c-packages-grid { grid-template-columns: 1fr; }
+      #retning-c .c-contact-box { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      #retning-a .a-steps { grid-template-columns: 1fr; }
+      #retning-a .a-step-col { border-right: 0; border-bottom: 1px solid var(--line); }
+      #retning-a .a-nav { display: none; }
+      #retning-b .b-nav-cell { display: none; }
+      #retning-b .b-matrix { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROTOTYPE TOP CONTROLLER -->
+  <div class="proto-banner">
+    <div class="proto-banner-title">
+      <span class="proto-tag">Fase 2 Prototype</span>
+      <span>breknejohnsen.no — Sammenlign 3 designretninger</span>
+    </div>
+    <div class="proto-tabs" role="tablist">
+      <button class="proto-tab-btn active" data-target="retning-a" role="tab" aria-selected="true">A. Forsiktig finpuss</button>
+      <button class="proto-tab-btn" data-target="retning-b" role="tab" aria-selected="false">B. Sterkere identitet</button>
+      <button class="proto-tab-btn" data-target="retning-c" role="tab" aria-selected="false">C. Personlig & kommersiell</button>
+    </div>
+  </div>
+
+  <div class="proto-shell">
+
+    <!-- =================================================================== -->
+    <!-- RETNING A -->
+    <!-- =================================================================== -->
+    <div id="retning-a" class="concept-view active" role="tabpanel">
+      <div class="concept-explainer">
+        <h2>Retning A: Forsiktig finpuss</h2>
+        <p><strong>Filosofi:</strong> Bevarer dagens sidestruktur og Arbeidsbenken intakt, men myker opp de «vibe-kodede» ekstremløsningene. Typografien er skalert ned fra 6.5rem til en leselig og harmonisk Newsreader-størrelse, terminal-monospace er fjernet fra navigasjon og knapper, og den harde 12px skyggen bak foredragsbildet er erstattet med en rolig redaksjonell innramming.</p>
+      </div>
+
+      <header class="a-header">
+        <div class="c-container a-header-inner">
+          <a class="a-profile-link" href="#a-top">
+            <img class="a-avatar" src="../images/profil-480.jpg" alt="Lars Erik Brekne Johnsen">
+            <div>
+              <span class="a-name">Lars Erik Brekne Johnsen</span>
+              <span class="a-sub">KI, effektivitet og kvalitet</span>
+            </div>
+          </a>
+          <nav class="a-nav">
+            <a href="#a-arbeidsflyt">Arbeidsflyt</a>
+            <a href="#a-om">Om meg</a>
+            <a href="#a-erfaring">Erfaring</a>
+            <a href="#a-kontakt">Kontakt</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="a-hero" id="a-top">
+          <div class="c-container">
+            <p class="a-eyebrow">Praktisk KI i arbeidslivet</p>
+            <h1>Mennesker først. Teknologi som virker.</h1>
+            <p class="a-hero-lead">Jeg hjelper virksomheter å ta i bruk kunstig intelligens trygt og praktisk — for å spare tid på rutineoppgaver og styrke den faglige kvaliteten.</p>
+
+            <div class="a-dual-track">
+              <a class="a-track-card" href="#a-arbeidsflyt">
+                <div>
+                  <span class="a-eyebrow">Dette hjelper jeg med</span>
+                  <h2>Gjør én arbeidsoppgave lettere</h2>
+                  <p>Vi tar utgangspunkt i en konkret hverdagsoppgave og etablerer en kontrollert flyt folk faktisk kan bruke.</p>
+                </div>
+                <span class="a-track-link">Se arbeidsflyten →</span>
+              </a>
+              <a class="a-track-card" href="#a-erfaring">
+                <div>
+                  <span class="a-eyebrow">Dette bygger det på</span>
+                  <h2>Fag, folk og erfaring</h2>
+                  <p>Foredrag, media og bakgrunnen fra offentlig sektor og næringsliv som ligger bak arbeidsmåten.</p>
+                </div>
+                <span class="a-track-link">Se erfaring og omtale →</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="a-section" id="a-arbeidsflyt">
+          <div class="c-container">
+            <div class="a-section-head">
+              <p class="a-eyebrow">Arbeidsbenken</p>
+              <h2>Kutt tidstyvene. Få mer tid til faget.</h2>
+              <p style="color:var(--muted); font-size:1.05rem;">KI er ikke magi, men et verktøy som tar unna forarbeid i programmene dere allerede har. KI lager struktur og utkast — du har kontrollen.</p>
+            </div>
+
+            <div class="a-steps">
+              <div class="a-step-col">
+                <span class="a-step-num">01 — AVKLARE</span>
+                <h3>Finn oppgaven</h3>
+                <p>Vi tar utgangspunkt i én konkret oppgave som stjeler tid og oppmerksomhet fra fagarbeidet.</p>
+              </div>
+              <div class="a-step-col">
+                <span class="a-step-num">02 — PRØVE</span>
+                <h3>Sett opp flyten</h3>
+                <p>KI hjelper med sortering og førsteutkast. Ingen beslutning flyttes bort fra faget.</p>
+              </div>
+              <div class="a-step-col">
+                <span class="a-step-num">03 — KONTROLLERE</span>
+                <h3>Faglig kontroll</h3>
+                <p>Fagpersonen sjekker kvalitet, språk og personvern, og godkjenner det som skal ut.</p>
+              </div>
+              <div class="a-step-col">
+                <span class="a-step-num">04 — VELGE</span>
+                <h3>Behold eller stopp</h3>
+                <p>Fungerer det i praksis, bygger vi videre. Hvis ikke, koster det ingenting å legge det bort.</p>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; padding:1.8rem; background:var(--surface); border:1px solid var(--line);">
+              <p style="margin:0; font-size:1.05rem; max-width:55ch;"><strong>Prinsippet er enkelt:</strong> KI lager struktur og utkast. Fagpersonen vurderer, godkjenner og har ansvaret.</p>
+              <a class="c-btn c-btn-primary" href="#a-kontakt">Ta en prat om en oppgave</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="a-section" id="a-om">
+          <div class="c-container">
+            <div class="a-about-block">
+              <div>
+                <p class="a-eyebrow">Om og foredrag</p>
+                <h2 style="font:600 2.4rem/1.15 var(--serif); margin:0.4rem 0 1.2rem;">Faglig tyngde. Mennesket i sentrum.</h2>
+                <p style="font-size:1.05rem; color:var(--muted); line-height:1.6; margin-bottom:1rem;">Jeg er HR- og HMS-rådgiver i Kristiansand kommune, statsviter og medgrunnlegger av KI-geriljaen. Rollen min er å være bindeleddet mellom fag, folk og teknologi.</p>
+                <p style="font-size:1.05rem; color:var(--muted); line-height:1.6; margin-bottom:1.5rem;">Jeg holder kurs, foredrag og hjelper virksomheter med konkrete KI-grep som effektiviserer driften — trygt, praktisk og uten omveier.</p>
+                <div style="display:flex; gap:1rem;">
+                  <a class="c-btn c-btn-secondary" href="#a-kontakt">Se foredragstemaer</a>
+                </div>
+              </div>
+              <figure class="a-photo-wrap">
+                <img src="../images/foredrag-vartagder-1240.jpg" alt="Lars Erik Brekne Johnsen holder foredrag">
+                <figcaption>Foredrag og samtaler om praktisk bruk av KI i arbeidslivet.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- RETNING B -->
+    <!-- =================================================================== -->
+    <div id="retning-b" class="concept-view" role="tabpanel">
+      <div class="concept-explainer">
+        <h2>Retning B: Sterkere grafisk identitet</h2>
+        <p><strong>Filosofi:</strong> Dyrker rutenett-estetikken fra «Arbeidsbenken», men gjør den arkitektonisk og redaksjonell. Bruker en fast todelt layout med en venstre kolonne for kontekst/metadata og en bred høyre kolonne for innhold, tydelige krysspunkter (+), presise skillestreker og en ren, verktøy-orientert typografisk disiplin.</p>
+      </div>
+
+      <header class="b-header">
+        <div class="b-header-inner">
+          <a class="b-brand-cell" href="#b-top">
+            <div class="b-logo-mark">LE</div>
+            <div>
+              <strong style="display:block; font-size:0.95rem; line-height:1;">Lars Erik B. Johnsen</strong>
+              <small style="font-family:var(--mono); font-size:0.68rem; color:var(--muted);">breknejohnsen.no</small>
+            </div>
+          </a>
+          <nav class="b-nav-cell">
+            <a href="#b-system">§ 01 Metodikk</a>
+            <a href="#b-om">§ 02 Bakgrunn</a>
+            <a href="#b-erfaring">§ 03 Bevis</a>
+            <a href="#b-kontakt">§ 04 Kontakt</a>
+          </nav>
+          <div class="b-action-cell">
+            <a class="c-btn c-btn-primary" style="min-height:36px; padding:0.4rem 0.8rem; font-size:0.75rem; font-family:var(--mono);" href="#b-kontakt">Bestill samtale</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="b-hero-grid" id="b-top">
+          <div class="b-col-meta">
+            <strong>Rolle</strong>
+            Rådgiver & Foredragsholder
+            <strong>Fagfelt</strong>
+            Praktisk KI, HR/HMS, Forvaltningsetikk
+            <strong>Base</strong>
+            Kristiansand, Norge
+          </div>
+          <div class="b-col-main">
+            <div style="font-family:var(--mono); color:var(--accent); font-size:0.75rem; font-weight:700; margin-bottom:0.8rem; letter-spacing:0.1em;">[ MANIFEST 2026 ]</div>
+            <h1>Mennesker først. Teknologi som virker.</h1>
+            <p class="lead">Gjør én tidkrevende arbeidsoppgave lettere uten store IT-systemer eller unødvendig risiko. KI lager struktur og utkast — fagpersonen beholder vurderingen og godkjenningen.</p>
+            <div class="b-cross-bar">
+              <a class="c-btn c-btn-primary" href="#b-system">Undersøk metodikken</a>
+              <a class="c-btn c-btn-secondary" href="#b-kontakt">Avklar en oppgave</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="b-split-section" id="b-system">
+          <div class="b-section-label">
+            <span class="b-section-tag">§ 01 ARBEIDSBENKEN</span>
+            <p style="font-size:0.82rem; color:var(--muted); margin-top:1rem;">En strukturert 4-trinns syklus for innføring av KI i eksisterende rutiner.</p>
+          </div>
+          <div class="b-section-body">
+            <h2>Fra ustrukturert tidstyv til kontrollert flyt.</h2>
+            <div class="b-matrix">
+              <div class="b-matrix-cell">
+                <span style="font-family:var(--mono); font-size:0.7rem; color:var(--accent); font-weight:bold;">01 / AVKLARE</span>
+                <h3>Avgrens oppgaven</h3>
+                <p>Vi identifiserer rutineoppgaven som tar mest unødvendig tid fra kjernefaget.</p>
+              </div>
+              <div class="b-matrix-cell">
+                <span style="font-family:var(--mono); font-size:0.7rem; color:var(--accent); font-weight:bold;">02 / PRØVE</span>
+                <h3>Bygg arbeidsflyten</h3>
+                <p>KI settes opp til å generere førsteutkast basert på deres egne maler og kilder.</p>
+              </div>
+              <div class="b-matrix-cell">
+                <span style="font-family:var(--mono); font-size:0.7rem; color:var(--accent); font-weight:bold;">03 / KONTROLLERE</span>
+                <h3>Faglig validering</h3>
+                <p>Rutiner for etterprøving, kildekritikk og GDPR sikrer at ingen feil slipper gjennom.</p>
+              </div>
+              <div class="b-matrix-cell">
+                <span style="font-family:var(--mono); font-size:0.7rem; color:var(--accent); font-weight:bold;">04 / OVERLEVERE</span>
+                <h3>Selvgående drift</h3>
+                <p>Teamet beholder kontrollen og eierskapet. Ingen eksterne låsninger.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- RETNING C -->
+    <!-- =================================================================== -->
+    <div id="retning-c" class="concept-view" role="tabpanel">
+      <div class="concept-explainer">
+        <h2>Retning C: Mer personlig og kommersiell (Anbefalt)</h2>
+        <p><strong>Filosofi:</strong> Skreddersydd for å konvertere nysgjerrige besøkende til faktiske oppdragsgivere. Heroen balanseres med et varmt, personlig portrett og et troverdighets-sammendrag øverst til høyre. Tjenestene er omgjort fra abstrakte begreper til 3 krystallklare tilbud (Foredrag, Workshop, Rådgivning), og kontaktflaten er innbydende og friksjonsfri.</p>
+      </div>
+
+      <header class="c-header">
+        <div class="c-container c-header-inner">
+          <a class="c-brand" href="#c-top">
+            <img class="c-avatar" src="../images/profil-480.jpg" alt="Lars Erik Brekne Johnsen">
+            <div>
+              <div class="c-brand-title">Lars Erik Brekne Johnsen</div>
+              <div class="c-brand-subtitle">Praktisk KI · Rådgivning, foredrag og workshops</div>
+            </div>
+          </a>
+          <nav class="c-nav">
+            <a href="#c-tjenester">Tjenester & oppdrag</a>
+            <a href="#c-metode">Metodikk</a>
+            <a href="#c-erfaring">Erfaring</a>
+            <a class="c-btn c-btn-primary" style="min-height:38px; padding:0.4rem 1rem; font-size:0.85rem;" href="#c-kontakt">Ta kontakt</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="c-hero" id="c-top">
+          <div class="c-container">
+            <div class="c-hero-grid">
+              <div class="c-hero-left">
+                <div class="c-badge">
+                  <span class="c-badge-dot"></span>
+                  Tilbyr kurs, foredrag og prosessbistand i 2026
+                </div>
+                <h1>Praktisk KI som sparer tid — med fagpersonen i kontroll.</h1>
+                <p class="lead">Jeg hjelper offentlige virksomheter og næringsliv med å ta i bruk kunstig intelligens i hverdagen. Uten buzzord, uten nye dyre systemer, og alltid forankret i faglig skjønn og trygt personvern.</p>
+                <div class="c-hero-actions">
+                  <a class="c-btn c-btn-primary" href="#c-tjenester">Se tilbud og formater</a>
+                  <a class="c-btn c-btn-secondary" href="#c-kontakt">Book en uforpliktende prat</a>
+                </div>
+                <div class="c-trust-strip">
+                  Brukt og omtalt av: <strong>Kristiansand kommune</strong> · <strong>NRK Sørlandet</strong> · <strong>HR Norge</strong> · <strong>Samfunnsviterne</strong> · <strong>DigiViken</strong>
+                </div>
+              </div>
+
+              <!-- HERO RIGHT: Personlig anker & sitat -->
+              <div class="c-profile-card">
+                <div class="c-card-img-wrap">
+                  <img src="../images/profil-480.jpg" alt="Lars Erik Brekne Johnsen">
+                  <div class="c-card-badge">HR/HMS-rådgiver & statsveiter</div>
+                </div>
+                <div class="c-card-content">
+                  <p class="c-card-quote">«KI er et formidabelt verktøy for forarbeid og struktur, men den faglige dømmekraften kan aldri automatiseres bort.»</p>
+                  <ul class="c-card-bullets">
+                    <li>Bindeledd mellom fag, ledelse og IT</li>
+                    <li>Medgrunnlegger av KI-geriljaen</li>
+                    <li>Erfaring fra reell omstilling i kommunal sektor</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3 TYDELIGE KOMMERSIELLE TILBUD -->
+        <section class="c-packages-section" id="c-tjenester">
+          <div class="c-container">
+            <div class="c-section-header">
+              <p class="eyebrow">Slik kan vi samarbeide</p>
+              <h2>Konkrete formater tilpasset deres behov</h2>
+              <p class="sub">Fra inspirerende fagpåfyll til hands-on effektivisering av konkrete arbeidsoppgaver.</p>
+            </div>
+
+            <div class="c-packages-grid">
+              <!-- FORMAT 1 -->
+              <div class="c-package-card">
+                <div class="c-package-top">
+                  <div class="c-pkg-type">Format 1 · Inspirasjon & innsikt</div>
+                  <h3>Foredrag & faginnlegg</h3>
+                  <p class="desc">Et engasjerende, ærlig og praksisnært blikk på hvordan KI faktisk endrer arbeidshverdagen, formidlet på forståelig norsk.</p>
+                  <ul class="c-package-features">
+                    <li><span class="bullet">✓</span> <strong>Effektivisering i praksis:</strong> Konkrete grep som sparer tid i hverdagen.</li>
+                    <li><span class="bullet">✓</span> <strong>Offentlig sektor, HR og HMS:</strong> Trygge rammer, etikk og personvern.</li>
+                    <li><span class="bullet">✓</span> <strong>Kvalitet og kontroll:</strong> Kildekritikk og menneskelig ansvar.</li>
+                  </ul>
+                </div>
+                <div class="c-package-bottom">
+                  <div class="c-meta-line"><span>Varighet: 45–60 min</span><span>Fysisk / Digitalt</span></div>
+                  <a class="c-btn c-btn-secondary" style="width:100%;" href="#c-kontakt">Forespør foredrag</a>
+                </div>
+              </div>
+
+              <!-- FORMAT 2 -->
+              <div class="c-package-card highlight">
+                <span class="c-ribbon">Mest etterspurt</span>
+                <div class="c-package-top">
+                  <div class="c-pkg-type">Format 2 · Hands-on læring</div>
+                  <h3>Praktisk workshop</h3>
+                  <p class="desc">Deltakerne tar med egne reelle oppgaver og lærer å bygge kontrollerte arbeidsflyter i programmene de allerede bruker.</p>
+                  <ul class="c-package-features">
+                    <li><span class="bullet">✓</span> <strong>Fra teori til praksis:</strong> Lær prompting og struktur på ekte data.</li>
+                    <li><span class="bullet">✓</span> <strong>Trygg bruk:</strong> Hvordan unngå personvernfeller og hallusinasjoner.</li>
+                    <li><span class="bullet">✓</span> <strong>Konkret gevinst:</strong> Alle sitter igjen med en fungerende rutine.</li>
+                  </ul>
+                </div>
+                <div class="c-package-bottom">
+                  <div class="c-meta-line"><span>Varighet: 3–4 timer</span><span>Små/mellomstore grupper</span></div>
+                  <a class="c-btn c-btn-primary" style="width:100%;" href="#c-kontakt">Bestill workshop</a>
+                </div>
+              </div>
+
+              <!-- FORMAT 3 -->
+              <div class="c-package-card">
+                <div class="c-package-top">
+                  <div class="c-pkg-type">Format 3 · Rådgivning & pilot</div>
+                  <h3>Arbeidsflyt-startpakke</h3>
+                  <p class="desc">Vi velger ut én spesifikk tidstyv i organisasjonen og setter opp en skreddersydd arbeidsflyt med full faglig kontroll.</p>
+                  <ul class="c-package-features">
+                    <li><span class="bullet">✓</span> <strong>Kartlegging:</strong> Finne oppgaven med størst gevinstpotensial.</li>
+                    <li><span class="bullet">✓</span> <strong>Oppsett:</strong> Etablere maler, kontrollpunkter og rutiner.</li>
+                    <li><span class="bullet">✓</span> <strong>Effektmåling:</strong> Evaluere tidsbruk før eventuell skalering.</li>
+                  </ul>
+                </div>
+                <div class="c-package-bottom">
+                  <div class="c-meta-line"><span>Omfang: Avtales</span><span>Virksomheter & avdelinger</span></div>
+                  <a class="c-btn c-btn-secondary" style="width:100%;" href="#c-kontakt">Start avklaring</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- KONTROLLERT KONTAKTSEKSJON C -->
+        <section class="c-contact-section" id="c-kontakt">
+          <div class="c-container">
+            <div class="c-contact-box">
+              <div>
+                <p style="font-family:var(--mono); color:var(--accent-on-dark); font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; margin:0;">Uforpliktende kontakt</p>
+                <h2>Har dere en oppgave som stjeler for mye tid?</h2>
+                <p class="lead">Send en kort beskrivelse av hva dere ønsker å oppnå, eller ta kontakt for å sjekke tilgjengelighet for foredrag og kurs.</p>
+                <div style="font-size:0.9rem; color:#b9b2a5;">
+                  ✓ Rask avklaring · ✓ Ingen salgspress · ✓ Tilpasset offentlig forvaltning og privat sektor
+                </div>
+              </div>
+              <div class="c-contact-channels">
+                <div class="c-channel-item">
+                  <span class="c-channel-label">Direkte e-post</span>
+                  <a class="c-channel-value" href="mailto:larserik.bn@gmail.com">larserik.bn@gmail.com</a>
+                </div>
+                <div class="c-channel-item">
+                  <span class="c-channel-label">LinkedIn</span>
+                  <a class="c-channel-value" href="https://www.linkedin.com/in/lars-erik-brekne-johnsen/" target="_blank" rel="noopener">linkedin.com/in/lars-erik-brekne-johnsen ↗</a>
+                </div>
+                <div class="c-channel-item">
+                  <span class="c-channel-label">Nettverk</span>
+                  <a class="c-channel-value" href="https://www.linkedin.com/groups/11818031/" target="_blank" rel="noopener">KI Geriljaen (LinkedIn-gruppe) ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.proto-tab-btn');
+    const views = document.querySelectorAll('.concept-view');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+        
+        tabs.forEach(t => {
+          t.classList.toggle('active', t === tab);
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+
+        views.forEach(v => {
+          v.classList.toggle('active', v.id === targetId);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

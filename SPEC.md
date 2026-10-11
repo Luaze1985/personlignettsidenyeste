@@ -14,11 +14,11 @@ Personlig nettside for **Lars Erik Brekne Johnsen**. Siden skal vise to sider av
 ## Sidehistorie
 
 1. **Header** — profilbilde, navn og fire navigasjonsmål: Arbeidsflyt, Om, Erfaring, Kontakt.
-2. **Inngang** — «Mennesker først. Teknologi som virker.» etterfulgt direkte av to arbeidsspor. Verdiløftet forklarer retningen; «Dette hjelper jeg med» og «Dette bygger det på» er de konkrete valgene videre.
-3. **Arbeidsbenken** — startpakken forklart som avklare → prøve → kontrollere → velge, med passer/passer ikke og én CTA.
-4. **Om og foredrag** — introduksjon og foredragsbilde står side om side på desktop. På mobil kommer bildet før introduksjonen. Foredragstemaene følger under.
-5. **Erfaring og referanser** — fire prioriterte bevis på mørk flate; øvrig dokumentasjon i én detaljvisning.
-6. **Kontakt** — en rolig og tydelig måte å starte en samtale om en konkret arbeidsoppgave.
+2. **Inngang** — «Mennesker først. Teknologi som virker.» Balansert hero med personlig profilkort, etterfulgt av to arbeidsspor: «Dette hjelper jeg med» (Sparring, MVP og agenter) og «Dette bygger det på» (HMS, HR og erfaring).
+3. **Arbeidsbenken** — tre kjerneleveranser (Sparring & MVP, Agenter i arbeidsflyt, Videreutvikling & forbedring) og metodikken avklare → prøve → kontrollere → velge, med passer/passer ikke og CTA.
+4. **Om og foredrag** — introduksjon med forankring i HMS, HR og kunnskapsarbeid, foredragsbilde og tre spissede foredrags- og kurstemaer.
+5. **Erfaring og referanser** — prioriterte bevis på mørk flate (sitat fra Karianne Tung og dokumentert tidsbesparelse); øvrig dokumentasjon i én detaljvisning.
+6. **Kontakt** — en innbydende og friksjonsfri kontaktvei for sparring, MVP og foredrag.
 
 Det skal ikke finnes egne, likeverdige seksjoner for media, tjenester, innsikt og foredrag. Innholdet er bevart, men samlet der det gir mest mening.
 
