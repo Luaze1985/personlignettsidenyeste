@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Arbeidsbenken
-description: "Robust, redaksjonelt designsystem for breknejohnsen.no – en moderne arbeidsbok uten håndverksklisjeer."
+description: "Redaksjonelt rutenett for breknejohnsen.no med tydelig kontaktvei og rolig typografisk hierarki."
 colors:
   primary: "#1d211f"
   on-primary: "#ffffff"
@@ -10,17 +10,17 @@ colors:
   surface-dim: "#e9e3d8"
   on-surface: "#1d211f"
   on-surface-variant: "#555b57"
-  outline: "#b9b2a5"
+  outline: "#cfc7ba"
   accent: "#8a3f2b"
   on-accent: "#ffffff"
   link: "#713322"
 typography:
   display-lg:
-    fontFamily: system-ui
-    fontSize: 5.2rem
-    fontWeight: 750
-    lineHeight: 0.94
-    letterSpacing: -0.045em
+    fontFamily: Newsreader
+    fontSize: 4.6rem
+    fontWeight: 600
+    lineHeight: 1.02
+    letterSpacing: -0.03em
   display-md:
     fontFamily: Newsreader
     fontSize: 2.4rem
@@ -106,7 +106,7 @@ Designsystem for [breknejohnsen.no](https://breknejohnsen.no/). Retningen bygger
 
 ## Overview
 
-**En moderne arbeidsbok.** Uttrykket er konkret, robust og presist, med synlige arbeidssteg og få, tydelige overleveringer mellom innhold. Det skal føles som et sted der arbeid blir sortert og forstått – ikke som en teknologiplattform, konsulentmal eller byggeplass.
+**Et redaksjonelt arbeidsark.** Et gjennomgående rutenett, tynne skillelinjer og en smal venstre kolonne gir innholdet fast leseretning. Typografien er tydelig, mens flatene er rolige. Første handling leder besøkende til å beskrive én arbeidsoppgave og ta kontakt. Kurs og foredrag får en synlig, mindre inngang.
 
 Siden viser to sider av samme arbeid uten å splitte identiteten:
 
@@ -127,7 +127,7 @@ Ved hver brukerbestilte kodeendring skal det først lages en tydelig merket, mid
 - **Surface-dim (#e9e3d8):** Dempet papirflate for sekundære områder.
 - **Accent (#8a3f2b):** Oksidrød. Brukes sparsomt til handlinger, nummerering og aktive markører.
 - **Link (#713322):** Mørkere aksent som består kontrastkrav på lys bakgrunn.
-- **Outline (#b9b2a5):** Tydelig, men rolig arbeidslinje.
+- **Outline (#cfc7ba):** Tynn, presis rutenettlinje på lyse flater.
 
 Ingen andre profilfarger. Ingen gradienter, skygger, tretekstur, varseltape eller kunstig «rust».
 
@@ -135,24 +135,25 @@ Ingen andre profilfarger. Ingen gradienter, skygger, tretekstur, varseltape elle
 
 Tre roller:
 
-- **Systemfont, tung:** Hovedbudskapet. Stor, direkte og mindre høytidelig enn en ren serif-hero.
-- **Newsreader:** Navn, seksjonstitler, sitater og faglige overskrifter. Gir menneskelig og redaksjonell kontrast.
+- **Newsreader:** Hovedbudskap, navn, seksjonstitler, sitater og faglige overskrifter. Stor hero gir et redaksjonelt tyngdepunkt.
+- **Systemfont:** Brødtekst og handlingsknapper. Kort og direkte.
 - **Ui-monospace/system monospace:** Kun små etiketter, nummerering og arbeidsmarkører.
 
 Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksimal lesebredde er 66 tegn.
 
 ## Layout
 
-- **Container:** Maks 1180 px, sentrert.
-- **Hero:** Bred arbeidsflate med overskrift, verdiløfte og et personlig profilkort som balanserer flaten på desktop. Målgruppefeltene følger direkte etter heroen.
+- **Container:** Maks 1180 px, sentrert. Innholdet deles av synlige horisontale linjer.
+- **Hero:** Todelt rutenett på desktop: en smal, redaksjonell venstrekolonne med rolle, fagfelt og sted; en bred høyrekolonne for overskrift, kort forklaring og handlinger. Profilbildet beholdes i toppfeltet. Ingen egen profilkortflate i hero.
+- **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt. Kurs og foredrag er en sekundær vei til eksisterende seksjon. Primærknappen skal ha tydeligere farge og plassering.
 - **Sidestruktur:** Fem deler etter headeren: inngang, Arbeidsbenken, om/foredrag med bilde, erfaring/referanser og kontakt. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
-- **Arbeidsbenken:** Tre konkrete leveranser (Sparring & MVP, Agenter i arbeidsflyt, Videreutvikling) og én leseretning for metodikken: avklare → prøve → kontrollere → velge. Etter arbeidsstegene kommer «passer når / passer ikke når» og én CTA.
+- **Arbeidsbenken:** Leveranser og arbeidssteg ligger i presise matriser med 1 px skillelinjer, uten mellomrom som får feltene til å se ut som løsrevne kort. Leseretning for metodikken: avklare → prøve → kontrollere → velge. Etter arbeidsstegene kommer «passer når / passer ikke når» og én CTA.
 - **Om og foredrag:** Kommer rett etter Arbeidsbenken. På desktop står introduksjonen og foredragsbildet side om side; på mobil kommer bildet før introduksjonen. Foredragsbildet bruker det stramme svart-hvitt-utsnittet fra Arendalsuka i 4:3-format i en rolig redaksjonell innramming.
 - **Erfaring:** Fire synlige bevis på mørk flate etter om/foredrag. Dokumenterte lenker som ikke er primærbevis ligger i én `<details>`-liste.
-- **To arbeidsspor:** To felt etter hero; «Dette hjelper jeg med» peker mot praktisk arbeidsflyt, og «Dette bygger det på» peker mot erfaring og foredrag.
+- **To arbeidsspor:** To felt etter hero i samme rutenett; praktisk hjelp får sterkere visuell vekt, mens erfaring og foredrag får tydelig sekundær plass.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
 
-Breakpoints: 980 px og 768 px.
+Breakpoints: 980 px og 760 px. Ved 760 px eller mindre stables venstrekolonnen over hovedinnholdet, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
 
 ## Elevation & Depth
 
@@ -170,7 +171,7 @@ Minstehøyde 44 px. Primærknappen er oksidrød med hvit tekst og blir kullsort 
 
 ### Arbeidssteg
 
-Fire trinn har lys papirflate, 1 px ramme og 1.5 rem padding. De nummereres med monospace-etikett. Ikke bruk flere kortrekker for tjenester og innsikt ved siden av denne flyten.
+Fire trinn deler en sammenhengende matrise med 1 px linjer og omtrent 1.5 rem innvendig luft. De nummereres med monospace-etikett. Ikke bruk flere kortrekker for tjenester og innsikt ved siden av denne flyten.
 
 ### Arbeidsspor
 

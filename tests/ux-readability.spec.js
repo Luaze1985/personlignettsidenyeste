@@ -47,6 +47,21 @@ test.describe('UX, UI and readability', () => {
     await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
   });
 
+  test('makes the work request primary and gives the home link its visible name', async ({ page }) => {
+    const home = page.locator('header .profile-group');
+    await expect(home).toHaveAccessibleName(/Lars Erik Brekne Johnsen/);
+
+    const primary = page.locator('.hero-primary-action');
+    const secondary = page.locator('.hero-secondary-action');
+    await expect(primary).toHaveAttribute('href', '#kontakt');
+    await expect(secondary).toHaveAttribute('href', '#kurs-og-foredrag');
+    await expect(primary).toContainText(/oppgave/i);
+    await expect(secondary).toContainText(/kurs|foredrag/i);
+    await secondary.click();
+    await expect(page).toHaveURL(/#kurs-og-foredrag$/);
+    await expect(page.locator('#kurs-og-foredrag')).toBeInViewport();
+  });
+
   test('reveals a working mailto link with the readable contact style on click', async ({ page }) => {
     const button = page.locator('#reveal-email');
     await expect(button).toBeVisible();
