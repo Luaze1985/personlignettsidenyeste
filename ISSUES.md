@@ -106,3 +106,20 @@ De ~15 eksterne `.ext`-lenkene har fått programmatisk «ny fane»-melding for s
 - [x] Lagt `breknejohnsen.no` + `www.breknejohnsen.no` til som egendomene på siten (via `netlify api updateSite`).
 - [ ] **Gjenstår (kun Lars):** DNS hos Domeneshop → A `@` = `75.2.60.5`, CNAME `www` = `larserik.netlify.app`. Deretter auto-SSL.
 - [ ] *Senere:* koble lokalt git-repo til Netlify (`Luaze1985/larserik-nettside`) for push-basert deploy i stedet for manuell CLI. (Mappa er nå et lokalt git-repo, men ikke koblet til Netlify-utløst deploy ennå.)
+
+### N-6 — Funn fra simulert brukerpanel (2026-10-28)
+Kilde: `Luaze1985/brukerrad`, `docs/forste-test.md`. Seks oppdiktede personaer, to runder, oppgaven «Finn ut hva tjenesten er, hva den koster, og hvordan du tar kontakt». Funnene er hypoteser, ikke målinger av ekte brukere.
+
+**Gjort i denne runden (ingen nye fakta):**
+- [x] Inngangen sier nå hva som tilbys (kurs, foredrag, hjelp med én arbeidsoppgave) og forklarer KI som kunstig intelligens første gang.
+- [x] Kort 2 heter «Foredrag, fag og erfaring.» og peker til `#om`, der foredragstemaene ligger. Arrangører fant ikke foredrag på første skjerm.
+- [x] Kontakt har én setning om hva man kan skrive om, også foredrag.
+- [x] «Se arbeidsflyten» og «Se foredrag og erfaring» er understreket, så de ser klikkbare ut.
+
+**Åpent, krever opplysninger eller beslutning fra Lars:**
+- [ ] **Pris eller prismodell** (6 av 6 lette uten å finne den). For eksempel «fra»-beløp, timepris, fast pris for startpakken, honorarintervall for foredrag, eller om første samtale er gratis.
+- [ ] **Hvem man kjøper fra:** firmanavn/ENK, organisasjonsnummer, og én setning om hvordan rådgivningen er avklart med stillingen i Kristiansand kommune (4 av 6 stusset over rollene; innkjøperen og kommunalsjefen stopper på habilitet).
+- [ ] **Personvern i oppdrag:** én kort setning om hvordan personopplysninger håndteres (verktøy, databehandleravtale). Bare nevnt som stikkord i én foredragstittel i dag.
+- [ ] **Telefonnummer** (savnet av de to minst digitale). Besluttet å beholde e-post bak «Vis e-post» (2026-10-28). Merk: adressen står uansett åpent i JSON-LD i `<head>`, så skjulingen beskytter lite mot innsamling.
+- [ ] **Konkret eksempel:** ett anonymisert før/etter-eksempel med oppgave og tidsbruk. Det ble etterspurt av den som skulle selge idéen internt.
+- [ ] *Vurder:* menyteksten er liten (`.68rem`). Sjekk lesbarhet for eldre brukere.

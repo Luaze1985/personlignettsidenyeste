@@ -45,7 +45,7 @@ nav a:hover, nav a.active { color:var(--red); }
 .audience-path-primary { padding-top:calc(clamp(1.6rem,3.5vw,3rem) - 4px); border-top:4px solid var(--red); background:var(--surface); }
 .audience-path h2 { margin:.75rem 0; font-size:clamp(1.65rem,2.5vw,2.35rem); }
 .audience-path > p:not(.eyebrow) { margin-bottom:1.1rem; color:var(--muted); }
-.path-link { color:var(--red); font:700 .7rem/1 ui-monospace,monospace; letter-spacing:.07em; text-transform:uppercase; }
+.path-link { color:var(--red); font:700 .7rem/1 ui-monospace,monospace; letter-spacing:.07em; text-transform:uppercase; text-decoration:underline; text-underline-offset:.3em; }
 
 main > section { padding:clamp(4.5rem,9vw,8rem) 0; border-bottom:1px solid var(--line); }
 #arbeidsbenken { background:var(--surface); }
@@ -96,6 +96,7 @@ main > section { padding:clamp(4.5rem,9vw,8rem) 0; border-bottom:1px solid var(-
 .contact-panel { margin-top:var(--space-xl); padding:clamp(2rem,5vw,4rem); background:var(--ink); color:#fff; }
 .contact-panel .eyebrow { color:var(--accent-on-dark); }
 .contact-panel h2 { max-width:21ch; color:#fff; margin:.75rem 0 1.5rem; }
+.contact-lead { max-width:52ch; margin:-.5rem 0 1.5rem; color:#fff; }
 .contact-links { display:flex; flex-wrap:wrap; gap:1.5rem; }
 .contact-links a, .contact-email-btn { color:var(--accent-on-dark); }
 .contact-email-btn { padding:0; border:0; background:none; font:inherit; text-decoration:underline; text-underline-offset:.22em; cursor:pointer; }
@@ -144,4 +145,4 @@ footer p { margin:0; }
     .audience-path, .steps li, .proof-quote, .contact-panel { padding:1rem; }
 }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
-@media print { header, .nav-toggle, .skip-link { display:none; } body { background:#fff; color:#000; } .trust-section, .contact-panel, footer { background:#fff; color:#000; border:1px solid #000; } .trust-section h2, .trust-section .section-intro, .proof-list a, .contact-panel h2, .contact-links a, .contact-email-btn { color:#000; } }
+@media print { header, .nav-toggle, .skip-link { display:none; } body { background:#fff; color:#000; } .trust-section, .contact-panel, footer { background:#fff; color:#000; border:1px solid #000; } .trust-section h2, .trust-section .section-intro, .proof-list a, .contact-panel h2, .contact-lead, .contact-links a, .contact-email-btn { color:#000; } }
