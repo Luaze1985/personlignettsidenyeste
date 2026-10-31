@@ -33,7 +33,7 @@ som forenklet flyt, ikke en pikselpresis gjengivelse av hele produksjonssiden.
 | --- | --- |
 | npm run build | 18 eksplisitt tillatte produksjonsfiler |
 | designmd lint DESIGN.md | 0 feil, 0 advarsler |
-| PLAYWRIGHT_CHANNEL=chrome npm test | 50/50 bestått |
+| PLAYWRIGHT_CHANNEL=chrome npm test | 51/51 bestått |
 | Axe WCAG 2 A/AA, 2.1 AA og 2.2 AA | Ingen påviste brudd i de to testede tilstandene |
 | Lenkesjekk | 41 mål: 39 godkjent, 0 brutte, 2 LinkedIn-advarsler |
 | Reflow | 180, 360, 390, 760, 980 og 1440 CSS px uten horisontal overflow |
@@ -78,3 +78,12 @@ PR #10 oppdateres på eksisterende arbeidsgren, uten merge eller produksjonsdepl
 
 Tidligere 42/42-resultat fra 23. oktober er historikk, ikke bevis for denne runden.
 Gjeldende statusoversikt for GitHub #1–#9 og backlog ligger i ISSUES.md.
+
+## Uavhengig kodegjennomgang
+
+`code-review` ble kjørt med separate Standards- og Spec-gjennomganger mot
+e7a5835. Spec fant 0 avvik. Standards fant utskriftskontrast og et motstridende
+mobilavsnitt; begge er rettet. Oppfølging fant også hvit detaljoverskrift ved
+utskrift; den er rettet og inkludert i regresjonstesten. Ingen gjenstående
+kodefunn fra disse gjennomgangene. Zoom, ekte brukere og ubekreftede fakta
+er fortsatt åpne manuelle/faktiske kontrollpunkter.

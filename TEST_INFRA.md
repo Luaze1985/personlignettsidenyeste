@@ -4,7 +4,7 @@ Kjør `npm test` (bygger først). På maskiner med lokal Chrome kan
 `PLAYWRIGHT_CHANNEL=chrome` settes; i PowerShell:
 `$env:PLAYWRIGHT_CHANNEL='chrome'; npm test`.
 
-50 tester bestod i Chrome 31. oktober. Nettverk/localhost krever tilgang i
+51 tester bestod i Chrome 31. oktober. Nettverk/localhost krever tilgang i
 kjøremiljøet. To LinkedIn-mål var uverifiserte, ikke bekreftet brutte.
 Se `docs/issue9/README.md` for hele resultatet og gjenstående manuell kontroll.
 

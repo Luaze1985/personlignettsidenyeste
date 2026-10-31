@@ -12,7 +12,7 @@ Lokal uversjonert `CHEATSHEET.md` er brukerens fil og skal ikke tas med i commit
 - Kommunestilling og arbeidsgiver er tatt ut av presentasjon og metadata.
   Historisk kildebelagt omtale beholdes. Offentlig sektor er ikke salgsmålgruppe.
 - Fire dokumenterte bevis, semantikk, metadata, CSP form-action og HSTS-test.
-- Bygg og designlint bestod. Hele Playwright-pakken: 50/50 i Chrome.
+- Bygg og designlint bestod. Hele Playwright-pakken: 51/51 i Chrome.
   Lenker: 41 mål, 39 godkjent, 0 brutte, 2 uverifiserte LinkedIn-mål.
 
 ## Gjenstår før endelig publiseringsvurdering

@@ -198,6 +198,15 @@ footer p { margin:0; }
     .audience-path, .steps li, .proof-quote, .contact-panel { padding:1rem; }
 }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
-@media print { header, .nav-toggle, .skip-link { display:none; } body { background:#fff; color:#000; } .trust-section, .contact-panel, footer { background:#fff; color:#000; border:1px solid #000; } .trust-section h2, .trust-section .section-intro, .proof-list a, .contact-panel h2, .contact-intro, .contact-links a, .contact-email-btn, .proof-quote a { color:#000; } }
+@media print {
+    header, .nav-toggle, .skip-link { display:none; }
+    body { background:#fff; color:#000; }
+    .trust-section, .contact-panel, .proof-quote, footer { background:#fff; color:#000; }
+    .trust-section, .contact-panel, footer { border:1px solid #000; }
+    .trust-section h2, .trust-section .section-intro, .trust-section .eyebrow,
+    .proof-list a, .proof-list strong, .proof-quote a, .trust-section details a, .reference-details summary,
+    .contact-panel h2, .contact-panel .eyebrow, .contact-intro,
+    .contact-links a, .contact-email-btn { color:#000; }
+}
 
 @media (scripting: none) { #reveal-email { display:none; } }

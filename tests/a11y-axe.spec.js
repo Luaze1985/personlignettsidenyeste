@@ -31,3 +31,15 @@ test('visible proof points, link notices and metadata respect the approved profi
   await expect(page.locator('#om')).not.toContainText('Jeg er HR- og HMS-rådgiver i Kristiansand kommune');
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', await page.title());
 });
+
+test('printed proof and expanded references stay readable with background graphics', async ({ page }) => {
+  await page.goto(indexUrl);
+  await page.locator('summary').click();
+  await page.emulateMedia({ media: 'print' });
+  await expect(page.locator('.proof-quote')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+  for (const selector of ['.proof-quote a', '.reference-details a', '.reference-details summary', '.proof-list strong', '.contact-panel .eyebrow']) {
+    for (const element of await page.locator(selector).all()) {
+      await expect(element).toHaveCSS('color', 'rgb(0, 0, 0)');
+    }
+  }
+});

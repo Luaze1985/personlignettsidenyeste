@@ -166,7 +166,7 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 - **To arbeidsspor:** To korte felt etter hero: «Gjør én arbeidsoppgave lettere» og «Kurs og foredrag». Praktisk hjelp får sterkere vekt. Kurs og foredrag peker direkte til `#kurs-og-foredrag`. Ingen merker som gjentar leveransene.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
 
-Breakpoints: 980 px og 760 px. Ved 760 px eller mindre stables venstrekolonnen over hovedinnholdet, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
+Breakpoints: 980 px og 760 px. Ved 760 px eller mindre kommer hovedbudskap og handlinger før den kompakte rollekolonnen, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
 
 ## Elevation & Depth
 
