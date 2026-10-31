@@ -162,7 +162,7 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 - **Hero (Figma 4:50 / 4:143):** På desktop står hovedbudskapet til venstre og et stort rundt portrett (`images/profil-portrett-800.jpg`, maks 472 px) til høyre. Under portrettet står navn og «Kristiansand». Det er ingen rollekolonne og ingen stikort. På mobil kommer etikett, overskrift, ingress og handlinger først, og deretter portrettet. DOM-rekkefølgen følger mobilens leseretning.
 - **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt (svart knapp, full bredde på mobil). «Kurs og foredrag» er en tekstlenke med pil til `#kurs-og-foredrag`.
 - **Sidestruktur:** Fem deler etter headeren: inngang, Arbeidsbenken, om/foredrag med bilde, erfaring/referanser og kontakt. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
-- **Arbeidsbenken:** Leveranser og arbeidssteg ligger i presise matriser med 1 px skillelinjer, uten mellomrom som får feltene til å se ut som løsrevne kort. Leseretning for metodikken: avklare → prøve → kontrollere → velge. Etter arbeidsstegene kommer «passer når / passer ikke når» og én CTA.
+- **Arbeidsbenken (Figma 4:85):** Øverst står etiketten «01 / Dette hjelper jeg med». Under den står overskrift og ingress til venstre og tre nummererte tjenestelinjer til høyre (Sparring, En liten prototype, Agenter i arbeidsflyten), skilt med hårstreker og uten bokser. Deretter kommer et svart bånd med fire steg: avklare → prøve → kontrollere → velge. Hvert steg har nummer, navn og én kort forklaring. Etter båndet kommer «passer når / passer ikke når» som to kolonner med svart toppstrek, og til slutt én tekstlenke til kontakt.
 - **Om og foredrag:** Kommer rett etter Arbeidsbenken. På desktop står introduksjonen og foredragsbildet side om side; på mobil kommer bildet før introduksjonen. Foredragsbildet bruker det stramme svart-hvitt-utsnittet fra Arendalsuka i 4:3-format i en rolig redaksjonell innramming.
 - **Omtalt hos (Figma 4:78):** Lys grå stripe rett etter hero med navnene NRK, HR Norge, Tech Talks Agder og DigiViken, uten lenker og uten logoer. Hvert navn skal være dokumentert i `#erfaring`.
 - **Erfaring:** Fire synlige bevis på mørk flate etter om/foredrag. Deretter kommer «I fagpressen»: ett fremhevet, ordrett sitat i stor Newsreader-skrift med synlig kilde (`<figure>` med `<blockquote cite>` og `<figcaption>`), og så en liste med utgiver, artikkeltittel og type/dato. Bare publikasjoner står der, ikke leverandørblogger. Kilder og kontroll står i `docs/kilder-fagpresse.md`. Alle lenker i blokken skal også finnes i `<details>`-listen med andre dokumenterte lenker.
@@ -186,7 +186,7 @@ Minstehøyde og minste klikkflate for menyknappen er 44 px. Menytekst er minst 1
 
 ### Arbeidssteg
 
-Fire trinn deler en sammenhengende matrise med 1 px linjer og omtrent 1.5 rem innvendig luft. De nummereres med monospace-etikett. Ikke bruk flere kortrekker for tjenester og innsikt ved siden av denne flyten.
+Fire trinn ligger på ett sammenhengende svart bånd med omtrent 1.5 rem innvendig luft. Nummeret står i dempet grå foran navnet, og forklaringen står under. På mobil stables stegene. Ikke bruk kortrekker for tjenester ved siden av denne flyten.
 
 ### Arbeidsspor
 
