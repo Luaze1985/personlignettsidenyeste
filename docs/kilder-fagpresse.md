@@ -25,6 +25,18 @@ Kontrollert med WebFetch. Verktøyet gir et sammendrag og ikke rå HTML, så hve
 
 **Valgt sitat (Lars, 31.10.2026):** kode24: «KI er en folkebevegelse, og den er åpen for alle»
 
+### Kontroll mot rå HTML (curl, 31.10.2026)
+
+| Kilde | Tittel (og:title) | Publisert (JSON-LD) | Funn |
+| :-- | :-- | :-- | :-- |
+| kode24 | Slik løser de 40-årskrisen | 2026-03-24 | Sitatet står ordrett som første ledd av «– KI er en folkebevegelse, og den er åpen for alle – det finnes pensjonister som sitter og koder på kvelden, sier Johnsen.» Forfatter: Heather Ørbeck Eliassen. Ordet «Dagbladet» finnes ikke på siden, og «Aller Media» står bare i en skriptkommentar. Siden viser derfor bare «kode24». |
+| Fagbladet | Lars Erik er KI-guru i kommunen. Dette vil han aldri bruke teknologien til | 2026-09-22 | Bunnteksten lenker til Fagforbundet. |
+| AIavisen | Min KI-reise | 2026-04-13 | Ingen merknader. |
+| Fædrelandsvennen | Vi har fått KI-verktøykassen – vi må lære å bruke den sammen | 2025-07-03 | `/i/` omdirigerer til `/o/`, lenken virker. |
+| HR Norge | Veien til digital effektivisering | 2025-05-09 | Bak betalingsmur (medlemskap). |
+
+Lars bekreftet 31.10.2026 at «Dagbladet» var kode24-saken.
+
 ## Merknader
 
 - Fagbladet ligger også under en annen URL og tittel: `fagbladet.no/nyheter/ki-kan-kutte-moter-men-ikke-erstatte-folk/752959` («Slik bruker Kristiansand kommune KI til færre møter og bedre samarbeid»). Det er samme artikkel-ID. Vi lenker til URL-en med «KI-guru», og testen må akseptere omdirigering.
