@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kodeplan</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#18181b;--mu:#71717a;--ln:#e4e4e7;--pn:#f4f4f5;--ok:#16a34a;--ai:#2563eb}
+@media(prefers-color-scheme:dark){:root{--bg:#18181b;--fg:#fafafa;--mu:#a1a1aa;--ln:#3f3f46;--pn:#27272a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Archivo,system-ui,sans-serif}
+.mono,pre{font-family:'IBM Plex Mono',monospace}
+header{position:sticky;top:0;z-index:9;background:var(--bg);border-bottom:1px solid var(--ln);padding:1rem 1.5rem}
+h1{margin:0;font-size:1.3rem}.sub{color:var(--mu);font-size:.85rem}
+nav{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem}
+nav button,.btn{font:inherit;font-size:.85rem;padding:.4rem .8rem;border-radius:6px;border:1px solid var(--ln);background:var(--pn);color:var(--fg);cursor:pointer}
+nav button.on{background:var(--fg);color:var(--bg)}
+main{max-width:1000px;margin:0 auto;padding:1.5rem}
+section{display:none}section.on{display:block}
+.tldr{font-weight:700;background:var(--pn);border-left:3px solid var(--fg);padding:.7rem 1rem;margin-bottom:1rem}
+.card{border:1px solid var(--ln);border-radius:8px;padding:1rem;margin-bottom:.8rem}
+.tag{font:500 .7rem 'IBM Plex Mono',monospace;color:var(--mu);text-transform:uppercase}
+/* Mock */
+.mockwrap{display:grid;grid-template-columns:340px 1fr;gap:1.5rem}
+@media(max-width:760px){.mockwrap{grid-template-columns:1fr}}
+.phone{border:10px solid #18181b;border-radius:28px;min-height:560px;padding:1.2rem;background:var(--m-bg);color:var(--m-fg);font-family:var(--m-font)}
+.desktop .mockwrap{grid-template-columns:1fr}
+.desktop .phone{border-width:28px 6px 6px;border-radius:10px;min-height:460px}
+.phone .el{display:block;width:100%;margin:.5rem 0;position:relative}
+.desktop .phone .button,.desktop .phone .input{width:auto;min-width:240px}
+.phone .title{font-size:1.3rem;font-weight:700}
+.phone .text{opacity:.7}
+.phone .button{padding:.7rem 1.2rem;border-radius:var(--m-r);border:0;background:var(--m-pri);color:var(--m-on);font:600 .95rem var(--m-font);cursor:pointer}
+.phone .button.sec{background:var(--m-flate);color:var(--m-fg)}
+.phone .input{padding:.6rem;border:1px solid var(--m-flate);border-radius:var(--m-r);font:inherit;background:var(--m-bg);color:var(--m-fg)}
+.showai .phone .el[data-note]{outline:2px dashed var(--ai);outline-offset:3px;cursor:help}
+.screens{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.8rem}
+.screens button.on{border-color:var(--ai);color:var(--ai)}
+.why{border-left:3px solid var(--ai);background:var(--pn);padding:.8rem 1rem;border-radius:0 8px 8px 0}
+.why h3{margin:0 0 .3rem;font-size:1rem;color:var(--ai)}
+a.ref{color:var(--ai);cursor:pointer;text-decoration:underline}
+/* Spørsmål */
+.opt{display:block;width:100%;text-align:left;margin:.3rem 0}
+.opt.rec::after{content:' ★ anbefalt';color:var(--ai);font-size:.75rem}
+.opt.picked{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.card.done{border-color:var(--ok)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+td,th{border-bottom:1px solid var(--ln);padding:.5rem;text-align:left;vertical-align:top}
+pre{background:var(--pn);padding:1rem;border-radius:8px;overflow-x:auto;font-size:.8rem}
+.flash{animation:fl 1.2s}@keyframes fl{0%{background:color-mix(in srgb,var(--ai) 25%,transparent)}}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="h-title"></h1><div class="sub" id="h-sub"></div>
+  <nav id="nav"></nav>
+</header>
+<main id="main"></main>
+
+<script>
+/* ===== FYLL UT: all innhold ligger her. Ikke rør koden under. ===== */
+const PLAN = {"navn": "breknejohnsen.no — forbedringsplan", "undertittel": "Godkjent retning · 31. oktober 2026", "kilde": "PR #10 + main 5ff17d0 + godkjent plan", "design": {"enhet": "mobil", "primær": "#8a3f2b", "påPrimær": "#ffffff", "bakgrunn": "#f3efe6", "tekst": "#1d211f", "flate": "#fbfaf6", "font": "Georgia, serif", "fontUrl": "", "radius": "0px", "kilde": "DESIGN.md / Arbeidsbenken"}, "oversikt": {"tldr": "Gjør tilbud og kontakt lettere å finne, særlig på mobil.", "tekst": "Bevar rutenett, papirfarger, Newsreader og den personlige profilen. Samordne main og PR #10. Prototypens før-/etterbilder ligger ved kontrollnotatet i docs/issue9/README.md. Før: rollefelt over hovedbudskap, merker og uklart foredragsspor. Etter: hovedbudskap og handling først, kompakt rollefelt og direkte foredragsinngang. Pris og andre nye fakta venter på avklaring."}, "filer": [{"sti": "index.html / css/style.css", "rolle": "Innhold og responsiv komposisjon", "skjerm": "etter"}, {"sti": "js/navigation.js", "rolle": "Meny, fokus, aktiv seksjon og e-post", "skjerm": "kontakt"}, {"sti": "DESIGN.md / SPEC.md", "rolle": "Beslutninger og kontrakt", "skjerm": ""}], "arbeidsflyt": [{"steg": "Forstå tilbudet", "hvem": "Besøkende", "inn": "Forside", "ut": "Velger hjelp eller foredrag", "skjerm": "etter"}, {"steg": "Ta kontakt", "hvem": "Besøkende", "inn": "Konkret oppgave", "ut": "Vis e-post eller LinkedIn", "skjerm": "kontakt"}], "skjermer": [{"id": "for", "navn": "Før", "sammenheng": "Eksisterende mobilprioritering.", "elementer": [{"type": "text", "tekst": "Rolle · fagfelt · base"}, {"type": "title", "tekst": "Mennesker først. Teknologi som virker."}, {"type": "text", "tekst": "Fire merker gjentar tjenestene."}, {"type": "button", "tekst": "Se anbefalt løsning", "til": "etter"}]}, {"id": "etter", "navn": "Etter", "sammenheng": "Primærhandlingen kommer før metadata på mobil.", "elementer": [{"type": "title", "tekst": "Mennesker først. Teknologi som virker.", "note": "Beholdt personlighet og typografi.", "beslutning": "B1"}, {"type": "text", "tekst": "Kurs, foredrag og hjelp til én konkret arbeidsoppgave om gangen."}, {"type": "button", "tekst": "Beskriv én arbeidsoppgave", "til": "kontakt", "note": "Én tydelig hovedhandling.", "beslutning": "B2"}, {"type": "button", "tekst": "Se kurs og foredrag", "til": "foredrag", "sekundær": true}, {"type": "text", "tekst": "Rådgiver og foredragsholder · KI, HR og HMS · Kristiansand"}]}, {"id": "foredrag", "navn": "Foredrag", "sammenheng": "Arrangører går direkte til eksisterende temaer.", "elementer": [{"type": "title", "tekst": "Kurs og foredrag"}, {"type": "text", "tekst": "Effektivisering i praksis · Folk, organisasjon og KI · Kvalitet og kontroll"}, {"type": "button", "tekst": "Ta kontakt om foredrag", "til": "kontakt"}]}, {"id": "kontakt", "navn": "Kontakt", "sammenheng": "Beholder dagens kontaktkanaler.", "elementer": [{"type": "title", "tekst": "Har dere en oppgave eller et foredrag i tankene?"}, {"type": "text", "tekst": "Skriv kort om oppgaven dere vil gjøre lettere, eller om foredraget du planlegger."}, {"type": "button", "tekst": "Vis e-post", "til": "epost"}, {"type": "button", "tekst": "Til forsiden", "til": "etter", "sekundær": true}]}, {"id": "epost", "navn": "E-post vist", "sammenheng": "Illustrasjon av dagens kontaktadresse; mocken sender ingen meldinger.", "elementer": [{"type": "text", "tekst": "larserik.bn@gmail.com"}, {"type": "button", "tekst": "Tilbake", "til": "kontakt", "sekundær": true}]}], "beslutninger": [{"id": "B1", "valg": "Løft dagens retning", "hvorfor": "Valgt av Lars i planleggingen.", "forkastet": "Nytt designspråk", "kilde": "Godkjent plan"}, {"id": "B2", "valg": "Handling før metadata på mobil", "hvorfor": "Rollefeltet skjøv hovedhandlingen ned.", "forkastet": "Stor faktakolonne øverst", "kilde": "Skjermbilde 390 × 844"}, {"id": "B3", "valg": "Lucide SVG lokalt", "hvorfor": "Konsekvent uttrykk uten runtime.", "forkastet": "Ikonfont og CDN", "kilde": "Lucide / godkjent plan"}], "sporsmal": [{"id": "S1", "sporsmal": "Pris, leverandør og rolleavklaring er fortsatt uavklart.", "alternativer": ["Venter på bekreftede opplysninger", "Holdes utenfor offentlig side"], "anbefalt": 0, "hvorfor": "Ingen nye fakta eller prisgarantier uten bekreftelse."}], "faser": [{"navn": "Samordning og prototype", "steg": ["Bevar endringene fra 28. oktober", "Vis desktop og mobil"]}, {"navn": "Kode og kontroll", "steg": ["Oppdater design og spesifikasjon", "Test meny og navigasjon", "Kontroller tilgjengelighet, bygg og lenker", "Lever PR uten merge"]}], "arkitektur": "[HTML + CSS + JS + lokale SVG] --> [allowlist-bygg] --> [dist] --> [Netlify preview]", "logg": [{"tid": "2026-10-31", "hendelse": "Plan godkjent for implementering. Ingen merge eller produksjonspublisering. Kommunestilling er bakgrunn; offentlig sektor er ikke salgsmålgruppe."}]};
+/* ===== SLUTT PÅ UTFYLLING ===== */
+
+const $=(t,a={},...c)=>{const e=document.createElement(t);Object.assign(e,a);c.flat().forEach(x=>e.append(x));return e};
+const KEY="kodeplan-"+PLAN.navn, svar=JSON.parse(localStorage.getItem(KEY)||"{}");
+const lagre=()=>localStorage.setItem(KEY,JSON.stringify(svar));
+const main=document.getElementById("main"), nav=document.getElementById("nav");
+document.getElementById("h-title").textContent=PLAN.navn;
+document.getElementById("h-sub").textContent=PLAN.undertittel+" · Kilde: "+PLAN.kilde;
+const D=PLAN.design, R=document.documentElement.style;
+[["--m-pri",D.primær],["--m-on",D.påPrimær],["--m-bg",D.bakgrunn],["--m-fg",D.tekst],["--m-flate",D.flate],["--m-font",D.font],["--m-r",D.radius]].forEach(([k,v])=>R.setProperty(k,v));
+if(D.fontUrl)document.head.append($("link",{rel:"stylesheet",href:D.fontUrl}));
+const fanes={oversikt:"Oversikt",mock:"Mock",arbeidsflyt:"Arbeidsflyt",filer:"Filer",beslutninger:"Beslutninger",sporsmal:"Spørsmål",faser:"Faser",logg:"Logg"};
+const sek={};
+for(const [id,navn] of Object.entries(fanes)){
+  sek[id]=main.appendChild($("section",{id}));
+  nav.append($("button",{textContent:navn,onclick:()=>vis(id)}));
+}
+function vis(id){Object.values(sek).forEach(s=>s.classList.remove("on"));sek[id].classList.add("on");
+  [...nav.children].forEach((b,i)=>b.classList.toggle("on",Object.keys(fanes)[i]===id))}
+function hopp(bid){vis("beslutninger");const r=document.getElementById("rad-"+bid);if(r){r.classList.remove("flash");void r.offsetWidth;r.classList.add("flash");r.scrollIntoView({block:"center"})}}
+
+sek.oversikt.append($("div",{className:"tldr",textContent:"TLDR: "+PLAN.oversikt.tldr}),$("p",{textContent:PLAN.oversikt.tekst}),
+  $("h3",{textContent:"Arkitektur"}),$("pre",{textContent:PLAN.arkitektur}));
+
+// Mock
+const skjermKnapper=$("div",{className:"screens"}), phone=$("div",{className:"phone"}), why=$("div",{className:"why"});
+const aiToggle=$("label",{},$("input",{type:"checkbox",checked:true,onchange:e=>sek.mock.classList.toggle("showai",e.target.checked)})," Vis KI-notater");
+sek.mock.classList.add("showai");if(D.enhet==="desktop")sek.mock.classList.add("desktop");
+sek.mock.append($("div",{className:"tldr",textContent:"TLDR: Klikk deg gjennom appen. Stiplede elementer har en begrunnelse."}),
+  $("div",{className:"mockwrap"},$("div",{},skjermKnapper,phone),$("div",{},aiToggle,$("br"),$("br"),why)));
+PLAN.skjermer.forEach(s=>skjermKnapper.append($("button",{className:"btn",textContent:s.navn,onclick:()=>visSkjerm(s.id)})));
+function forklar(tittel,tekst,bid){why.replaceChildren($("h3",{textContent:tittel}),$("p",{textContent:tekst}),
+  bid?$("p",{},"Beslutning: ",$("a",{className:"ref",textContent:bid,onclick:()=>hopp(bid)})):"")}
+function visSkjerm(id){const s=PLAN.skjermer.find(x=>x.id===id);phone.replaceChildren();
+  [...skjermKnapper.children].forEach((b,i)=>b.classList.toggle("on",PLAN.skjermer[i].id===id));
+  forklar("Skjerm: "+s.navn,s.sammenheng);
+  s.elementer.forEach(el=>{
+    const tag=el.type==="button"?"button":el.type==="input"?"input":"div";
+    const e=$(tag,{className:"el "+el.type+(el.sekundær?" sec":"")});
+    if(el.type==="input")e.placeholder=el.tekst;else e.textContent=el.tekst;
+    if(el.note)e.dataset.note=1;
+    e.onclick=ev=>{ if(el.note&&sek.mock.classList.contains("showai")) forklar(el.tekst,el.note,el.beslutning);
+      if(el.til){ev.stopPropagation();setTimeout(()=>visSkjerm(el.til),el.note?600:0)} };
+    phone.append(e)})}
+visSkjerm(PLAN.skjermer[0].id);
+
+// Arbeidsflyt + filer (klikk skjerm-lenke for å se i mock)
+const tilMock=id=>id?$("a",{className:"ref",textContent:PLAN.skjermer.find(s=>s.id===id)?.navn||id,onclick:()=>{vis("mock");visSkjerm(id)}}):"";
+const tabell=(hoder,rader)=>$("table",{},$("tr",{},...hoder.map(h=>$("th",{textContent:h}))),...rader.map(r=>$("tr",{},...r.map(c=>$("td",{},c)))));
+sek.arbeidsflyt.append($("div",{className:"tldr",textContent:"TLDR: Hvem gjør hva, i hvilken rekkefølge – og hva som går inn og ut."}),
+  tabell(["#","Steg","Hvem","Inn","Ut","Skjerm"],PLAN.arbeidsflyt.map((a,i)=>[String(i+1),a.steg,a.hvem,a.inn,a.ut,tilMock(a.skjerm)])));
+sek.filer.append($("div",{className:"tldr",textContent:"TLDR: Hvilke filer finnes eller skal lages, og hva hver av dem gjør."}),
+  tabell(["Fil","Rolle","Skjerm"],PLAN.filer.map(f=>[$("span",{className:"mono",textContent:f.sti}),f.rolle,tilMock(f.skjerm)])),
+  $("p",{className:"sub",textContent:"Designkilde for mocken: "+(D.kilde||"ikke oppgitt")}));
+
+// Beslutninger
+sek.beslutninger.append($("div",{className:"tldr",textContent:"TLDR: Hva KI-en valgte, hvorfor, og hva den forkastet."}),
+  $("table",{},$("tr",{},...["ID","Valg","Hvorfor","Forkastet","Kilde"].map(h=>$("th",{textContent:h}))),
+  ...PLAN.beslutninger.map(b=>$("tr",{id:"rad-"+b.id},...[b.id,b.valg,b.hvorfor,b.forkastet,b.kilde].map(t=>$("td",{textContent:t}))))));
+
+// Spørsmål
+sek.sporsmal.append($("div",{className:"tldr",textContent:"TLDR: Ett klikk per spørsmål. ★ = KI-ens anbefaling."}));
+PLAN.sporsmal.forEach(q=>{const kort=$("div",{className:"card"+(svar[q.id]!=null?" done":"")});
+  kort.append($("span",{className:"tag",textContent:q.id}),$("p",{},$("b",{textContent:q.sporsmal})));
+  q.alternativer.forEach((a,i)=>{const b=$("button",{className:"btn opt"+(i===q.anbefalt?" rec":"")+(svar[q.id]===a?" picked":""),textContent:a});
+    b.onclick=()=>{svar[q.id]=a;lagre();kort.classList.add("done");kort.querySelectorAll(".opt").forEach(o=>o.classList.toggle("picked",o===b))};kort.append(b)});
+  kort.append($("p",{className:"sub",textContent:"KI-ens begrunnelse: "+q.hvorfor}));sek.sporsmal.append(kort)});
+sek.sporsmal.append($("button",{className:"btn",textContent:"Kopiér svar til Claude Code",onclick:()=>{navigator.clipboard.writeText(JSON.stringify(svar,null,2));alert("Svar kopiert.")}}));
+
+// Faser + logg
+sek.faser.append($("div",{className:"tldr",textContent:"TLDR: Bygg-rekkefølge. Kryss av underveis."}),
+  ...PLAN.faser.map((f,fi)=>$("div",{className:"card"},$("b",{textContent:f.navn}),
+    ...f.steg.map((s,si)=>{const k=`f${fi}s${si}`;return $("label",{style:"display:block;margin:.3rem 0"},
+      $("input",{type:"checkbox",checked:!!svar[k],onchange:e=>{svar[k]=e.target.checked;lagre()}})," "+s)}))));
+sek.logg.append($("div",{className:"tldr",textContent:"TLDR: KI-ens dagbok – hva den gjør og tenker, i rekkefølge."}),
+  $("table",{},...PLAN.logg.map(l=>$("tr",{},$("td",{className:"mono",textContent:l.tid}),$("td",{textContent:l.hendelse})))));
+vis("oversikt");
+</script>
+</body>
+</html>

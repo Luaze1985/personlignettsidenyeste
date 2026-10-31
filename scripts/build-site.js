@@ -9,6 +9,7 @@ const publicFiles = [
   '404.html',
   'apple-touch-icon.png',
   'favicon.svg',
+  'icons/LICENSE.txt',
   'robots.txt',
   'site.webmanifest',
   'sitemap.xml',

@@ -13,6 +13,10 @@ colors:
   outline: "#cfc7ba"
   accent: "#8a3f2b"
   on-accent: "#ffffff"
+  accent-on-dark: "#dfa692"
+  on-dark-muted: "#e7e3dc"
+  dark-surface: "#2a302d"
+  dark-outline: "#59605c"
   link: "#713322"
 typography:
   display-lg:
@@ -38,7 +42,7 @@ typography:
     lineHeight: 1.65
   body-sm:
     fontFamily: system-ui
-    fontSize: 0.95rem
+    fontSize: 1rem
     fontWeight: 400
     lineHeight: 1.6
   label:
@@ -89,6 +93,15 @@ components:
     textColor: "{colors.on-surface}"
     rounded: "{rounded.none}"
     padding: 1.5rem
+  trust-panel:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-dark-muted}"
+  dark-rule:
+    backgroundColor: "{colors.dark-outline}"
+    height: 1px
+  proof-inset:
+    backgroundColor: "{colors.dark-surface}"
+    textColor: "{colors.accent-on-dark}"
   metadata:
     backgroundColor: "{colors.neutral}"
     textColor: "{colors.on-surface-variant}"
@@ -144,13 +157,13 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 ## Layout
 
 - **Container:** Maks 1180 px, sentrert. Innholdet deles av synlige horisontale linjer.
-- **Hero:** Todelt rutenett på desktop: en smal, redaksjonell venstrekolonne med rolle, fagfelt og sted; en bred høyrekolonne for overskrift, kort forklaring og handlinger. Profilbildet beholdes i toppfeltet. Ingen egen profilkortflate i hero.
+- **Hero:** Todelt rutenett på desktop: en smal, redaksjonell venstrekolonne med rolle, fagfelt og sted; en bred høyrekolonne for overskrift, kort forklaring og handlinger. Profilbildet beholdes i toppfeltet. Ingen egen profilkortflate i hero. På mobil kommer hovedbudskap og handlinger først; rolle, fagfelt og base vises kompakt etterpå. DOM-rekkefølgen følger mobilens leseretning.
 - **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt. Kurs og foredrag er en sekundær vei til eksisterende seksjon. Primærknappen skal ha tydeligere farge og plassering.
 - **Sidestruktur:** Fem deler etter headeren: inngang, Arbeidsbenken, om/foredrag med bilde, erfaring/referanser og kontakt. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
 - **Arbeidsbenken:** Leveranser og arbeidssteg ligger i presise matriser med 1 px skillelinjer, uten mellomrom som får feltene til å se ut som løsrevne kort. Leseretning for metodikken: avklare → prøve → kontrollere → velge. Etter arbeidsstegene kommer «passer når / passer ikke når» og én CTA.
 - **Om og foredrag:** Kommer rett etter Arbeidsbenken. På desktop står introduksjonen og foredragsbildet side om side; på mobil kommer bildet før introduksjonen. Foredragsbildet bruker det stramme svart-hvitt-utsnittet fra Arendalsuka i 4:3-format i en rolig redaksjonell innramming.
 - **Erfaring:** Fire synlige bevis på mørk flate etter om/foredrag. Dokumenterte lenker som ikke er primærbevis ligger i én `<details>`-liste.
-- **To arbeidsspor:** To felt etter hero i samme rutenett; praktisk hjelp får sterkere visuell vekt, mens erfaring og foredrag får tydelig sekundær plass.
+- **To arbeidsspor:** To korte felt etter hero: «Gjør én arbeidsoppgave lettere» og «Kurs og foredrag». Praktisk hjelp får sterkere vekt. Kurs og foredrag peker direkte til `#kurs-og-foredrag`. Ingen merker som gjentar leveransene.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
 
 Breakpoints: 980 px og 760 px. Ved 760 px eller mindre stables venstrekolonnen over hovedinnholdet, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
@@ -167,7 +180,7 @@ Skarpe hjørner er standard. Profilbildet kan være rundt i headeren. Innholdsbi
 
 ### Knapper
 
-Minstehøyde 44 px. Primærknappen er oksidrød med hvit tekst og blir kullsort ved hover. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
+Minstehøyde og minste klikkflate for menyknappen er 44 px. Menytekst er minst 14 px; vanlig innholdstekst er minst 16 px. Primærknappen er oksidrød med hvit tekst og blir kullsort ved hover. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
 
 ### Arbeidssteg
 
@@ -183,7 +196,7 @@ Media, statsrådbesøk, utvalgte referanser og oppdrag samles på én mørk flat
 
 ### Accordion
 
-1 px linjer, monospace-etikett og tydelig pluss/minus. Standard HTML `<details>` beholdes.
+1 px linjer, monospace-etikett og Lucide pluss/minus. Standard HTML `<details>` beholdes med tastaturoppførsel uten JavaScript.
 
 ## Do's and Don'ts
 
@@ -198,3 +211,26 @@ Media, statsrådbesøk, utvalgte referanser og oppdrag samles på én mørk flat
 - **Don't** gjenta samme tjeneste, erfaring eller foredrag i flere seksjoner.
 - **Don't** fjern dokumenterte referanser for å gjøre siden kortere; legg dem heller i detaljvisning.
 - **Don't** bruk buzzord eller garanterte resultatpåstander.
+
+## Ikoner og tilgjengelighet — 31. oktober 2026
+
+Lucide er eneste ikonfamilie. Lokale inline-SVG-er bruker 24 × 24 viewBox,
+2 px strek, avrundede linjeender og `currentColor`. Normal størrelse er 20 px.
+Meny bruker menu/x, handlinger arrow-right, eksterne lenker external-link,
+e-post mail og detaljer plus/minus. Dekorative SVG-er har `aria-hidden="true"`
+og `focusable="false"`. Lisens beholdes i `icons/LICENSE.txt`.
+
+Nummerering beholdes i arbeidsstegene. Ingen dekorative verktøy-/KI-ikoner.
+Mørke flater bruker #dfa692 for lenker/fokus, #e7e3dc for dempet tekst,
+#2a302d for innfelt flate og #59605c for skillelinjer.
+
+Navigasjon er synlig uten JavaScript. Med JavaScript kan mobilmenyen åpnes
+og lukkes; Escape returnerer fokus til menyknappen. Aktiv seksjon markeres
+med `aria-current="location"`. Alle hovedankere tar høyde for sticky header.
+
+## Profil og målgruppe
+
+Kommunestillingen er bakgrunn og skal ikke dominere siden. Lars markedsføres
+ikke mot offentlig sektor. Nåværende eller fremtidig arbeidsgiver står ikke i
+presentasjonen eller strukturerte metadata. Dokumentert kommunal erfaring kan
+beholdes som historisk referanse. Dette følger Lars sin presisering 31. oktober.

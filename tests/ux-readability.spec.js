@@ -39,7 +39,7 @@ test.describe('UX, UI and readability', () => {
     await expect(page.locator('#media, #tjenester, #innsikt, #foredrag')).toHaveCount(0);
     await expect(page.locator('.hero-action')).toHaveCount(0);
     await expect(page.locator('.audience-gate')).toContainText('Dette hjelper jeg med');
-    await expect(page.locator('.audience-gate')).toContainText('Dette bygger det på');
+    await expect(page.locator('.audience-gate')).toContainText('Kurs og foredrag');
     await expect(page.locator('.audience-gate')).not.toContainText('håndverksbedrifter');
     await expect(page.locator('.audience-gate')).not.toContainText('større virksomheter');
     await expect(page.locator('.steps li')).toHaveCount(4);
@@ -73,9 +73,7 @@ test.describe('UX, UI and readability', () => {
     await expect(link).toHaveText('larserik.bn@gmail.com');
     await expect(link).toBeFocused();
 
-    // "Samme lesbare kontaktstil": understreket, 0.95rem, samme farge som de
-    // andre kontaktlenkene (hvit på mørkt panel — aksentfargen rendres aldri
-    // fordi --accent-color ikke er definert; se code-review-notat).
+    // Kontaktlenken beholder understreking og samme kontrast som de andre kanalene.
     const style = await link.evaluate((el) => {
       const cs = getComputedStyle(el);
       return {
@@ -90,7 +88,7 @@ test.describe('UX, UI and readability', () => {
       .evaluate((el) => getComputedStyle(el).color);
 
     expect(style.textDecorationLine).toContain('underline');
-    expect(style.fontSize).toBe('15.2px');
+    expect(style.fontSize).toBe('16px');
     expect(style.offset).toBe('4px');
     expect(style.color).toBe(siblingColor);
   });
@@ -140,7 +138,7 @@ test.describe('UX, UI and readability', () => {
   });
 
   test('avoids horizontal overflow and keeps the work steps readable on narrow screens', async ({ page }) => {
-    for (const width of [180, 360, 768, 1440]) {
+    for (const width of [180, 360, 390, 760, 980, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.goto(indexUrl);
 

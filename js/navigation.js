@@ -1,22 +1,38 @@
 (function () {
-    // --- Aktiv seksjon i meny (IntersectionObserver) ---
+    // Aktiv seksjon følger leseposisjonen, også i den korte kontaktseksjonen.
     var links = Array.prototype.slice.call(document.querySelectorAll('nav a[href^="#"]'));
     var map = {};
     links.forEach(function (l) { map[l.getAttribute('href').slice(1)] = l; });
     var sections = links
         .map(function (l) { return document.getElementById(l.getAttribute('href').slice(1)); })
         .filter(Boolean);
-    if ('IntersectionObserver' in window) {
-        var navObs = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting) {
-                    links.forEach(function (l) { l.classList.remove('active'); });
-                    if (map[e.target.id]) map[e.target.id].classList.add('active');
-                }
-            });
-        }, { rootMargin: '-40% 0px -55% 0px' });
-        sections.forEach(function (s) { navObs.observe(s); });
+    function markCurrent(id) {
+        links.forEach(function (link) {
+            var active = link === map[id];
+            link.classList.toggle('active', active);
+            if (active) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+        });
     }
+    var pending = false;
+    function updateCurrent() {
+        pending = false;
+        var header = document.querySelector('header');
+        var threshold = (header ? header.getBoundingClientRect().height : 0) + 120;
+        var current = '';
+        sections.forEach(function (section) {
+            if (section.getBoundingClientRect().top <= threshold) current = section.id;
+        });
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2 && sections.length) {
+            current = sections[sections.length - 1].id;
+        }
+        markCurrent(current);
+    }
+    window.addEventListener('scroll', function () {
+        if (!pending) { pending = true; window.requestAnimationFrame(updateCurrent); }
+    }, { passive: true });
+    window.addEventListener('resize', updateCurrent);
+    updateCurrent();
 
     // --- Subtil fade-in (kun forsterkning; innhold er synlig uten JS) ---
     var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
@@ -37,32 +53,53 @@
     var toggle = document.querySelector('.nav-toggle');
     var nav = document.getElementById('main-nav');
     if (toggle && nav) {
+        function setMenu(open, restoreFocus) {
+            nav.classList.toggle('is-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
+            toggle.setAttribute('aria-label', open ? 'Lukk meny' : 'Åpne meny');
+            if (restoreFocus) toggle.focus();
+        }
         toggle.addEventListener('click', function () {
-            var isOpen = nav.classList.toggle('is-open');
-            toggle.setAttribute('aria-expanded', isOpen);
-            toggle.textContent = isOpen ? '\u2715' : '\u2630';
+            setMenu(toggle.getAttribute('aria-expanded') !== 'true', false);
         });
         // Lukk meny naar bruker klikker en lenke
         nav.addEventListener('click', function (e) {
-            if (e.target.tagName === 'A') {
-                nav.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
-                toggle.textContent = '\u2630';
+            var link = e.target.closest('a');
+            if (link) {
+                var id = link.getAttribute('href').slice(1);
+                var target = document.getElementById(id);
+                setMenu(false, false);
+                markCurrent(id);
+                if (target) {
+                    target.setAttribute('tabindex', '-1');
+                    target.focus({ preventScroll: true });
+                }
             }
         });
         // Lukk meny ved klikk utenfor header
         document.addEventListener('click', function (e) {
             if (!e.target.closest('header')) {
-                nav.classList.remove('is-open');
-                toggle.setAttribute('aria-expanded', 'false');
-                toggle.textContent = '\u2630';
+                setMenu(false, false);
             }
         });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+                setMenu(false, true);
+            }
+        });
+        window.matchMedia('(max-width: 760px)').addEventListener('change', function () {
+            setMenu(false, false);
+        });
+        document.documentElement.classList.add('nav-ready');
     }
+    var skip = document.querySelector('.skip-link');
+    if (skip) skip.addEventListener('click', function () {
+        document.getElementById('main').focus({ preventScroll: true });
+    });
         // --- Skjul e-post mot roboter (settes saman på klikk) ---
     var emailBtn = document.getElementById('reveal-email');
     if (emailBtn) {
-        // ROT13-kodet: "larserik.bn" → "ynefrexw.oa", "gmail.com" → "tznvy.pbz"
+        // Visning på klikk, ikke en garanti mot innsamling (adressen finnes i JSON-LD).
         function rot13(s) {
             return s.replace(/[a-zA-Z]/g, function(c) {
                 return String.fromCharCode(
@@ -74,7 +111,9 @@
             var addr = rot13('ynefrevx.oa') + '@' + rot13('tznvy.pbz');
             var link = document.createElement('a');
             link.href = 'mailto:' + addr;
-            link.textContent = addr;
+            var mailIcon = emailBtn.querySelector('svg');
+            if (mailIcon) link.appendChild(mailIcon.cloneNode(true));
+            link.appendChild(document.createTextNode(addr));
             link.className = 'contact-email-link';
             emailBtn.parentNode.replaceChild(link, emailBtn);
             link.focus();

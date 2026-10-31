@@ -1,3 +1,23 @@
+# Gjeldende kontroll — 31. oktober 2026
+
+Kjør `npm test` (bygger først). På maskiner med lokal Chrome kan
+`PLAYWRIGHT_CHANNEL=chrome` settes; i PowerShell:
+`$env:PLAYWRIGHT_CHANNEL='chrome'; npm test`.
+
+50 tester bestod i Chrome 31. oktober. Nettverk/localhost krever tilgang i
+kjøremiljøet. To LinkedIn-mål var uverifiserte, ikke bekreftet brutte.
+Se `docs/issue9/README.md` for hele resultatet og gjenstående manuell kontroll.
+
+Nye tester dekker menyens Escape/fokus, SVG-klikk, breakpoint-reset, mobilens
+handlingsplassering, skip-link, aria-current og bruk uten JS. Axe kontrollerer
+390/1440 px med åpne detaljer og vist e-post. Header-testen dekker HSTS og
+form-action none. Deploygrensen inkluderer Lucide-lisens, ikke interne filer.
+Viewport-reflow er ikke faktisk nettleserzoom; ekte 200 % zoom gjenstår.
+
+Resten av dokumentet er historisk oversikt over den opprinnelige testpakken.
+
+---
+
 # TEST_INFRA.md
 
 This document defines the E2E test infrastructure, strategy, and test case inventory for validating the security headers and front-end compliance of the personal website.

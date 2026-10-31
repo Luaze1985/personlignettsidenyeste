@@ -124,6 +124,12 @@ test.describe('Security Headers & E2E Validation', () => {
     expect(headers['content-security-policy']).toBeDefined();
   });
 
+  test('HSTS remains configured and forms cannot submit', async ({ request }) => {
+    const headers = (await request.get(BASE_URL)).headers();
+    expect(headers['strict-transport-security']).toBe('max-age=63072000; includeSubDomains; preload');
+    expect(headers['content-security-policy']).toContain("form-action 'none'");
+  });
+
   test('TC-1.2: Verify X-Frame-Options value is secure', async ({ request }) => {
     const response = await request.get(BASE_URL);
     const headers = response.headers();

@@ -101,3 +101,27 @@ Det skal ikke finnes egne, likeverdige seksjoner for media, tjenester, innsikt o
 3. Kontroller desktop og mobil visuelt.
 4. Kontroller fokus, reduced motion og lenker.
 5. Ikke commit, push eller deploy uten separat godkjenning.
+
+## Gjeldende gjennomføring — 31. oktober 2026
+
+Godkjent forbedringsplan viderefører retning B og forbedringene fra main
+5ff17d0. Denne seksjonen presiserer og erstatter eldre motstridende detaljer.
+
+- Hovedbudskap og primærhandling før metadata på mobil; venstrekolonne på desktop.
+- Ingen gjentatte merker i hero. To innganger: praktisk hjelp og kurs/foredrag.
+- MVP forklares som avgrenset prototype; agenter som avgrenset hjelp i arbeidsflyt.
+- Fire kildebelagte bevis; øvrige referanser i én detaljliste.
+- Lucide inline-SVG, 20 px, currentColor, lisens i offentlig bygg.
+- Meny minst 44 × 44 px, Escape, fokusretur, SVG-klikk, breakpoint-reset og
+  navigasjon også uten JS. Skip-link flytter fokus. Ankermål er stabile.
+- Bokmål `nb`, navngitte hovedseksjoner og semantisk 404. Ingen skjemaer;
+  CSP har form-action none. HSTS og a11y kontrolleres i testene.
+- Kommunestillingen skal ikke være fokus, og offentlig sektor er ikke målgruppe.
+  Nåværende/fremtidig arbeidsgiver tas ut av presentasjon og JSON-LD. Historiske
+  kildebelagte kommunereferanser beholdes. Fremtidig jobb presenteres ikke som nåværende.
+- Pris, org.nr., rolleavklaring, datapraksis og eksempel krever bekreftede fakta.
+  Ingen offentlige plassholdere. E-postvisning beholdes; uten JS vises mailto.
+- Godkjent plan autoriserer commit/push og oppdatering av PR #10. Merge og
+  produksjonsdeploy krever egen godkjenning.
+- Test 360, 390, 760, 980 og 1440 px, faktisk 200 % zoom separat fra reflow,
+  tastatur, redusert bevegelse, kontrast, SVG-klikk og produksjonsgrense.

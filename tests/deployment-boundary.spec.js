@@ -10,6 +10,7 @@ const expectedFiles = [
   'apple-touch-icon.png',
   'css/style.css',
   'favicon.svg',
+  'icons/LICENSE.txt',
   'fonts/OFL.txt',
   'fonts/newsreader-latin-400-normal.woff2',
   'fonts/newsreader-latin-600-normal.woff2',
