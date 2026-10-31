@@ -5,7 +5,11 @@
     links.forEach(function (l) { map[l.getAttribute('href').slice(1)] = l; });
     var sections = links
         .map(function (l) { return document.getElementById(l.getAttribute('href').slice(1)); })
-        .filter(Boolean);
+        .filter(Boolean)
+        // Menyrekkefølgen (Figma) kan avvike fra sidens rekkefølge; aktiv seksjon må følge siden.
+        .sort(function (a, b) {
+            return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+        });
     function markCurrent(id) {
         links.forEach(function (link) {
             var active = link === map[id];

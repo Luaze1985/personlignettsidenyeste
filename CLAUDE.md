@@ -16,14 +16,20 @@ Brukerreise og innholdsgrenser: `SPEC.md`. Status: `docs/issue9/README.md`.
 
 ## Struktur og innhold
 
-- Inngang: hovedbudskap, kontakt og mindre lenke til kurs/foredrag.
-- `#arbeidsbenken`: leveranser, fire arbeidssteg og passer/passer ikke.
-- `#om`: introduksjon og foredragsbilde; temaene har `#kurs-og-foredrag`.
-- `#erfaring`: fire synlige dokumenterte bevis og én detaljliste.
-- `#kontakt`: Vis e-post og dagens LinkedIn-kanaler.
+Svart-hvitt etter Figma (desktop 3:149, mobil 3:266), valgt 31.10.2026.
 
-Legg nye dokumenterte omtaler i listen under `#erfaring`; foredragstemaer
-under `#kurs-og-foredrag`. Nye likestilte seksjoner er ikke standardvalget.
+- Inngang: hovedbudskap, kontaktknapp, lenke til kurs/foredrag og rundt portrett.
+- «Omtalt hos»: fire navn som må være dokumentert i `#erfaring`.
+- `#arbeidsbenken` (01): tre tjenester, svart stegbånd og passer/passer ikke.
+- `#kurs-og-foredrag` (02): foredragsbilde og tre temaer på grå flate.
+- `#om` (03): kort tekst og lenke til erfaring.
+- `#erfaring` (04): bevis, Digi Agder, «I fagpressen» og én detaljliste.
+- `#kontakt`: svart flate med Vis e-post og dagens LinkedIn-kanaler.
+
+Legg nye dokumenterte omtaler i listen under `#erfaring`. En fagpresseartikkel
+skal også stå i «I fagpressen», kontrollert i `docs/kilder-fagpresse.md`.
+Foredragstemaer hører til `#kurs-og-foredrag`. Nye likestilte seksjoner er ikke
+standardvalget.
 
 Kommunestillingen er bakgrunn, ikke fokus eller salg mot offentlig sektor.
 Ikke gjeninnfør nåværende/fremtidig arbeidsgiver i presentasjon eller JSON-LD.

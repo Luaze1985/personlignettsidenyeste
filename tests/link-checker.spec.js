@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 test('Check all links in index.html', async ({ page, context }) => {
+  // Eksterne lenker sjekkes etter hverandre (opptil 18 s hver); standardgrensen på 30 s er for kort på tregt nett.
+  test.setTimeout(240_000);
   // Set a realistic User-Agent to help bypass some bot detection mechanisms
   await context.setExtraHTTPHeaders({
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
