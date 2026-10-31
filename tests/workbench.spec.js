@@ -21,11 +21,10 @@ test.describe('Arbeidsbenken', () => {
     await expect(section.locator('.service-box, .services-overview')).toHaveCount(0);
   });
 
-  test('keeps the fit/no-fit guidance and one contact link without new claims', async ({ page }) => {
+  test('keeps the fit/no-fit guidance without new claims', async ({ page }) => {
     const section = page.locator('#arbeidsbenken');
     await expect(section).toContainText('Passer når');
     await expect(section).toContainText('Passer ikke når');
-    await expect(section.locator('a[href="#kontakt"]')).toHaveCount(1);
     await expect(section).not.toContainText('Prinsippet er enkelt');
     const text = await section.textContent();
     expect(text).not.toMatch(/\bkr\b|kroner|prosent|%|garanti/i);

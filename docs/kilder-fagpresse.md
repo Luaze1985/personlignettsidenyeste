@@ -46,3 +46,13 @@ Lars bekreftet 31.10.2026 at «Dagbladet» var kode24-saken.
 - Lawai er en leverandørblogg, ikke fagpresse. Den ligger i detaljlisten, men vises ikke under «I fagpressen».
 - Lawai staver navnet «Jonsen» i ingressen. Det er ikke vår feil, men vi lenker uten å gjenta skrivemåten.
 - HR Norge er bak betalingsmur. Den vises med utgiver og tittel og får merket «krever medlemskap».
+
+## Samlet liste (designkritikk 31.10.2026)
+
+Bevislisten og Digi Agder-sitatet er slått sammen med fagpresseblokken til én liste, «I media og på fagscener». Tre nye rader er lagt til. NRK og Digi Agder er kontrollert mot kilden etter at nettet kom tilbake:
+
+| Kilde | Tekst på siden | Grunnlag |
+| :-- | :-- | :-- |
+| NRK | Halverte arbeidsuka med KI (Omtale · februar 2025) | Kontrollert mot rå HTML 31.10.2026: og:title «Halverte arbeidsuka med KI», datePublished 2025-02-07. Beskrivelsen nevner Lars ved navn. |
+| Digi Agder | Statsråd Karianne Tung: Agder viser vei innen digitalisering (Omtale) | Kontrollert mot rå HTML 31.10.2026: tittelen er h1. Teksten sier at Lars «viste statsråden hvordan han bruker kunstig intelligens i sitt daglige arbeid». Datoen er usikker og vises derfor ikke. |
+| Tech Talks Agder | KI i arbeidshverdagen — fra idé til kode (Foredrag) | Arrangementsteksten fra den tidligere bevislisten. Ingen dato er oppgitt. |

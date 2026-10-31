@@ -129,7 +129,6 @@ test.describe('UX, UI and readability', () => {
       const body = read('body');
       const intro = read('.section-intro');
       const about = read('.about-layout p');
-      const step = read('.steps li > p:last-child');
       const navLink = read('nav a');
       const heading = read('h2');
 
@@ -138,7 +137,6 @@ test.describe('UX, UI and readability', () => {
         backgroundColor: body.backgroundColor,
         introColor: intro.color,
         aboutFontSize: Number.parseFloat(about.fontSize),
-        stepFontSize: Number.parseFloat(step.fontSize),
         navPaddingTop: Number.parseFloat(navLink.paddingTop),
         headingFontFamily: heading.fontFamily,
       };
@@ -147,7 +145,6 @@ test.describe('UX, UI and readability', () => {
     expect(styles.introColor).toBe(styles.bodyColor);
     expect(contrastRatio(styles.introColor, styles.backgroundColor)).toBeGreaterThanOrEqual(4.5);
     expect(styles.aboutFontSize).toBeGreaterThanOrEqual(15.6);
-    expect(styles.stepFontSize).toBeGreaterThanOrEqual(15.2);
     expect(styles.navPaddingTop).toBeGreaterThanOrEqual(5.6);
     expect(styles.headingFontFamily).toContain('Newsreader');
   });
@@ -170,16 +167,11 @@ test.describe('UX, UI and readability', () => {
         })(),
         textFitsContainers: [...document.querySelectorAll('main p')]
           .every((paragraph) => paragraph.scrollWidth <= paragraph.clientWidth + 1),
-        stepLineHeightRatio: (() => {
-          const styles = getComputedStyle(document.querySelector('.steps li > p:last-child'));
-          return Number.parseFloat(styles.lineHeight) / Number.parseFloat(styles.fontSize);
-        })(),
       }));
 
       expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
       expect(layout.navLinksContained).toBe(true);
       expect(layout.textFitsContainers).toBe(true);
-      expect(layout.stepLineHeightRatio).toBeGreaterThanOrEqual(1.6);
     }
 
     await page.setViewportSize({ width: 360, height: 1000 });

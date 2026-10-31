@@ -23,11 +23,11 @@ Svart-hvitt etter Figma (desktop 3:149, mobil 3:266), valgt 31.10.2026.
 - `#arbeidsbenken` (01): tre tjenester, svart stegbånd og passer/passer ikke.
 - `#kurs-og-foredrag` (02): foredragsbilde og tre temaer på grå flate.
 - `#om` (03): kort tekst og lenke til erfaring.
-- `#erfaring` (04): bevis, Digi Agder, «I fagpressen» og én detaljliste.
+- `#erfaring` (04): ett sitat, én samlet omtaleliste og én detaljliste.
 - `#kontakt`: svart flate med Vis e-post og dagens LinkedIn-kanaler.
 
-Legg nye dokumenterte omtaler i listen under `#erfaring`. En fagpresseartikkel
-skal også stå i «I fagpressen», kontrollert i `docs/kilder-fagpresse.md`.
+Legg nye dokumenterte omtaler i detaljlisten under `#erfaring`. En utvalgt omtale
+skal også stå i «I media og på fagscener», kontrollert i `docs/kilder-fagpresse.md`.
 Foredragstemaer hører til `#kurs-og-foredrag`. Nye likestilte seksjoner er ikke
 standardvalget.
 

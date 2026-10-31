@@ -162,13 +162,13 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 - **Hero (Figma 4:50 / 4:143):** På desktop står hovedbudskapet til venstre og et stort rundt portrett (`images/profil-portrett-800.jpg`, maks 472 px) til høyre. Under portrettet står navn og «Kristiansand». Det er ingen rollekolonne og ingen stikort. På mobil kommer etikett, overskrift, ingress og handlinger først, og deretter portrettet. DOM-rekkefølgen følger mobilens leseretning.
 - **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt (svart knapp, full bredde på mobil). «Kurs og foredrag» er en tekstlenke med pil til `#kurs-og-foredrag`.
 - **Sidestruktur:** Etter headeren kommer inngang, «Omtalt hos», 01 Arbeidsbenken, 02 Kurs og foredrag, 03 Om, 04 Erfaring og omtaler og til slutt Kontakt. Seksjonene nummereres i etiketten («02 / Kurs & foredrag»). Menyen følger Figma (Arbeid, Om, Foredrag, Kontakt). `navigation.js` sorterer seksjonene etter plassering på siden, så aktiv markering stemmer selv om menyrekkefølgen avviker. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
-- **Arbeidsbenken (Figma 4:85):** Øverst står etiketten «01 / Dette hjelper jeg med». Under den står overskrift og ingress til venstre og tre nummererte tjenestelinjer til høyre (Sparring, En liten prototype, Agenter i arbeidsflyten), skilt med hårstreker og uten bokser. Deretter kommer et svart bånd med fire steg: avklare → prøve → kontrollere → velge. Hvert steg har nummer, navn og én kort forklaring. Etter båndet kommer «passer når / passer ikke når» som to kolonner med svart toppstrek, og til slutt én tekstlenke til kontakt.
+- **Arbeidsbenken (Figma 4:85):** Etiketten «01 / Dette hjelper jeg med». Overskrift og ingress står til venstre, og tre nummererte tjenestelinjer til høyre (Sparring, En liten prototype, Agenter i arbeidsflyten), skilt med hårstreker. Under kommer et svart bånd med bare nummer og navn: avklare → prøve → kontrollere → velge. Til slutt «passer når / passer ikke når». Prinsippet «KI lager struktur og utkast, fagpersonen vurderer og har ansvaret» står bare i ingressen. Flyten forklares bare i båndet, og oppfordringen til kontakt står i hero og i kontaktdelen. Ikke gjenta dem (designkritikk 31.10.2026).
 - **Kurs og foredrag (Figma 4:108):** Lys grå flate over hele bredden. Foredragsbildet (svart-hvitt fra Arendalsuka, 4:3, uten ramme) står til venstre. Til høyre står etikett, overskrift, ingress, tre temaer med kort forklaring og tekstlenken «Ta kontakt om foredrag». På mobil kommer bildet først.
-- **Om (Figma 4:121):** Ren tekst på hvit flate: etikett, overskriften «Jeg liker å gjøre kompliserte ting brukbare.», to korte avsnitt og tekstlenken «Se erfaring og omtaler» til `#erfaring`.
-- **Omtalt hos (Figma 4:78):** Lys grå stripe rett etter hero med navnene NRK, HR Norge, Tech Talks Agder og DigiViken, uten lenker og uten logoer. Hvert navn skal være dokumentert i `#erfaring`.
-- **Erfaring:** Lys seksjon med etiketten «04 / Erfaring og omtaler» (Lars, 31.10.2026: Figma har ingen egen erfaringsseksjon, men innholdet beholdes). Tre bevis står som linjer, og Digi Agder-omtalen står som sitat med svart venstrestrek. Ingen mørk flate og ingen monospace. Deretter kommer «I fagpressen»: ett fremhevet, ordrett sitat i stor Newsreader-skrift med synlig kilde (`<figure>` med `<blockquote cite>` og `<figcaption>`), og så en liste med utgiver, artikkeltittel og type/dato. Bare publikasjoner står der, ikke leverandørblogger. Kilder og kontroll står i `docs/kilder-fagpresse.md`. Alle lenker i blokken skal også finnes i `<details>`-listen med andre dokumenterte lenker.
+- **Om (Figma 4:121):** Ren tekst på hvit flate: etikett, overskriften «Jeg liker å gjøre kompliserte ting brukbare.», ett avsnitt og tekstlenken «Se erfaring og omtaler» til `#erfaring`.
+- **Omtalt hos (Figma 4:78):** Lys grå stripe rett etter hero med navnene NRK, HR Norge, Tech Talks Agder og DigiViken, uten logoer. Hvert navn lenker til `#erfaring` og skal være dokumentert der.
+- **Erfaring:** Lys seksjon med etiketten «04 / Erfaring og omtaler». Den har ett fremhevet, ordrett sitat (`<figure>` med `<blockquote cite>` og `<figcaption>`) og én samlet liste, «I media og på fagscener», med utgiver, tittel eller beskrivelse og type/dato. Ingen separat bevisliste og ingen andre sitatstiler. Leverandørblogger står bare i `<details>`. Kilder står i `docs/kilder-fagpresse.md`. Alle lenker i listen skal også finnes i `<details>`.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
-- **Kontakt (Figma 4:130):** Svart flate over hele bredden, som går rett over i svart bunntekst. Den har etiketten «La oss begynne med en oppgave.», en stor overskrift, kort tekst, en hvit «Vis e-post»-knapp (full bredde på mobil) og begge LinkedIn-lenkene.
+- **Kontakt (Figma 4:130):** Svart flate over hele bredden, som går rett over i svart bunntekst. Den har etiketten «Kontakt», en stor overskrift, kort tekst med tre stikkord om hva en henvendelse om en arbeidsoppgave bør inneholde, en hvit «Vis e-postadresse»-knapp (full bredde på mobil) og begge LinkedIn-lenkene.
 
 Breakpoints: 980 px og 760 px. Ved 760 px eller mindre kommer hovedbudskap og handlinger før den kompakte rollekolonnen, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
 
@@ -184,15 +184,15 @@ Skarpe hjørner er standard. Portrettet i hero er rundt. Innholdsbilder kan ha 0
 
 ### Knapper
 
-Minstehøyde og minste klikkflate for menyknappen er 44 px. Menytekst er minst 14 px; vanlig innholdstekst er minst 16 px. Primærknappen er svart med hvit tekst. Ved hover blir den hvit med svart ramme. På mørk flate er primærknappen hvit med svart tekst. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
+Minstehøyde og minste klikkflate for menyknappen er 44 px. Menypunktene har minst 44 px høy klikkflate også på desktop. Menytekst er minst 14 px, og etiketter (store bokstaver) er minst 12,8 px; vanlig innholdstekst er minst 16 px. Primærknappen er svart med hvit tekst. Ved hover blir den hvit med svart ramme. På mørk flate er primærknappen hvit med svart tekst. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
 
 ### Arbeidssteg
 
-Fire trinn ligger på ett sammenhengende svart bånd med omtrent 1.5 rem innvendig luft. Nummeret står i dempet grå foran navnet, og forklaringen står under. På mobil stables stegene. Ikke bruk kortrekker for tjenester ved siden av denne flyten.
+Fire trinn ligger på ett sammenhengende svart bånd med nummer i dempet grå og navn i Newsreader. Ingen forklaring under. På mobil stables de. Ikke bruk kortrekker for tjenester ved siden av denne flyten.
 
 ### Erfaring og omtaler
 
-Media, statsrådbesøk og utvalgte referanser samles i én lys seksjon med hårstreker. Tre bevis og Digi Agder-sitatet er synlige, deretter kommer «I fagpressen», og resten ligger i `<details>`. Typografien og lenkene skal være lesbare og nøkterne. Ingen logovegg.
+Media, statsrådbesøk og fagscener samles i én lys liste med hårstreker etter ett fremhevet sitat. Resten ligger i `<details>`. Typografien og lenkene skal være lesbare og nøkterne. Ingen logovegg.
 
 ### Accordion
 

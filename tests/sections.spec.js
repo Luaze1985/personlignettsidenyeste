@@ -37,7 +37,7 @@ test.describe('Foredrag, Om, Erfaring og Kontakt', () => {
     const experience = page.locator('#erfaring');
     await expect(experience).toHaveCSS('background-color', 'rgb(255, 255, 255)');
     await expect(experience.locator('.eyebrow').first()).toHaveText(/04 \/ Erfaring og omtaler/i);
-    for (const selector of ['.proof-list strong', '.reference-details summary']) {
+    for (const selector of ['.press-outlet', '.reference-details summary']) {
       const family = await experience.locator(selector).first().evaluate((el) => getComputedStyle(el).fontFamily);
       expect(family).not.toMatch(/mono/i);
     }

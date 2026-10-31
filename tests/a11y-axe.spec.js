@@ -18,8 +18,8 @@ for (const width of [390, 1440]) {
 
 test('visible proof points, link notices and metadata respect the approved profile', async ({ page }) => {
   await page.goto(indexUrl);
-  await expect(page.locator('.proof-list li')).toHaveCount(3);
-  await expect(page.locator('.proof-quote a')).toHaveCount(1);
+  await expect(page.locator('.press-list li')).toHaveCount(8);
+  await expect(page.locator('.press-quote blockquote[cite]')).toHaveCount(1);
   await page.locator('summary').click();
   for (const link of await page.locator('a[target="_blank"]').all()) {
     await expect(link).toHaveAccessibleName(/åpner i ny fane/);
@@ -36,8 +36,8 @@ test('printed proof and expanded references stay readable with background graphi
   await page.goto(indexUrl);
   await page.locator('summary').click();
   await page.emulateMedia({ media: 'print' });
-  await expect(page.locator('.proof-quote')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-  for (const selector of ['.proof-quote a', '.reference-details a', '.reference-details summary', '.proof-list strong', '.contact-panel .eyebrow']) {
+  await expect(page.locator('.contact-section')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+  for (const selector of ['.press-list a', '.reference-details a', '.reference-details summary', '.press-outlet', '.contact-panel .eyebrow', '.contact-hints li']) {
     for (const element of await page.locator(selector).all()) {
       await expect(element).toHaveCSS('color', 'rgb(0, 0, 0)');
     }
