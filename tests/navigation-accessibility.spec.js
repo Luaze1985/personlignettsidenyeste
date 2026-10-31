@@ -29,15 +29,15 @@ test('mobile menu supports keyboard, nested icons, and breakpoint changes', asyn
   await expect(page.getByRole('navigation')).toBeHidden();
 });
 
-test('mobile visitors see the main action before the role metadata', async ({ page }) => {
+test('mobile visitors see the main action before the portrait', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(indexUrl);
   const action = await page.locator('.hero-primary-action').boundingBox();
-  const rail = await page.locator('.hero-rail').boundingBox();
+  const portrait = await page.locator('.hero-portrait').boundingBox();
   expect(action.y + action.height).toBeLessThanOrEqual(844);
-  expect(rail.y).toBeGreaterThan(action.y + action.height);
+  expect(portrait.y).toBeGreaterThan(action.y + action.height);
   await expect(page.locator('.hero-badges')).toHaveCount(0);
-  await page.locator('.audience-gate a').nth(1).click();
+  await page.locator('.hero-secondary-action').click();
   await expect(page).toHaveURL(/#kurs-og-foredrag$/);
 });
 

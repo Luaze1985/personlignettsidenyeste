@@ -21,6 +21,7 @@ const publicFiles = [
   'fonts/newsreader-latin-ext-400-normal.woff2',
   'fonts/newsreader-latin-ext-600-normal.woff2',
   'images/profil-480.jpg',
+  'images/profil-portrett-800.jpg',
   'images/foredrag-vartagder-1240.jpg',
   'images/foredrag-vartagder-snitt-bw.jpg',
 ];

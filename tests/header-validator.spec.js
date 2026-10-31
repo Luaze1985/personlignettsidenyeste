@@ -430,11 +430,11 @@ test.describe('Security Headers & E2E Validation', () => {
   test('TC-4.4: Profile image loads successfully', async ({ page, request }) => {
     await page.goto(BASE_URL);
     
-    const profileImg = page.locator('img.profile-pic');
+    const profileImg = page.locator('img.hero-portrait-img');
     await expect(profileImg).toBeVisible();
-    
+
     const src = await profileImg.getAttribute('src');
-    expect(src).toBe('images/profil-480.jpg');
+    expect(src).toBe('images/profil-portrett-800.jpg');
     
     // Fetch image directly to verify 200 response
     const imgUrl = `${BASE_URL}/${src}`;

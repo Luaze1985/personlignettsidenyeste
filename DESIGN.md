@@ -158,13 +158,13 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 ## Layout
 
 - **Container:** Maks 1180 px, sentrert. Innholdet deles av synlige horisontale linjer.
-- **Hero:** Todelt rutenett på desktop: en smal, redaksjonell venstrekolonne med rolle, fagfelt og sted; en bred høyrekolonne for overskrift, kort forklaring og handlinger. Profilbildet beholdes i toppfeltet. Ingen egen profilkortflate i hero. På mobil kommer hovedbudskap og handlinger først; rolle, fagfelt og base vises kompakt etterpå. DOM-rekkefølgen følger mobilens leseretning.
-- **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt. Kurs og foredrag er en sekundær vei til eksisterende seksjon. Primærknappen skal ha tydeligere farge og plassering.
+- **Header:** Bare navnet i Newsreader til venstre og fire menypunkter til høyre: Arbeid, Om, Foredrag og Kontakt. Ingen profilbilde i headeren. En tynn hårstrek skiller headeren fra innholdet.
+- **Hero (Figma 4:50 / 4:143):** På desktop står hovedbudskapet til venstre og et stort rundt portrett (`images/profil-portrett-800.jpg`, maks 472 px) til høyre. Under portrettet står navn og «Kristiansand». Det er ingen rollekolonne og ingen stikort. På mobil kommer etikett, overskrift, ingress og handlinger først, og deretter portrettet. DOM-rekkefølgen følger mobilens leseretning.
+- **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt (svart knapp, full bredde på mobil). «Kurs og foredrag» er en tekstlenke med pil til `#kurs-og-foredrag`.
 - **Sidestruktur:** Fem deler etter headeren: inngang, Arbeidsbenken, om/foredrag med bilde, erfaring/referanser og kontakt. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
 - **Arbeidsbenken:** Leveranser og arbeidssteg ligger i presise matriser med 1 px skillelinjer, uten mellomrom som får feltene til å se ut som løsrevne kort. Leseretning for metodikken: avklare → prøve → kontrollere → velge. Etter arbeidsstegene kommer «passer når / passer ikke når» og én CTA.
 - **Om og foredrag:** Kommer rett etter Arbeidsbenken. På desktop står introduksjonen og foredragsbildet side om side; på mobil kommer bildet før introduksjonen. Foredragsbildet bruker det stramme svart-hvitt-utsnittet fra Arendalsuka i 4:3-format i en rolig redaksjonell innramming.
 - **Erfaring:** Fire synlige bevis på mørk flate etter om/foredrag. Dokumenterte lenker som ikke er primærbevis ligger i én `<details>`-liste.
-- **To arbeidsspor:** To korte felt etter hero: «Gjør én arbeidsoppgave lettere» og «Kurs og foredrag». Praktisk hjelp får sterkere vekt. Kurs og foredrag peker direkte til `#kurs-og-foredrag`. Ingen merker som gjentar leveransene.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
 
 Breakpoints: 980 px og 760 px. Ved 760 px eller mindre kommer hovedbudskap og handlinger før den kompakte rollekolonnen, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
@@ -175,7 +175,7 @@ Flat design. Dybde skapes gjennom hvit og lys grå flate, typografisk skala, hå
 
 ## Shapes
 
-Skarpe hjørner er standard. Profilbildet kan være rundt i headeren. Innholdsbilder kan ha 0.2 rem avrunding; øvrige komponenter bruker 0 px.
+Skarpe hjørner er standard. Portrettet i hero er rundt. Innholdsbilder kan ha 0.2 rem avrunding; øvrige komponenter bruker 0 px.
 
 ## Components
 

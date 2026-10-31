@@ -19,6 +19,7 @@ const expectedFiles = [
   'images/foredrag-vartagder-1240.jpg',
   'images/foredrag-vartagder-snitt-bw.jpg',
   'images/profil-480.jpg',
+  'images/profil-portrett-800.jpg',
   'index.html',
   'js/navigation.js',
   'robots.txt',

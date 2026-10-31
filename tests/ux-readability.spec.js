@@ -32,24 +32,26 @@ test.describe('UX, UI and readability', () => {
     expect(navigationTargets).toEqual([
       '#arbeidsbenken',
       '#om',
-      '#erfaring',
+      '#kurs-og-foredrag',
       '#kontakt',
     ]);
+    await expect(page.locator('nav a')).toHaveText(['Arbeid', 'Om', 'Foredrag', 'Kontakt']);
 
     await expect(page.locator('#media, #tjenester, #innsikt, #foredrag')).toHaveCount(0);
     await expect(page.locator('.hero-action')).toHaveCount(0);
-    await expect(page.locator('.audience-gate')).toContainText('Dette hjelper jeg med');
-    await expect(page.locator('.audience-gate')).toContainText('Kurs og foredrag');
-    await expect(page.locator('.audience-gate')).not.toContainText('håndverksbedrifter');
-    await expect(page.locator('.audience-gate')).not.toContainText('større virksomheter');
+    // Figma 4:50 har ingen rollekolonne eller stikort i første skjerm.
+    await expect(page.locator('.audience-gate, .hero-rail')).toHaveCount(0);
+    await expect(page.locator('main')).not.toContainText('håndverksbedrifter');
+    await expect(page.locator('main')).not.toContainText('større virksomheter');
     await expect(page.locator('.steps li')).toHaveCount(4);
     await expect(page.locator('#arbeidsbenken')).toContainText('KI lager struktur og utkast');
     await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
   });
 
   test('makes the work request primary and gives the home link its visible name', async ({ page }) => {
-    const home = page.locator('header .profile-group');
+    const home = page.locator('header .site-home');
     await expect(home).toHaveAccessibleName(/Lars Erik Brekne Johnsen/);
+    await expect(page.locator('header img')).toHaveCount(0);
 
     const primary = page.locator('.hero-primary-action');
     const secondary = page.locator('.hero-secondary-action');
@@ -103,9 +105,22 @@ test.describe('UX, UI and readability', () => {
     );
 
     expect(imageSources).toEqual(expect.arrayContaining([
-      expect.objectContaining({ className: 'profile-pic', src: 'images/profil-480.jpg', naturalWidth: 480 }),
+      expect.objectContaining({ className: 'hero-portrait-img', src: 'images/profil-portrett-800.jpg', naturalWidth: 800 }),
       expect.objectContaining({ src: 'images/foredrag-vartagder-snitt-bw.jpg' }),
     ]));
+  });
+
+  test('shows a large round portrait with name and place in the first screen', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(indexUrl);
+    const portrait = page.locator('.hero-portrait img');
+    await expect(portrait).toHaveAttribute('alt', 'Lars Erik Brekne Johnsen');
+    await expect(portrait).toHaveAttribute('width', '800');
+    await expect(portrait).toHaveAttribute('height', '800');
+    await expect(page.locator('.hero-portrait figcaption')).toContainText('Kristiansand');
+    const box = await portrait.boundingBox();
+    expect(box.width).toBeGreaterThanOrEqual(400);
+    expect(box.y).toBeLessThan(1000);
   });
 
   test('uses the agreed readable type hierarchy and navigation targets', async ({ page }) => {
