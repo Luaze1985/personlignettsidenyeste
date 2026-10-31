@@ -1,125 +1,64 @@
-# Issues – larserik-nettside
+# Gjeldende status og backlog — 31. oktober 2026
 
-**Hoved-PRD:** `SPEC.md` §8 (Fremtid / roadmap) + §2b («Løft håndverket»-doktrine).
-**Prinsipp:** alt arver designsystemet; hver oppgave er en vertikal skive med kjørbar verdi; lavt vedlikehold foran alt.
-**Status:** lokal issue-liste (GitHub opprettes senere av Lars). Rekkefølge: **F-1 → F-5 → F-2 → F-3 → F-4.**
+Dette er nåværende oversikt. Historisk detaljert backlog er bevart i
+`docs/issue9/backlog-before-2026-10-31.md`; eldre foreslåtte linjenumre,
+WCAG-tolkninger og DNS-status der er ikke gjeldende dokumentasjon.
 
----
+## GitHub-sakene
 
-## Roadmap (fra PRD §8)
+| Sak | Status i kode | Oppfølging |
+| --- | --- | --- |
+| #1 Forenkle inngangen | Gjennomført, videreført med godkjent kontakt-CTA | Fjernet gjentatte merker |
+| #2 Foredragsbildets plassering/utsnitt | Gjennomført | Desktop og mobil kontrollert |
+| #3 Kvalitetsport | Automatiske kontroller bestått | Faktisk zoom og ekte brukere gjenstår |
+| #4 Arbeidsflyt som hovedinngang | Gjennomført | Kontakt er primær handling |
+| #5 Om og foredrag med bilde | Gjennomført | Eksisterende 4:3-utsnitt beholdt |
+| #6 Erfaring nederst | Gjennomført | Fire synlige bevis og én detaljliste |
+| #7 Samlet visuell kvalitetsport | Automatiske kontroller og skjermbilder levert | Zoom/brukerkontroll gjenstår |
+| #8 Grafisk uttrykk | Retning B videreført | Lucide til handlinger |
+| #9 Finpuss og vei til oppdrag | Implementert i PR #10 | Merge/publisering ikke godkjent |
+| #11 Brukerpanelendringer | Integrert fra main 5ff17d0 | Panelet er simulert, ikke ekte brukerdata |
 
-### F-1 — Ekstraher designsystem til delt `style.css`
-*Tracer bullet · ingen avhengighet · blokkerer F-2, F-3, F-4*
+Dette er en kodeoversikt, ikke påstand om at GitHub-sakene er lukket.
 
-Beviser multi-side-arkitekturen. Uten den dupliseres stil på hver ny side.
+## Kvalitet og teknisk backlog
 
-**Definition of Done**
-- [ ] `:root`-variabler, `@font-face` og felles komponent-CSS flyttet fra `index.html` til `style.css`.
-- [ ] `index.html` lenker `<link rel="stylesheet" href="style.css">`.
-- [ ] Siden ser **pixel-identisk** ut som før (visuell diff = null).
-- [ ] Font-preload beholdt i `<head>`.
-- [ ] Fungerer lokalt og på Netlify (relative stier).
+| ID | Status | Grunnlag eller neste steg |
+| --- | --- | --- |
+| UU-01, UU-02, SEC-01 | Videreført | Fokuskontrast, e-postfokus og CSP-hash kontrolleres |
+| UU-03–UU-07 | Gjennomført | Navn, ny-fane-varsel, meny, skip-link og bokmål |
+| UU-08–UU-10 | Gjennomført | Menyflate/-ramme, seksjonsnavn og main på 404 |
+| UU-11 | Gjennomført | Axe på 390/1440 px med åpne detaljer og vist e-post |
+| SEC-02, SEC-03 | Gjennomført | form-action none og HSTS-regresjonssjekk |
+| DEBT-01 | Rettet | Historisk audit presiserer eksisterende CSP-hash |
+| SEC-04–SEC-06 | Utsatt | Øvrig headerherding, data:-vurdering og security.txt |
+| ROAD-02–ROAD-05 | Utsatt | Materiell, kalender, ressursside og booking |
+| ROAD-06 | Gammel blokkering avklart | Netlify rapporterer ready produksjonsbygg; ikke endre DNS på gammelt grunnlag |
+| DEV-01 | Åpen, separat | npm audit: eksisterende design.md/zod-kjede har 2 high-varsler; ikke produksjonskode |
 
-**Status 2026-07-05 (verifisert i kode):** CSS ligger allerede eksternt i `css/style.css` (`:root`, `@font-face`, komponent-CSS). `index.html` har ingen `<style>`-blokk, lenker stilarket (linje 30) og beholder font-preload i `<head>` (linje 27–28). F-1 fremstår **oppfylt** – gjenstår kun en formell før/etter visuell diff for å hake av «pixel-identisk». Blokkerer i praksis ikke lenger F-2/F-3/F-4.
+## N-6 — innholdsavklaring
 
----
+Endringene fra 28. oktober er bevart: KI forklares, foredrag er synlig,
+inngangslenker er understreket, og kontakt forklarer hva man kan skrive om.
+Kilden er et simulert panel (`Luaze1985/brukerrad`, `docs/forste-test.md`).
+Persona-telling er ikke målte konverteringstall eller uavhengige brukertester.
 
-### F-5 — Beslutnings-spike: mekanisme for «opplasting av materiell»
-*Billig · tas tidlig · informerer F-3 · ingen avhengighet*
+Lars presiserte 31. oktober: Kommunestilling skal ikke være i fokus;
+siden skal ikke selge ham inn mot offentlig sektor. Arbeidsgiver er derfor
+fjernet fra presentasjonen og JSON-LD, mens historiske omtaler beholdes.
 
-«Opplasting» drar mot auth/CMS/lagring, som kolliderer med «ingen byggverktøy, lavt vedlikehold». Avklares før noe bygges.
+Følgende er fortsatt uavklart og skal ikke fylles ut ved gjetting:
 
-**Definition of Done**
-- [ ] Kort beslutningsnotat (ADR-stil) i `docs/` eller ny seksjon i `SPEC.md`.
-- [ ] Vurderer minst: (a) «legg filer i repo + lenk dem» (null infra), (b) Netlify CMS/Forms, (c) headless CMS.
-- [ ] Velger mekanisme som respekterer lavt-vedlikehold-prinsippet.
-- [ ] **Ingen produksjonskode før valg er tatt.**
+- Pris/prismodell og hva første kontakt innebærer.
+- Leverandørnavn, organisasjonsnummer og avklaring mot kommunestillingen.
+- Faktisk praksis for personopplysninger og eventuelle databehandleravtaler.
+- Ett godkjent, anonymisert eksempel med dokumentert resultat.
 
----
+«Vis e-post» beholdes. Telefon, bookingsystem og nye offentlige fakta krever
+et eget grunnlag. Ingen offentlige plassholdere er lagt inn.
 
-### F-2 — Statisk «Kommende foredrag»-side (kalender MVP)
-*Blokkert av F-1*
+## Gjenstående kontroll
 
-Roadmap-kalenderen, tolket som «vis kommende foredrag» (booking = F-4, senere).
-
-**Definition of Done**
-- [ ] Ny `kommende.html` arver `style.css`.
-- [ ] Viser liste over kommende foredrag: dato, tittel, sted, valgfri lenke.
-- [ ] Lenket fra hovedmenyen (og evt. fra Foredrag-seksjonen i `index.html`).
-- [ ] Responsiv; stables på mobil.
-- [ ] Tom-tilstand håndtert («Ingen kommende akkurat nå – ta kontakt for booking»).
-- [ ] Oppdatering = redigere én liste i én fil.
-
----
-
-### F-3 — Ressurs-/undervisningsside
-*Blokkert av F-1 · informeres av F-5*
-
-Materiell andre kan bruke som referanse til undervisning.
-
-**Definition of Done**
-- [ ] Ny `ressurser.html` arver `style.css`.
-- [ ] Liste av ressurser: tittel, kort beskrivelse, lenke/nedlasting.
-- [ ] **Tydelig bruksrett/lisens per ressurs** (andre skal kunne bruke den).
-- [ ] Lenket fra hovedmenyen; responsiv; tom-tilstand.
-
----
-
-### F-4 — Booking / ledige datoer
-*Stretch · blokkert av F-2 · lav prioritet*
-
-Eksplisitt utsatt.
-
-**Definition of Done (skisse – detaljeres når aktuelt)**
-- [ ] Enten enkel «kontakt for disse datoene»-liste, eller integrert bookingtjeneste (avklares).
-- [ ] Arver designsystemet.
-
----
-
-## Nær-term / løpende (utenfor roadmap-PRD)
-
-### Kodereview (gjennomført 2026-07-04, uavhengig subagent)
-Rettet i `index.html`: lagt til `<main>`-landmark + skip-lenke · 4 `outline:none` → synlig 2px fokusring (WCAG 2.2) · `<header>` flyttet ut av `.container` (full-bredde hårstrek) · inline-stiler → klasser · `classList.add` · `scroll-padding-top` 7rem · `details > ul` topp-luft. Restpunkt: se N-5.
-
-### N-1 — Favicon (monogram)
-- [x] `favicon.svg` (monogram «LE», aksentfarge) + `<link rel="icon">` i `index.html`. Fjerner `favicon.ico`-404. **(gjort)**
-
-### N-2 — Manglende/feil artikkel-URLer — **løst mot CV-ens lenkeliste**
-Kilde: `...\Jobb-søk\cv-lars-erik hoved.pdf` (PDF-annotasjoner = autoritative URLer).
-- [x] **HR Norge «Veien til digital effektivisering»**: rettet fra gjettet kort-URL til full dyplenke (gammel var trolig 404).
-- [x] **Samfunnsviterne**: forside → dyplenke til arrangementet.
-- [x] **LinkedIn-artikkel (Miriam Dagnew)**: lagt inn som ekte lenke.
-- [x] **HR Norge-webinar (Facebook)**: lagt inn på foredragslinja. *(Flagg: Facebook-lenke – fjern hvis du heller vil.)*
-- [x] **Lawai**: justert til `www.lawai.no` (matcher CV).
-- [ ] *Valgfritt:* CV har også en Digin LinkedIn-post (omtale av Tech Talks Agder, nov 2025) som ikke er lagt inn – si ifra om du vil ha den under Arrangementer.
-- [x] *Valgfritt:* live-verifiser at de nye eksterne URL-ene svarer 200 (Verifisert automatisk med Playwright-lenkesjekk).
-
-### N-5 — A11y: annonsering av «åpner i ny fane» (løst)
-De ~15 eksterne `.ext`-lenkene har fått programmatisk «ny fane»-melding for skjermlesere via `<span class="sr-only"> (åpner i ny fane)</span>`.
-
-### N-3 — Troverdighets-stripe: to åpne redaksjonelle valg (løst)
-- [x] Bekreft: **Fædrelandsvennen** holdes ute av stripa (Bekreftet av bruker: holdes ute da det var eget debattinnlegg).
-- [ ] Bekreft: **Universitetet i Innlandet** (lenket/datert) vs **UiA** (lokal gjenkjennelse) i stripa (Beholdt UInnlandet).
-
-### N-4 — Deploy + domene
-- [x] Deployet «Løft håndverket»-versjonen til produksjon på Netlify-siten `larserik` (site-id `1fdc5c75-4698-4e5c-9f93-37c392133afb`) via CLI. Live: `https://larserik.netlify.app`. Docs blokkert (404 på `*.md`).
-- [x] Lagt `breknejohnsen.no` + `www.breknejohnsen.no` til som egendomene på siten (via `netlify api updateSite`).
-- [ ] **Gjenstår (kun Lars):** DNS hos Domeneshop → A `@` = `75.2.60.5`, CNAME `www` = `larserik.netlify.app`. Deretter auto-SSL.
-- [ ] *Senere:* koble lokalt git-repo til Netlify (`Luaze1985/larserik-nettside`) for push-basert deploy i stedet for manuell CLI. (Mappa er nå et lokalt git-repo, men ikke koblet til Netlify-utløst deploy ennå.)
-
-### N-6 — Funn fra simulert brukerpanel (2026-10-28)
-Kilde: `Luaze1985/brukerrad`, `docs/forste-test.md`. Seks oppdiktede personaer, to runder, oppgaven «Finn ut hva tjenesten er, hva den koster, og hvordan du tar kontakt». Funnene er hypoteser, ikke målinger av ekte brukere.
-
-**Gjort i denne runden (ingen nye fakta):**
-- [x] Inngangen sier nå hva som tilbys (kurs, foredrag, hjelp med én arbeidsoppgave) og forklarer KI som kunstig intelligens første gang.
-- [x] Kort 2 heter «Foredrag, fag og erfaring.» og peker til `#om`, der foredragstemaene ligger. Arrangører fant ikke foredrag på første skjerm.
-- [x] Kontakt har én setning om hva man kan skrive om, også foredrag.
-- [x] «Se arbeidsflyten» og «Se foredrag og erfaring» er understreket, så de ser klikkbare ut.
-
-**Åpent, krever opplysninger eller beslutning fra Lars:**
-- [ ] **Pris eller prismodell** (6 av 6 lette uten å finne den). For eksempel «fra»-beløp, timepris, fast pris for startpakken, honorarintervall for foredrag, eller om første samtale er gratis.
-- [ ] **Hvem man kjøper fra:** firmanavn/ENK, organisasjonsnummer, og én setning om hvordan rådgivningen er avklart med stillingen i Kristiansand kommune (4 av 6 stusset over rollene; innkjøperen og kommunalsjefen stopper på habilitet).
-- [ ] **Personvern i oppdrag:** én kort setning om hvordan personopplysninger håndteres (verktøy, databehandleravtale). Bare nevnt som stikkord i én foredragstittel i dag.
-- [ ] **Telefonnummer** (savnet av de to minst digitale). Besluttet å beholde e-post bak «Vis e-post» (2026-10-28). Merk: adressen står uansett åpent i JSON-LD i `<head>`, så skjulingen beskytter lite mot innsamling.
-- [ ] **Konkret eksempel:** ett anonymisert før/etter-eksempel med oppgave og tidsbruk. Det ble etterspurt av den som skulle selge idéen internt.
-- [ ] *Vurder:* menyteksten er liten (`.68rem`). Sjekk lesbarhet for eldre brukere.
+- Faktisk 200 % nettleserzoom, separat fra beståtte viewport-tester.
+- Kort test med 2–3 ekte målgruppepersoner; opplegg i `docs/issue9/brukerkontroll.md`.
+- Separat merge-/publiseringsgodkjenning etter gjennomgang av PR #10.

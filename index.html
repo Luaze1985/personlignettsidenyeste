@@ -1,125 +1,216 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nb">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <title>Lars Erik Brekne Johnsen | KI, effektivitet og kvalitet</title>
-    <meta name="description" content="Praktisk KI for bedre arbeidsflyt, kvalitet og faglig kontroll. Kurs, rådgivning og foredrag med Lars Erik Brekne Johnsen.">
+    <title>Lars Erik Brekne Johnsen | Praktisk KI, kurs og foredrag</title>
+    <meta name="description" content="Kurs, foredrag og hjelp til én konkret arbeidsoppgave med kunstig intelligens (KI). Praktisk utprøving med fagpersonen i kontroll.">
     <link rel="canonical" href="https://breknejohnsen.no/">
-    <meta property="og:title" content="Lars Erik Brekne Johnsen | KI, effektivitet og kvalitet">
-    <meta property="og:description" content="Praktisk KI som gir bedre arbeidsflyt — med fagpersonen i kontroll.">
+    <meta property="og:title" content="Lars Erik Brekne Johnsen | Praktisk KI, kurs og foredrag">
+    <meta property="og:description" content="Kurs, foredrag og hjelp til én konkret arbeidsoppgave med kunstig intelligens (KI). Praktisk utprøving med fagpersonen i kontroll.">
     <meta property="og:type" content="website"><meta property="og:url" content="https://breknejohnsen.no/">
     <meta property="og:image" content="https://breknejohnsen.no/images/profil-480.jpg"><meta property="og:locale" content="nb_NO">
     <script>document.documentElement.classList.add("js");</script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="fonts/newsreader-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/newsreader-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=20261028-brukerpanel">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Lars Erik Brekne Johnsen","jobTitle":"KI-rådgiver og foredragsholder","url":"https://breknejohnsen.no/","email":"larserik.bn@gmail.com","sameAs":["https://www.linkedin.com/in/lars-erik-brekne-johnsen/"],"knowsAbout":["Kunstig intelligens","KI i arbeidslivet","GDPR","EU AI Act","Endringsledelse"],"worksFor":{"@type":"Organization","name":"Kristiansand kommune"}}</script>
+    <link rel="stylesheet" href="css/style.css?v=20261031-arbeidsbenken">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Lars Erik Brekne Johnsen","jobTitle":"KI-rådgiver og foredragsholder","url":"https://breknejohnsen.no/","email":"larserik.bn@gmail.com","sameAs":["https://www.linkedin.com/in/lars-erik-brekne-johnsen/"],"knowsAbout":["Kunstig intelligens","KI i arbeidslivet","GDPR","EU AI Act","Endringsledelse"]}</script>
 </head>
 <body>
+<!-- Lucide icons: ISC / Feather MIT; see icons/LICENSE.txt. -->
 <a class="skip-link" href="#main">Hopp til innhold</a>
 <header>
     <div class="container header-content">
-        <a class="profile-group" href="#top" aria-label="Til toppen"><img class="profile-pic" src="images/profil-480.jpg" alt="Lars Erik Brekne Johnsen" width="64" height="64"><span class="profile-text"><strong class="site-name">Lars Erik Brekne Johnsen</strong><small>KI, effektivitet og kvalitet</small></span></a>
-        <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Åpne meny">☰</button>
-        <nav id="main-nav" aria-label="Hovedmeny"><a href="#arbeidsbenken">Arbeidsflyt</a><a href="#om">Om</a><a href="#erfaring">Erfaring</a><a href="#kontakt">Kontakt</a></nav>
+        <a class="profile-group" href="#top" aria-label="Lars Erik Brekne Johnsen – til toppen"><img class="profile-pic" src="images/profil-480.jpg" alt="Lars Erik Brekne Johnsen" width="64" height="64"><span class="profile-text"><strong class="site-name">Lars Erik Brekne Johnsen</strong><small>KI, effektivitet og kvalitet</small></span></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Åpne meny"><svg class="icon icon-menu" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" /></svg><svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" />
+  <path d="m6 6 12 12" /></svg></button>
+        <nav id="main-nav" aria-label="Hovedmeny"><a href="#arbeidsbenken">Arbeidsflyt<svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></a><a href="#om">Om<svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></a><a href="#erfaring">Erfaring<svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></a><a href="#kontakt">Kontakt<svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></a></nav>
     </div>
 </header>
 
-<main id="main">
+<main id="main" tabindex="-1">
     <div id="top" class="container hero">
-        <div class="hero-copy"><p class="eyebrow">Praktisk KI i arbeidslivet</p><h1>Mennesker først. Teknologi som virker.</h1><p>Jeg hjelper virksomheter å bruke kunstig intelligens (KI) trygt og praktisk — med kurs, foredrag og hjelp til én konkret arbeidsoppgave om gangen.</p></div>
+        <div class="hero-layout">
+            <div class="hero-copy">
+                <p class="eyebrow">Praktisk KI i arbeidslivet</p>
+                <h1>Mennesker først. Teknologi som virker.</h1>
+                <p class="hero-lead">Jeg hjelper virksomheter å bruke kunstig intelligens (KI) trygt og praktisk — med kurs, foredrag og hjelp til én konkret arbeidsoppgave om gangen.</p>
+                <div class="hero-actions">
+                    <a class="button hero-primary-action" href="#kontakt">Beskriv én arbeidsoppgave <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></a>
+                    <a class="hero-secondary-action" href="#kurs-og-foredrag">Se kurs og foredrag <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></a>
+                </div>
+            </div>
+            <aside class="hero-rail" aria-label="Kort om Lars Erik">
+                <div><span class="hero-rail-label">Rolle</span><p>Rådgiver og foredragsholder</p></div>
+                <div><span class="hero-rail-label">Fagfelt</span><p>Praktisk KI, HR og HMS</p></div>
+                <div><span class="hero-rail-label">Base</span><p>Kristiansand</p></div>
+            </aside>
+        </div>
     </div>
 
     <div class="container audience-gate" aria-label="To sider av arbeidet">
-        <a class="audience-path audience-path-primary" href="#arbeidsbenken"><p class="eyebrow">Dette hjelper jeg med</p><h2>Gjør én arbeidsoppgave lettere.</h2><p>Vi tar utgangspunkt i hverdagen og lager en kontrollert flyt som folk faktisk kan bruke.</p><span class="path-link">Se arbeidsflyten <span aria-hidden="true">→</span></span></a>
-        <a class="audience-path" href="#om"><p class="eyebrow">Dette bygger det på</p><h2>Foredrag, fag og erfaring.</h2><p>Se foredragstemaene, media og erfaringen som ligger bak måten jeg jobber på.</p><span class="path-link">Se foredrag og erfaring <span aria-hidden="true">→</span></span></a>
+        <a class="audience-path audience-path-primary" href="#arbeidsbenken"><p class="eyebrow">Dette hjelper jeg med</p><h2>Gjør én arbeidsoppgave lettere.</h2><p>Vi tar utgangspunkt i en konkret arbeidsoppgave, prøver mulige løsninger og vurderer hva som fungerer i praksis.</p><span class="path-link">Se arbeidsflyten <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></span></a>
+        <a class="audience-path" href="#kurs-og-foredrag"><p class="eyebrow">Kurs og foredrag</p><h2>KI i arbeidshverdagen.</h2><p>Praktisk bruk av KI, faglig dømmekraft og erfaring fra arbeidslivet.</p><span class="path-link">Se kurs og foredrag <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></span></a>
     </div>
 
-    <section id="arbeidsbenken">
+    <section id="arbeidsbenken" aria-labelledby="arbeidsbenken-title">
         <div class="container">
-            <div class="section-head"><p class="eyebrow">Arbeidsbenken</p><div><h2>Kutt tidstyvene. Få mer tid til faget.</h2><p class="section-intro">KI er ikke magi, men et verktøy som tar unna kontorarbeid i programmene dere allerede har. KI lager struktur og utkast, du har kontrollen.</p></div></div>
+            <div class="section-head"><p class="eyebrow">Arbeidsbenken</p><div><h2 id="arbeidsbenken-title">Fra konkret oppgave til kontrollert utprøving.</h2><p class="section-intro">KI kan brukes til å sortere informasjon og lage utkast. Vi undersøker hva som passer i arbeidsflyten deres, og fagpersonen vurderer resultatet.</p></div></div>
+            <div class="services-overview" aria-label="Tre kjerneleveranser">
+                <div class="service-box">
+                    <span class="service-tag">01 · Avgrenset oppgave</span>
+                    <h3>Sparring og prototype</h3>
+                    <p>Vi avklarer muligheter og kan prøve en avgrenset prototype (MVP). Slik får dere grunnlag for å vurdere neste steg.</p>
+                </div>
+                <div class="service-box">
+                    <span class="service-tag">02 · Praktisk avlastning</span>
+                    <h3>Agenter i arbeidsflyt</h3>
+                    <p>Agenter kan gi avgrenset hjelp til å samle kilder, sortere informasjon og lage utkast. Vi undersøker hva som passer i arbeidsflyten, og vurderer behov for integrasjon særskilt.</p>
+                </div>
+                <div class="service-box">
+                    <span class="service-tag">03 · Videre vurdering</span>
+                    <h3>Videreutvikling &amp; forbedring</h3>
+                    <p>Tilbakemeldinger fra fagfolk viser hva som bør endres, videreføres eller legges bort.</p>
+                </div>
+            </div>
             <ol class="steps" aria-label="Slik foregår startpakken">
                 <li><p class="step-number">01 — AVKLARE</p><h3>Finn oppgaven</h3><p>Vi tar utgangspunkt i en oppgave som stjeler tid og oppmerksomhet fra fagarbeidet.</p></li>
                 <li><p class="step-number">02 — PRØVE</p><h3>Sett opp flyten</h3><p>KI hjelper med sortering og førsteutkast. Ingen beslutning flyttes bort fra faget.</p></li>
                 <li><p class="step-number">03 — KONTROLLERE</p><h3>Faglig kontroll</h3><p>Fagpersonen sjekker kvalitet og språk, og godkjenner det som skal ut.</p></li>
-                <li><p class="step-number">04 — VELGE</p><h3>Behold eller stopp</h3><p>Fungerer det i praksis, bygger vi videre. Hvis ikke, koster det ingenting å legge det bort.</p></li>
+                <li><p class="step-number">04 — VELGE</p><h3>Behold eller stopp</h3><p>Etter utprøvingen vurderer vi om arbeidet skal videreføres, endres eller stoppes.</p></li>
             </ol>
             <div class="fit-grid">
                 <div><p class="eyebrow">Passer når</p><h3>Dere vil rydde i en konkret oppgave.</h3><ul><li>Det finnes notater, bilder, skjema eller tekst som må sorteres.</li><li>Folk bruker tid på samme forarbeid flere ganger.</li><li>Faglig kontroll er viktigere enn fart for enhver pris.</li></ul></div>
                 <div><p class="eyebrow">Passer ikke når</p><h3>Dere egentlig trenger et stort innføringsløp.</h3><ul><li>Målet er å kjøpe eller bytte et helt IT-system.</li><li>Ingen eier oppgaven eller vil prøve den i praksis.</li><li>Dere vil at KI skal ta faglige beslutninger alene.</li></ul></div>
             </div>
-            <div class="workbench-footer"><p><strong>Prinsippet er enkelt:</strong> KI lager struktur og utkast. Fagpersonen vurderer, godkjenner og har ansvaret.</p><a class="button" href="#kontakt">Ta en prat om en oppgave</a></div>
+            <div class="workbench-footer"><p><strong>Prinsippet er enkelt:</strong> KI lager struktur og utkast. Fagpersonen vurderer, godkjenner og har ansvaret.</p><a class="button" href="#kontakt">Ta en prat om en oppgave <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></svg></a></div>
         </div>
     </section>
 
-    <section id="om">
+    <section id="om" aria-labelledby="om-title">
         <div class="container">
             <div class="about-feature">
                 <div class="about-copy">
-                    <div class="section-head"><p class="eyebrow">Om og foredrag</p><div><h2>Faglig tyngde. Mennesket i sentrum.</h2><p class="section-intro">Jeg er HR- og HMS-rådgiver i Kristiansand kommune, statsviter og medgrunnlegger av KI-geriljaen. Rollen min er å være bindeleddet mellom fag, folk og teknologi.</p></div></div>
+                    <div class="section-head"><p class="eyebrow">Om og foredrag</p><div><h2 id="om-title">Faglig tyngde. Mennesket i sentrum.</h2><p class="section-intro">Jeg er statsviter og medgrunnlegger av KI-geriljaen, med bakgrunn fra HR og HMS. Jeg jobber i møtet mellom fag, folk og teknologi.</p></div></div>
                     <div class="about-layout">
-                        <p>Jeg holder kurs, foredrag og hjelper virksomheter med konkrete KI-grep som effektiviserer driften — trygt, praktisk og uten omveier.</p>
-                        <p>KI erstatter ikke faglig dømmekraft. God bruk krever kildekritikk og kontroll.</p>
+                        <p>Jeg liker å ta utgangspunkt i det folk faktisk trenger hjelp med. Sammen avgrenser vi oppgaven og undersøker om KI kan være nyttig i arbeidet.</p>
+                        <p>KI erstatter ikke faglig dømmekraft. God og bærekraftig bruk krever kildekritikk, personvern og menneskelig kontroll.</p>
                     </div>
                 </div>
-                <figure class="speaking-image"><img src="images/foredrag-vartagder-snitt-bw.jpg" alt="Lars Erik Brekne Johnsen holder foredrag under Arendalsuka" width="2048" height="1536" decoding="async"><figcaption>Foredrag og samtaler om praktisk bruk av KI i arbeidslivet. (Bildet er tatt fra Arendalsuka 2025.)</figcaption></figure>
+                <figure class="speaking-image"><img src="images/foredrag-vartagder-snitt-bw.jpg" alt="Lars Erik Brekne Johnsen holder foredrag under Arendalsuka" width="2048" height="1536" decoding="async"><figcaption>Foredrag og samtaler om praktisk bruk av KI i arbeidslivet. (Arendalsuka.)</figcaption></figure>
             </div>
-            <div class="talks">
-                <div><p class="eyebrow">Foredrag</p><h3>Effektivisering i praksis</h3><p>Konkrete KI-grep som kutter tid på rutiner, tekst og forarbeid i arbeidshverdagen.</p></div>
-                <div><p class="eyebrow">Foredrag</p><h3>Offentlig sektor, HR og HMS</h3><p>Trygg innføring innenfor lovverk, etikk og personvern — med mange mennesker involvert.</p></div>
-                <div><p class="eyebrow">Foredrag</p><h3>Kvalitet og kontroll</h3><p>Arbeidsflyter, kildebruk og kontrollpunkter — hvordan fagpersonen beholder ansvaret hele veien.</p></div>
+            <div id="kurs-og-foredrag" class="talks">
+                <div><p class="eyebrow">Foredrag &amp; Kurs</p><h3>Effektivisering i praksis</h3><p>Hvordan KI kan støtte rutiner, forarbeid og tekst, og hvordan nytten kan vurderes i praksis.</p></div>
+                <div><p class="eyebrow">Foredrag &amp; Kurs</p><h3>Folk, organisasjon og KI</h3><p>Praktiske spørsmål om regelverk, etikk, partsamarbeid og personvern ved bruk av KI.</p></div>
+                <div><p class="eyebrow">Foredrag &amp; Kurs</p><h3>Kvalitet, kontroll og agenter</h3><p>Hvordan vurdere agenter, etablere kontrollpunkter og beholde faglig ansvar.</p></div>
             </div>
         </div>
     </section>
 
-    <section id="erfaring" class="trust-section">
+    <section id="erfaring" aria-labelledby="erfaring-title" class="trust-section">
         <div class="container">
-            <div class="section-head"><p class="eyebrow">Erfaring og referanser</p><div><h2>Bakgrunn fra offentlig sektor, fagscener og næringsliv.</h2><p class="section-intro">Jeg jobber i skjæringspunktet mellom fag, folk og tekniske miljøer — med praktisk nytte og trygghet som utgangspunkt.</p></div></div>
+            <div class="section-head"><p class="eyebrow">Erfaring og referanser</p><div><h2 id="erfaring-title">Erfaring fra arbeidslivet og fagscenene.</h2><p class="section-intro">Jeg jobber i skjæringspunktet mellom fag, folk og tekniske miljøer — med praktisk nytte og trygghet som utgangspunkt.</p></div></div>
             <div class="proofs">
                 <ul class="proof-list">
-                    <li><strong>Fagscener og media</strong><span>NRK, HR Norge, Digin, DigiViken og Samfunnsviterne.</span></li>
-                    <li><strong>Kristiansand kommune</strong><span>HR- og HMS-rådgiver med arbeid for trygg og praktisk bruk av KI.</span></li>
-                    <li><strong>Oppdrag</strong><span>NITO, Sør Bygg, Tirna fagskole og variert næringsliv.</span></li>
+                    <li><strong>NRK</strong><span>Omtale av praktisk KI i arbeidshverdagen. <a href="https://www.nrk.no/sorlandet/halverte-arbeidsuka-med-ki-1.17257802" target="_blank" rel="noopener">Les omtalen <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></span></li>
+                    <li><strong>HR Norge</strong><span>Digital effektivisering og bruk av KI. <a href="https://www.hrnorge.no/tema/digitalisering/digitale-l%C3%B8sninger-innen-hr/veien-til-digital-effektivisering" target="_blank" rel="noopener">Les artikkelen <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></span></li>
+                    <li><strong>Tech Talks Agder</strong><span>KI i arbeidshverdagen — fra idé til kode. <a href="https://digin.no/events/tech-talks-agder-ai-i-arbeidshverdagen-fra-ide-til-kode" target="_blank" rel="noopener">Se arrangementet <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></span></li>
                 </ul>
-                <blockquote class="proof-quote"><p>«Det å se hvordan ansatte i Kristiansand kommune bruker kunstig intelligens for å forenkle og effektivisere arbeidshverdagen, er til stor inspirasjon for resten av landet.»</p><cite>— Karianne Tung, digitaliserings- og forvaltningsminister</cite></blockquote>
+                <div class="proof-quote"><p>Digi Agder omtaler hvordan Lars Erik viste statsråd Karianne Tung praktisk bruk av KI i arbeidshverdagen i Kristiansand kommune.</p><a href="https://digiagder.no/digitaliseringsministeren-imponert-over-teknologisamarbeidet-i-agder" target="_blank" rel="noopener">Les omtalen hos Digi Agder <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></div>
             </div>
-            <details class="reference-details"><summary>Se flere dokumenterte omtaler og fagscener</summary><ul class="simple-list">
-                <li><a href="https://www.nrk.no/sorlandet/halverte-arbeidsuka-med-ki-1.17257802" target="_blank" rel="noopener">NRK Sørlandet — Halverte arbeidsuka med KI</a></li>
-                <li><a href="https://radio.nrk.no/serie/distriktsprogram-soerlandet/sesong/202505/DKSL01009525#t=1h50m43s" target="_blank" rel="noopener">NRK Sørlandet radio</a></li>
-                <li><a href="https://agderinthe.cloud/2025/06/16/copilot-and-ai-use-in-the-real-world/" target="_blank" rel="noopener">Agder in the Cloud</a></li>
-                <li><a href="https://www.hrnorge.no/tema/digitalisering/digitale-l%C3%B8sninger-innen-hr/veien-til-digital-effektivisering" target="_blank" rel="noopener">HR Norge</a></li>
-                <li>Statsforvalteren — foredrag og innlegg om praktisk KI i statlig sektor (2024–2025)</li>
-                <li>Universitetet i Agder (UiA) — gjesteforelesninger og faglige innlegg (2024–2025)</li>
-                <li><a href="https://digin.no/events/tech-talks-agder-ai-i-arbeidshverdagen-fra-ide-til-kode" target="_blank" rel="noopener">Tech Talks Agder / Digin</a></li>
-                <li><a href="https://digiviken.no/kommende-arrangementer/maned/2025-04/" target="_blank" rel="noopener">DigiViken — kurs og foredrag om praktisk KI-innføring (2025)</a></li>
-                <li><a href="https://www.inn.no/om-universitetet/handelshogskolen-innlandet-fakultet-for-okonomi-samfunnsfag/arrangementer-fra-hhs/hybrid-arbeid-og-ki/" target="_blank" rel="noopener">Universitetet i Innlandet</a></li>
-                <li><a href="https://www.samfunnsviterne.no/kurs/agder---arsmote-og-faglig-innlegg-12--november-2024" target="_blank" rel="noopener">Samfunnsviterne</a></li>
-                <li><a href="https://www.nrk.no/sorlandet/lanserer-ki-veileder_-_-haper-den-gir-konkrete-rad-1.17453716" target="_blank" rel="noopener">NRK Sørlandet — KI-veileder</a></li>
-                <li><a href="https://www.kode24.no/artikkel/slik-loser-de-40-arskrisen/259601" target="_blank" rel="noopener">kode24</a></li>
-                <li><a href="https://www.lawai.no/blogg/halverte-arbeidsuka-med-bruk-av-kunstig-intelligens" target="_blank" rel="noopener">Lawai</a></li>
-                <li><a href="https://juridiskabc.no/podkast/" target="_blank" rel="noopener">Juridisk ABC (podkast)</a></li>
-                <li><a href="https://no.linkedin.com/pulse/hvordan-f%C3%A5-en-mer-effektiv-hverdag-ved-hjelp-av-kunstig-miriam-dagnew-zwymf" target="_blank" rel="noopener">LinkedIn-artikkel</a></li>
-                <li><a href="https://aiavisen.no/min-ki-reise/" target="_blank" rel="noopener">AIavisen — Min KI-reise</a></li>
-                <li><a href="https://www.fvn.no/mening/debattinnlegg/i/25aKA4/vi-har-faatt-ki-verktoeykassen-vi-maa-laere-aa-bruke-den-sammen" target="_blank" rel="noopener">Fædrelandsvennen</a></li>
-                <li><a href="https://oceanopolis.no/arrangement/arendalsuka-2025/" target="_blank" rel="noopener">Oceanopolis / Arendalsuka</a></li>
-                <li><a href="https://www.digiagder.no/kristiansand-kommune-deltok-pa-utviklerkonferansen-syntaks" target="_blank" rel="noopener">Digi Agder — Syntaks</a></li>
+            <details class="reference-details"><summary><svg class="icon icon-expand" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
+  <path d="M12 5v14" /></svg><svg class="icon icon-collapse" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /></svg><span>Se flere dokumenterte omtaler og fagscener</span></summary><ul class="simple-list">
+                <li><a href="https://www.nrk.no/sorlandet/halverte-arbeidsuka-med-ki-1.17257802" target="_blank" rel="noopener">NRK Sørlandet — Halverte arbeidsuka med KI <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://radio.nrk.no/serie/distriktsprogram-soerlandet/sesong/202505/DKSL01009525#t=1h50m43s" target="_blank" rel="noopener">NRK Sørlandet radio <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://agderinthe.cloud/2025/06/16/copilot-and-ai-use-in-the-real-world/" target="_blank" rel="noopener">Agder in the Cloud <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://www.hrnorge.no/tema/digitalisering/digitale-l%C3%B8sninger-innen-hr/veien-til-digital-effektivisering" target="_blank" rel="noopener">HR Norge <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://digin.no/events/tech-talks-agder-ai-i-arbeidshverdagen-fra-ide-til-kode" target="_blank" rel="noopener">Tech Talks Agder / Digin <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://digiviken.no/kommende-arrangementer/maned/2025-04/" target="_blank" rel="noopener">DigiViken — kurs og foredrag om praktisk KI-innføring (2025) <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://www.inn.no/om-universitetet/handelshogskolen-innlandet-fakultet-for-okonomi-samfunnsfag/arrangementer-fra-hhs/hybrid-arbeid-og-ki/" target="_blank" rel="noopener">Universitetet i Innlandet <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://www.samfunnsviterne.no/kurs/agder---arsmote-og-faglig-innlegg-12--november-2024" target="_blank" rel="noopener">Samfunnsviterne <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://www.nrk.no/sorlandet/lanserer-ki-veileder_-_-haper-den-gir-konkrete-rad-1.17453716" target="_blank" rel="noopener">NRK Sørlandet — KI-veileder <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://www.kode24.no/artikkel/slik-loser-de-40-arskrisen/259601" target="_blank" rel="noopener">kode24 <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://www.lawai.no/blogg/halverte-arbeidsuka-med-bruk-av-kunstig-intelligens" target="_blank" rel="noopener">Lawai <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://juridiskabc.no/podkast/" target="_blank" rel="noopener">Juridisk ABC (podkast) <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://no.linkedin.com/pulse/hvordan-f%C3%A5-en-mer-effektiv-hverdag-ved-hjelp-av-kunstig-miriam-dagnew-zwymf" target="_blank" rel="noopener">LinkedIn-artikkel <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://aiavisen.no/min-ki-reise/" target="_blank" rel="noopener">AIavisen — Min KI-reise <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://www.fvn.no/mening/debattinnlegg/i/25aKA4/vi-har-faatt-ki-verktoeykassen-vi-maa-laere-aa-bruke-den-sammen" target="_blank" rel="noopener">Fædrelandsvennen <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://oceanopolis.no/arrangement/arendalsuka-2025/" target="_blank" rel="noopener">Oceanopolis / Arendalsuka <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
+                <li><a href="https://www.digiagder.no/kristiansand-kommune-deltok-pa-utviklerkonferansen-syntaks" target="_blank" rel="noopener">Digi Agder — Syntaks <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a></li>
             </ul></details>
         </div>
     </section>
 
-    <section id="kontakt">
+    <section id="kontakt" aria-labelledby="kontakt-title">
         <div class="container">
             <aside class="contact-panel">
                 <p class="eyebrow">Kontakt</p>
-                <h2>Vil du se hvor dere kan effektivisere?</h2>
-                <p class="contact-lead">Skriv kort om oppgaven dere vil gjøre lettere, eller om foredraget du planlegger.</p>
+                <h2 id="kontakt-title">Har dere en oppgave eller et foredrag i tankene?</h2>
+                <p class="contact-intro">Skriv kort om oppgaven dere vil gjøre lettere, eller om foredraget du planlegger.</p>
                 <div class="contact-links">
-                    <button class="contact-email-btn" id="reveal-email" aria-label="Vis e-postadresse">Vis e-post</button>
-                    <a href="https://www.linkedin.com/in/lars-erik-brekne-johnsen/" target="_blank" rel="noopener">LinkedIn-profil<span class="sr-only"> (åpner i ny fane)</span></a>
-                    <a href="https://www.linkedin.com/groups/11818031/" target="_blank" rel="noopener">KI Geriljaen<span class="sr-only"> (åpner i ny fane)</span></a>
+                    <button class="contact-email-btn" id="reveal-email" aria-label="Vis e-postadresse"><svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+  <rect x="2" y="4" width="20" height="16" rx="2" /></svg><span>Vis e-post</span></button><noscript><a class="contact-email-link" href="mailto:larserik.bn@gmail.com">larserik.bn@gmail.com</a></noscript>
+                    <a href="https://www.linkedin.com/in/lars-erik-brekne-johnsen/" target="_blank" rel="noopener">LinkedIn-profil <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a>
+                    <a href="https://www.linkedin.com/groups/11818031/" target="_blank" rel="noopener">KI Geriljaen <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a>
                 </div>
             </aside>
         </div>

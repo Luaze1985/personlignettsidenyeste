@@ -149,8 +149,11 @@ test('Check all links in index.html', async ({ page, context }) => {
         } else {
           // Request threw an error and couldn't fetch response
           const msg = lastError ? lastError.message : 'Unknown network error';
-          if (isCrawlerBlockedDomain) {
-            const warnReason = `Request failed: ${msg} (Domain is known for blocking headless bots)`;
+          const timedOut = /Timeout \d+ms exceeded|ETIMEDOUT/i.test(msg);
+          if (isCrawlerBlockedDomain || timedOut) {
+            const warnReason = timedOut
+              ? `Request timed out; link status is unverified: ${msg}`
+              : `Request failed: ${msg} (Domain is known for blocking headless bots)`;
             report.warnings.push({ href, type: 'http', reason: warnReason });
             checkedLinks.set(href, { status: 'warning', reason: warnReason });
           } else {

@@ -39,12 +39,27 @@ test.describe('UX, UI and readability', () => {
     await expect(page.locator('#media, #tjenester, #innsikt, #foredrag')).toHaveCount(0);
     await expect(page.locator('.hero-action')).toHaveCount(0);
     await expect(page.locator('.audience-gate')).toContainText('Dette hjelper jeg med');
-    await expect(page.locator('.audience-gate')).toContainText('Dette bygger det på');
+    await expect(page.locator('.audience-gate')).toContainText('Kurs og foredrag');
     await expect(page.locator('.audience-gate')).not.toContainText('håndverksbedrifter');
     await expect(page.locator('.audience-gate')).not.toContainText('større virksomheter');
     await expect(page.locator('.steps li')).toHaveCount(4);
     await expect(page.locator('#arbeidsbenken')).toContainText('KI lager struktur og utkast');
     await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
+  });
+
+  test('makes the work request primary and gives the home link its visible name', async ({ page }) => {
+    const home = page.locator('header .profile-group');
+    await expect(home).toHaveAccessibleName(/Lars Erik Brekne Johnsen/);
+
+    const primary = page.locator('.hero-primary-action');
+    const secondary = page.locator('.hero-secondary-action');
+    await expect(primary).toHaveAttribute('href', '#kontakt');
+    await expect(secondary).toHaveAttribute('href', '#kurs-og-foredrag');
+    await expect(primary).toContainText(/oppgave/i);
+    await expect(secondary).toContainText(/kurs|foredrag/i);
+    await secondary.click();
+    await expect(page).toHaveURL(/#kurs-og-foredrag$/);
+    await expect(page.locator('#kurs-og-foredrag')).toBeInViewport();
   });
 
   test('reveals a working mailto link with the readable contact style on click', async ({ page }) => {
@@ -58,9 +73,7 @@ test.describe('UX, UI and readability', () => {
     await expect(link).toHaveText('larserik.bn@gmail.com');
     await expect(link).toBeFocused();
 
-    // "Samme lesbare kontaktstil": understreket, 0.95rem, samme farge som de
-    // andre kontaktlenkene (hvit på mørkt panel — aksentfargen rendres aldri
-    // fordi --accent-color ikke er definert; se code-review-notat).
+    // Kontaktlenken beholder understreking og samme kontrast som de andre kanalene.
     const style = await link.evaluate((el) => {
       const cs = getComputedStyle(el);
       return {
@@ -75,7 +88,7 @@ test.describe('UX, UI and readability', () => {
       .evaluate((el) => getComputedStyle(el).color);
 
     expect(style.textDecorationLine).toContain('underline');
-    expect(style.fontSize).toBe('15.2px');
+    expect(style.fontSize).toBe('16px');
     expect(style.offset).toBe('4px');
     expect(style.color).toBe(siblingColor);
   });
@@ -125,7 +138,7 @@ test.describe('UX, UI and readability', () => {
   });
 
   test('avoids horizontal overflow and keeps the work steps readable on narrow screens', async ({ page }) => {
-    for (const width of [180, 360, 768, 1440]) {
+    for (const width of [180, 360, 390, 760, 980, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.goto(indexUrl);
 
