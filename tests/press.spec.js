@@ -52,7 +52,7 @@ test.describe('Omtalt hos og fagpressen', () => {
   test('the highlighted quote is cited with a visible source', async ({ page }) => {
     const quote = page.locator('.press-quote blockquote');
     await expect(quote).toHaveCount(1);
-    await expect(quote).toHaveAttribute('cite', PRESS[1].href);
+    await expect(quote).toHaveAttribute('cite', PRESS.find((entry) => entry.outlet === 'kode24').href);
     await expect(quote).toHaveText('«KI er en folkebevegelse, og den er åpen for alle»');
     await expect(page.locator('.press-quote figcaption')).toContainText('kode24');
     await expect(page.locator('.press-quote figcaption')).toBeVisible();

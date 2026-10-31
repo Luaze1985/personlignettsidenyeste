@@ -33,7 +33,7 @@ Kontrollert med WebFetch. Verktøyet gir et sammendrag og ikke rå HTML, så hve
 | Fagbladet | Lars Erik er KI-guru i kommunen. Dette vil han aldri bruke teknologien til | 2026-09-22 | Bunnteksten lenker til Fagforbundet. |
 | AIavisen | Min KI-reise | 2026-04-13 | Ingen merknader. |
 | Fædrelandsvennen | Vi har fått KI-verktøykassen – vi må lære å bruke den sammen | 2025-07-03 | `/i/` omdirigerer til `/o/`, lenken virker. |
-| HR Norge | Veien til digital effektivisering | 2025-05-09 | Bak betalingsmur (medlemskap). |
+| HR Norge | Veien til digital effektivisering | 2025-05-09 | Bak betalingsmur (medlemskap). Den synlige ingressen nevner Lars ved navn og sier at han deler erfaringer med hvordan KI kan tilpasses ulike jobbroller. Derfor står den som «Omtale». |
 
 Lars bekreftet 31.10.2026 at «Dagbladet» var kode24-saken.
 
