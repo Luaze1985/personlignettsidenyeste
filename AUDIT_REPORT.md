@@ -1,5 +1,7 @@
 # Rapport: UX/UI, Innholdsstøy og Lenkeverifisering for index.html
 
+> **Historisk (juli 2026).** Fargene og stilen som beskrives her er erstattet. Gjeldende design står i `DESIGN.md` (svart-hvitt fra 31. oktober 2026).
+
 Denne rapporten oppsummerer funnene fra en grundig teknisk og visuell revisjon av nettsiden `index.html` utført i juli 2026. Revisjonen har blitt gjennomført ved hjelp av spesialiserte KI-agenter (UX/UI-arkitekt, innholdsanalytiker, og QA-tester) samt automatiserte Playwright-tester for å verifisere alle lenker.
 
 ---

@@ -3,21 +3,21 @@ version: alpha
 name: Arbeidsbenken
 description: "Redaksjonelt rutenett for breknejohnsen.no med tydelig kontaktvei og rolig typografisk hierarki."
 colors:
-  primary: "#1d211f"
+  primary: "#111111"
   on-primary: "#ffffff"
-  neutral: "#f3efe6"
-  surface: "#fbfaf6"
-  surface-dim: "#e9e3d8"
-  on-surface: "#1d211f"
-  on-surface-variant: "#555b57"
-  outline: "#cfc7ba"
-  accent: "#8a3f2b"
+  neutral: "#ffffff"
+  surface: "#ffffff"
+  surface-dim: "#f2f2f2"
+  on-surface: "#111111"
+  on-surface-variant: "#555555"
+  outline: "#d9d9d9"
+  accent: "#111111"
   on-accent: "#ffffff"
-  accent-on-dark: "#dfa692"
-  on-dark-muted: "#e7e3dc"
-  dark-surface: "#2a302d"
-  dark-outline: "#59605c"
-  link: "#713322"
+  accent-on-dark: "#ffffff"
+  on-dark-muted: "#d4d4d4"
+  dark-surface: "#1f1f1f"
+  dark-outline: "#6b6b6b"
+  link: "#111111"
 typography:
   display-lg:
     fontFamily: Newsreader
@@ -134,15 +134,16 @@ Ved hver brukerbestilte kodeendring skal det først lages en tydelig merket, mid
 
 ## Colors
 
-- **Primary (#1d211f):** Kullsort med grønn undertone. Brukes til hovedtekst, mørke troverdighetsflater og struktur.
-- **Neutral (#f3efe6):** Varm papirbakgrunn.
-- **Surface (#fbfaf6):** Lyst arbeidsark for kort og innholdsblokker.
-- **Surface-dim (#e9e3d8):** Dempet papirflate for sekundære områder.
-- **Accent (#8a3f2b):** Oksidrød. Brukes sparsomt til handlinger, nummerering og aktive markører.
-- **Link (#713322):** Mørkere aksent som består kontrastkrav på lys bakgrunn.
-- **Outline (#cfc7ba):** Tynn, presis rutenettlinje på lyse flater.
+Svart-hvitt-retning fra Figma ([desktop 3:149](https://www.figma.com/design/WTecHNclgVZX56cl6fsGDL?node-id=3-149), mobil 3:266), valgt av Lars 31. oktober 2026. Oksidrødt er fjernet helt.
 
-Ingen andre profilfarger. Ingen gradienter, skygger, tretekstur, varseltape eller kunstig «rust».
+- **Primary (#111111):** Nær svart. Hovedtekst, primærknapp, stegbånd og kontaktflate.
+- **Neutral / Surface (#ffffff):** Hvit side og hvite innholdsflater.
+- **Surface-dim (#f2f2f2):** Lys grå for avgrensede bånd, for eksempel «Omtalt hos» og foredrag.
+- **On-surface-variant (#555555):** Dempet tekst. Består AA også på #f2f2f2.
+- **Accent / Link (#111111):** Det finnes ingen egen aksentfarge. Handlinger skilles med vekt, understrek, fylt svart flate og pil.
+- **Outline (#d9d9d9):** Tynn skillelinje på lyse flater.
+
+Ingen andre farger. Fotografier vises i svart-hvitt. Ingen gradienter, skygger, tretekstur eller varseltape.
 
 ## Typography
 
@@ -170,7 +171,7 @@ Breakpoints: 980 px og 760 px. Ved 760 px eller mindre kommer hovedbudskap og ha
 
 ## Elevation & Depth
 
-Flat design. Dybde skapes gjennom papirtoner, typografisk skala, hårstreker og mørke troverdighetsflater. `box-shadow`, gradienter og `drop-shadow()` er forbudt.
+Flat design. Dybde skapes gjennom hvit og lys grå flate, typografisk skala, hårstreker og mørke troverdighetsflater. `box-shadow`, gradienter og `drop-shadow()` er forbudt.
 
 ## Shapes
 
@@ -180,7 +181,7 @@ Skarpe hjørner er standard. Profilbildet kan være rundt i headeren. Innholdsbi
 
 ### Knapper
 
-Minstehøyde og minste klikkflate for menyknappen er 44 px. Menytekst er minst 14 px; vanlig innholdstekst er minst 16 px. Primærknappen er oksidrød med hvit tekst og blir kullsort ved hover. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
+Minstehøyde og minste klikkflate for menyknappen er 44 px. Menytekst er minst 14 px; vanlig innholdstekst er minst 16 px. Primærknappen er svart med hvit tekst. Ved hover blir den hvit med svart ramme. På mørk flate er primærknappen hvit med svart tekst. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
 
 ### Arbeidssteg
 
@@ -221,8 +222,9 @@ e-post mail og detaljer plus/minus. Dekorative SVG-er har `aria-hidden="true"`
 og `focusable="false"`. Lisens beholdes i `icons/LICENSE.txt`.
 
 Nummerering beholdes i arbeidsstegene. Ingen dekorative verktøy-/KI-ikoner.
-Mørke flater bruker #dfa692 for lenker/fokus, #e7e3dc for dempet tekst,
-#2a302d for innfelt flate og #59605c for skillelinjer.
+Mørke flater bruker #ffffff for lenker og fokus, #d4d4d4 for dempet tekst,
+#1f1f1f for innfelt flate og #6b6b6b for skillelinjer. Fokusringen er 3 px
+heltrukken i tekstfargen med 4 px avstand, slik at den er synlig uten aksentfarge.
 
 Navigasjon er synlig uten JavaScript. Med JavaScript kan mobilmenyen åpnes
 og lukkes; Escape returnerer fokus til menyknappen. Aktiv seksjon markeres
