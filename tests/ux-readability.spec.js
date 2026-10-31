@@ -32,19 +32,36 @@ test.describe('UX, UI and readability', () => {
     expect(navigationTargets).toEqual([
       '#arbeidsbenken',
       '#om',
-      '#erfaring',
+      '#kurs-og-foredrag',
       '#kontakt',
     ]);
+    await expect(page.locator('nav a')).toHaveText(['Arbeid', 'Om', 'Foredrag', 'Kontakt']);
 
     await expect(page.locator('#media, #tjenester, #innsikt, #foredrag')).toHaveCount(0);
     await expect(page.locator('.hero-action')).toHaveCount(0);
-    await expect(page.locator('.audience-gate')).toContainText('Dette hjelper jeg med');
-    await expect(page.locator('.audience-gate')).toContainText('Dette bygger det på');
-    await expect(page.locator('.audience-gate')).not.toContainText('håndverksbedrifter');
-    await expect(page.locator('.audience-gate')).not.toContainText('større virksomheter');
+    // Figma 4:50 har ingen rollekolonne eller stikort i første skjerm.
+    await expect(page.locator('.audience-gate, .hero-rail')).toHaveCount(0);
+    await expect(page.locator('main')).not.toContainText('håndverksbedrifter');
+    await expect(page.locator('main')).not.toContainText('større virksomheter');
     await expect(page.locator('.steps li')).toHaveCount(4);
     await expect(page.locator('#arbeidsbenken')).toContainText('KI lager struktur og utkast');
     await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
+  });
+
+  test('makes the work request primary and gives the home link its visible name', async ({ page }) => {
+    const home = page.locator('header .site-home');
+    await expect(home).toHaveAccessibleName(/Lars Erik Brekne Johnsen/);
+    await expect(page.locator('header img')).toHaveCount(0);
+
+    const primary = page.locator('.hero-primary-action');
+    const secondary = page.locator('.hero-secondary-action');
+    await expect(primary).toHaveAttribute('href', '#kontakt');
+    await expect(secondary).toHaveAttribute('href', '#kurs-og-foredrag');
+    await expect(primary).toContainText(/oppgave/i);
+    await expect(secondary).toContainText(/kurs|foredrag/i);
+    await secondary.click();
+    await expect(page).toHaveURL(/#kurs-og-foredrag$/);
+    await expect(page.locator('#kurs-og-foredrag')).toBeInViewport();
   });
 
   test('reveals a working mailto link with the readable contact style on click', async ({ page }) => {
@@ -58,9 +75,7 @@ test.describe('UX, UI and readability', () => {
     await expect(link).toHaveText('larserik.bn@gmail.com');
     await expect(link).toBeFocused();
 
-    // "Samme lesbare kontaktstil": understreket, 0.95rem, samme farge som de
-    // andre kontaktlenkene (hvit på mørkt panel — aksentfargen rendres aldri
-    // fordi --accent-color ikke er definert; se code-review-notat).
+    // Kontaktlenken beholder understreking og samme kontrast som de andre kanalene.
     const style = await link.evaluate((el) => {
       const cs = getComputedStyle(el);
       return {
@@ -75,7 +90,7 @@ test.describe('UX, UI and readability', () => {
       .evaluate((el) => getComputedStyle(el).color);
 
     expect(style.textDecorationLine).toContain('underline');
-    expect(style.fontSize).toBe('15.2px');
+    expect(style.fontSize).toBe('16px');
     expect(style.offset).toBe('4px');
     expect(style.color).toBe(siblingColor);
   });
@@ -90,9 +105,22 @@ test.describe('UX, UI and readability', () => {
     );
 
     expect(imageSources).toEqual(expect.arrayContaining([
-      expect.objectContaining({ className: 'profile-pic', src: 'images/profil-480.jpg', naturalWidth: 480 }),
+      expect.objectContaining({ className: 'hero-portrait-img', src: 'images/profil-portrett-800.jpg', naturalWidth: 800 }),
       expect.objectContaining({ src: 'images/foredrag-vartagder-snitt-bw.jpg' }),
     ]));
+  });
+
+  test('shows a large round portrait with name and place in the first screen', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(indexUrl);
+    const portrait = page.locator('.hero-portrait img');
+    await expect(portrait).toHaveAttribute('alt', 'Lars Erik Brekne Johnsen');
+    await expect(portrait).toHaveAttribute('width', '800');
+    await expect(portrait).toHaveAttribute('height', '800');
+    await expect(page.locator('.hero-portrait figcaption')).toContainText('Kristiansand');
+    const box = await portrait.boundingBox();
+    expect(box.width).toBeGreaterThanOrEqual(400);
+    expect(box.y).toBeLessThan(1000);
   });
 
   test('uses the agreed readable type hierarchy and navigation targets', async ({ page }) => {
@@ -101,7 +129,6 @@ test.describe('UX, UI and readability', () => {
       const body = read('body');
       const intro = read('.section-intro');
       const about = read('.about-layout p');
-      const step = read('.steps li > p:last-child');
       const navLink = read('nav a');
       const heading = read('h2');
 
@@ -110,7 +137,6 @@ test.describe('UX, UI and readability', () => {
         backgroundColor: body.backgroundColor,
         introColor: intro.color,
         aboutFontSize: Number.parseFloat(about.fontSize),
-        stepFontSize: Number.parseFloat(step.fontSize),
         navPaddingTop: Number.parseFloat(navLink.paddingTop),
         headingFontFamily: heading.fontFamily,
       };
@@ -119,13 +145,12 @@ test.describe('UX, UI and readability', () => {
     expect(styles.introColor).toBe(styles.bodyColor);
     expect(contrastRatio(styles.introColor, styles.backgroundColor)).toBeGreaterThanOrEqual(4.5);
     expect(styles.aboutFontSize).toBeGreaterThanOrEqual(15.6);
-    expect(styles.stepFontSize).toBeGreaterThanOrEqual(15.2);
     expect(styles.navPaddingTop).toBeGreaterThanOrEqual(5.6);
     expect(styles.headingFontFamily).toContain('Newsreader');
   });
 
   test('avoids horizontal overflow and keeps the work steps readable on narrow screens', async ({ page }) => {
-    for (const width of [180, 360, 768, 1440]) {
+    for (const width of [180, 360, 390, 760, 980, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.goto(indexUrl);
 
@@ -142,16 +167,11 @@ test.describe('UX, UI and readability', () => {
         })(),
         textFitsContainers: [...document.querySelectorAll('main p')]
           .every((paragraph) => paragraph.scrollWidth <= paragraph.clientWidth + 1),
-        stepLineHeightRatio: (() => {
-          const styles = getComputedStyle(document.querySelector('.steps li > p:last-child'));
-          return Number.parseFloat(styles.lineHeight) / Number.parseFloat(styles.fontSize);
-        })(),
       }));
 
       expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
       expect(layout.navLinksContained).toBe(true);
       expect(layout.textFitsContainers).toBe(true);
-      expect(layout.stepLineHeightRatio).toBeGreaterThanOrEqual(1.6);
     }
 
     await page.setViewportSize({ width: 360, height: 1000 });

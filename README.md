@@ -1,29 +1,36 @@
-# larserik-nettside
+# Lars Erik Brekne Johnsen — personlig nettside
 
-Personlig nettside for **Lars Erik Brekne Johnsen** – KI-rådgiver, foredragsholder og coach.
+Statisk nettside med HTML, CSS, litt JavaScript og lokale SVG-ikoner. Ingen
+runtime-avhengigheter. `npm run build` kopierer bare tillatte produksjonsfiler
+til `dist/`; interne dokumenter, prototyper og originalbilder publiseres ikke.
 
-## Hva dette er
+## Arbeid lokalt
 
-En statisk HTML-side (`index.html`) med delt CSS og litt JavaScript. Ingen byggverktøy eller produksjonsavhengigheter. Åpnes direkte i nettleser eller hostes hvor som helst.
+- Installer utviklingsverktøy med `npm ci`.
+- Åpne `index.html` i nettleseren for enkel inspeksjon.
+- Kjør `npm run build`, `npx designmd lint DESIGN.md` og `npm test`.
+- Playwright bruker normalt sin installerte Chromium. Med lokal Chrome i
+  PowerShell: `$env:PLAYWRIGHT_CHANNEL='chrome'; npm test`.
 
-## Filer
+## Innhold og design
 
-| Fil | Innhold |
-|-----|---------|
-| `index.html` | Nettsidens struktur og innhold |
-| `css/style.css` | Designsystem, layout og 404-stiler |
-| `images/profil-480.jpg` | Optimalisert profilbilde i produksjon |
-| `images/foredrag-vartagder-1240.jpg` | Optimalisert gråtonebilde fra foredrag |
-| `CLAUDE.md` | Prosjektkontekst + slash-kommandoer for Claude Code |
-| `SPEC.md` | Designspec og handoff (inkl. Google Stitch-prompt) |
-| `HANDOFF.md` | Kortversjon |
-| `netlify.toml` | Hosting-konfig (statisk, ingen build) |
+`index.html` har inngang → Arbeidsbenken → om/kurs og foredrag → erfaring →
+kontakt. `css/style.css` følger `DESIGN.md`; `js/navigation.js` håndterer meny,
+aktiv seksjon og e-postvisning. Newsreader ligger i `fonts/`, og Lucide-lisensen
+ligger i `icons/LICENSE.txt`. Se `SPEC.md` før endring av brukerreisen.
 
-## Kjøre lokalt
+Kommunestillingen er bakgrunn, ikke profil eller salg mot offentlig sektor.
+Nye oppdrags-, pris- og resultatpåstander krever dokumentasjon eller bekreftelse.
 
-Åpne `index.html` i en nettleser. Det er alt.
+## GitHub og Netlify
 
-## Publisering
+Repo: [personlignettsidenyeste](https://github.com/Luaze1985/personlignettsidenyeste).
+[PR #10](https://github.com/Luaze1985/personlignettsidenyeste/pull/10) samler
+forbedringene. `netlify.toml` angir bygg og `dist/` som publiseringsmappe.
+Netlify bekreftet 31. oktober 2026 et Git-basert produksjonsbygg fra main
+5ff17d0, publisert 28. oktober, med status ready. PR-grenen har deploy preview.
+Push til PR-grenen skal ikke likestilles med produksjonspublisering.
+Merge til main og eksplisitt produksjonsdeploy krever egen godkjenning.
 
-Koblet til Netlify: hver push til produksjonsbranchen oppdaterer siden automatisk.
-Se `SPEC.md` for detaljer.
+Aktuell status, bilder og begrensninger: `docs/issue9/README.md`.
+Åpne oppgaver: `ISSUES.md`. Neste arbeidsøkt: `HANDOFF.md`.

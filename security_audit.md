@@ -3,7 +3,7 @@
 This report details the security scan, findings, and remediation for `index.html` and the Netlify hosting configuration (`netlify.toml`).
 
 **Audit date:** 4. juli 2026
-**Status:** ✅ All findings remediated and verified
+**Status:** Historisk rapport. Se presisering 31. oktober 2026 nedenfor.
 
 ---
 
@@ -11,7 +11,7 @@ This report details the security scan, findings, and remediation for `index.html
 
 A static front-end security review was performed on `index.html` and the Netlify hosting configuration (`netlify.toml`). All identified vulnerabilities have been remediated:
 
-- Inline scripts extracted to external `.js` files → allows strict `script-src 'self'`
+- Navigasjonskode ligger i ekstern JS; det lille head-skriptet tillates med SHA-256-hash.
 - Inline CSS extracted to external `.css` file → allows strict `style-src 'self'`
 - Full security header suite configured in `netlify.toml`
 - Automated E2E verification suite confirms compliance (22/22 tests passing)
@@ -25,7 +25,7 @@ A static front-end security review was performed on `index.html` and the Netlify
   1. `document.documentElement.classList.add("js");` (flicker mitigation)
   2. Navigation scroll + fade-in IntersectionObserver logic
 * **Risk:** Inline scripts require `'unsafe-inline'` in CSP, which nullifies XSS protection.
-* **Remediation applied:** Scripts extracted to `js/theme.js` and `js/navigation.js`. CSP now uses strict `script-src 'self'` with zero inline exceptions.
+* **Presisering 31. oktober 2026:** Navigasjon ligger i `js/navigation.js`; `js/theme.js` er ikke i produksjon. Head-skriptet `document.documentElement.classList.add("js");` beholdes med eksplisitt SHA-256-hash i CSP. Det brukes ikke unsafe-inline. Samsvar kontrolleres i tests/header-validator.spec.js.
 
 ### Finding 2: Inline CSS → REMEDIATED ✅
 * **Original issue:** All CSS was embedded in a `<style>` block inside `<head>`.
@@ -111,3 +111,11 @@ npx playwright test tests/header-validator.spec.js --reporter=list
 | Referrer leakage | **Mitigated** | `strict-origin-when-cross-origin` sends origin only on cross-origin |
 | Browser API abuse | **Mitigated** | 9 high-risk APIs explicitly denied via Permissions-Policy |
 | Document exposure | **Mitigated** | All internal `.md` files return 404 via Netlify redirects |
+
+## Presisering 31. oktober 2026
+
+Dagens sjekker omfatter også form-action none og HSTS. Testserveren gjengir
+konfigurerte Netlify-headere; dette alene beviser ikke faktisk CDN-respons.
+Npm audit rapporterte 2 high-varsler i eksisterende utviklingsverktøy
+(@google/design.md og transitiv zod), ingen automatisk løsning. Axe er ikke
+årsaken. Disse pakkene kopieres ikke til dist; separat oppfølging er DEV-01.

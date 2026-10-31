@@ -1,26 +1,30 @@
 ---
 version: alpha
 name: Arbeidsbenken
-description: "Robust, redaksjonelt designsystem for breknejohnsen.no – en moderne arbeidsbok uten håndverksklisjeer."
+description: "Redaksjonelt rutenett for breknejohnsen.no med tydelig kontaktvei og rolig typografisk hierarki."
 colors:
-  primary: "#1d211f"
+  primary: "#111111"
   on-primary: "#ffffff"
-  neutral: "#f3efe6"
-  surface: "#fbfaf6"
-  surface-dim: "#e9e3d8"
-  on-surface: "#1d211f"
-  on-surface-variant: "#555b57"
-  outline: "#b9b2a5"
-  accent: "#8a3f2b"
+  neutral: "#ffffff"
+  surface: "#ffffff"
+  surface-dim: "#f2f2f2"
+  on-surface: "#111111"
+  on-surface-variant: "#555555"
+  outline: "#d9d9d9"
+  accent: "#111111"
   on-accent: "#ffffff"
-  link: "#713322"
+  accent-on-dark: "#ffffff"
+  on-dark-muted: "#d4d4d4"
+  dark-surface: "#1f1f1f"
+  dark-outline: "#6b6b6b"
+  link: "#111111"
 typography:
   display-lg:
-    fontFamily: system-ui
-    fontSize: 5.2rem
-    fontWeight: 750
-    lineHeight: 0.94
-    letterSpacing: -0.045em
+    fontFamily: Newsreader
+    fontSize: 4.6rem
+    fontWeight: 600
+    lineHeight: 1.02
+    letterSpacing: -0.03em
   display-md:
     fontFamily: Newsreader
     fontSize: 2.4rem
@@ -38,7 +42,7 @@ typography:
     lineHeight: 1.65
   body-sm:
     fontFamily: system-ui
-    fontSize: 0.95rem
+    fontSize: 1rem
     fontWeight: 400
     lineHeight: 1.6
   label:
@@ -89,6 +93,15 @@ components:
     textColor: "{colors.on-surface}"
     rounded: "{rounded.none}"
     padding: 1.5rem
+  trust-panel:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-dark-muted}"
+  dark-rule:
+    backgroundColor: "{colors.dark-outline}"
+    height: 1px
+  proof-inset:
+    backgroundColor: "{colors.dark-surface}"
+    textColor: "{colors.accent-on-dark}"
   metadata:
     backgroundColor: "{colors.neutral}"
     textColor: "{colors.on-surface-variant}"
@@ -106,7 +119,7 @@ Designsystem for [breknejohnsen.no](https://breknejohnsen.no/). Retningen bygger
 
 ## Overview
 
-**En moderne arbeidsbok.** Uttrykket er konkret, robust og presist, med synlige arbeidssteg og få, tydelige overleveringer mellom innhold. Det skal føles som et sted der arbeid blir sortert og forstått – ikke som en teknologiplattform, konsulentmal eller byggeplass.
+**Et redaksjonelt arbeidsark.** Et gjennomgående rutenett, tynne skillelinjer og en smal venstre kolonne gir innholdet fast leseretning. Typografien er tydelig, mens flatene er rolige. Første handling leder besøkende til å beskrive én arbeidsoppgave og ta kontakt. Kurs og foredrag får en synlig, mindre inngang.
 
 Siden viser to sider av samme arbeid uten å splitte identiteten:
 
@@ -121,68 +134,71 @@ Ved hver brukerbestilte kodeendring skal det først lages en tydelig merket, mid
 
 ## Colors
 
-- **Primary (#1d211f):** Kullsort med grønn undertone. Brukes til hovedtekst, mørke troverdighetsflater og struktur.
-- **Neutral (#f3efe6):** Varm papirbakgrunn.
-- **Surface (#fbfaf6):** Lyst arbeidsark for kort og innholdsblokker.
-- **Surface-dim (#e9e3d8):** Dempet papirflate for sekundære områder.
-- **Accent (#8a3f2b):** Oksidrød. Brukes sparsomt til handlinger, nummerering og aktive markører.
-- **Link (#713322):** Mørkere aksent som består kontrastkrav på lys bakgrunn.
-- **Outline (#b9b2a5):** Tydelig, men rolig arbeidslinje.
+Svart-hvitt-retning fra Figma ([desktop 3:149](https://www.figma.com/design/WTecHNclgVZX56cl6fsGDL?node-id=3-149), mobil 3:266), valgt av Lars 31. oktober 2026. Oksidrødt er fjernet helt.
 
-Ingen andre profilfarger. Ingen gradienter, skygger, tretekstur, varseltape eller kunstig «rust».
+- **Primary (#111111):** Nær svart. Hovedtekst, primærknapp, stegbånd og kontaktflate.
+- **Neutral / Surface (#ffffff):** Hvit side og hvite innholdsflater.
+- **Surface-dim (#f2f2f2):** Lys grå for avgrensede bånd, for eksempel «Omtalt hos» og foredrag.
+- **On-surface-variant (#555555):** Dempet tekst. Består AA også på #f2f2f2.
+- **Accent / Link (#111111):** Det finnes ingen egen aksentfarge. Handlinger skilles med vekt, understrek, fylt svart flate og pil.
+- **Outline (#d9d9d9):** Tynn skillelinje på lyse flater.
+
+Ingen andre farger. Fotografier vises i svart-hvitt. Ingen gradienter, skygger, tretekstur eller varseltape.
 
 ## Typography
 
 Tre roller:
 
-- **Systemfont, tung:** Hovedbudskapet. Stor, direkte og mindre høytidelig enn en ren serif-hero.
-- **Newsreader:** Navn, seksjonstitler, sitater og faglige overskrifter. Gir menneskelig og redaksjonell kontrast.
+- **Newsreader:** Hovedbudskap, navn, seksjonstitler, sitater og faglige overskrifter. Stor hero gir et redaksjonelt tyngdepunkt.
+- **Systemfont:** Brødtekst og handlingsknapper. Kort og direkte.
 - **Ui-monospace/system monospace:** Kun små etiketter, nummerering og arbeidsmarkører.
 
 Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksimal lesebredde er 66 tegn.
 
 ## Layout
 
-- **Container:** Maks 1180 px, sentrert.
-- **Hero:** Bred arbeidsflate med stor overskrift og en kort forklaring av verdiløftet. Målgruppefeltene følger direkte etter heroen og er de eneste konkrete inngangene videre.
-- **Sidestruktur:** Fem deler etter headeren: inngang, Arbeidsbenken, om/foredrag med bilde, erfaring/referanser og kontakt. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
-- **Arbeidsbenken:** Én leseretning: avklare → prøve → kontrollere → velge. Etter arbeidsstegene kommer «passer når / passer ikke når» og én CTA.
-- **Om og foredrag:** Kommer rett etter Arbeidsbenken. På desktop står introduksjonen og foredragsbildet side om side; på mobil kommer bildet før introduksjonen. Foredragsbildet bruker det stramme svart-hvitt-utsnittet fra Arendalsuka i 4:3-format.
-- **Erfaring:** Fire synlige bevis på mørk flate etter om/foredrag. Dokumenterte lenker som ikke er primærbevis ligger i én `<details>`-liste.
-- **To arbeidsspor:** To felt etter hero; «Dette hjelper jeg med» peker mot praktisk arbeidsflyt, og «Dette bygger det på» peker mot erfaring og foredrag.
+- **Container:** Maks 1180 px, sentrert. All tekst deler samme venstrekant.
+- **Rutenett (tekstplassering 31.10.2026):** Alle todelte seksjoner (hero, Arbeidsbenken, Kurs og foredrag, Om, Erfaring) deler 50/50 med 3rem mellomrom. Høyrekolonnen starter dermed samme sted i hele siden (x ≈ 744 ved 1440 px). Under 980 px stables alt, unntatt hero.
+- **Rytme:** Avstanden fra seksjonsetikett til overskrift er 1.75rem (28 px) i alle seksjoner. Brødtekst holdes på ca. 40–65 tegn per linje.
+- **Header:** Bare navnet i Newsreader til venstre og fire menypunkter til høyre: Arbeid, Om, Foredrag og Kontakt. Ingen profilbilde i headeren. En tynn hårstrek skiller headeren fra innholdet.
+- **Hero (Figma 4:50 / 4:143):** På desktop står hovedbudskapet til venstre og et stort rundt portrett (`images/profil-portrett-800.jpg`, maks 472 px) til høyre. Under portrettet står navn og «Kristiansand». Det er ingen rollekolonne og ingen stikort. På mobil kommer etikett, overskrift, ingress og handlinger først, og deretter portrettet. DOM-rekkefølgen følger mobilens leseretning.
+- **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt (svart knapp, full bredde på mobil). «Kurs og foredrag» er en tekstlenke med pil til `#kurs-og-foredrag`.
+- **Sidestruktur:** Etter headeren kommer inngang, «Omtalt hos», 01 Arbeidsbenken, 02 Kurs og foredrag, 03 Om, 04 Erfaring og omtaler og til slutt Kontakt. Seksjonene nummereres i etiketten («02 / Kurs & foredrag»). Menyen følger Figma (Arbeid, Om, Foredrag, Kontakt). `navigation.js` sorterer seksjonene etter plassering på siden, så aktiv markering stemmer selv om menyrekkefølgen avviker. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
+- **Arbeidsbenken (Figma 4:85):** Etiketten «01 / Dette hjelper jeg med». Overskrift og ingress står til venstre, og tre nummererte tjenestelinjer til høyre (Sparring, En liten prototype, Agenter i arbeidsflyten), skilt med hårstreker. Under kommer et svart bånd med bare nummer og navn: avklare → prøve → kontrollere → velge. Til slutt «passer når / passer ikke når». Prinsippet «KI lager struktur og utkast, fagpersonen vurderer og har ansvaret» står bare i ingressen. Flyten forklares bare i båndet, og oppfordringen til kontakt står i hero og i kontaktdelen. Ikke gjenta dem (designkritikk 31.10.2026).
+- **Kurs og foredrag (Figma 4:108):** Lys grå flate over hele bredden. Foredragsbildet (svart-hvitt fra Arendalsuka, 4:3, uten ramme) står til venstre. Til høyre står etikett, overskrift, ingress, tre temaer med kort forklaring og tekstlenken «Ta kontakt om foredrag». På mobil kommer bildet først.
+- **Om (Figma 4:121):** Hvit flate, todelt: overskriften «Jeg liker å gjøre kompliserte ting brukbare.» til venstre, og ett avsnitt med tekstlenken «Se erfaring og omtaler» til høyre.
+- **Omtalt hos (Figma 4:78):** Lys grå stripe rett etter hero med navnene NRK, HR Norge, Tech Talks Agder og DigiViken, uten logoer. Hvert navn lenker til `#erfaring` og skal være dokumentert der.
+- **Erfaring:** Lys seksjon med etiketten «04 / Erfaring og omtaler». Todelt: overskrift og ingress til venstre, og ett fremhevet, ordrett sitat til høyre (`<figure>` med `<blockquote cite>` og `<figcaption>`). Under kommer én samlet liste, «I media og på fagscener». På desktop står utgiver og type/dato samlet i venstre kolonne og tittelen til høyre. På mobil stables de. Ingen andre sitatstiler. Leverandørblogger står bare i `<details>`. Kilder står i `docs/kilder-fagpresse.md`. Alle lenker i listen skal også finnes i `<details>`.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
+- **Kontakt (Figma 4:130):** Svart flate over hele bredden, som går rett over i svart bunntekst. Den har etiketten «Kontakt», en stor overskrift, kort tekst med tre stikkord om hva en henvendelse om en arbeidsoppgave bør inneholde, en hvit «Vis e-postadresse»-knapp (full bredde på mobil) og begge LinkedIn-lenkene.
 
-Breakpoints: 980 px og 768 px.
+Breakpoints: 980 px og 760 px. Ved 760 px eller mindre kommer hovedbudskap og handlinger før den kompakte rollekolonnen, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
 
 ## Elevation & Depth
 
-Flat design. Dybde skapes gjennom papirtoner, typografisk skala, hårstreker og mørke troverdighetsflater. `box-shadow`, gradienter og `drop-shadow()` er forbudt.
+Flat design. Dybde skapes gjennom hvit og lys grå flate, typografisk skala, hårstreker og mørke troverdighetsflater. `box-shadow`, gradienter og `drop-shadow()` er forbudt.
 
 ## Shapes
 
-Skarpe hjørner er standard. Profilbildet kan være rundt i headeren. Innholdsbilder kan ha 0.2 rem avrunding; øvrige komponenter bruker 0 px.
+Skarpe hjørner er standard. Portrettet i hero er rundt. Innholdsbilder kan ha 0.2 rem avrunding; øvrige komponenter bruker 0 px.
 
 ## Components
 
 ### Knapper
 
-Minstehøyde 44 px. Primærknappen er oksidrød med hvit tekst og blir kullsort ved hover. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
+Minstehøyde og minste klikkflate for menyknappen er 44 px. Menypunktene har minst 44 px høy klikkflate også på desktop. Menytekst er minst 14 px, og etiketter (store bokstaver) er minst 12,8 px; vanlig innholdstekst er minst 16 px. Primærknappen er svart med hvit tekst. Ved hover blir den hvit med svart ramme. På mørk flate er primærknappen hvit med svart tekst. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
 
 ### Arbeidssteg
 
-Fire trinn har lys papirflate, 1 px ramme og 1.5 rem padding. De nummereres med monospace-etikett. Ikke bruk flere kortrekker for tjenester og innsikt ved siden av denne flyten.
+Fire trinn ligger på ett sammenhengende svart bånd med nummer i dempet grå og navn i Newsreader. Ingen forklaring under. På mobil stables de. Ikke bruk kortrekker for tjenester ved siden av denne flyten.
 
-### Arbeidsspor
+### Erfaring og omtaler
 
-To felt med samme konstruksjon og tydelig lenke. De skal vise praktisk hjelp og faglig bakgrunn i samme personlige profil, ikke to separate målgrupper eller merkevarer.
-
-### Troverdighetsflate
-
-Media, statsrådbesøk, utvalgte referanser og oppdrag samles på én mørk flate. Fire bevis er synlige; resten bor i `<details>`. Typografien og lenkene skal fortsatt være lesbare og nøkterne; ingen logo-vegg.
+Media, statsrådbesøk og fagscener samles i én lys liste med hårstreker etter ett fremhevet sitat. Resten ligger i `<details>`. Typografien og lenkene skal være lesbare og nøkterne. Ingen logovegg.
 
 ### Accordion
 
-1 px linjer, monospace-etikett og tydelig pluss/minus. Standard HTML `<details>` beholdes.
+1 px linjer, monospace-etikett og Lucide pluss/minus. Standard HTML `<details>` beholdes med tastaturoppførsel uten JavaScript.
 
 ## Do's and Don'ts
 
@@ -197,3 +213,27 @@ Media, statsrådbesøk, utvalgte referanser og oppdrag samles på én mørk flat
 - **Don't** gjenta samme tjeneste, erfaring eller foredrag i flere seksjoner.
 - **Don't** fjern dokumenterte referanser for å gjøre siden kortere; legg dem heller i detaljvisning.
 - **Don't** bruk buzzord eller garanterte resultatpåstander.
+
+## Ikoner og tilgjengelighet — 31. oktober 2026
+
+Lucide er eneste ikonfamilie. Lokale inline-SVG-er bruker 24 × 24 viewBox,
+2 px strek, avrundede linjeender og `currentColor`. Normal størrelse er 20 px.
+Meny bruker menu/x, handlinger arrow-right, eksterne lenker external-link,
+e-post mail og detaljer plus/minus. Dekorative SVG-er har `aria-hidden="true"`
+og `focusable="false"`. Lisens beholdes i `icons/LICENSE.txt`.
+
+Nummerering beholdes i arbeidsstegene. Ingen dekorative verktøy-/KI-ikoner.
+Mørke flater bruker #ffffff for lenker og fokus, #d4d4d4 for dempet tekst,
+#1f1f1f for innfelt flate og #6b6b6b for skillelinjer. Fokusringen er 3 px
+heltrukken i tekstfargen med 4 px avstand, slik at den er synlig uten aksentfarge.
+
+Navigasjon er synlig uten JavaScript. Med JavaScript kan mobilmenyen åpnes
+og lukkes; Escape returnerer fokus til menyknappen. Aktiv seksjon markeres
+med `aria-current="location"`. Alle hovedankere tar høyde for sticky header.
+
+## Profil og målgruppe
+
+Kommunestillingen er bakgrunn og skal ikke dominere siden. Lars markedsføres
+ikke mot offentlig sektor. Nåværende eller fremtidig arbeidsgiver står ikke i
+presentasjonen eller strukturerte metadata. Dokumentert kommunal erfaring kan
+beholdes som historisk referanse. Dette følger Lars sin presisering 31. oktober.

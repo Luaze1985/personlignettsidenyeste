@@ -2,6 +2,7 @@ const { test, expect } = require('@playwright/test');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 let server;
 const PORT = 3009;
@@ -121,6 +122,12 @@ test.describe('Security Headers & E2E Validation', () => {
     const response = await request.get(BASE_URL);
     const headers = response.headers();
     expect(headers['content-security-policy']).toBeDefined();
+  });
+
+  test('HSTS remains configured and forms cannot submit', async ({ request }) => {
+    const headers = (await request.get(BASE_URL)).headers();
+    expect(headers['strict-transport-security']).toBe('max-age=63072000; includeSubDomains; preload');
+    expect(headers['content-security-policy']).toContain("form-action 'none'");
   });
 
   test('TC-1.2: Verify X-Frame-Options value is secure', async ({ request }) => {
@@ -272,6 +279,24 @@ test.describe('Security Headers & E2E Validation', () => {
     }
   });
 
+  test('TC-2.9: Inline script SHA-256 hash matches netlify.toml CSP directive', async () => {
+    const htmlPath = path.resolve(__dirname, '../index.html');
+    const tomlPath = path.resolve(__dirname, '../netlify.toml');
+    const html = fs.readFileSync(htmlPath, 'utf8');
+    const toml = fs.readFileSync(tomlPath, 'utf8');
+
+    const scriptMatches = [...html.matchAll(/<script(?![^>]*(?:type=["']application\/ld\+json["']|src=))[^>]*>([\s\S]*?)<\/script>/gi)];
+    expect(scriptMatches.length).toBeGreaterThan(0);
+
+    for (const match of scriptMatches) {
+      const scriptContent = match[1];
+      if (!scriptContent.trim()) continue;
+      const hash = crypto.createHash('sha256').update(scriptContent, 'utf8').digest('base64');
+      const expectedCspToken = `'sha256-${hash}'`;
+      expect(toml).toContain(expectedCspToken);
+    }
+  });
+
 
   // ==========================================
   // TIER 3: CROSS-FEATURE COMBINATION TESTS
@@ -405,11 +430,11 @@ test.describe('Security Headers & E2E Validation', () => {
   test('TC-4.4: Profile image loads successfully', async ({ page, request }) => {
     await page.goto(BASE_URL);
     
-    const profileImg = page.locator('img.profile-pic');
+    const profileImg = page.locator('img.hero-portrait-img');
     await expect(profileImg).toBeVisible();
-    
+
     const src = await profileImg.getAttribute('src');
-    expect(src).toBe('images/profil-480.jpg');
+    expect(src).toBe('images/profil-portrett-800.jpg');
     
     // Fetch image directly to verify 200 response
     const imgUrl = `${BASE_URL}/${src}`;
