@@ -49,8 +49,8 @@ fjernet fra presentasjonen og JSON-LD, mens historiske omtaler beholdes.
 
 Følgende er fortsatt uavklart og skal ikke fylles ut ved gjetting:
 
-- Pris/prismodell og hva første kontakt innebærer.
-- Leverandørnavn, organisasjonsnummer og avklaring mot kommunestillingen.
+- ~~Pris/prismodell og hva første kontakt innebærer.~~ Avklart 17.11.2026: «Pris avtales etter første samtale», svar innen to arbeidsdager, første samtale uforpliktende.
+- ~~Leverandørnavn, organisasjonsnummer og avklaring mot kommunestillingen.~~ Avklart 17.11.2026: enkeltpersonforetak, org.nr. 936 978 010 (bekreftet av Lars). Bijobben er avklart med arbeidsgiver.
 - Faktisk praksis for personopplysninger og eventuelle databehandleravtaler.
 - Ett godkjent, anonymisert eksempel med dokumentert resultat.
 

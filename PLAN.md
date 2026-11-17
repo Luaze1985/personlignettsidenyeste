@@ -11,6 +11,8 @@ Sist oppdatert 17.11.2026. Beslutninger: `docs/DECISIONS.md`.
 
 - Brukerråd 17.11 (`docs/brukerrad-2026-11-17.md`): tydeligere knapp, synlig e-post med
   kopiering, kortere podkast og medieliste, mørkere dempet tekst og større tekst i sonekortet.
+- Tjenestefakta 17.11 (`docs/to-questionnaire-tjenestefakta.md`): format og varighet per tjeneste,
+  foredragslengde, svartid og «pris avtales» i kontakt, foretak og org.nr. i bunnteksten.
 
 ## Neste
 
@@ -18,8 +20,8 @@ Sist oppdatert 17.11.2026. Beslutninger: `docs/DECISIONS.md`.
    Merge til main publiserer til produksjon via Netlify.
 2. Lars velger sitat, tidskode og lenker til Smakebit. Da flyttes komponenten inn i
    `index.html`, og testen i `tests/sections.spec.js` oppdateres.
-3. Brukerråd-forslag 4: én setning om format og varighet per tjeneste (sparring, prototype,
-   foredrag). Venter på fakta fra Lars. Pris, telefon og org.nr. står i `ISSUES.md` N-6.
+3. Gjenstår i N-6: datapraksis/personvern og ett godkjent kundeeksempel. Lister Nyskaping
+   nevnes ikke før Lars sier ja.
 4. Den automatiske rotasjonen i «Slik jobber jeg» har ingen pauseknapp. Vurder om
    den trenger en, eller om den skal stoppe etter én runde (WCAG 2.2.2).
 5. Manuelt: faktisk 200 % zoom og 2–3 ekte brukere (`docs/issue9/brukerkontroll.md`).

@@ -2,6 +2,23 @@
 
 Nyeste først. Eldre beslutninger står i `DESIGN.md`, `ISSUES.md` og `docs/issue9/README.md`.
 
+## 17.11.2026 (spørreskjema om tjenestefakta)
+
+Svarene står i `docs/to-questionnaire-tjenestefakta.md`. Lars bestemte:
+
+- **Sparring** er 2–3 møter over tid.
+- **Prototype** tar 1–2 uker og gir en testversjon.
+- **Agenter** er løpende hjelp.
+- **Foredrag** er 30–60 minutter.
+- **Etter e-post:** svar innen to arbeidsdager, og første samtale er uforpliktende.
+- **Pris:** «Pris avtales etter første samtale».
+- **Kontakt:** ingen telefon og ingen booking.
+- **Firma:** enkeltpersonforetaket kan publiseres. Org.nr. 936 978 010 er funnet i Enhetsregisteret, og Lars bekreftet det («Ja, legg inn»). Det står i bunnteksten, ikke i JSON-LD, fordi `Person` ikke har et felt for eget foretak og `worksFor` er utelatt med vilje.
+- **Rolle:** bijobben er avklart med arbeidsgiveren.
+- **Kundecase:** det finnes ingen godkjent kundecase. Snekkere og håndverkere nevnes ikke på siden, fordi DESIGN.md sier at Lars ikke skal fremstå som ren håndverkskonsulent.
+- **Lister Nyskaping** nevnes ikke før Lars sier ja.
+- **Personvern:** datapraksis er fortsatt åpen.
+
 ## 17.11.2026 (etter brukerråd)
 
 - **Lars godkjente alle fire forslagene fra brukerrådet.** Punkt 1–3 er gjort:
