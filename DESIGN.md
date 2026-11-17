@@ -9,7 +9,7 @@ colors:
   surface: "#ffffff"
   surface-dim: "#f2f2f2"
   on-surface: "#111111"
-  on-surface-variant: "#555555"
+  on-surface-variant: "#3d3d3d"
   outline: "#d9d9d9"
   accent: "#111111"
   on-accent: "#ffffff"
@@ -157,7 +157,7 @@ Svart-hvitt-retning fra Figma ([desktop 3:149](https://www.figma.com/design/WTec
 - **Primary (#111111):** Nær svart. Hovedtekst, primærknapp, mørkt sorteringskort og kontaktflate.
 - **Neutral / Surface (#ffffff):** Hvit side og hvite innholdsflater.
 - **Surface-dim (#f2f2f2):** Lys grå for avgrensede bånd, for eksempel «Omtalt hos» og foredrag.
-- **On-surface-variant (#555555):** Dempet tekst. Består AA også på #f2f2f2.
+- **On-surface-variant (#3d3d3d):** Dempet tekst. Gjort mørkere 17.11.2026 etter brukerråd (blek på grå flate). Består AA godt på #f2f2f2.
 - **Accent / Link (#111111):** Det finnes ingen egen aksentfarge på knapper eller lenker. Handlinger skilles med vekt, understrek, fylt svart flate og pil.
 - **Outline (#d9d9d9):** Tynn skillelinje på lyse flater.
 - **Sonefarger i oppgavesortering (#7ee081 / #ffd166 / #ff6b6b):** Avmålt grønn, gul og rød brukes utelukkende til prikkmarkører og svak bakgrunnsgradient i «Slik jobber jeg»-kortet (Grønt / Gult / Rødt), valgt av Lars 15. november 2026.
@@ -181,14 +181,14 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 - **Rytme:** Avstanden fra seksjonsetikett til overskrift er 1.75rem (28 px) i alle seksjoner. Brødtekst holdes på ca. 40–65 tegn per linje.
 - **Header:** Bare navnet i Newsreader til venstre og fire menypunkter til høyre: Arbeid, Om, Foredrag og Kontakt. Ingen profilbilde i headeren. En tynn hårstrek skiller headeren fra innholdet.
 - **Hero (Figma 4:50 / 4:143):** På desktop står hovedbudskapet til venstre og et stort rundt portrett (`images/profil-portrett-800.jpg`, maks 472 px) til høyre. Under portrettet står navn og «Kristiansand». Det er ingen rollekolonne og ingen stikort. På mobil kommer etikett, overskrift, ingress og handlinger først, og deretter portrettet. DOM-rekkefølgen følger mobilens leseretning.
-- **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt (svart knapp, full bredde på mobil). «Kurs og foredrag» er en tekstlenke med pil til `#kurs-og-foredrag`.
+- **Handlinger:** «Send meg en arbeidsoppgave» er primær vei til kontakt (svart knapp, full bredde på mobil). «Kurs og foredrag» er en tekstlenke med pil til `#kurs-og-foredrag`.
 - **Sidestruktur:** Etter headeren kommer inngang, «Omtalt hos», 01 Arbeidsbenken, 02 Kurs og foredrag, 03 Om og erfaring og til slutt Kontakt. Seksjonene nummereres i etiketten («02 / Kurs & foredrag»). Menyen følger Figma (Arbeid, Om, Foredrag, Kontakt). `navigation.js` sorterer seksjonene etter plassering på siden, så aktiv markering stemmer selv om menyrekkefølgen avviker. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
 - **Arbeidsbenken (Figma 4:85):** Etiketten «01 / Dette hjelper jeg med». Overskrift og ingress står til venstre, og tre nummererte tjenestelinjer til høyre (Sparring, En liten prototype, Agenter i arbeidsflyten), skilt med hårstreker. Under kommer todelt «Slik jobber jeg» med «Sparringspartner, ikke en fasit.» til venstre og sortering av oppgaver (grønt, gult og rødt) i en svart flate til høyre. Prinsippet «KI lager struktur og utkast, fagpersonen vurderer og har ansvaret» står bare i ingressen, og oppfordringen til kontakt står i hero og i kontaktdelen. Ikke gjenta dem.
 - **Kurs og foredrag (Figma 4:108):** Lys grå flate over hele bredden. Foredragsbildet (svart-hvitt fra Arendalsuka, 4:3, uten ramme) står til venstre. Til høyre står etikett, overskrift, ingress, tre temaer med kort forklaring og tekstlenken «Ta kontakt om foredrag». På mobil kommer bildet først.
 - **Omtalt hos (Figma 4:78):** Lys grå stripe rett etter hero med navnene NRK, HR Norge, Tech Talks Agder og DigiViken, uten logoer. Hvert navn lenker til `#erfaring` og skal være dokumentert der.
-- **Om og erfaring:** Lys seksjon (`#om`, med anker `#erfaring` inni) og etiketten «03 / Om og erfaring». Todelt topp: overskriften «Jeg liker å gjøre kompliserte ting brukbare.» og kort bakgrunn til venstre, og ett fremhevet, ordrett sitat til høyre (`<figure>` med `<blockquote cite>` og `<figcaption>`). Under kommer podkasten «Nok en podkast om KI» med plattformknapper og tre hovedepisoder, fulgt av «I media og på fagscener». På desktop står utgiver og type/dato samlet i venstre kolonne og tittelen til høyre. På mobil stables de. Ingen andre sitatstiler. Leverandørblogger står bare i `<details>`. Kilder står i `docs/kilder-fagpresse.md`. Alle lenker i listen skal også finnes i `<details>`.
+- **Om og erfaring:** Lys seksjon (`#om`, med anker `#erfaring` inni) og etiketten «03 / Om og erfaring». Todelt topp: overskriften «Jeg liker å gjøre kompliserte ting brukbare.» og kort bakgrunn til venstre, og ett fremhevet, ordrett sitat til høyre (`<figure>` med `<blockquote cite>` og `<figcaption>`). Under kommer podkasten «Nok en podkast om KI» med plattformknapper og tre hovedepisoder (bare nummer, lengde, tittel og lenker), fulgt av «I media og på fagscener» med fire utvalgte omtaler. Resten ligger i `<details>` (brukerråd 17.11.2026: listene var for lange). På desktop står utgiver og type/dato samlet i venstre kolonne og tittelen til høyre. På mobil stables de. Ingen andre sitatstiler. Leverandørblogger står bare i `<details>`. Kilder står i `docs/kilder-fagpresse.md`. Alle lenker i listen skal også finnes i `<details>`.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
-- **Kontakt (Figma 4:130):** Svart flate over hele bredden, som går rett over i svart bunntekst. Den har etiketten «Kontakt», en stor overskrift, kort tekst med tre stikkord om hva en henvendelse om en arbeidsoppgave bør inneholde, en hvit «Vis e-postadresse»-knapp (full bredde på mobil) og begge LinkedIn-lenkene.
+- **Kontakt (Figma 4:130):** Svart flate over hele bredden, som går rett over i svart bunntekst. Den har etiketten «Kontakt», en stor overskrift, kort tekst med tre stikkord om hva en henvendelse om en arbeidsoppgave bør inneholde, e-postadressen synlig som hvit knapp med `mailto:` og en «Kopier e-postadressen»-knapp som bare lages med JavaScript (begge full bredde på mobil) og begge LinkedIn-lenkene.
 
 Breakpoints: 980 px og 760 px. Ved 760 px eller mindre kommer hovedbudskap og handlinger før den kompakte rollekolonnen, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
 

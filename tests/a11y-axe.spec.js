@@ -9,7 +9,7 @@ for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto(indexUrl);
     await page.locator('summary').click();
-    await page.getByRole('button', { name: 'Vis e-postadresse' }).click();
+    await expect(page.locator('#kontakt a[href^="mailto:"]')).toBeVisible();
     if (width === 390) await page.getByRole('button', { name: 'Åpne meny' }).click();
     const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
     expect(result.violations, JSON.stringify(result.violations, null, 2)).toEqual([]);
@@ -18,7 +18,7 @@ for (const width of [390, 1440]) {
 
 test('visible proof points, link notices and metadata respect the approved profile', async ({ page }) => {
   await page.goto(indexUrl);
-  await expect(page.locator('.press-list li')).toHaveCount(8);
+  await expect(page.locator('.press-list li')).toHaveCount(4);
   await expect(page.locator('.press-quote blockquote[cite]')).toHaveCount(1);
   await page.locator('summary').click();
   for (const link of await page.locator('a[target="_blank"]').all()) {

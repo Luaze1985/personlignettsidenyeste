@@ -45,7 +45,7 @@ test.describe('Foredrag, Om, Erfaring og Kontakt', () => {
     const width = await contact.evaluate((el) => el.getBoundingClientRect().width);
     expect(width).toBe(1440);
     await expect(contact.locator('h2')).toHaveText('Har du en oppgave i tankene?');
-    await expect(page.locator('#reveal-email')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    await expect(contact.locator('a.contact-email-btn')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
     await expect(contact.locator('a[href*="linkedin.com/in"]')).toHaveCount(1);
     await expect(contact.locator('a[href*="linkedin.com/groups"]')).toHaveCount(1);
   });
@@ -73,6 +73,8 @@ test.describe('Foredrag, Om, Erfaring og Kontakt', () => {
       /Episode 01/,
     ]);
     await expect(podcast.locator('.podcast-list')).not.toContainText('Smakebit');
+    // Brukerråd 17.11.2026: én linje per episode, uten beskrivelse.
+    await expect(podcast.locator('.podcast-desc')).toHaveCount(0);
 
     for (let i = 0; i < 3; i++) {
       const links = items.nth(i).locator('.podcast-item-links a');

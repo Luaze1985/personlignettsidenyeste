@@ -9,7 +9,7 @@ const ALLOWED_HEX = new Set([
   '#111111',
   '#ffffff',
   '#f2f2f2',
-  '#555555',
+  '#3d3d3d',
   '#d9d9d9',
   '#1f1f1f',
   '#232527',
@@ -54,6 +54,12 @@ test.describe('Svart-hvitt og sonefarge designtokens', () => {
       }
     }
     expect(violations).toEqual([]);
+  });
+
+  test('dempet brødtekst er mørkere etter brukerråd 17.11.2026', () => {
+    const css = fs.readFileSync(path.resolve(__dirname, '../css/style.css'), 'utf8');
+    expect(css).toMatch(/--muted:#3d3d3d/);
+    expect(css.toLowerCase()).not.toContain('#555555');
   });
 
   test('css/style.css bruker ingen skygger, og gradienter kun i sortering-kortet', () => {

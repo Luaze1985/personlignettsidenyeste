@@ -37,6 +37,14 @@ test.describe('Arbeidsbenken', () => {
     await expect(bento.locator('.zone-dot--yellow')).toHaveCSS('background-color', 'rgb(255, 209, 102)');
     await expect(bento.locator('.zone-dot--red')).toHaveCSS('background-color', 'rgb(255, 107, 107)');
 
+    // Brukerråd 17.11.2026: skriften inni kortet var for liten.
+    for (const size of await bento.locator('.traffic-desc').evaluateAll((els) => els.map((el) => parseFloat(getComputedStyle(el).fontSize)))) {
+      expect(size).toBeGreaterThanOrEqual(16);
+    }
+    for (const size of await bento.locator('.traffic-zone').evaluateAll((els) => els.map((el) => parseFloat(getComputedStyle(el).fontSize)))) {
+      expect(size).toBeGreaterThanOrEqual(12.8);
+    }
+
     const rows = bento.locator('.traffic-row');
     await expect(rows.nth(0)).toHaveCSS('background-image', /linear-gradient/);
     await expect(rows.nth(1)).toHaveCSS('background-image', /linear-gradient/);
