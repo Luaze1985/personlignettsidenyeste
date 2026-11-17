@@ -18,6 +18,7 @@ Svarene står i `docs/to-questionnaire-tjenestefakta.md`. Lars bestemte:
 - **Kundecase:** det finnes ingen godkjent kundecase. Snekkere og håndverkere nevnes ikke på siden, fordi DESIGN.md sier at Lars ikke skal fremstå som ren håndverkskonsulent.
 - **Lister Nyskaping** nevnes ikke før Lars sier ja.
 - **Personvern:** datapraksis er fortsatt åpen.
+- **Design går foran tekstmengde.** Lars: «Du må skrive på en sånn måte at det ikke blir støyete.» Omfang og varighet står derfor inne i den ene setningen per tjeneste og i foredragsingressen. Det er ingen egne halvfete linjer.
 
 ## 17.11.2026 (etter brukerråd)
 

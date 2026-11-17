@@ -10,17 +10,18 @@ test.describe('Tjenestefakta fra Lars', () => {
     await page.goto(indexUrl);
   });
 
-  test('each service states format and duration', async ({ page }) => {
-    const meta = page.locator('#arbeidsbenken .services .service-meta');
-    await expect(meta).toHaveCount(3);
-    await expect(meta.nth(0)).toContainText('2–3 møter');
-    await expect(meta.nth(1)).toContainText('1–2 uker');
-    await expect(meta.nth(1)).toContainText('testversjon');
-    await expect(meta.nth(2)).toContainText('Løpende');
+  // Lars 17.11: «ikke støyete». Faktaene står i den eksisterende setningen, ikke som egne linjer.
+  test('each service states format and duration inside its one sentence', async ({ page }) => {
+    const text = page.locator('#arbeidsbenken .services li p');
+    await expect(text).toHaveCount(3);
+    await expect(text.nth(0)).toContainText('2–3 møter');
+    await expect(text.nth(1)).toContainText('1–2 uker');
+    await expect(text.nth(1)).toContainText('testversjon');
+    await expect(text.nth(2)).toContainText('Løpende');
   });
 
   test('talks state their length', async ({ page }) => {
-    await expect(page.locator('#kurs-og-foredrag .talk-format')).toContainText('30–60 minutter');
+    await expect(page.locator('#kurs-og-foredrag .section-intro')).toContainText('30–60 minutter');
   });
 
   test('contact states response time, a free first conversation and how price is set', async ({ page }) => {
@@ -28,7 +29,7 @@ test.describe('Tjenestefakta fra Lars', () => {
     await expect(terms).toBeVisible();
     await expect(terms).toContainText('to arbeidsdager');
     await expect(terms).toContainText('uforpliktende');
-    await expect(terms).toContainText('Pris avtales');
+    await expect(terms).toContainText('pris avtales');
     const text = await page.locator('main').textContent();
     expect(text).not.toMatch(/\d\s?kr\b|kroner/i);
   });
