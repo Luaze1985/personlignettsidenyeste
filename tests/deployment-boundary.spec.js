@@ -90,3 +90,14 @@ test.describe('Production deployment boundary', () => {
     }
   });
 });
+
+// Lars 17.11.2026: e-postadressen skal ikke stå i klartekst i noen publisert fil.
+test('no published file contains the e-mail address in plain text', () => {
+  for (const file of listFiles(outputRoot)) {
+    if (!/\.(html|js|css|txt|xml|json|webmanifest)$/.test(file)) continue;
+    const text = fs.readFileSync(path.join(outputRoot, file), 'utf8');
+    expect(text, file).not.toContain('larserik.bn');
+    expect(text, file).not.toContain('gmail.com');
+    expect(text, file).not.toContain('mailto:');
+  }
+});

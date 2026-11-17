@@ -45,7 +45,7 @@ test.describe('Foredrag, Om, Erfaring og Kontakt', () => {
     const width = await contact.evaluate((el) => el.getBoundingClientRect().width);
     expect(width).toBe(1440);
     await expect(contact.locator('h2')).toHaveText('Har du en oppgave i tankene?');
-    await expect(contact.locator('a.contact-email-btn')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    await expect(contact.locator('#reveal-email')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
     await expect(contact.locator('a[href*="linkedin.com/in"]')).toHaveCount(1);
     await expect(contact.locator('a[href*="linkedin.com/groups"]')).toHaveCount(1);
   });

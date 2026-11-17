@@ -2,6 +2,16 @@
 
 Nyeste først. Eldre beslutninger står i `DESIGN.md`, `ISSUES.md` og `docs/issue9/README.md`.
 
+## 17.11.2026 (e-posten skjules igjen)
+
+- **Lars: «Du må skjule eposten».** Han valgte at adressen skal være helt skjult. Dette erstatter
+  brukerrådets punkt 1 om synlig e-post.
+- Adressen står ikke i klartekst i noen publisert fil, heller ikke i JSON-LD eller i `<noscript>`.
+  En test sjekker hele `dist`.
+- «Vis e-postadresse» setter sammen adressen (rot13) og viser `mailto:`-knappen og
+  «Kopier e-postadressen».
+- Uten JavaScript er LinkedIn eneste kontaktvei. Det er en kjent ulempe.
+
 ## 17.11.2026 (spørreskjema om tjenestefakta)
 
 Svarene står i `docs/to-questionnaire-tjenestefakta.md`. Lars bestemte:

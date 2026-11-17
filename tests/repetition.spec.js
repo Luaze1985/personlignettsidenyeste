@@ -23,7 +23,7 @@ test.describe('Ingen gjentakelse og tydelig kontakt', () => {
   test('contact explains what to write and the button says what it does', async ({ page }) => {
     const contact = page.locator('#kontakt');
     await expect(contact.locator('.contact-hints li')).toHaveCount(3);
-    await expect(contact.locator('a.contact-email-btn')).toHaveText('larserik.bn@gmail.com');
+    await expect(contact.locator('.contact-email-btn')).toHaveText('Vis e-postadresse');
     await expect(contact.locator('.eyebrow')).not.toContainText(/oppgave/i);
   });
 

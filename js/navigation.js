@@ -100,27 +100,46 @@
     if (skip) skip.addEventListener('click', function () {
         document.getElementById('main').focus({ preventScroll: true });
     });
-    // --- Kopier e-postadressen (brukerråd 17.11.2026: adressen vises direkte) ---
-    // Knappen lages bare når JavaScript og utklippstavle finnes, så ingen får en død knapp.
-    var emailLink = document.querySelector('#kontakt a.contact-email-link');
+    // --- Vis og kopier e-postadressen (Lars 17.11.2026: adressen skal skjules) ---
+    // Adressen står ikke i klartekst i noen publisert fil. Den settes sammen først ved klikk.
+    var revealBtn = document.getElementById('reveal-email');
     var copyStatus = document.getElementById('copy-status');
-    if (emailLink && copyStatus && navigator.clipboard && navigator.clipboard.writeText) {
-        var copyBtn = document.createElement('button');
-        copyBtn.type = 'button';
-        copyBtn.id = 'copy-email';
-        copyBtn.className = 'contact-copy-btn';
-        copyBtn.textContent = 'Kopier e-postadressen';
-        copyBtn.addEventListener('click', function () {
-            var addr = emailLink.getAttribute('href').replace(/^mailto:/, '');
-            navigator.clipboard.writeText(addr).then(function () {
-                copyStatus.textContent = 'E-postadressen er kopiert.';
-                copyBtn.textContent = 'Kopiert';
-                window.setTimeout(function () { copyBtn.textContent = 'Kopier e-postadressen'; }, 2500);
-            }, function () {
-                copyStatus.textContent = 'Kunne ikke kopiere. Marker adressen og kopier den selv.';
+    if (revealBtn && copyStatus) {
+        var rot13 = function (s) {
+            return s.replace(/[a-z]/g, function (c) {
+                return String.fromCharCode((c.charCodeAt(0) - 97 + 13) % 26 + 97);
             });
+        };
+        revealBtn.hidden = false;
+        revealBtn.addEventListener('click', function () {
+            var addr = rot13('ynefrevx.oa') + '@' + rot13('tznvy.pbz');
+            var link = document.createElement('a');
+            link.className = 'contact-email-btn contact-email-link';
+            link.href = 'mail' + 'to:' + addr;
+            link.innerHTML = revealBtn.querySelector('svg').outerHTML;
+            var label = document.createElement('span');
+            label.textContent = addr;
+            link.appendChild(label);
+            revealBtn.replaceWith(link);
+            link.focus();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                var copyBtn = document.createElement('button');
+                copyBtn.type = 'button';
+                copyBtn.id = 'copy-email';
+                copyBtn.className = 'contact-copy-btn';
+                copyBtn.textContent = 'Kopier e-postadressen';
+                copyBtn.addEventListener('click', function () {
+                    navigator.clipboard.writeText(addr).then(function () {
+                        copyStatus.textContent = 'E-postadressen er kopiert.';
+                        copyBtn.textContent = 'Kopiert';
+                        window.setTimeout(function () { copyBtn.textContent = 'Kopier e-postadressen'; }, 2500);
+                    }, function () {
+                        copyStatus.textContent = 'Kunne ikke kopiere. Marker adressen og kopier den selv.';
+                    });
+                });
+                link.insertAdjacentElement('afterend', copyBtn);
+            }
         });
-        emailLink.insertAdjacentElement('afterend', copyBtn);
     }
 
     // --- Bento-kort: rolig fremheving av trinn i grønt/gult/rødt ---

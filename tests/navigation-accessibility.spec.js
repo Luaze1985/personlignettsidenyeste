@@ -58,7 +58,10 @@ test('navigation and contact remain usable without JavaScript', async ({ browser
   await expect(page.getByRole('navigation')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Åpne meny' })).toBeHidden();
   await page.getByRole('navigation').getByRole('link', { name: 'Kontakt' }).click();
-  await expect(page.locator('#kontakt a[href="mailto:larserik.bn@gmail.com"]')).toBeVisible();
+  // E-posten er skjult uten JavaScript (Lars 17.11.2026); LinkedIn er kontaktveien da.
+  await expect(page.locator('#kontakt a[href*="linkedin.com/in"]')).toBeVisible();
+  await expect(page.locator('#reveal-email')).toBeHidden();
+  await expect(page.locator('#kontakt a[href^="mailto:"]')).toHaveCount(0);
   await expect(page.locator('#copy-email')).toHaveCount(0);
   await context.close();
 });

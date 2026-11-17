@@ -65,12 +65,19 @@ test.describe('UX, UI and readability', () => {
     await expect(page.locator('#kurs-og-foredrag')).toBeInViewport();
   });
 
-  test('shows the e-mail address directly and copies it on request', async ({ page, context }) => {
-    // Brukerråd 17.11.2026: adressen skal synes uten klikk.
-    await expect(page.locator('#reveal-email')).toHaveCount(0);
+  test('reveals the e-mail address only on click and copies it on request', async ({ page, context }) => {
+    // Lars 17.11.2026: e-posten skal skjules. Adressen settes sammen først ved klikk.
     const link = page.locator('.contact-links a[href^="mailto:"]');
+    await expect(link).toHaveCount(0);
+    const reveal = page.getByRole('button', { name: 'Vis e-postadresse' });
+    await expect(reveal).toBeVisible();
+    await expect(reveal).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    await reveal.click();
+    await expect(reveal).toHaveCount(0);
     await expect(link).toHaveCount(1);
     await expect(link).toBeVisible();
+    await expect(link).toBeFocused();
+    await page.mouse.move(0, 0); // Lenken erstatter knappen under musepekeren; sjekk hvilefargen.
     await expect(link).toHaveAttribute('href', 'mailto:larserik.bn@gmail.com');
     await expect(link).toHaveText('larserik.bn@gmail.com');
     await expect(link).toHaveCSS('background-color', 'rgb(255, 255, 255)');

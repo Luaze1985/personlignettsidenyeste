@@ -9,6 +9,7 @@ for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto(indexUrl);
     await page.locator('summary').click();
+    await page.getByRole('button', { name: 'Vis e-postadresse' }).click();
     await expect(page.locator('#kontakt a[href^="mailto:"]')).toBeVisible();
     if (width === 390) await page.getByRole('button', { name: 'Åpne meny' }).click();
     const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
