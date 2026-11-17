@@ -43,9 +43,9 @@ test.describe('UX, UI and readability', () => {
     await expect(page.locator('.audience-gate, .hero-rail')).toHaveCount(0);
     await expect(page.locator('main')).not.toContainText('håndverksbedrifter');
     await expect(page.locator('main')).not.toContainText('større virksomheter');
-    await expect(page.locator('.steps li')).toHaveCount(4);
+    await expect(page.locator('.steps, .fit-grid')).toHaveCount(0);
+    await expect(page.locator('#arbeidsbenken .traffic-row')).toHaveCount(3);
     await expect(page.locator('#arbeidsbenken')).toContainText('KI lager struktur og utkast');
-    await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
   });
 
   test('makes the work request primary and gives the home link its visible name', async ({ page }) => {
@@ -57,42 +57,37 @@ test.describe('UX, UI and readability', () => {
     const secondary = page.locator('.hero-secondary-action');
     await expect(primary).toHaveAttribute('href', '#kontakt');
     await expect(secondary).toHaveAttribute('href', '#kurs-og-foredrag');
-    await expect(primary).toContainText(/oppgave/i);
+    // Brukerråd 17.11.2026: «Beskriv» så ut som et skjema. Knappen sier nå hva som skjer.
+    await expect(primary).toHaveText('Send meg en arbeidsoppgave');
     await expect(secondary).toContainText(/kurs|foredrag/i);
     await secondary.click();
     await expect(page).toHaveURL(/#kurs-og-foredrag$/);
     await expect(page.locator('#kurs-og-foredrag')).toBeInViewport();
   });
 
-  test('reveals a working mailto link with the readable contact style on click', async ({ page }) => {
-    const button = page.locator('#reveal-email');
-    await expect(button).toBeVisible();
-    await button.click();
-
+  test('reveals the e-mail address only on click and copies it on request', async ({ page, context }) => {
+    // Lars 17.11.2026: e-posten skal skjules. Adressen settes sammen først ved klikk.
     const link = page.locator('.contact-links a[href^="mailto:"]');
+    await expect(link).toHaveCount(0);
+    const reveal = page.getByRole('button', { name: 'Vis e-postadresse' });
+    await expect(reveal).toBeVisible();
+    await expect(reveal).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    await reveal.click();
+    await expect(reveal).toHaveCount(0);
     await expect(link).toHaveCount(1);
+    await expect(link).toBeVisible();
+    await expect(link).toBeFocused();
+    await page.mouse.move(0, 0); // Lenken erstatter knappen under musepekeren; sjekk hvilefargen.
     await expect(link).toHaveAttribute('href', 'mailto:larserik.bn@gmail.com');
     await expect(link).toHaveText('larserik.bn@gmail.com');
-    await expect(link).toBeFocused();
+    await expect(link).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    await expect(link).toHaveCSS('color', 'rgb(17, 17, 17)');
 
-    // Kontaktlenken beholder understreking og samme kontrast som de andre kanalene.
-    const style = await link.evaluate((el) => {
-      const cs = getComputedStyle(el);
-      return {
-        color: cs.color,
-        textDecorationLine: cs.textDecorationLine,
-        fontSize: cs.fontSize,
-        offset: cs.textUnderlineOffset,
-      };
-    });
-    const siblingColor = await page
-      .locator('.contact-links a[href*="linkedin.com/in"]')
-      .evaluate((el) => getComputedStyle(el).color);
-
-    expect(style.textDecorationLine).toContain('underline');
-    expect(style.fontSize).toBe('16px');
-    expect(style.offset).toBe('4px');
-    expect(style.color).toBe(siblingColor);
+    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    const copy = page.getByRole('button', { name: 'Kopier e-postadressen' });
+    await expect(copy).toBeVisible();
+    await copy.click();
+    await expect(page.locator('#copy-status')).toHaveText('E-postadressen er kopiert.');
   });
 
   test('loads the optimized profile and speaking images', async ({ page }) => {
@@ -149,7 +144,7 @@ test.describe('UX, UI and readability', () => {
     expect(styles.headingFontFamily).toContain('Newsreader');
   });
 
-  test('avoids horizontal overflow and keeps the work steps readable on narrow screens', async ({ page }) => {
+  test('avoids horizontal overflow and keeps the bento zone sorting readable on narrow screens', async ({ page }) => {
     for (const width of [180, 360, 390, 760, 980, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.goto(indexUrl);
@@ -178,15 +173,16 @@ test.describe('UX, UI and readability', () => {
     await page.goto(indexUrl);
 
     const widths = await page.evaluate(() => {
-      const grid = document.querySelector('.steps').getBoundingClientRect();
-      const steps = [...document.querySelectorAll('.steps li')]
-        .map((step) => step.getBoundingClientRect().width);
-      return { grid: grid.width, steps };
+      const tile = document.querySelector('.bento-tile').getBoundingClientRect();
+      const rows = [...document.querySelectorAll('.traffic-row')]
+        .map((row) => row.getBoundingClientRect().width);
+      return { tile: tile.width, rows };
     });
 
-    expect(widths.steps).toHaveLength(4);
-    for (const stepWidth of widths.steps) {
-      expect(stepWidth).toBeCloseTo(widths.grid - 2, 0);
+    expect(widths.rows).toHaveLength(3);
+    for (const rowWidth of widths.rows) {
+      expect(rowWidth).toBeLessThanOrEqual(widths.tile);
+      expect(rowWidth).toBeGreaterThan(240);
     }
   });
 });

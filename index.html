@@ -15,8 +15,8 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
     <link rel="preload" href="fonts/newsreader-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/newsreader-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/style.css?v=20261031-svarthvitt">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Lars Erik Brekne Johnsen","jobTitle":"KI-rådgiver og foredragsholder","url":"https://breknejohnsen.no/","email":"larserik.bn@gmail.com","sameAs":["https://www.linkedin.com/in/lars-erik-brekne-johnsen/"],"knowsAbout":["Kunstig intelligens","KI i arbeidslivet","GDPR","EU AI Act","Endringsledelse"]}</script>
+    <link rel="stylesheet" href="css/style.css?v=20261115-zone">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Lars Erik Brekne Johnsen","jobTitle":"KI-rådgiver og foredragsholder","url":"https://breknejohnsen.no/","sameAs":["https://www.linkedin.com/in/lars-erik-brekne-johnsen/"],"knowsAbout":["Kunstig intelligens","KI i arbeidslivet","GDPR","EU AI Act","Endringsledelse"]}</script>
 </head>
 <body>
 <!-- Lucide icons: ISC / Feather MIT; see icons/LICENSE.txt. -->
@@ -43,7 +43,7 @@
             <h1>Mennesker først. Teknologi som virker.</h1>
             <p class="hero-lead">Jeg hjelper virksomheter å bruke kunstig intelligens (KI) i arbeidshverdagen. Med sparring, små prototyper, kurs og foredrag.</p>
             <div class="hero-actions">
-                <a class="button hero-primary-action" href="#kontakt">Beskriv én arbeidsoppgave</a>
+                <a class="button hero-primary-action" href="#kontakt">Send meg en arbeidsoppgave</a>
                 <a class="hero-secondary-action" href="#kurs-og-foredrag">Kurs og foredrag <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
   <path d="m12 5 7 7-7 7" /></svg></a>
             </div>
@@ -70,20 +70,36 @@
                     <p class="section-intro">Vi starter med én arbeidsoppgave. KI lager struktur og utkast. Fagpersonen vurderer og har ansvaret.</p>
                 </div>
                 <ol class="services" aria-label="Dette kan vi gjøre">
-                    <li><span class="service-number">01</span><div><h3>Sparring</h3><p>Vi avgrenser en konkret oppgave og undersøker hvor KI kan være nyttig.</p></div></li>
-                    <li><span class="service-number">02</span><div><h3>En liten prototype</h3><p>Vi prøver en avgrenset løsning før dere vurderer om det er verdt å gå videre.</p></div></li>
-                    <li><span class="service-number">03</span><div><h3>Agenter i arbeidsflyten</h3><p>Avgrenset hjelp til å samle kilder, sortere informasjon og lage utkast.</p></div></li>
+                    <li><span class="service-number">01</span><div><h3>Sparring</h3><p>Vi avgrenser en konkret oppgave og undersøker hvor KI kan være nyttig, over 2–3 møter.</p></div></li>
+                    <li><span class="service-number">02</span><div><h3>En liten prototype</h3><p>På 1–2 uker får dere en testversjon å prøve før dere bestemmer om det er verdt å gå videre.</p></div></li>
+                    <li><span class="service-number">03</span><div><h3>Agenter i arbeidsflyten</h3><p>Løpende hjelp til å samle kilder, sortere informasjon og lage utkast.</p></div></li>
                 </ol>
             </div>
-            <ol class="steps" aria-label="Arbeidsmåte i fire steg">
-                <li><p class="step-number">01</p><h3>Avklare</h3></li>
-                <li><p class="step-number">02</p><h3>Prøve</h3></li>
-                <li><p class="step-number">03</p><h3>Kontrollere</h3></li>
-                <li><p class="step-number">04</p><h3>Velge</h3></li>
-            </ol>
-            <div class="fit-grid">
-                <div><p class="eyebrow">Passer når</p><h3>Dere vil rydde i en konkret oppgave.</h3><ul><li>Det finnes notater, bilder, skjema eller tekst som må sorteres.</li><li>Folk bruker tid på samme forarbeid flere ganger.</li><li>Faglig kontroll er viktigere enn fart for enhver pris.</li></ul></div>
-                <div><p class="eyebrow">Passer ikke når</p><h3>Dere egentlig trenger et stort innføringsløp.</h3><ul><li>Målet er å kjøpe eller bytte et helt IT-system.</li><li>Ingen eier oppgaven eller vil prøve den i praksis.</li><li>Dere vil at KI skal ta faglige beslutninger alene.</li></ul></div>
+            <div class="bento-block" aria-label="Slik jobber jeg">
+                <div class="bento-intro">
+                    <p class="eyebrow">Slik jobber jeg</p>
+                    <h3>Sparringspartner, ikke en fasit.</h3>
+                    <p class="section-intro">Vi må fortsatt lese kilder, høre på folk og skille mellom det som er nyttig og det som bare ser nyttig ut. Før vi bruker KI, sorteres oppgavene i grønt, gult og rødt.</p>
+                </div>
+                <div class="bento-tile">
+                    <ul class="traffic-list" aria-label="Sortering av oppgaver i grønt, gult og rødt">
+                        <li class="traffic-row is-active" data-zone="0">
+                            <span class="zone-dot zone-dot--green" aria-hidden="true"></span>
+                            <span class="traffic-zone">Grønt</span>
+                            <span class="traffic-desc">Idéarbeid, struktur og førsteutkast</span>
+                        </li>
+                        <li class="traffic-row" data-zone="1">
+                            <span class="zone-dot zone-dot--yellow" aria-hidden="true"></span>
+                            <span class="traffic-zone">Gult</span>
+                            <span class="traffic-desc">Faglig innhold som krever ekstra kontroll</span>
+                        </li>
+                        <li class="traffic-row" data-zone="2">
+                            <span class="zone-dot zone-dot--red" aria-hidden="true"></span>
+                            <span class="traffic-zone">Rødt</span>
+                            <span class="traffic-desc">Personopplysninger og sensitive saker — deles aldri</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -94,7 +110,7 @@
             <div class="talks-copy">
                 <p class="eyebrow">02 / Kurs &amp; foredrag</p>
                 <h2 id="foredrag-title">For folk som skal bruke KI i praksis.</h2>
-                <p class="section-intro">Praktisk bruk av KI, organisasjon og faglig kontroll. Med rom for spørsmål og det folk møter i arbeidshverdagen.</p>
+                <p class="section-intro">Praktisk bruk av KI, organisasjon og faglig kontroll. Med rom for spørsmål og det folk møter i arbeidshverdagen. Et foredrag varer 30–60 minutter.</p>
                 <ul class="talk-list">
                     <li><h3>Effektivisering i praksis</h3><p>Hvordan KI kan støtte rutiner, forarbeid og tekst, og hvordan nytten kan vurderes i praksis.</p></li>
                     <li><h3>Folk, organisasjon og KI</h3><p>Praktiske spørsmål om regelverk, etikk, partsamarbeid og personvern ved bruk av KI.</p></li>
@@ -106,32 +122,79 @@
         </div>
     </section>
 
-    <section id="om" aria-labelledby="om-title" class="about-section">
-        <div class="container">
-            <p class="eyebrow">03 / Fag, folk og teknologi</p>
-            <div class="split about-grid">
-                <h2 id="om-title">Jeg liker å gjøre kompliserte ting brukbare.</h2>
-                <div class="about-body">
-                    <div class="about-layout">
-                        <p>Jeg er statsviter og medgrunnlegger av KI-geriljaen, med bakgrunn fra HR og HMS. Jeg liker å ta utgangspunkt i det folk faktisk trenger hjelp med — og undersøke om KI kan være nyttig.</p>
-                    </div>
-                    <a class="text-link" href="#erfaring">Se erfaring og omtaler <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" /></svg></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="erfaring" aria-labelledby="erfaring-title" class="experience-section">
-        <div class="container">
-            <p class="eyebrow">04 / Erfaring og omtaler</p>
+    <section id="om" aria-labelledby="om-title" class="about-section experience-section">
+        <div id="erfaring" class="container">
+            <p class="eyebrow">03 / Om og erfaring</p>
             <div class="split experience-grid">
-                <div class="section-title"><h2 id="erfaring-title">Erfaring fra arbeidslivet og fagscenene.</h2><p class="section-intro">Jeg jobber i skjæringspunktet mellom fag, folk og tekniske miljøer — med praktisk nytte og trygghet som utgangspunkt.</p></div>
+                <div class="section-title">
+                    <h2 id="om-title">Jeg liker å gjøre kompliserte ting brukbare.</h2>
+                    <div class="about-layout">
+                        <p class="section-intro">Jeg er statsviter og medgrunnlegger av KI-geriljaen, med bakgrunn fra HR og HMS. Jeg liker å ta utgangspunkt i det folk faktisk trenger hjelp med — og undersøke om KI kan være nyttig.</p>
+                    </div>
+                </div>
                 <figure class="press-quote">
                     <blockquote cite="https://www.kode24.no/artikkel/slik-loser-de-40-arskrisen/259601"><p>«KI er en folkebevegelse, og den er åpen for alle»</p></blockquote>
                     <figcaption>Lars Erik Brekne Johnsen i kode24, mars 2026</figcaption>
                 </figure>
             </div>
+            <section id="podkast" class="podcast" aria-labelledby="podcast-title">
+                <div class="split podcast-grid">
+                    <div class="podcast-intro">
+                        <p class="eyebrow">Podkast</p>
+                        <h3 id="podcast-title">Nok en podkast om KI</h3>
+                        <p class="section-intro">Konkrete erfaringer og diskusjoner om hvordan KI forandrer arbeidsliv og ledelse — med Sofie Øvrebø (jurist), Dan Lorentzen (revisor og ERP-arkitekt) og meg. Uformelt, uten teknisk sjargong, og ikke alltid enige.</p>
+                        <div class="podcast-channels" aria-label="Hør og se podkasten">
+                            <a class="button" href="https://open.spotify.com/show/5tKBEkJOXRfeKQxHmABMQ1" target="_blank" rel="noopener">Hør på Spotify <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a>
+                            <a class="button" href="https://www.youtube.com/playlist?list=PLUUcWukQxAg4" target="_blank" rel="noopener">Se spilleliste på YouTube <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a>
+                        </div>
+                    </div>
+                    <div class="podcast-content">
+                        <p class="eyebrow podcast-group-label" id="episodes-label">Hovedepisoder</p>
+                        <ul class="podcast-list" aria-labelledby="episodes-label">
+                            <li>
+                                <span class="podcast-tag">Episode 03 · 51 min</span>
+                                <h4 class="podcast-item-title">«Regnskapsføring is cooked»?</h4>
+                                <div class="podcast-item-links">
+                                    <a href="https://open.spotify.com/episode/7tueQujkngHgZxPZCm3JuN" target="_blank" rel="noopener">Spotify <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> — Episode 3 (åpner i ny fane)</span></a>
+                                    <a href="https://www.youtube.com/watch?v=QHd4gDPLfYA" target="_blank" rel="noopener">YouTube <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> — Episode 3 (åpner i ny fane)</span></a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="podcast-tag">Episode 02 · 57 min</span>
+                                <h4 class="podcast-item-title">AI-sjef?</h4>
+                                <div class="podcast-item-links">
+                                    <a href="https://open.spotify.com/episode/6716cPqu3ugOP1H0dqQjd1" target="_blank" rel="noopener">Spotify <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> — Episode 2 (åpner i ny fane)</span></a>
+                                    <a href="https://www.youtube.com/watch?v=otxKXGCceLk" target="_blank" rel="noopener">YouTube <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> — Episode 2 (åpner i ny fane)</span></a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="podcast-tag">Episode 01 · 47 min</span>
+                                <h4 class="podcast-item-title">Hva må en leder vite om KI?</h4>
+                                <div class="podcast-item-links">
+                                    <a href="https://open.spotify.com/episode/2rX1vUwKC6ihYSA25hkJLF" target="_blank" rel="noopener">Spotify <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> — Episode 1 (åpner i ny fane)</span></a>
+                                    <a href="https://www.youtube.com/watch?v=Hc1bzEgyQ7Y" target="_blank" rel="noopener">YouTube <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> — Episode 1 (åpner i ny fane)</span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
             <section class="press" aria-labelledby="press-title">
                 <h3 class="eyebrow" id="press-title">I media og på fagscener</h3>
                 <ul class="press-list">
@@ -141,24 +204,12 @@
                     <li><span class="press-outlet">kode24</span><a href="https://www.kode24.no/artikkel/slik-loser-de-40-arskrisen/259601" target="_blank" rel="noopener">Slik løser de 40-årskrisen <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
   <path d="M10 14 21 3" />
   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a><span class="press-meta">Intervju · mars 2026</span></li>
-                    <li><span class="press-outlet">AIavisen</span><a href="https://aiavisen.no/min-ki-reise/" target="_blank" rel="noopener">Min KI-reise <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
-  <path d="M10 14 21 3" />
-  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a><span class="press-meta">Eget innlegg · april 2026</span></li>
                     <li><span class="press-outlet">NRK</span><a href="https://www.nrk.no/sorlandet/halverte-arbeidsuka-med-ki-1.17257802" target="_blank" rel="noopener">Halverte arbeidsuka med KI <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
   <path d="M10 14 21 3" />
   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a><span class="press-meta">Omtale · februar 2025</span></li>
                     <li><span class="press-outlet">Digi Agder</span><a href="https://digiagder.no/digitaliseringsministeren-imponert-over-teknologisamarbeidet-i-agder" target="_blank" rel="noopener">Statsråd Karianne Tung: Agder viser vei innen digitalisering <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
   <path d="M10 14 21 3" />
   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a><span class="press-meta">Omtale</span></li>
-                    <li><span class="press-outlet">Fædrelandsvennen</span><a href="https://www.fvn.no/mening/debattinnlegg/i/25aKA4/vi-har-faatt-ki-verktoeykassen-vi-maa-laere-aa-bruke-den-sammen" target="_blank" rel="noopener">Vi har fått KI-verktøykassen – vi må lære å bruke den sammen <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
-  <path d="M10 14 21 3" />
-  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a><span class="press-meta">Debattinnlegg, medforfatter · juli 2025</span></li>
-                    <li><span class="press-outlet">HR Norge</span><a href="https://www.hrnorge.no/tema/digitalisering/digitale-l%C3%B8sninger-innen-hr/veien-til-digital-effektivisering" target="_blank" rel="noopener">Veien til digital effektivisering <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
-  <path d="M10 14 21 3" />
-  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a><span class="press-meta">Omtale · mai 2025 · krever medlemskap</span></li>
-                    <li><span class="press-outlet">Tech Talks Agder</span><a href="https://digin.no/events/tech-talks-agder-ai-i-arbeidshverdagen-fra-ide-til-kode" target="_blank" rel="noopener">KI i arbeidshverdagen — fra idé til kode <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
-  <path d="M10 14 21 3" />
-  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a><span class="press-meta">Foredrag</span></li>
                 </ul>
             </section>
             <details class="reference-details"><summary><svg class="icon icon-expand" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" />
@@ -231,8 +282,8 @@
             <p class="contact-intro">Skriv kort om det du vil gjøre lettere, eller om foredraget du planlegger. Gjelder det en arbeidsoppgave, ta gjerne med:</p>
             <ul class="contact-hints"><li>hvilken oppgave det gjelder</li><li>hvem som gjør den i dag</li><li>hva som tar mest tid</li></ul>
             <div class="contact-links">
-                <button class="contact-email-btn" id="reveal-email" aria-label="Vis e-postadresse"><svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-  <rect x="2" y="4" width="20" height="16" rx="2" /></svg><span>Vis e-postadresse</span></button><noscript><a class="contact-email-link" href="mailto:larserik.bn@gmail.com">larserik.bn@gmail.com</a></noscript>
+                <button class="contact-email-btn" id="reveal-email" type="button" hidden><svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+  <rect x="2" y="4" width="20" height="16" rx="2" /></svg><span>Vis e-postadresse</span></button><span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
                 <a href="https://www.linkedin.com/in/lars-erik-brekne-johnsen/" target="_blank" rel="noopener">LinkedIn-profil <svg class="icon " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" />
   <path d="M10 14 21 3" />
   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a>
@@ -240,10 +291,11 @@
   <path d="M10 14 21 3" />
   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg><span class="sr-only"> (åpner i ny fane)</span></a>
             </div>
+            <p class="contact-terms">Jeg svarer innen to arbeidsdager. Første samtale er uforpliktende, og pris avtales etter den.</p>
         </div>
     </section>
 </main>
-<footer><div class="container"><p class="copyright">© 2026 Lars Erik Brekne Johnsen</p></div></footer>
+<footer><div class="container"><p class="copyright">© 2026 Lars Erik Brekne Johnsen · Enkeltpersonforetak, org.nr. 936 978 010</p></div></footer>
 <script src="js/navigation.js"></script>
 </body>
 </html>

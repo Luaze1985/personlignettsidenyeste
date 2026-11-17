@@ -100,27 +100,57 @@
     if (skip) skip.addEventListener('click', function () {
         document.getElementById('main').focus({ preventScroll: true });
     });
-        // --- Skjul e-post mot roboter (settes saman på klikk) ---
-    var emailBtn = document.getElementById('reveal-email');
-    if (emailBtn) {
-        // Visning på klikk, ikke en garanti mot innsamling (adressen finnes i JSON-LD).
-        function rot13(s) {
-            return s.replace(/[a-zA-Z]/g, function(c) {
-                return String.fromCharCode(
-                    (c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26
-                );
+    // --- Vis og kopier e-postadressen (Lars 17.11.2026: adressen skal skjules) ---
+    // Adressen står ikke i klartekst i noen publisert fil. Den settes sammen først ved klikk.
+    var revealBtn = document.getElementById('reveal-email');
+    var copyStatus = document.getElementById('copy-status');
+    if (revealBtn && copyStatus) {
+        var rot13 = function (s) {
+            return s.replace(/[a-z]/g, function (c) {
+                return String.fromCharCode((c.charCodeAt(0) - 97 + 13) % 26 + 97);
             });
-        }
-        emailBtn.addEventListener('click', function () {
+        };
+        revealBtn.hidden = false;
+        revealBtn.addEventListener('click', function () {
             var addr = rot13('ynefrevx.oa') + '@' + rot13('tznvy.pbz');
             var link = document.createElement('a');
-            link.href = 'mailto:' + addr;
-            var mailIcon = emailBtn.querySelector('svg');
-            if (mailIcon) link.appendChild(mailIcon.cloneNode(true));
-            link.appendChild(document.createTextNode(addr));
-            link.className = 'contact-email-link';
-            emailBtn.parentNode.replaceChild(link, emailBtn);
+            link.className = 'contact-email-btn contact-email-link';
+            link.href = 'mail' + 'to:' + addr;
+            link.innerHTML = revealBtn.querySelector('svg').outerHTML;
+            var label = document.createElement('span');
+            label.textContent = addr;
+            link.appendChild(label);
+            revealBtn.replaceWith(link);
             link.focus();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                var copyBtn = document.createElement('button');
+                copyBtn.type = 'button';
+                copyBtn.id = 'copy-email';
+                copyBtn.className = 'contact-copy-btn';
+                copyBtn.textContent = 'Kopier e-postadressen';
+                copyBtn.addEventListener('click', function () {
+                    navigator.clipboard.writeText(addr).then(function () {
+                        copyStatus.textContent = 'E-postadressen er kopiert.';
+                        copyBtn.textContent = 'Kopiert';
+                        window.setTimeout(function () { copyBtn.textContent = 'Kopier e-postadressen'; }, 2500);
+                    }, function () {
+                        copyStatus.textContent = 'Kunne ikke kopiere. Marker adressen og kopier den selv.';
+                    });
+                });
+                link.insertAdjacentElement('afterend', copyBtn);
+            }
         });
+    }
+
+    // --- Bento-kort: rolig fremheving av trinn i grønt/gult/rødt ---
+    var trafficRows = Array.prototype.slice.call(document.querySelectorAll('.traffic-row'));
+    if (trafficRows.length && !reduce) {
+        var activeIdx = 0;
+        window.setInterval(function () {
+            activeIdx = (activeIdx + 1) % trafficRows.length;
+            trafficRows.forEach(function (row, idx) {
+                row.classList.toggle('is-active', idx === activeIdx);
+            });
+        }, 3200);
     }
 })();

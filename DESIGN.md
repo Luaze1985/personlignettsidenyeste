@@ -9,15 +9,19 @@ colors:
   surface: "#ffffff"
   surface-dim: "#f2f2f2"
   on-surface: "#111111"
-  on-surface-variant: "#555555"
+  on-surface-variant: "#3d3d3d"
   outline: "#d9d9d9"
   accent: "#111111"
   on-accent: "#ffffff"
   accent-on-dark: "#ffffff"
   on-dark-muted: "#d4d4d4"
   dark-surface: "#1f1f1f"
+  dark-elevated: "#232527"
   dark-outline: "#6b6b6b"
   link: "#111111"
+  zone-green: "#7ee081"
+  zone-yellow: "#ffd166"
+  zone-red: "#ff6b6b"
 typography:
   display-lg:
     fontFamily: Newsreader
@@ -102,6 +106,20 @@ components:
   proof-inset:
     backgroundColor: "{colors.dark-surface}"
     textColor: "{colors.accent-on-dark}"
+  bento-panel:
+    backgroundColor: "{colors.dark-elevated}"
+    textColor: "{colors.accent-on-dark}"
+    rounded: "{rounded.none}"
+    padding: 1.75rem
+  zone-badge-green:
+    backgroundColor: "{colors.zone-green}"
+    textColor: "{colors.primary}"
+  zone-badge-yellow:
+    backgroundColor: "{colors.zone-yellow}"
+    textColor: "{colors.primary}"
+  zone-badge-red:
+    backgroundColor: "{colors.zone-red}"
+    textColor: "{colors.primary}"
   metadata:
     backgroundColor: "{colors.neutral}"
     textColor: "{colors.on-surface-variant}"
@@ -136,14 +154,15 @@ Ved hver brukerbestilte kodeendring skal det først lages en tydelig merket, mid
 
 Svart-hvitt-retning fra Figma ([desktop 3:149](https://www.figma.com/design/WTecHNclgVZX56cl6fsGDL?node-id=3-149), mobil 3:266), valgt av Lars 31. oktober 2026. Oksidrødt er fjernet helt.
 
-- **Primary (#111111):** Nær svart. Hovedtekst, primærknapp, stegbånd og kontaktflate.
+- **Primary (#111111):** Nær svart. Hovedtekst, primærknapp, mørkt sorteringskort og kontaktflate.
 - **Neutral / Surface (#ffffff):** Hvit side og hvite innholdsflater.
 - **Surface-dim (#f2f2f2):** Lys grå for avgrensede bånd, for eksempel «Omtalt hos» og foredrag.
-- **On-surface-variant (#555555):** Dempet tekst. Består AA også på #f2f2f2.
-- **Accent / Link (#111111):** Det finnes ingen egen aksentfarge. Handlinger skilles med vekt, understrek, fylt svart flate og pil.
+- **On-surface-variant (#3d3d3d):** Dempet tekst. Gjort mørkere 17.11.2026 etter brukerråd (blek på grå flate). Består AA godt på #f2f2f2.
+- **Accent / Link (#111111):** Det finnes ingen egen aksentfarge på knapper eller lenker. Handlinger skilles med vekt, understrek, fylt svart flate og pil.
 - **Outline (#d9d9d9):** Tynn skillelinje på lyse flater.
+- **Sonefarger i oppgavesortering (#7ee081 / #ffd166 / #ff6b6b):** Avmålt grønn, gul og rød brukes utelukkende til prikkmarkører og svak bakgrunnsgradient i «Slik jobber jeg»-kortet (Grønt / Gult / Rødt), valgt av Lars 15. november 2026.
 
-Ingen andre farger. Fotografier vises i svart-hvitt. Ingen gradienter, skygger, tretekstur eller varseltape.
+Fotografier vises i svart-hvitt. Ingen øvrige farger, skygger, tretekstur eller varseltape.
 
 ## Typography
 
@@ -158,25 +177,24 @@ Brødtekst skal normalt være minst 16 px med linjehøyde 1.6 eller mer. Maksima
 ## Layout
 
 - **Container:** Maks 1180 px, sentrert. All tekst deler samme venstrekant.
-- **Rutenett (tekstplassering 31.10.2026):** Alle todelte seksjoner (hero, Arbeidsbenken, Kurs og foredrag, Om, Erfaring) deler 50/50 med 3rem mellomrom. Høyrekolonnen starter dermed samme sted i hele siden (x ≈ 744 ved 1440 px). Under 980 px stables alt, unntatt hero.
+- **Rutenett (tekstplassering 31.10.2026):** Alle todelte seksjoner (hero, Arbeidsbenken, Kurs og foredrag, Om og erfaring, Podkast) deler 50/50 med 3rem mellomrom. Høyrekolonnen starter dermed samme sted i hele siden (x ≈ 744 ved 1440 px). Under 980 px stables alt, unntatt hero.
 - **Rytme:** Avstanden fra seksjonsetikett til overskrift er 1.75rem (28 px) i alle seksjoner. Brødtekst holdes på ca. 40–65 tegn per linje.
 - **Header:** Bare navnet i Newsreader til venstre og fire menypunkter til høyre: Arbeid, Om, Foredrag og Kontakt. Ingen profilbilde i headeren. En tynn hårstrek skiller headeren fra innholdet.
 - **Hero (Figma 4:50 / 4:143):** På desktop står hovedbudskapet til venstre og et stort rundt portrett (`images/profil-portrett-800.jpg`, maks 472 px) til høyre. Under portrettet står navn og «Kristiansand». Det er ingen rollekolonne og ingen stikort. På mobil kommer etikett, overskrift, ingress og handlinger først, og deretter portrettet. DOM-rekkefølgen følger mobilens leseretning.
-- **Handlinger:** «Beskriv én arbeidsoppgave» er primær vei til kontakt (svart knapp, full bredde på mobil). «Kurs og foredrag» er en tekstlenke med pil til `#kurs-og-foredrag`.
-- **Sidestruktur:** Etter headeren kommer inngang, «Omtalt hos», 01 Arbeidsbenken, 02 Kurs og foredrag, 03 Om, 04 Erfaring og omtaler og til slutt Kontakt. Seksjonene nummereres i etiketten («02 / Kurs & foredrag»). Menyen følger Figma (Arbeid, Om, Foredrag, Kontakt). `navigation.js` sorterer seksjonene etter plassering på siden, så aktiv markering stemmer selv om menyrekkefølgen avviker. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
-- **Arbeidsbenken (Figma 4:85):** Etiketten «01 / Dette hjelper jeg med». Overskrift og ingress står til venstre, og tre nummererte tjenestelinjer til høyre (Sparring, En liten prototype, Agenter i arbeidsflyten), skilt med hårstreker. Under kommer et svart bånd med bare nummer og navn: avklare → prøve → kontrollere → velge. Til slutt «passer når / passer ikke når». Prinsippet «KI lager struktur og utkast, fagpersonen vurderer og har ansvaret» står bare i ingressen. Flyten forklares bare i båndet, og oppfordringen til kontakt står i hero og i kontaktdelen. Ikke gjenta dem (designkritikk 31.10.2026).
-- **Kurs og foredrag (Figma 4:108):** Lys grå flate over hele bredden. Foredragsbildet (svart-hvitt fra Arendalsuka, 4:3, uten ramme) står til venstre. Til høyre står etikett, overskrift, ingress, tre temaer med kort forklaring og tekstlenken «Ta kontakt om foredrag». På mobil kommer bildet først.
-- **Om (Figma 4:121):** Hvit flate, todelt: overskriften «Jeg liker å gjøre kompliserte ting brukbare.» til venstre, og ett avsnitt med tekstlenken «Se erfaring og omtaler» til høyre.
+- **Handlinger:** «Send meg en arbeidsoppgave» er primær vei til kontakt (svart knapp, full bredde på mobil). «Kurs og foredrag» er en tekstlenke med pil til `#kurs-og-foredrag`.
+- **Sidestruktur:** Etter headeren kommer inngang, «Omtalt hos», 01 Arbeidsbenken, 02 Kurs og foredrag, 03 Om og erfaring og til slutt Kontakt. Seksjonene nummereres i etiketten («02 / Kurs & foredrag»). Menyen følger Figma (Arbeid, Om, Foredrag, Kontakt). `navigation.js` sorterer seksjonene etter plassering på siden, så aktiv markering stemmer selv om menyrekkefølgen avviker. Ikke lag nye likeverdige seksjoner uten å fjerne eller samle noe annet.
+- **Arbeidsbenken (Figma 4:85):** Etiketten «01 / Dette hjelper jeg med». Overskrift og ingress står til venstre, og tre nummererte tjenestelinjer til høyre (Sparring, En liten prototype, Agenter i arbeidsflyten), skilt med hårstreker. Omfang og varighet (Lars, 17.11.2026) står inne i den ene setningen per tjeneste, ikke som egne linjer, så listen holdes rolig. Under kommer todelt «Slik jobber jeg» med «Sparringspartner, ikke en fasit.» til venstre og sortering av oppgaver (grønt, gult og rødt) i en svart flate til høyre. Prinsippet «KI lager struktur og utkast, fagpersonen vurderer og har ansvaret» står bare i ingressen, og oppfordringen til kontakt står i hero og i kontaktdelen. Ikke gjenta dem.
+- **Kurs og foredrag (Figma 4:108):** Lys grå flate over hele bredden. Foredragsbildet (svart-hvitt fra Arendalsuka, 4:3, uten ramme) står til venstre. Til høyre står etikett, overskrift, ingress (som også nevner at et foredrag varer 30–60 minutter), tre temaer med kort forklaring og tekstlenken «Ta kontakt om foredrag». På mobil kommer bildet først.
 - **Omtalt hos (Figma 4:78):** Lys grå stripe rett etter hero med navnene NRK, HR Norge, Tech Talks Agder og DigiViken, uten logoer. Hvert navn lenker til `#erfaring` og skal være dokumentert der.
-- **Erfaring:** Lys seksjon med etiketten «04 / Erfaring og omtaler». Todelt: overskrift og ingress til venstre, og ett fremhevet, ordrett sitat til høyre (`<figure>` med `<blockquote cite>` og `<figcaption>`). Under kommer én samlet liste, «I media og på fagscener». På desktop står utgiver og type/dato samlet i venstre kolonne og tittelen til høyre. På mobil stables de. Ingen andre sitatstiler. Leverandørblogger står bare i `<details>`. Kilder står i `docs/kilder-fagpresse.md`. Alle lenker i listen skal også finnes i `<details>`.
+- **Om og erfaring:** Lys seksjon (`#om`, med anker `#erfaring` inni) og etiketten «03 / Om og erfaring». Todelt topp: overskriften «Jeg liker å gjøre kompliserte ting brukbare.» og kort bakgrunn til venstre, og ett fremhevet, ordrett sitat til høyre (`<figure>` med `<blockquote cite>` og `<figcaption>`). Under kommer podkasten «Nok en podkast om KI» med plattformknapper og tre hovedepisoder (bare nummer, lengde, tittel og lenker), fulgt av «I media og på fagscener» med fire utvalgte omtaler. Resten ligger i `<details>` (brukerråd 17.11.2026: listene var for lange). På desktop står utgiver og type/dato samlet i venstre kolonne og tittelen til høyre. På mobil stables de. Ingen andre sitatstiler. Leverandørblogger står bare i `<details>`. Kilder står i `docs/kilder-fagpresse.md`. Alle lenker i listen skal også finnes i `<details>`.
 - **Mobil:** Alt stables. Hovedbudskap, første handling og målgruppevalg skal være synlig uten horisontal scrolling, også ved 200 % zoom.
-- **Kontakt (Figma 4:130):** Svart flate over hele bredden, som går rett over i svart bunntekst. Den har etiketten «Kontakt», en stor overskrift, kort tekst med tre stikkord om hva en henvendelse om en arbeidsoppgave bør inneholde, en hvit «Vis e-postadresse»-knapp (full bredde på mobil) og begge LinkedIn-lenkene.
+- **Kontakt (Figma 4:130):** Svart flate over hele bredden, som går rett over i svart bunntekst. Den har etiketten «Kontakt», en stor overskrift, kort tekst med tre stikkord om hva en henvendelse om en arbeidsoppgave bør inneholde, en hvit knapp «Vis e-postadresse» (Lars 17.11.2026: adressen skal skjules). Adressen står ikke i klartekst i noen publisert fil, heller ikke i JSON-LD. Den settes sammen med JavaScript ved klikk, og da erstattes knappen av en hvit `mailto:`-knapp med fokus, pluss «Kopier e-postadressen». Uten JavaScript er knappen skjult, og LinkedIn er kontaktveien. Knappene er full bredde på mobil og begge LinkedIn-lenkene. Under lenkene står svartid, at første samtale er uforpliktende og at pris avtales etter den (`.contact-terms`). Ingen pristall. Bunnteksten viser enkeltpersonforetak og org.nr.
 
 Breakpoints: 980 px og 760 px. Ved 760 px eller mindre kommer hovedbudskap og handlinger før den kompakte rollekolonnen, og matriser blir én kolonne. Sjekk 390 px, 360 px og 200 % zoom uten horisontal scrolling.
 
 ## Elevation & Depth
 
-Flat design. Dybde skapes gjennom hvit og lys grå flate, typografisk skala, hårstreker og mørke troverdighetsflater. `box-shadow`, gradienter og `drop-shadow()` er forbudt.
+Flat design som hovedregel. Dybde skapes gjennom hvit og lys grå flate, typografisk skala, hårstreker og mørke flater. `box-shadow` og `drop-shadow()` er forbudt; subtil gradient er bare tillatt i «Slik jobber jeg»-kortet.
 
 ## Shapes
 
@@ -188,9 +206,9 @@ Skarpe hjørner er standard. Portrettet i hero er rundt. Innholdsbilder kan ha 0
 
 Minstehøyde og minste klikkflate for menyknappen er 44 px. Menypunktene har minst 44 px høy klikkflate også på desktop. Menytekst er minst 14 px, og etiketter (store bokstaver) er minst 12,8 px; vanlig innholdstekst er minst 16 px. Primærknappen er svart med hvit tekst. Ved hover blir den hvit med svart ramme. På mørk flate er primærknappen hvit med svart tekst. Sekundærknappen er lys med 1 px kullsort ramme. Ingen skalering eller skygge.
 
-### Arbeidssteg
+### Sortering av oppgaver
 
-Fire trinn ligger på ett sammenhengende svart bånd med nummer i dempet grå og navn i Newsreader. Ingen forklaring under. På mobil stables de. Ikke bruk kortrekker for tjenester ved siden av denne flyten.
+Tre trinn (Grønt, Gult og Rødt) vises i en mørk flate med subtil lysning og hver sin avdempede sonegradient (`#7ee081` grønt, `#ffd166` gult, `#ff6b6b` rødt) med rund fargeprikk og innfelt kant, som visuelt unntak på den ellers sort-hvite siden.
 
 ### Erfaring og omtaler
 
@@ -209,7 +227,7 @@ Media, statsrådbesøk og fagscener samles i én lys liste med hårstreker etter
 - **Do** skriv «KI» i norsk tekst.
 - **Don't** gjør Lars til en ren håndverkskonsulent.
 - **Don't** bruk verktøyikoner, tretekstur, varseltape eller byggeplass-stockfoto.
-- **Don't** bruk skygger, gradienter, pilleknapper eller startup-estetikk.
+- **Don't** bruk skygger, fargede knapper, pilleknapper eller startup-estetikk.
 - **Don't** gjenta samme tjeneste, erfaring eller foredrag i flere seksjoner.
 - **Don't** fjern dokumenterte referanser for å gjøre siden kortere; legg dem heller i detaljvisning.
 - **Don't** bruk buzzord eller garanterte resultatpåstander.

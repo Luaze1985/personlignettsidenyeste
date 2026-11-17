@@ -14,8 +14,8 @@ test.describe('Ingen gjentakelse og tydelig kontakt', () => {
     const main = (await page.locator('main').innerText()).replace(/\s+/g, ' ');
     expect(main.match(/KI lager struktur og utkast/g)).toHaveLength(1);
     expect(main).not.toMatch(/Fagpersonen har kontroll|Fagpersonen sjekker kvalitet|KI erstatter ikke faglig dømmekraft/);
-    await expect(page.locator('.steps li p:not(.step-number)')).toHaveCount(0);
-    await expect(page.locator('.steps h3')).toHaveText(['Avklare', 'Prøve', 'Kontrollere', 'Velge']);
+    await expect(page.locator('.steps, .fit-grid')).toHaveCount(0);
+    await expect(page.locator('#arbeidsbenken .bento-tile')).toHaveCount(1);
     await expect(page.locator('#arbeidsbenken a[href="#kontakt"]')).toHaveCount(0);
     await expect(page.locator('#om .about-layout p')).toHaveCount(1);
   });
@@ -23,7 +23,7 @@ test.describe('Ingen gjentakelse og tydelig kontakt', () => {
   test('contact explains what to write and the button says what it does', async ({ page }) => {
     const contact = page.locator('#kontakt');
     await expect(contact.locator('.contact-hints li')).toHaveCount(3);
-    await expect(page.locator('#reveal-email')).toHaveText('Vis e-postadresse');
+    await expect(contact.locator('.contact-email-btn')).toHaveText('Vis e-postadresse');
     await expect(contact.locator('.eyebrow')).not.toContainText(/oppgave/i);
   });
 
@@ -31,7 +31,7 @@ test.describe('Ingen gjentakelse og tydelig kontakt', () => {
     for (const box of await page.locator('nav a').evaluateAll((links) => links.map((a) => a.getBoundingClientRect().height))) {
       expect(box).toBeGreaterThanOrEqual(44);
     }
-    const sizes = await page.locator('.eyebrow, .step-number, .service-number, .press-outlet').evaluateAll((els) =>
+    const sizes = await page.locator('.eyebrow, .service-number, .press-outlet').evaluateAll((els) =>
       els.map((el) => parseFloat(getComputedStyle(el).fontSize)));
     for (const size of sizes) expect(size).toBeGreaterThanOrEqual(12.8);
   });

@@ -4,15 +4,12 @@ const path = require('path');
 const indexUrl = `file://${path.resolve(__dirname, '../dist/index.html')}`;
 
 // Én samlet liste for omtaler og fagscener (designkritikk 31.10.2026). Kilder: docs/kilder-fagpresse.md.
+// Brukerråd 17.11.2026: listen var for lang. Fire utvalgte vises, resten ligger i <details>.
 const PRESS = [
   { outlet: 'Fagbladet', href: 'https://www.fagbladet.no/nyheter/lars-erik-er-ki-guru-i-kommunen-dette-vil-han-aldri-bruke-teknologien-til/752959' },
   { outlet: 'kode24', href: 'https://www.kode24.no/artikkel/slik-loser-de-40-arskrisen/259601' },
-  { outlet: 'AIavisen', href: 'https://aiavisen.no/min-ki-reise/' },
   { outlet: 'NRK', href: 'https://www.nrk.no/sorlandet/halverte-arbeidsuka-med-ki-1.17257802' },
   { outlet: 'Digi Agder', href: 'https://digiagder.no/digitaliseringsministeren-imponert-over-teknologisamarbeidet-i-agder' },
-  { outlet: 'Fædrelandsvennen', href: 'https://www.fvn.no/mening/debattinnlegg/i/25aKA4/vi-har-faatt-ki-verktoeykassen-vi-maa-laere-aa-bruke-den-sammen' },
-  { outlet: 'HR Norge', href: 'https://www.hrnorge.no/tema/digitalisering/digitale-l%C3%B8sninger-innen-hr/veien-til-digital-effektivisering' },
-  { outlet: 'Tech Talks Agder', href: 'https://digin.no/events/tech-talks-agder-ai-i-arbeidshverdagen-fra-ide-til-kode' },
 ];
 
 test.describe('Omtalt hos og omtaler', () => {
@@ -53,7 +50,9 @@ test.describe('Omtalt hos og omtaler', () => {
     const hrefs = await items.locator('a').evaluateAll((all) => all.map((a) => a.getAttribute('href')));
     expect(new Set(hrefs).size).toBe(hrefs.length);
     await expect(page.locator('.press-list')).not.toContainText('Lawai');
-    await expect(items.filter({ hasText: 'HR Norge' })).toContainText('krever medlemskap');
+    for (const moved of ['AIavisen', 'Fædrelandsvennen', 'HR Norge', 'Tech Talks Agder']) {
+      await expect(page.locator('.reference-details')).toContainText(moved.split(' ')[0]);
+    }
   });
 
   test('there is exactly one highlighted quote, cited with a visible source', async ({ page }) => {

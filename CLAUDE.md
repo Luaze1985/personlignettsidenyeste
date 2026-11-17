@@ -20,10 +20,10 @@ Svart-hvitt etter Figma (desktop 3:149, mobil 3:266), valgt 31.10.2026.
 
 - Inngang: hovedbudskap, kontaktknapp, lenke til kurs/foredrag og rundt portrett.
 - «Omtalt hos»: fire navn som må være dokumentert i `#erfaring`.
-- `#arbeidsbenken` (01): tre tjenester, svart stegbånd og passer/passer ikke.
+- `#arbeidsbenken` (01): tre tjenester og «Slik jobber jeg» med grønt/gult/rødt.
 - `#kurs-og-foredrag` (02): foredragsbilde og tre temaer på grå flate.
-- `#om` (03): kort tekst og lenke til erfaring.
-- `#erfaring` (04): ett sitat, én samlet omtaleliste og én detaljliste.
+- `#om` (03, med `#erfaring` inni): kort tekst, ett sitat, podkast og omtaleliste.
+- Smakebit til podkasten ligger som prototype i `prototypes/` til Lars definerer innholdet.
 - `#kontakt`: svart flate med Vis e-post og dagens LinkedIn-kanaler.
 
 Legg nye dokumenterte omtaler i detaljlisten under `#erfaring`. En utvalgt omtale
@@ -38,7 +38,8 @@ rolleavklaring, datapraksis og resultat-eksempel er uavklart, se `ISSUES.md` N-6
 Ikke finn på fakta, resultater, garantier eller kundegodkjenninger.
 
 Skriv norsk bokmål, kort og ærlig. Bruk KI, unntatt i engelske titler.
-Ingen hypeord, skygger, gradienter, ikonfont, CDN eller nye runtime-rammeverk.
+Ingen hypeord, skygger, ikonfont, CDN eller nye runtime-rammeverk. Farger og
+gradient er bare tillatt i «Slik jobber jeg»-kortet (valgt av Lars 15.11.2026).
 Lucide inline-SVG og lisens i `icons/LICENSE.txt`; nummerering i arbeidssteg.
 
 ## Ferdigkriterier
