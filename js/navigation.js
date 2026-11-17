@@ -123,4 +123,16 @@
             link.focus();
         });
     }
+
+    // --- Bento-kort: rolig fremheving av trinn i grønt/gult/rødt ---
+    var trafficRows = Array.prototype.slice.call(document.querySelectorAll('.traffic-row'));
+    if (trafficRows.length && !reduce) {
+        var activeIdx = 0;
+        window.setInterval(function () {
+            activeIdx = (activeIdx + 1) % trafficRows.length;
+            trafficRows.forEach(function (row, idx) {
+                row.classList.toggle('is-active', idx === activeIdx);
+            });
+        }, 3200);
+    }
 })();

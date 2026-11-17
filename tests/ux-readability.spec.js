@@ -43,9 +43,9 @@ test.describe('UX, UI and readability', () => {
     await expect(page.locator('.audience-gate, .hero-rail')).toHaveCount(0);
     await expect(page.locator('main')).not.toContainText('håndverksbedrifter');
     await expect(page.locator('main')).not.toContainText('større virksomheter');
-    await expect(page.locator('.steps li')).toHaveCount(4);
+    await expect(page.locator('.steps, .fit-grid')).toHaveCount(0);
+    await expect(page.locator('#arbeidsbenken .traffic-row')).toHaveCount(3);
     await expect(page.locator('#arbeidsbenken')).toContainText('KI lager struktur og utkast');
-    await expect(page.locator('#arbeidsbenken')).toContainText('Passer ikke når');
   });
 
   test('makes the work request primary and gives the home link its visible name', async ({ page }) => {
@@ -149,7 +149,7 @@ test.describe('UX, UI and readability', () => {
     expect(styles.headingFontFamily).toContain('Newsreader');
   });
 
-  test('avoids horizontal overflow and keeps the work steps readable on narrow screens', async ({ page }) => {
+  test('avoids horizontal overflow and keeps the bento zone sorting readable on narrow screens', async ({ page }) => {
     for (const width of [180, 360, 390, 760, 980, 1440]) {
       await page.setViewportSize({ width, height: 1000 });
       await page.goto(indexUrl);
@@ -178,15 +178,16 @@ test.describe('UX, UI and readability', () => {
     await page.goto(indexUrl);
 
     const widths = await page.evaluate(() => {
-      const grid = document.querySelector('.steps').getBoundingClientRect();
-      const steps = [...document.querySelectorAll('.steps li')]
-        .map((step) => step.getBoundingClientRect().width);
-      return { grid: grid.width, steps };
+      const tile = document.querySelector('.bento-tile').getBoundingClientRect();
+      const rows = [...document.querySelectorAll('.traffic-row')]
+        .map((row) => row.getBoundingClientRect().width);
+      return { tile: tile.width, rows };
     });
 
-    expect(widths.steps).toHaveLength(4);
-    for (const stepWidth of widths.steps) {
-      expect(stepWidth).toBeCloseTo(widths.grid - 2, 0);
+    expect(widths.rows).toHaveLength(3);
+    for (const rowWidth of widths.rows) {
+      expect(rowWidth).toBeLessThanOrEqual(widths.tile);
+      expect(rowWidth).toBeGreaterThan(240);
     }
   });
 });

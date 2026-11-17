@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype · Smakebit i podkastblokken</title>
+  <!-- Kastprototype 17.11.2026. Publiseres ikke (ligger utenfor dist).
+       Innhold i [hakeparenteser] må defineres av Lars før komponenten flyttes til index.html. -->
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { background:var(--paper); }
+    .proto-note { margin:2rem auto 0; padding:1rem 1.25rem; border:1px dashed var(--ink); font:500 .95rem/1.5 system-ui,sans-serif; }
+    .proto-wrap { padding:var(--space-lg) 0; }
+
+    /* --- Smakebit: lydbølge som leses som en forhåndsvisning --- */
+    .snippet { display:grid; gap:1.25rem; margin-top:1.75rem; padding:1.5rem; background:var(--ink); color:#fff; border:1px solid var(--ink); }
+    .snippet-head { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; }
+    .snippet-head .podcast-tag { color:var(--on-dark-muted); }
+    .snippet-time { font:500 .8rem/1.2 ui-monospace,monospace; color:var(--on-dark-muted); font-variant-numeric:tabular-nums; }
+    .snippet-quote { margin:0; font:400 clamp(1.3rem,2.4vw,1.6rem)/1.25 "Newsreader",serif; letter-spacing:-.01em; }
+    .snippet-quote cite { display:block; margin-top:.6rem; font:500 .85rem/1.4 system-ui,sans-serif; font-style:normal; color:var(--on-dark-muted); }
+    .snippet-player { display:grid; grid-template-columns:48px minmax(0,1fr); align-items:center; gap:1rem; }
+    .snippet-play { display:inline-flex; width:48px; height:48px; align-items:center; justify-content:center; border:1px solid #fff; border-radius:50%; background:transparent; color:#fff; cursor:pointer; }
+    .snippet-play:hover, .snippet-play:focus-visible { background:#fff; color:var(--ink); }
+    .snippet-play:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+    .wave { display:flex; align-items:center; gap:3px; height:48px; }
+    .wave i { flex:1 1 0; min-width:2px; height:calc(var(--h) * 100%); background:var(--dark-outline); transform-origin:center; transition:background-color .15s linear; }
+    .wave i.is-played { background:#fff; }
+    .snippet.is-playing .wave i.is-head { animation:pulse .5s ease-in-out infinite alternate; }
+    @keyframes pulse { from { transform:scaleY(.7); } to { transform:scaleY(1.15); } }
+    .snippet-links { display:flex; flex-wrap:wrap; gap:1.25rem; }
+    .snippet-links a { color:#fff; font-weight:600; text-underline-offset:.2em; }
+    @media (prefers-reduced-motion: reduce) {
+      .snippet.is-playing .wave i.is-head { animation:none; }
+      .wave i { transition:none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <p class="proto-note"><strong>Prototype – ikke publisert.</strong> Smakebit som fjerde oppføring i «Nok en podkast om KI». Lydbølgen er tegnet med kode (ingen lydfil, ingen innebygd spiller, CSP uendret). Knappen viser bare en forhåndsvisning av fremdriften. Innhold i [hakeparenteser] må du definere: sitat, hvem som sier det, tidskode og lenker.</p>
+
+    <div class="proto-wrap">
+      <div class="split podcast-grid">
+        <div class="podcast-intro">
+          <p class="eyebrow">Podkast</p>
+          <h3>Nok en podkast om KI</h3>
+          <p class="section-intro">Plassering: Smakebit står under hovedepisodene i høyrekolonnen, slik at blokken fortsatt leses ovenfra og ned.</p>
+        </div>
+        <div class="podcast-content">
+          <p class="eyebrow podcast-group-label">Hovedepisoder</p>
+          <ul class="podcast-list">
+            <li><span class="podcast-tag">Episode 03 · 51 min</span><h4 class="podcast-item-title">«Regnskapsføring is cooked»?</h4></li>
+            <li><span class="podcast-tag">Episode 02 · 57 min</span><h4 class="podcast-item-title">AI-sjef?</h4></li>
+            <li><span class="podcast-tag">Episode 01 · 47 min</span><h4 class="podcast-item-title">Hva må en leder vite om KI?</h4></li>
+          </ul>
+
+          <section class="snippet" aria-labelledby="snippet-title">
+            <div class="snippet-head">
+              <span class="podcast-tag" id="snippet-title">Smakebit</span>
+              <span class="snippet-time" aria-label="Lengde">[0:45]</span>
+            </div>
+            <blockquote class="snippet-quote">
+              «[Ett ordrett sitat fra episoden, maks to linjer]»
+              <cite>[Navn] i [episode]</cite>
+            </blockquote>
+            <div class="snippet-player">
+              <button class="snippet-play" type="button" aria-pressed="false" aria-label="Forhåndsvis smakebit">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="6 3 20 12 6 21 6 3" /></svg>
+              </button>
+              <div class="wave" aria-hidden="true"></div>
+            </div>
+            <div class="snippet-links">
+              <a href="#">[Spotify-lenke]</a>
+              <a href="#">[YouTube-lenke]</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      // Bølgeformen er deterministisk: samme høyder ved hver lasting, ingen lydanalyse.
+      var BARS = 56;
+      var wave = document.querySelector('.wave');
+      var bars = [];
+      for (var i = 0; i < BARS; i++) {
+        var t = i / BARS;
+        var h = 0.22 + 0.5 * Math.abs(Math.sin(t * 9.1) * Math.cos(t * 3.7)) + 0.28 * Math.abs(Math.sin(t * 23.3));
+        var bar = document.createElement('i');
+        bar.style.setProperty('--h', Math.min(1, h).toFixed(3));
+        wave.appendChild(bar);
+        bars.push(bar);
+      }
+
+      var card = document.querySelector('.snippet');
+      var button = document.querySelector('.snippet-play');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var DURATION = 6000; // forhåndsvisning, ikke ekte lydlengde
+      var start = null, raf = null;
+
+      function paint(progress) {
+        var head = Math.floor(progress * BARS);
+        bars.forEach(function (b, idx) {
+          b.classList.toggle('is-played', idx < head);
+          b.classList.toggle('is-head', idx === head);
+        });
+      }
+      function stop() {
+        cancelAnimationFrame(raf);
+        card.classList.remove('is-playing');
+        button.setAttribute('aria-pressed', 'false');
+        start = null;
+      }
+      function tick(now) {
+        if (start === null) start = now;
+        var p = Math.min(1, (now - start) / DURATION);
+        paint(p);
+        if (p < 1) raf = requestAnimationFrame(tick); else stop();
+      }
+      button.addEventListener('click', function () {
+        if (card.classList.contains('is-playing')) { stop(); return; }
+        if (reduce) { paint(1); return; }
+        paint(0);
+        card.classList.add('is-playing');
+        button.setAttribute('aria-pressed', 'true');
+        raf = requestAnimationFrame(tick);
+      });
+    })();
+  </script>
+</body>
+</html>

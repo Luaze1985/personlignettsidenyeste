@@ -11,9 +11,10 @@ test.describe('Tekstplassering', () => {
     const starts = await page.evaluate(() => [
       '.hero-portrait',
       '#arbeidsbenken .services',
+      '#arbeidsbenken .bento-tile',
       '#kurs-og-foredrag .talks-copy',
-      '#om .about-body',
       '#erfaring .press-quote',
+      '#podkast .podcast-content',
     ].map((selector) => Math.round(document.querySelector(selector).getBoundingClientRect().left)));
     expect(new Set(starts).size, `høyrekolonner starter ved ${starts.join(', ')}`).toBe(1);
   });

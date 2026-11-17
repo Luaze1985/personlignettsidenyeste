@@ -10,9 +10,9 @@ test.describe('Foredrag, Om, Erfaring og Kontakt', () => {
     await page.goto(indexUrl);
   });
 
-  test('sections follow the Figma reading order', async ({ page }) => {
+  test('sections follow the trimmed reading order', async ({ page }) => {
     const ids = await page.locator('main > section').evaluateAll((sections) => sections.map((s) => s.id));
-    expect(ids).toEqual(['arbeidsbenken', 'kurs-og-foredrag', 'om', 'erfaring', 'kontakt']);
+    expect(ids).toEqual(['arbeidsbenken', 'kurs-og-foredrag', 'om', 'kontakt']);
   });
 
   test('talks sit on a grey band with photo, three themes and a contact link', async ({ page }) => {
@@ -25,18 +25,14 @@ test.describe('Foredrag, Om, Erfaring og Kontakt', () => {
     await expect(talks.locator('a[href="#kontakt"]')).toContainText('Ta kontakt om foredrag');
   });
 
-  test('about is plain text that links to experience', async ({ page }) => {
+  test('about and experience are merged into one light section without monospace labels', async ({ page }) => {
     const about = page.locator('#om');
-    await expect(about.locator('.eyebrow').first()).toHaveText(/03 \/ Fag, folk og teknologi/i);
+    const experience = page.locator('#erfaring');
+    await expect(about).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    await expect(about.locator('.eyebrow').first()).toHaveText(/03 \/ Om og erfaring/i);
     await expect(about.locator('h2')).toHaveText('Jeg liker å gjøre kompliserte ting brukbare.');
     await expect(about.locator('img')).toHaveCount(0);
-    await expect(about.locator('a[href="#erfaring"]')).toContainText('Se erfaring og omtaler');
-  });
-
-  test('experience is a light section without monospace labels', async ({ page }) => {
-    const experience = page.locator('#erfaring');
-    await expect(experience).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-    await expect(experience.locator('.eyebrow').first()).toHaveText(/04 \/ Erfaring og omtaler/i);
+    await expect(experience.locator('blockquote')).toHaveCount(1);
     for (const selector of ['.press-outlet', '.reference-details summary']) {
       const family = await experience.locator(selector).first().evaluate((el) => getComputedStyle(el).fontFamily);
       expect(family).not.toMatch(/mono/i);
@@ -58,5 +54,33 @@ test.describe('Foredrag, Om, Erfaring og Kontakt', () => {
     await page.locator('#om').scrollIntoViewIfNeeded();
     await page.evaluate(() => window.scrollTo(0, document.getElementById('om').getBoundingClientRect().top + window.scrollY - 100));
     await expect(page.locator('nav a[href="#om"]')).toHaveAttribute('aria-current', 'location');
+  });
+
+  test('podcast block inside experience shows main episodes and platform links without snippet', async ({ page }) => {
+    const podcast = page.locator('#erfaring #podkast');
+    await expect(podcast.locator('h3')).toHaveText('Nok en podkast om KI');
+
+    const channels = podcast.locator('.podcast-channels a');
+    await expect(channels).toHaveCount(2);
+    await expect(channels.nth(0)).toHaveAttribute('href', 'https://open.spotify.com/show/5tKBEkJOXRfeKQxHmABMQ1');
+    await expect(channels.nth(1)).toHaveAttribute('href', 'https://www.youtube.com/playlist?list=PLUUcWukQxAg4');
+
+    const items = podcast.locator('.podcast-list li');
+    await expect(items).toHaveCount(3);
+    await expect(podcast.locator('.podcast-tag')).toHaveText([
+      /Episode 03/,
+      /Episode 02/,
+      /Episode 01/,
+    ]);
+    await expect(podcast.locator('.podcast-list')).not.toContainText('Smakebit');
+
+    for (let i = 0; i < 3; i++) {
+      const links = items.nth(i).locator('.podcast-item-links a');
+      await expect(links).toHaveCount(2);
+      await expect(links.nth(0)).toHaveAttribute('href', /open\.spotify\.com\/episode\//);
+      await expect(links.nth(1)).toHaveAttribute('href', /youtube\.com\/watch\?v=/);
+      await expect(links.nth(0)).toHaveAccessibleName(/åpner i ny fane/);
+      await expect(links.nth(1)).toHaveAccessibleName(/åpner i ny fane/);
+    }
   });
 });
